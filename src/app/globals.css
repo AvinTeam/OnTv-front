@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-html{
-  direction: rtl;
+html {
+  font-family: var(--font-iransans);
+}
+
+:lang(en) {
+  font-family: var(--font-roboto);
 }
