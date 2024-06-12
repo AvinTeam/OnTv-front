@@ -1,5 +1,7 @@
+import "./globals.css";
+
  export default function Home() {
   return (
-     <div className="p-4">آوین مدیا</div>
+     <main className="container">آوین مدیا</main>
   );
 }

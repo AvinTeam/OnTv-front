@@ -16,20 +16,20 @@ export const tailwindColors: ColorObject = {
   "base-50": "#373737",
   "base-75": "#221D1F",
   "base-content-title": "#39989F",
-  "base-content-detail": "#868E98",
-  "gradient-first": "#3899A0",
+  "base-content": "#868E98",
+  "gradient-first": "#63D2D3",
   "gradient-second": "#C7E24E",
 };
 
 const config: Config = {
-  content: [
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     colors: tailwindColors,
-    // extend: {
-    // },
+    container: {
+      center: true,
+    },
   },
+  darkMode: "class",
   plugins: [],
 };
 export default config;
