@@ -58,11 +58,11 @@ export const Footer: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <p className="md:text-2xl font-black mb-4">آن</p>
+                  <p className="md:text-2xl text-base-content-bg font-black mb-4">آن</p>
                   <p className=" text-nowrap text-md font-bold">اولین شبکه خبری آنلاین</p>
                 </div>
               </div>
-              <div className="mr-20 md:mr-0 flex gap-5 pt-4">
+              <div className="mr-20 md:mr-12 flex gap-5 pt-5">
                 <span>
                   <svg
                     className="w-9 h-9 dark:text-base-content"
