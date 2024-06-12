@@ -49,7 +49,7 @@ export const Footer: React.FC = () => {
           <div className="grid grid-cols-4 gap-2 md:py-32">
             <div className="col-span-1 flex flex-col ">
               <div className="flex">
-                <div className="ml-4">
+                <div className="mr-20 md:ml-4">
                   <Image
                     alt="OnTVLogo"
                     width={80}
@@ -59,10 +59,10 @@ export const Footer: React.FC = () => {
                 </div>
                 <div>
                   <p className="md:text-2xl font-black mb-4">آن</p>
-                  <p className="text-md font-bold">اولین شبکه خبری آنلاین</p>
+                  <p className=" text-nowrap text-md font-bold">اولین شبکه خبری آنلاین</p>
                 </div>
               </div>
-              <div className="flex gap-5 pt-4">
+              <div className="mr-20 md:mr-0 flex gap-5 pt-4">
                 <span>
                   <svg
                     className="w-9 h-9 dark:text-base-content"
@@ -216,7 +216,7 @@ export const Footer: React.FC = () => {
       {/* ================== bottom footer section ==================  */}
       <div className="h-[10px] dark:bg-base-75  md:h-[52px] flex justify-between items-center">
         <div className="container flex justify-between p-4">
-          <p className=" md:hidden text-sm mr-20">
+          <p className="mt-7 md:hidden text-sm mr-20">
             © تمام حقوق برای آن محفوظ است.
           </p>
           <div className="hidden text-sm md:flex justify-end items-center">
