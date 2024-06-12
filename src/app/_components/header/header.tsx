@@ -1,26 +1,38 @@
 import Link from "next/link";
 import Image from "next/image";
-import Icon from "../../public/image/Path 36.svg";
-
 export const Header: React.FC = () => {
   return (
-    <header className="to-40% bg-gradient-to-r from-gradient-second to-gradient-first">
-      <div className="container mx-auto grid grid-cols-[auto_1fr_auto] md:grid-cols-[auto_auto_auto] justify-between items-center gap-4">
-        <div className="flex w-20 h-20 justify-center items-center dark:bg-primary">
+    <header className="to-80% md:to-40% bg-gradient-to-r from-gradient-second to-gradient-first">
+      <div className="container mx-auto grid grid-cols-[auto_auto] md:grid-cols-[auto_1fr_auto] justify-between items-center gap-4">
+        {/* ================= mobole menue =============== */}
+        <div className="md:hidden mr-6 bg-base-content-bg p-2 text-base-content rounded-md">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            width={"30px"}
+            height={"30px"}
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </div>
+        <div className="flex ml-2 mr-auto w-20 py-2.5 justify-center items-center md:dark:bg-primary">
           <Image
-            className=""
             alt="OnTVLogo"
             width={60}
             height={60}
             src={"/images/android-chrome-192x192.png"}
-          />{" "}
+          />
         </div>
-        <nav
-          className="hidden md:flex justify-start"
-          style={{ width: "900px" }}
-        >
+        <nav className="hidden md:flex justify-start">
           <ul className="flex justify-between gap-4 text-primary-content">
-            <li>
+            <li className="mr-4">
               <Link href="#" className="hover:underline">
                 آن لاین
               </Link>
@@ -91,7 +103,7 @@ export const Header: React.FC = () => {
             </li>
           </ul>
         </nav>
-        <div className="flex justify-end">
+        <div className="hidden md:flex justify-end">
           <Link
             href="/signin"
             className="px-4 py-2 bg-transparent text-secondary-content border border-text-secondary-content border-spacing-1 text-black rounded-md hover:bg-gray-100"
