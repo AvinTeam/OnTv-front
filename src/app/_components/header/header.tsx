@@ -22,7 +22,7 @@ export const Header: React.FC = () => {
             />
           </svg>
         </div>
-        <div className="flex ml-2 mr-auto w-20 py-2.5 justify-center items-center md:dark:bg-primary">
+        <div className="flex ml-2 h-[78px] mr-auto w-20 py-2.5 justify-center items-center md:dark:bg-primary">
           <Image
             alt="OnTVLogo"
             width={60}
