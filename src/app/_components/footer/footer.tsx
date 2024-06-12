@@ -46,10 +46,10 @@ export const Footer: React.FC = () => {
       {/* ==================  main footer section ================== */}
       <div className="dark:bg-base-25">
         <div className="container">
-          <div className="grid grid-cols-4 gap-2 md:py-32">
-            <div className="col-span-1 flex flex-col ">
+          <div className="grid grid-cols-4 gap-4 md:py-32">
+            <div className="col-span-1 flex flex-col justify-center">
               <div className="flex">
-                <div className="mr-20 md:ml-4">
+                <div className="ml-4">
                   <Image
                     alt="OnTVLogo"
                     width={80}
@@ -58,11 +58,15 @@ export const Footer: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <p className="md:text-2xl text-base-content-bg font-black mb-4">آن</p>
-                  <p className=" text-nowrap text-md font-bold">اولین شبکه خبری آنلاین</p>
+                  <p className="md:text-2xl text-base-content-bg font-black mb-2">
+                    آن
+                  </p>
+                  <p className="text-nowrap text-md font-bold">
+                    اولین شبکه خبری آنلاین
+                  </p>
                 </div>
               </div>
-              <div className="mr-20 md:mr-12 flex gap-5 pt-5">
+              <div className="mr-20 md:-mr-5 flex gap-5 pt-1">
                 <span>
                   <svg
                     className="w-9 h-9 dark:text-base-content"
@@ -171,7 +175,7 @@ export const Footer: React.FC = () => {
                 </li>
               </ul>
             </div>
-            <div className="hidden md:block col-span-1 mr-auto ">
+            {/* <div className="hidden md:block col-span-1 mr-auto ">
               <div className="font-bold text-xl mb-5 sm:text-center sm:flex sm:justify-between">
                 راه های ارتباطی
               </div>
@@ -189,8 +193,8 @@ export const Footer: React.FC = () => {
                   <Link href={"/"}>خبرگزاری</Link>
                 </li>
               </ul>
-            </div>
-            <div className="hidden md:block  col-span-1 mr-auto ">
+            </div> */}
+            {/* <div className="hidden md:block  col-span-1 mr-auto ">
               <div className="font-bold text-xl mb-5 sm:text-center sm:flex sm:justify-between">
                 راه های ارتباطی
               </div>
@@ -208,33 +212,16 @@ export const Footer: React.FC = () => {
                   <Link href={"/"}>خبرگزاری</Link>
                 </li>
               </ul>
-            </div>{" "}
+            </div>  */}
           </div>
         </div>
       </div>
 
       {/* ================== bottom footer section ==================  */}
       <div className="h-[10px] dark:bg-base-75  md:h-[52px] flex justify-between items-center">
-        <div className="container flex justify-between p-4">
-          <p className="mt-7 md:hidden text-sm mr-20">
+        <div className="container flex justify-between p-4 sm:h-full ">
+          <div className="text-sm mt-5 mr-20 flex md:mr-0 md:mt-0 h-full md:justify-end md:items-center">
             © تمام حقوق برای آن محفوظ است.
-          </p>
-          <div className="hidden text-sm md:flex justify-end items-center">
-            09901098765
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              className="size-4 mr-1"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M14.25 9.75v-4.5m0 4.5h4.5m-4.5 0 6-6m-3 18c-8.284 0-15-6.716-15-15V4.5A2.25 2.25 0 0 1 4.5 2.25h1.372c.516 0 .966.351 1.091.852l1.106 4.423c.11.44-.054.902-.417 1.173l-1.293.97a1.062 1.062 0 0 0-.38 1.21 12.035 12.035 0 0 0 7.143 7.143c.441.162.928-.004 1.21-.38l.97-1.293a1.125 1.125 0 0 1 1.173-.417l4.423 1.106c.5.125.852.575.852 1.091V19.5a2.25 2.25 0 0 1-2.25 2.25h-2.25Z"
-              />
-            </svg>
           </div>
           <ul className="hidden text-xs md:flex justify-end items-center gap-4">
             <li>آنلاین</li>

@@ -22,7 +22,7 @@ export const Header: React.FC = () => {
             />
           </svg>
         </div>
-        <div className="flex ml-2 h-[78px] mr-auto w-20 py-2.5 justify-center items-center md:dark:bg-primary">
+        <div className="flex md:mr-10 ml-2 h-[78px] mr-auto w-20 py-2.5 justify-center items-center md:dark:bg-primary">
           <Image
             alt="OnTVLogo"
             width={60}
@@ -37,7 +37,7 @@ export const Header: React.FC = () => {
                 آن لاین
               </Link>
             </li>
-            <li className="flex justify-center items-center gap-1">
+            {/* <li className="flex justify-center items-center gap-1">
               <Link href="#" className="hover:underline">
                 کانال ها
               </Link>
@@ -100,16 +100,16 @@ export const Header: React.FC = () => {
                   data-name="Path 36"
                 />
               </svg>{" "}
-            </li>
+            </li> */}
           </ul>
         </nav>
-        <div className="hidden md:flex justify-end">
-          <Link
+        <div className="hidden md:flex text-primary-content justify-end ml-10">پخش آزمایشی
+          {/* <Link
             href="/signin"
             className="px-4 py-2 bg-transparent text-secondary-content border border-text-secondary-content border-spacing-1 text-black rounded-md hover:bg-gray-100"
           >
             ورود/ثبت نام
-          </Link>
+          </Link> */}
         </div>
       </div>
     </header>

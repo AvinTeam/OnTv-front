@@ -47,7 +47,7 @@ export const VideoJS = (props: any) => {
     }, [playerRef]);
 
     return (
-        <div data-vjs-player>
+        <div data-vjs-player className='rounded-[13px] overflow-hidden'>
             <div ref={videoRef} />
         </div>
     );
