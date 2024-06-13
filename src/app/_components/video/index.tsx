@@ -3,6 +3,7 @@
 import React from 'react';
 import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
+import lang_fa from '../../../../public/lang/videojs/fa.json';
 
 export const VideoJS = (props: any) => {
     const videoRef = React.useRef<any>(null);
@@ -18,7 +19,7 @@ export const VideoJS = (props: any) => {
 
             videoElement.classList.add('vjs-big-play-centered');
             videoRef.current.appendChild(videoElement);
-
+            videojs.addLanguage('fa', lang_fa);
             const player = playerRef.current = videojs(videoElement, options, () => {
                 videojs.log('player is ready');
                 onReady && onReady(player);
@@ -47,7 +48,7 @@ export const VideoJS = (props: any) => {
     }, [playerRef]);
 
     return (
-        <div data-vjs-player className='rounded-[13px] overflow-hidden'>
+        <div data-vjs-player className='rounded-[15px] overflow-hidden'>
             <div ref={videoRef} />
         </div>
     );
