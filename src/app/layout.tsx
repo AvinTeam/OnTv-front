@@ -1,5 +1,5 @@
 import "./globals.css";
-
+import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import localFont from "next/font/local";
 
@@ -48,6 +48,11 @@ const iransans = localFont({
   ],
   variable: "--font-iransans",
 });
+
+export const metadata: Metadata = {
+  title: "آن لاین",
+  description: "تلویزیون اینترنتی آن لاین",
+};
 
 export default function RootLayout({
   children,
