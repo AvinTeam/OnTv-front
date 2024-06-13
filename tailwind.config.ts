@@ -19,6 +19,8 @@ export const tailwindColors: ColorObject = {
   "base-content-title": "#39989F",
   "base-content-bg": "#E3E3E3",
   "base-content": "#868E98",
+  "input-bg": "#F6F6F6",
+  "input-text": "#747474",
   "gradient-first": "#63D2D3",
   "gradient-second": "#C7E24E",
 };
