@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="mt-1">
+    <footer className="mt-1 overflow-auto">
       {/* ==================  top footer section ================== */}
       <div className="bg-base-70 drop-shadow-md ">
         <div className="container bg-base-70 md:h-[100px]">
