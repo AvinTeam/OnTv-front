@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
                 placeholder="ﺟﻬﺖ ﻋﻀﻮﯾﺖ در ﺧﺒﺮﻧﺎﻣﻪ ﺷﻤﺎره ﻣﻮﺑﺎﯾﻞ ﺧﻮد ﺧﻮد را وارد کنید"
               />
               <Link
-                className="ml-2.5 md:ml-0  text-sm md:text-sm p-0.5 md:p-2.5 bg-gradient-to-r from-gradient-second to-gradient-first text-white items-center text-center justify-between rounded-[7px] sm:w-auto"
+                className="ml-0 w-20 md:w-auto text-sm md:text-sm p-0.5 md:p-2.5 bg-gradient-to-r from-gradient-second to-gradient-first text-white items-center text-center justify-between rounded-[7px] sm:w-auto"
                 href={"/"}
               >
                 عضویت
@@ -222,12 +222,12 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* ================== bottom footer section ==================  */}
-      <div className="h-[10px] dark:bg-base-75  md:h-[52px] flex justify-between items-center">
+      <div className="h-[25px] dark:bg-base-75  md:h-[52px] flex justify-between items-center">
         <div className="container flex justify-between p-4 sm:h-full ">
-          <div className="text-sm mt-5 mr-20 flex md:mr-0 md:mt-0 h-full md:justify-end md:items-center">
+          <div className=" flex md:block justify-center w-full items-center text-xs md:text-sm h-full md:justify-end md:items-center">
             © تمام حقوق برای آن محفوظ است.
           </div>
-          <ul className="hidden text-xs md:flex justify-end items-center gap-4">
+          <ul className="hidden text-xs text-nowrap md:flex justify-end items-center gap-4">
             <li>آنلاین</li>
             <li>کانال ها</li>
             <li>زمان پخش</li>
