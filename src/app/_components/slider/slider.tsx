@@ -621,9 +621,10 @@ export const Slider: React.FC<SliderProps> = ({
             ) : null}
           </div>
         </SwiperSlide>
-        {!isDisablePrev && (
+      <div className="hidden md:block">
+      {!isDisablePrev && (
           <div
-            className={`swiper-button-prev bg-[#4a4a4a] rounded-[3px] transition-all`}
+            className={`hiddeh swiper-button-prev bg-[#4a4a4a] rounded-[3px] transition-all`}
             onClick={handlePrev}
           >
             <img className="w-[30%] h-[30%] " src="/images/arrow.svg" alt="" />
@@ -631,12 +632,13 @@ export const Slider: React.FC<SliderProps> = ({
         )}
         {!isDisableNext && (
           <div
-            className={`swiper-button-next bg-[#4a4a4a] rounded-[3px] rotate-180 transition-all`}
+            className={`hidden swiper-button-next bg-[#4a4a4a] rounded-[3px] rotate-180 transition-all`}
             onClick={handleNext}
           >
             <img className="w-[30%] h-[30%] " src="/images/arrow.svg" alt="" />
           </div>
         )}
+      </div>
       </Swiper>
     </div>
   );
