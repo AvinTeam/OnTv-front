@@ -3,37 +3,37 @@ import Image from "next/image";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="mt-1 overflow-auto">
+    <footer className="mt-1 overflow-x-auto overflow-y-hidden">
       {/* ==================  top footer section ================== */}
-      <div className="bg-base-70 drop-shadow-md ">
-        <div className="container bg-base-70 md:h-[100px]">
-          <div className="grid grid-cols-12 h-[60px] md:h-[141px] gap-2 items-center">
-            <div className="pr-2.5 md:pr-0 flex h-full items-center md:-mt-8 col-span-2">
+      <div className="bg-base-70 drop-shadow-md">
+        <div className="container bg-base-70 px-4">
+          <div className="py-2 md:py-0 flex flex-col md:grid md:grid-cols-12 h-[100px] md:h-[141px] gap-2 items-center justify-between w-full">
+            <div className="flex flex-col md:flex-row md:col-span-5 lg:col-span-4 pr-2.5 md:pr-0 h-full items-center md:-mt-8">
               <Image
                 alt="newspaper"
-                className="bg-primary px-3 py-2 md:w-10 md:h-10 rounded-[10%] ml-2"
+                className="bg-primary px-3 hidden md:block py-2 md:w-10 md:h-10 rounded-[10%] ml-2"
                 objectFit="cover"
                 width={18}
                 sizes="100"
                 height={18}
                 src="/images/newspaper.png"
               />
-              <div className="leading-10">
-                <div className=" text-xs text-nowrap font-bold md:text-xl text-primary">
+              <div className="flex flex-col justify-center md:block items-center w-full">
+                <div className=" text-sm mb-1 md:mb-0 text-nowrap font-bold md:text-lg lg:text-xl text-primary">
                   عضویت در خبرنامه
                 </div>
-                <div className="text-xs text-nowrap md:text-md md:pt-2 text-primary">
+                <div className="text-xs text-nowrap md:text-md lg:text-lg md:pt-2 text-primary">
                   برای اطلاع از آخرین اطلاعیه ها، عضو شوید
                 </div>
               </div>
             </div>
-            <div className="col-span-10 mr-auto md:-mt-8 ">
+            <div className="flex md:flex-row w-full md:col-span-7 lg:col-span-8 mr-auto md:-mt-8 ">
               <input
-                className=" text-xs w-25 md:w-[600px] ml-2 peer transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200  border focus:border-2 border-t-transparent md:text-sm px-1 py-1 md:px-2.5 md:py-2.5 rounded-[7px]  "
+                className=" text-[10px] w-full ml-2 peer transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200  border focus:border-2 border-t-transparent md:text-sm lg:text-md px-1 py-1 md:px-2.5 md:py-2.5 rounded-[7px]  "
                 placeholder="ﺟﻬﺖ ﻋﻀﻮﯾﺖ در ﺧﺒﺮﻧﺎﻣﻪ ﺷﻤﺎره ﻣﻮﺑﺎﯾﻞ ﺧﻮد ﺧﻮد را وارد کنید"
               />
               <Link
-                className="ml-2.5 md:ml-0  text-xs md:text-sm p-0.5 md:p-2.5 bg-gradient-to-r from-gradient-second to-gradient-first text-white items-center text-center justify-between rounded-[7px] sm:w-auto"
+                className="ml-2.5 md:ml-0  text-sm md:text-sm p-0.5 md:p-2.5 bg-gradient-to-r from-gradient-second to-gradient-first text-white items-center text-center justify-between rounded-[7px] sm:w-auto"
                 href={"/"}
               >
                 عضویت
@@ -44,32 +44,36 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* ==================  main footer section ================== */}
-      <div className="dark:bg-base-25">
+      <div className="dark:bg-base-25 p-2 md:p-0">
         <div className="container">
-          <div className="grid grid-cols-4 gap-4 md:py-32">
+          <div className="grid grid-cols-4 gap-4 md:py-16">
             <div className="col-span-1 flex flex-col justify-center">
-              <div className="flex">
-                <div className="ml-4">
+              <div className="flex flex-col md:flex-row">
+                <div className="ml-4 flex md:block">
                   <Image
+                  className="w-10 h-10 md:w-20 md:h-20"
                     alt="OnTVLogo"
                     width={80}
                     height={80}
                     src={"/images/android-chrome-192x192.png"}
                   />
-                </div>
-                <div>
-                  <p className="md:text-2xl text-base-content-bg font-black mb-2">
+                <p className="md:hidden mr-4 mt-2 md:text-2xl text-base-content-bg font-black mb-2">
                     آن
                   </p>
-                  <p className="text-nowrap text-md font-bold">
+                </div>
+                <div>
+                  <p className="hidden md:block md:text-2xl text-base-content-bg font-black mb-2">
+                    آن
+                  </p>
+                  <p className="text-nowrap text-sm md:text-md font-bold">
                     اولین شبکه خبری آنلاین
                   </p>
                 </div>
               </div>
-              <div className="mr-20 md:-mr-5 flex gap-5 pt-1">
+              <div className="-mr-1 md:-mr-5 flex gap-3 md:gap-5 pt-1">
                 <span>
                   <svg
-                    className="w-9 h-9 dark:text-base-content"
+                    className="w-4 h-4 md:w-9 md:h-9 dark:text-base-content"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -86,7 +90,7 @@ export const Footer: React.FC = () => {
                 </span>
                 <span>
                   <svg
-                    className="w-9 h-9 dark:text-base-content"
+                    className="w-4 h-4 md:w-9 md:h-9 dark:text-base-content"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -103,7 +107,7 @@ export const Footer: React.FC = () => {
                 </span>
                 <span>
                   <svg
-                    className="w-9 h-9 dark:text-base-content"
+                    className="w-4 h-4 md:w-9 md:h-9 dark:text-base-content"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -121,7 +125,7 @@ export const Footer: React.FC = () => {
                 </span>
                 <span>
                   <svg
-                    className="w-9 h-9 dark:text-base-content"
+                    className="w-4 h-4 md:w-9 md:h-9 dark:text-base-content"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -139,7 +143,7 @@ export const Footer: React.FC = () => {
                 </span>
                 <span>
                   <svg
-                    className="w-9 h-9 dark:text-base-content"
+                    className="w-4 h-4 md:w-9 md:h-9 dark:text-base-content"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
