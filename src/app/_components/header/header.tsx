@@ -2,10 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 export const Header: React.FC = () => {
   return (
-    <header className="to-80% md:to-40% bg-gradient-to-r from-gradient-second to-gradient-first overflow-auto">
+    <header className="mx-auto w-full to-80% md:to-40% bg-gradient-to-r from-gradient-second to-gradient-first overflow-auto">
       <div className="container mx-auto grid grid-cols-[auto_auto] md:grid-cols-[auto_1fr_auto] justify-between items-center gap-4">
         {/* ================= mobole menue =============== */}
-        <div className="md:hidden mr-6 bg-base-content-bg p-2 text-base-content rounded-md">
+        <div className="md:hidden mr-2 bg-base-content-bg p-2 text-base-content rounded-md">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -22,7 +22,7 @@ export const Header: React.FC = () => {
             />
           </svg>
         </div>
-        <div className="flex md:mr-10 ml-2 h-[78px] mr-auto w-20 py-2.5 justify-center items-center md:dark:bg-primary">
+        <div className="flex ml-0 mr-4 h-[78px] w-20 py-2.5 justify-center items-center md:dark:bg-primary">
           <Image
             alt="OnTVLogo"
             width={60}
@@ -103,7 +103,7 @@ export const Header: React.FC = () => {
             </li> */}
           </ul>
         </nav>
-        <div className="hidden md:flex text-primary-content justify-end ml-10">
+        <div className="hidden md:flex text-primary-content justify-end ml-4">
           پخش آزمایشی
           {/* <Link
             href="/signin"

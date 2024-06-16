@@ -60,7 +60,7 @@ const Live = () => {
     });
   };
   return (
-       <div className="grid grid-cols-4 md:grid-cols-3 gap-2 md:gap-4">
+       <div className="grid grid-cols-4 md:grid-cols-3 gap-2 md:gap-4n items-center">
         <div className="col-span-4 md:col-span-2 row-span-2">
           <VideoJS options={videoJsOptions1} onReady={handlePlayerReady} />
         </div>

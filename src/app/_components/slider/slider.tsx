@@ -39,20 +39,27 @@ export const Slider: React.FC<SliderProps> = ({
           nextEl: "custom-swiper-button-next",
           prevEl: "custom-swiper-button-prev",
         }}
-        spaceBetween={15}
         pagination={{ clickable: true }}
         breakpoints={{
+          0: {
+            slidesPerView: isDescription ? 2.5 : 3.5,
+            spaceBetween: 8,
+          },
           320: {
-            slidesPerView: isDescription ? 2 : 3,
-            spaceBetween: 10,
+            slidesPerView: isDescription ? 2.5 : 3.5,
+            spaceBetween: 8,
           },
           640: {
-            slidesPerView: isDescription ? 3 : 6,
-            spaceBetween: 20,
+            slidesPerView: isDescription ? 3.5 : 4.5,
+            spaceBetween: 8,
+          },
+          768: {
+            slidesPerView: isDescription ? 3 : 4,
+            spaceBetween: 8,
           },
           1024: {
             slidesPerView: isDescription ? 4 : 6,
-            spaceBetween: 30,
+            spaceBetween: 8,
           },
         }}
         onSlideChange={(e) => {
