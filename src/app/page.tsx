@@ -26,7 +26,7 @@ export default function Home() {
       </div>
       <div className="h-[50px] md:h-[195px] overflow-auto">
         <div className="container px-2 w-full h-full">
-          <div className="grid grid-cols-12 gap-2 md:gap-4 w-full h-full justify-center items-center content-center">
+          <div className="grid grid-cols-12 gap-2 w-full h-full justify-center items-center content-center">
             <Image
               className="col-span-6 w-full h-full "
               src={"images/banner-1.png"}

@@ -50,7 +50,7 @@ export const Slider: React.FC<SliderProps> = ({
             spaceBetween: 8,
           },
           640: {
-            slidesPerView: isDescription ? 3.5 : 4.5,
+            slidesPerView: isDescription ? 2.5 : 4.5,
             spaceBetween: 8,
           },
           768: {
@@ -83,16 +83,16 @@ export const Slider: React.FC<SliderProps> = ({
                   width={0}
                   height={0}
                   objectFit="fill"
-                  className="w-full h-full blur-[1px] img-slide"
-                  src="images/slide-2.webp"
+                  className="w-full h-full img-slide"
+                  src="images/Mask Group 29.png"
                   alt="dd"
                 />
               </div>{" "}
               <div
                 className={`absolute ${
-                  isDescription ? "bottom-[50%]" : "bottom-7"
+                  isDescription ? " bottom-[55%]" : "bottom-7"
                 } ${
-                  isDescription ? "right-[50%]" : "right-2"
+                  isDescription ? "right-[45%]" : "right-2"
                 } w-1 h-1 cursor-pointer`}
               >
                 <svg
@@ -123,15 +123,15 @@ export const Slider: React.FC<SliderProps> = ({
             {isDescription ? (
               <div className="flex justify-center items-center flex-col w-full h-[40%] md:h-[30%]">
                 <div className=" flex flex-col md:grid md:grid-cols-12 justify-start md:justify-between md:items-center gap-1 w-full mt-2 md:mt-0">
-                  <div className="col-span-3 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-2 text-[10px] sm:rounded-sm md:rounded-[20%]">
+                  <div className="col-span-3 mb-1 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-1 md:flex md:justify-center text-[10px] md:rounded-[4px]">
                     خبر های روز
                   </div>
-                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-2 md:px-2 text-[9px] md:mr-auto sm:rounded-sm md:rounded-[20%]">
+                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-1.5 flex justify-center md:px-2 text-[9px] md:mr-auto md:rounded-[4px]">
                     <span>22 دقیقه پیش</span> <span> | </span>{" "}
                     <span> 17,526 نمایش</span>
                   </div>
                 </div>
-                <div className=" mt-1 md:mt-2  text-justify text-[12px] max-w-[100%]">
+                <div className=" mt-1 md:mt-2 text-justify text-[13px] max-w-[100%]">
                   <h3 className="text-ellipsis overflow-hidden whitespace-nowrap">
                     مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم
                   </h3>
@@ -157,16 +157,16 @@ export const Slider: React.FC<SliderProps> = ({
                   width={0}
                   height={0}
                   objectFit="fill"
-                  className="w-full h-full blur-[1px] img-slide"
-                  src="images/slide-2.webp"
+                  className="w-full h-full img-slide"
+                  src="images/Mask Group 30.png"
                   alt="dd"
                 />
               </div>{" "}
               <div
                 className={`absolute ${
-                  isDescription ? "bottom-[50%]" : "bottom-7"
+                  isDescription ? " bottom-[55%]" : "bottom-7"
                 } ${
-                  isDescription ? "right-[50%]" : "right-2"
+                  isDescription ? "right-[45%]" : "right-2"
                 } w-1 h-1 cursor-pointer`}
               >
                 <svg
@@ -197,15 +197,15 @@ export const Slider: React.FC<SliderProps> = ({
             {isDescription ? (
               <div className="flex justify-center items-center flex-col w-full h-[40%] md:h-[30%]">
                 <div className=" flex flex-col md:grid md:grid-cols-12 justify-start md:justify-between md:items-center gap-1 w-full mt-2 md:mt-0">
-                  <div className="col-span-3 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-2 text-[10px] sm:rounded-sm md:rounded-[20%]">
+                  <div className="col-span-3  mb-1 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-1 md:flex md:justify-center text-[10px] md:rounded-[4px]">
                     خبر های روز
                   </div>
-                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-2 md:px-2 text-[9px] md:mr-auto sm:rounded-sm md:rounded-[20%]">
+                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-2 md:px-2 text-[9px] md:mr-auto md:rounded-[4px]">
                     <span>22 دقیقه پیش</span> <span> | </span>{" "}
                     <span> 17,526 نمایش</span>
                   </div>
                 </div>
-                <div className=" mt-1 md:mt-2  text-justify text-[12px] max-w-[100%]">
+                <div className=" mt-1 md:mt-2  text-justify text-[13px] max-w-[100%]">
                   <h3 className="text-ellipsis overflow-hidden whitespace-nowrap">
                     مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم
                   </h3>
@@ -230,16 +230,16 @@ export const Slider: React.FC<SliderProps> = ({
                   width={0}
                   height={0}
                   objectFit="fill"
-                  className="w-full h-full blur-[1px] img-slide"
-                  src="images/slide-2.webp"
+                  className="w-full h-full img-slide"
+                  src="images/Mask Group 31.png"
                   alt="dd"
                 />
               </div>{" "}
               <div
                 className={`absolute ${
-                  isDescription ? "bottom-[50%]" : "bottom-7"
+                  isDescription ? " bottom-[55%]" : "bottom-7"
                 } ${
-                  isDescription ? "right-[50%]" : "right-2"
+                  isDescription ? "right-[45%]" : "right-2"
                 } w-1 h-1 cursor-pointer`}
               >
                 <svg
@@ -270,15 +270,15 @@ export const Slider: React.FC<SliderProps> = ({
             {isDescription ? (
               <div className="flex justify-center items-center flex-col w-full h-[40%] md:h-[30%]">
                 <div className=" flex flex-col md:grid md:grid-cols-12 justify-start md:justify-between md:items-center gap-1 w-full mt-2 md:mt-0">
-                  <div className="col-span-3 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-2 text-[10px] sm:rounded-sm md:rounded-[20%]">
+                  <div className="col-span-3 mb-1 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-1 md:flex md:justify-center text-[10px] md:rounded-[4px]">
                     خبر های روز
                   </div>
-                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-2 md:px-2 text-[9px] md:mr-auto sm:rounded-sm md:rounded-[20%]">
+                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-2 md:px-2 text-[9px] md:mr-auto md:rounded-[4px]">
                     <span>22 دقیقه پیش</span> <span> | </span>{" "}
                     <span> 17,526 نمایش</span>
                   </div>
                 </div>
-                <div className=" mt-1 md:mt-2  text-justify text-[12px] max-w-[100%]">
+                <div className=" mt-1 md:mt-2  text-justify text-[13px] max-w-[100%]">
                   <h3 className="text-ellipsis overflow-hidden whitespace-nowrap">
                     مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم
                   </h3>
@@ -303,16 +303,16 @@ export const Slider: React.FC<SliderProps> = ({
                   width={0}
                   height={0}
                   objectFit="fill"
-                  className="w-full h-full blur-[1px] img-slide"
-                  src="images/slide-2.webp"
+                  className="w-full h-full img-slide"
+                  src="images/Mask Group 42.png"
                   alt="dd"
                 />
               </div>{" "}
               <div
                 className={`absolute ${
-                  isDescription ? "bottom-[50%]" : "bottom-7"
+                  isDescription ? " bottom-[55%]" : "bottom-7"
                 } ${
-                  isDescription ? "right-[50%]" : "right-2"
+                  isDescription ? "right-[45%]" : "right-2"
                 } w-1 h-1 cursor-pointer`}
               >
                 <svg
@@ -343,15 +343,15 @@ export const Slider: React.FC<SliderProps> = ({
             {isDescription ? (
               <div className="flex justify-center items-center flex-col w-full h-[40%] md:h-[30%]">
                 <div className=" flex flex-col md:grid md:grid-cols-12 justify-start md:justify-between md:items-center gap-1 w-full mt-2 md:mt-0">
-                  <div className="col-span-3 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-2 text-[10px] sm:rounded-sm md:rounded-[20%]">
+                  <div className="col-span-3 mb-1 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-1 md:flex md:justify-center text-[10px] md:rounded-[4px]">
                     خبر های روز
                   </div>
-                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-2 md:px-2 text-[9px] md:mr-auto sm:rounded-sm md:rounded-[20%]">
+                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-2 md:px-2 text-[9px] md:mr-auto md:rounded-[4px]">
                     <span>22 دقیقه پیش</span> <span> | </span>{" "}
                     <span> 17,526 نمایش</span>
                   </div>
                 </div>
-                <div className=" mt-1 md:mt-2  text-justify text-[12px] max-w-[100%]">
+                <div className=" mt-1 md:mt-2  text-justify text-[13px] max-w-[100%]">
                   <h3 className="text-ellipsis overflow-hidden whitespace-nowrap">
                     مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم
                   </h3>
@@ -376,16 +376,16 @@ export const Slider: React.FC<SliderProps> = ({
                   width={0}
                   height={0}
                   objectFit="fill"
-                  className="w-full h-full blur-[1px] img-slide"
-                  src="images/slide-2.webp"
+                  className="w-full h-full img-slide"
+                  src="images/Mask Group 33.png"
                   alt="dd"
                 />
               </div>{" "}
               <div
                 className={`absolute ${
-                  isDescription ? "bottom-[50%]" : "bottom-7"
+                  isDescription ? " bottom-[55%]" : "bottom-7"
                 } ${
-                  isDescription ? "right-[50%]" : "right-2"
+                  isDescription ? "right-[45%]" : "right-2"
                 } w-1 h-1 cursor-pointer`}
               >
                 <svg
@@ -416,15 +416,15 @@ export const Slider: React.FC<SliderProps> = ({
             {isDescription ? (
               <div className="flex justify-center items-center flex-col w-full h-[40%] md:h-[30%]">
                 <div className=" flex flex-col md:grid md:grid-cols-12 justify-start md:justify-between md:items-center gap-1 w-full mt-2 md:mt-0">
-                  <div className="col-span-3 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-2 text-[10px] sm:rounded-sm md:rounded-[20%]">
+                  <div className="col-span-3 mb-1 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-1 md:flex md:justify-center text-[10px] md:rounded-[4px]">
                     خبر های روز
                   </div>
-                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-2 md:px-2 text-[9px] md:mr-auto sm:rounded-sm md:rounded-[20%]">
+                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-2 md:px-2 text-[9px] md:mr-auto md:rounded-[4px]">
                     <span>22 دقیقه پیش</span> <span> | </span>{" "}
                     <span> 17,526 نمایش</span>
                   </div>
                 </div>
-                <div className=" mt-1 md:mt-2  text-justify text-[12px] max-w-[100%]">
+                <div className=" mt-1 md:mt-2  text-justify text-[13px] max-w-[100%]">
                   <h3 className="text-ellipsis overflow-hidden whitespace-nowrap">
                     مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم
                   </h3>
@@ -449,16 +449,16 @@ export const Slider: React.FC<SliderProps> = ({
                   width={0}
                   height={0}
                   objectFit="fill"
-                  className="w-full h-full blur-[1px] img-slide"
-                  src="images/slide-2.webp"
+                  className="w-full h-full img-slide"
+                  src="images/Mask Group 41.png"
                   alt="dd"
                 />
               </div>{" "}
               <div
                 className={`absolute ${
-                  isDescription ? "bottom-[50%]" : "bottom-7"
+                  isDescription ? " bottom-[55%]" : "bottom-7"
                 } ${
-                  isDescription ? "right-[50%]" : "right-2"
+                  isDescription ? "right-[45%]" : "right-2"
                 } w-1 h-1 cursor-pointer`}
               >
                 <svg
@@ -489,15 +489,15 @@ export const Slider: React.FC<SliderProps> = ({
             {isDescription ? (
               <div className="flex justify-center items-center flex-col w-full h-[40%] md:h-[30%]">
                 <div className=" flex flex-col md:grid md:grid-cols-12 justify-start md:justify-between md:items-center gap-1 w-full mt-2 md:mt-0">
-                  <div className="col-span-3 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-2 text-[10px] sm:rounded-sm md:rounded-[20%]">
+                  <div className="col-span-3 mb-1 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-1 md:flex md:justify-center text-[10px] md:rounded-[4px]">
                     خبر های روز
                   </div>
-                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-2 md:px-2 text-[9px] md:mr-auto sm:rounded-sm md:rounded-[20%]">
+                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-2 md:px-2 text-[9px] md:mr-auto md:rounded-[4px]">
                     <span>22 دقیقه پیش</span> <span> | </span>{" "}
                     <span> 17,526 نمایش</span>
                   </div>
                 </div>
-                <div className=" mt-1 md:mt-2  text-justify text-[12px] max-w-[100%]">
+                <div className=" mt-1 md:mt-2  text-justify text-[13px] max-w-[100%]">
                   <h3 className="text-ellipsis overflow-hidden whitespace-nowrap">
                     مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم
                   </h3>
@@ -522,16 +522,16 @@ export const Slider: React.FC<SliderProps> = ({
                   width={0}
                   height={0}
                   objectFit="fill"
-                  className="w-full h-full blur-[1px] img-slide"
-                  src="images/slide-2.webp"
+                  className="w-full h-full img-slide"
+                  src="images/Mask Group 42.png"
                   alt="dd"
                 />
               </div>{" "}
               <div
                 className={`absolute ${
-                  isDescription ? "bottom-[50%]" : "bottom-7"
+                  isDescription ? " bottom-[55%]" : "bottom-7"
                 } ${
-                  isDescription ? "right-[50%]" : "right-2"
+                  isDescription ? "right-[45%]" : "right-2"
                 } w-1 h-1 cursor-pointer`}
               >
                 <svg
@@ -562,15 +562,15 @@ export const Slider: React.FC<SliderProps> = ({
             {isDescription ? (
               <div className="flex justify-center items-center flex-col w-full h-[40%] md:h-[30%]">
                 <div className=" flex flex-col md:grid md:grid-cols-12 justify-start md:justify-between md:items-center gap-1 w-full mt-2 md:mt-0">
-                  <div className="col-span-3 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-2 text-[10px] sm:rounded-sm md:rounded-[20%]">
+                  <div className="col-span-3 mb-1 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-1 md:flex md:justify-center text-[10px] md:rounded-[4px]">
                     خبر های روز
                   </div>
-                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-2 md:px-2 text-[9px] md:mr-auto sm:rounded-sm md:rounded-[20%]">
+                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-2 md:px-2 text-[9px] md:mr-auto md:rounded-[4px]">
                     <span>22 دقیقه پیش</span> <span> | </span>{" "}
                     <span> 17,526 نمایش</span>
                   </div>
                 </div>
-                <div className=" mt-1 md:mt-2  text-justify text-[12px] max-w-[100%]">
+                <div className=" mt-1 md:mt-2  text-justify text-[13px] max-w-[100%]">
                   <h3 className="text-ellipsis overflow-hidden whitespace-nowrap">
                     مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم
                   </h3>
