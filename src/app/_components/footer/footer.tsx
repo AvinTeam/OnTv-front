@@ -46,10 +46,10 @@ export const Footer: React.FC = () => {
       {/* ==================  main footer section ================== */}
       <div className="dark:bg-base-25 p-2 md:p-0">
         <div className="container">
-          <div className="grid grid-cols-4 gap-4 md:py-16">
+          <div className="flex justify-center md:grid md:grid-cols-4 gap-4 md:py-16">
             <div className="col-span-1 flex flex-col justify-center">
               <div className="flex flex-col md:flex-row">
-                <div className="ml-4 flex md:block">
+                <div className="ml-4 flex md:block justify-center">
                   <Image
                   className="w-10 h-10 md:w-20 md:h-20"
                     alt="OnTVLogo"
