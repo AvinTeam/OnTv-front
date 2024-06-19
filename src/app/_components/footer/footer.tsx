@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
               <Image
                 alt="newspaper"
                 className="bg-primary px-3 hidden md:block py-2 md:w-10 md:h-10 rounded-[10%] ml-2"
-                objectFit="cover"
+                style={{objectFit: "cover"}}
                 width={18}
                 sizes="100"
                 height={18}
@@ -223,6 +223,9 @@ export const Footer: React.FC = () => {
 
       {/* ================== bottom footer section ==================  */}
       <div className="h-[25px] dark:bg-base-75 py-4 md:py-0 md:h-[52px] flex justify-between items-center">
+        <div className="hidden md:flex justify-center items-center cursor-pointer container bg-[#6D6B6C] h-[52px] w-20 ">
+          <Image src="images/Icon.webp" width={20} height={33} alt="arrow" className="rotate-90" />
+        </div>
         <div className="container flex justify-between p-4 sm:h-full ">
           <div className=" flex md:block justify-center w-full items-center text-xs md:text-sm h-full md:justify-end md:items-center">
             © تمام حقوق برای آن محفوظ است.

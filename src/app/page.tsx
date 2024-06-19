@@ -8,14 +8,43 @@ const data: any= [
     path: "/images/Image 69.png",
     logo: "/images/logo/Group 953.png",
     alt: "test",
-    descriptions:{
-      title: "خبر های روز",
-      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم"
-    }
   },
   {
-    path: "/images/Image 70.png",
-    logo: "/images/logo/Group 988.png",
+    path: "/images/Mask Group 41.png",
+    logo: "/images/logo/Group 1011.png",
+    alt: "test",
+  },
+  {
+    path: "/images/Mask Group 42.png",
+    logo: "/images/logo/Group 1013.png",
+    alt: "test",
+  }, 
+   {
+    path: "/images/Image 72.png",
+    logo: "/images/logo/Group 9003.png",
+    alt: "test",
+  },
+  {
+    path: "/images/Image 69.png",
+    logo: "/images/logo/Group 953.png",
+    alt: "test",
+  },
+  {
+    path: "/images/Image 69.png",
+    logo: "/images/logo/Group 953.png",
+    alt: "test",
+  },
+  {
+    path: "/images/Mask Group 41.png",
+    logo: "/images/logo/Group 1011.png",
+    alt: "test",
+  },
+  
+]
+const dataDec: any= [
+  {
+    path: "/images/Mask Group 29.png",
+    logo: "/images/logo/Group 953.png",
     alt: "test",
     descriptions:{
       title: "خبر های روز",
@@ -23,7 +52,7 @@ const data: any= [
     }
   },
   {
-    path: "/images/Mask Group 41.png",
+    path: "/images/Mask Group 30.png",
     logo: "/images/logo/Group 1011.png",
     alt: "test",
     descriptions:{
@@ -32,7 +61,7 @@ const data: any= [
     }
   },
   {
-    path: "/images/Mask Group 42.png",
+    path: "/images/Mask Group 31.png",
     logo: "/images/logo/Group 1013.png",
     alt: "test",
     descriptions:{
@@ -41,7 +70,7 @@ const data: any= [
     }
   }, 
    {
-    path: "/images/Image 72.png",
+    path: "/images/Mask Group 33.png",
     logo: "/images/logo/Group 9003.png",
     alt: "test",
     descriptions:{
@@ -49,24 +78,27 @@ const data: any= [
       dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم"
     }
   },
-  {
-    path: "/images/Image 70.png",
-    logo: "/images/logo/Group 988.png",
+   {
+    path: "/images/Mask Group 33.png",
+    logo: "/images/logo/Group 9003.png",
     alt: "test",
     descriptions:{
       title: "خبر های روز",
       dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم"
     }
   },
-  {
-    path: "/images/Image 70.png",
-    logo: "/images/logo/Group 988.png",
+   {
+    path: "/images/Mask Group 33.png",
+    logo: "/images/logo/Group 9003.png",
     alt: "test",
     descriptions:{
       title: "خبر های روز",
       dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم"
     }
   },
+ 
+ 
+  
 ]
 
 
@@ -90,26 +122,31 @@ export default function Home() {
             <p className="text-base-content text-xs md:text-md">نمایش همه</p>
           </div>
           <hr className="w-full pb-4 border-t-base-70" />
-          <Slider data={data} isDescription />
+          <Slider data={dataDec} isDescription />
         </div>
       </div>
-      <div className="h-[50px] md:h-[195px] overflow-auto">
+      <div className="overflow-auto">
         <div className="container px-2 w-full h-full">
-          <div className="grid grid-cols-12 gap-2 w-full h-full justify-center items-center content-center">
+          <div className="flex flex-col md:grid grid-cols-12 gap-2 w-full h-full justify-center items-center content-center">
+            <div className="md:col-span-6 h-full w-full md:h-[105px]">
             <Image
-              className="col-span-6 w-full h-full "
+              className="w-full h-full "
               src={"images/banner-1.png"}
               width={0}
               height={0}
+              style={{objectFit: "cover"}}
               alt="banner"
-            />
+              />
+            </div>
+            <div className="md:col-span-6  h-full w-full md:h-[105px]">
             <Image
-              className="col-span-6 w-full h-full "
+              className="w-full h-full "
               src={"images/banner-2.png"}
               width={0}
+              style={{objectFit: "cover"}}
               height={0}
               alt="banner"
-            />
+            />   </div>
           </div>
         </div>
       </div>
@@ -122,7 +159,7 @@ export default function Home() {
             <p className="text-base-content text-xs md:text-md">نمایش همه</p>
           </div>
           <hr className="w-full pb-4 border-t-base-70" />
-          <Slider data={data} isDescription />
+          <Slider data={dataDec} isDescription />
         </div>
       </div>
     </main>

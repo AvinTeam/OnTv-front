@@ -31,8 +31,7 @@
  
 }
 
-@layer utilities {
-  .shadow-inner-bottom {
-     box-shadow: inset 0px -60px 15px -10px rgba(0, 0, 0, 0.6);
-  }
+.shadow-inner-bottom {
+     box-shadow: inset 0px -60px 15px -10px rgba(0, 0, 0, 0.7);
 }
+ 

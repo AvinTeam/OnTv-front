@@ -82,12 +82,12 @@ export const Slider: React.FC<SliderProps> = ({
                 isDescription ? "h-[60%]" : "h-full"
               }`}
             >
-              <div className=" w-full h-full relative inline-block overflow-hidden">
+              <div className="w-full h-full relative overflow-hidden">
                 <Image
                   width={0}
                   height={0}
-                  objectFit="cover"
-                  className={`w-full h-full overflow-hidden img-slide ${isDescription ? "rounded-md" : "rounded-lg"} `}
+                  style={{objectFit: "cover"}}
+                  className={`w-full h-full overflow-hidden img-slide ${isDescription ? "rounded-md " : "rounded-lg blur-[0.3px] "} `}
                   src={item?.path}
                   alt="dd"
                 />
@@ -99,20 +99,16 @@ export const Slider: React.FC<SliderProps> = ({
                       src={item?.logo}
                       alt="Logo"
                       width={60}
-                      objectFit="cover"
+                      className="w-[30px] h-[40px] md:w-[60px] md:h-[70px] min-w-[max-content]"
+                      style={{objectFit: "cover"}}
                       height={60}
                     />
                   </div>
                   <div className="absolute inset-0 rounded-lg shadow-inner-bottom"></div>
                   </>
                 )}
-              </div>
               <div
-                className={`absolute ${
-                  isDescription ? " bottom-[55%]" : "bottom-7"
-                } ${
-                  isDescription ? "right-[45%]" : "right-2"
-                } w-1 h-1 cursor-pointer`}
+                 
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -120,10 +116,10 @@ export const Slider: React.FC<SliderProps> = ({
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  className={`${
+                  className={`cursor-pointer absolute ${
                     isDescription
-                      ? " hidden md:block player-icon invisible size-12 hover:scale-[0.7] active:scale-[1.4]"
-                      : "size-6 "
+                      ? " bottom-0 top-0 right-0 left-0 m-auto md:block player-icon md:invisible size-8 md:size-12 hover:scale-[0.7] active:scale-[1.4]"
+                      : "size-6 bottom-2 right-2 "
                   }  transition-all text-base-content-bg`}
                 >
                   <path
@@ -138,20 +134,21 @@ export const Slider: React.FC<SliderProps> = ({
                   />
                 </svg>
               </div>
+              </div>
             </div>
             {isDescription ? (
-              <div className="flex justify-center items-center flex-col w-full h-[40%] md:h-[30%]">
-                <div className=" flex flex-col md:grid md:grid-cols-12 justify-start md:justify-between md:items-center gap-1 w-full mt-2 md:mt-0">
-                  <div className="col-span-3  mb-1 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-1 md:flex md:justify-center text-[10px] md:rounded-[4px]">
+              <div className="pb-[9px] md:pb-0 flex justify-center items-center flex-col w-full h-[40%] md:h-[30%]">
+                <div className=" flex flex-col md:mt-4 md:grid md:grid-cols-12 justify-start md:justify-between md:items-center gap-1 w-full mt-4">
+                  <div className="col-span-3 mb-1 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-1 md:flex md:justify-center text-[10px] md:rounded-[20px]">
                     {item?.descriptions?.title}
                   </div>
-                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-2 md:px-2 text-[9px] md:mr-auto md:rounded-[4px]">
+                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-1 md:px-2 text-[9px] md:mr-auto md:rounded-[20px]">
                     <span>22 دقیقه پیش</span> <span> | </span>{" "}
                     <span> 17,526 نمایش</span>
                   </div>
                 </div>
-                <div className=" mt-1 md:mt-2  text-justify text-[13px] max-w-[100%]">
-                  <h3 className="text-ellipsis overflow-hidden whitespace-nowrap">
+                <div className=" mt-1 md:mt-2 text-justify text-[12px] md:text-[14px] max-w-[100%] md:min-w-[100%]">
+                  <h3 className="mb-1 text-ellipsis dark:text-description-text md:text-clip overflow-hidden whitespace-nowrap md:text-wrap md:ml-auto ">
                     {item?.descriptions?.dec}
                   </h3>
                 </div>
@@ -175,6 +172,7 @@ export const Slider: React.FC<SliderProps> = ({
                 src="/images/arrow.svg"
                 alt="arrow-prev"
                 width={0}
+                style={{objectFit: "cover"}}
                 height={0}
               />
             </div>
@@ -189,6 +187,7 @@ export const Slider: React.FC<SliderProps> = ({
                 src="/images/arrow.svg"
                 alt="arrow-next"
                 width={0}
+                style={{objectFit: "cover"}}
                 height={0}
               />
             </div>
