@@ -7,15 +7,13 @@ export default function About() {
         <div className="dark:bg-base-70 ">
           <div className="container h-[180px] flex justify-center items-center py-4">
             <div className="flex justify-center items-center flex-col">
-              <h1 className="mb-3 text-base-content-title text-2xl">
-                درباره آن
-              </h1>
+              <h1 className="mb-3 text-primary text-2xl">درباره آن</h1>
               <p>صفحه اصلی / درباره ما</p>
             </div>
           </div>
         </div>
-        <main className="container bg-white p-10 mt-20 overflow-visible rounded-[5px]">
-          <div className="-mt-16 bg-primary">
+        <main className="container bg-white p-8 rounded-[5px]">
+          <div className="bg-primary">
             <img src="/images/Rectangle 513.png" />
           </div>
           <div className="grid grid-cols-3 items-center justify-center mt-10 mb-20">
@@ -105,13 +103,15 @@ export default function About() {
             </div>
           </div>
           <div className="my-14 text-justify">
-            <p>
+            <span>
               کاربر گرامی، لطفاً در صورت وجود هرگونه سوال یا ابهامی، قبل از
               استفاده از فرم زیر بخش پرسش‏های متداول سایت را مطالعه بفرمایید و
               در صورتی که پاسخ پرسش خود را نیافتید حتماً با ما تماس بگیرید.
-              درصورت لزوم پاسخ شما از طریق ایمیل و یا شماره تلفنی که در فرم زیر
-              ثبت می کنید ارسال خواهد شد.
-            </p>
+              <span className="text-base-content font-bold">
+                درصورت لزوم پاسخ شما از طریق ایمیل و یا شماره تلفنی که در فرم
+                زیر ثبت می کنید ارسال خواهد شد.
+              </span>
+            </span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-12 justify-center items-center md:gap-4">
             <div className="col-span-6 md:col-span-5 flex flex-col gap-1">

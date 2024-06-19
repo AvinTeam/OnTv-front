@@ -172,7 +172,7 @@ export const Footer: React.FC = () => {
                   <Link href={"/"}>ﺗﻤﺎس ﺑﺎ ﻣﺎ</Link>
                 </li>
                 <li className="mb-4">
-                  <Link href={"/about"}>درباره ﺳﺎﯾﺖ</Link>
+                  <Link href={"/about"} key={Math.random()}>درباره ﺳﺎﯾﺖ</Link>
                 </li>
                 <li>
                   <Link href={"/"}>خبرگزاری</Link>
