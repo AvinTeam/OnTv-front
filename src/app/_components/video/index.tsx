@@ -59,7 +59,7 @@ export const VideoJS = ({
       player.autoplay(options.autoplay);
       player.src(options.sources);
     }
-  }, [options, fallbackOptions, videoRef]);
+  }, [options, fallbackOptions, videoRef, onReady, handlePlayerError]);
 
   // Dispose the Video.js player when the functional component unmounts
   React.useEffect(() => {

@@ -1,8 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 export default function About() {
   return (
     <>
-      <div className="bg-[#F0F2F5] ">
+      <div className="bg-[#FFFFFF] ">
         <div className="dark:bg-base-70 ">
           <div className="container h-[180px] flex justify-center items-center py-4">
             <div className="flex justify-center items-center flex-col">
@@ -13,9 +14,9 @@ export default function About() {
         </div>
         <main className="container bg-white p-8 rounded-[5px]">
           <div className="bg-primary">
-            <img src="/images/Rectangle 513.png" alt="map" />
+            <Image src="/images/Rectangle 513.png" alt="map" width={0} height={0} className="w-full h-full" />
           </div>
-          <div className="grid grid-cols-3 items-center justify-center mt-10 mb-20">
+          <div className="grid grid-cols-3 items-center justify-center mt-10 mb-8">
             <div className="col-span-1 flex flex-col justify-center items-center">
               <div className="w-[50px] md:w-[61px] md:h-[61px]">
                 <svg
@@ -101,7 +102,8 @@ export default function About() {
               </div>
             </div>
           </div>
-          <div className="my-14 text-justify">
+          <hr className="border-t-[#d8d8d8]"/>
+          <div className="my-8 text-justify">
             <span>
               کاربر گرامی، لطفاً در صورت وجود هرگونه سوال یا ابهامی، قبل از
               استفاده از فرم زیر بخش پرسش‏های متداول سایت را مطالعه بفرمایید و

@@ -69,8 +69,9 @@ export const Slider: React.FC<SliderProps> = ({
       >
 
       {
-        data?.map(item=>(
-          <SwiperSlide>
+        data?.map((item,idx)=>(
+         <div className="w-full h-full" key={idx}>
+           <SwiperSlide>
           <div
             className={`${
               isDescription ? "swiper-item " : ""
@@ -158,6 +159,7 @@ export const Slider: React.FC<SliderProps> = ({
             ) : null}
           </div>
         </SwiperSlide>
+         </div>
         ))
       }
       
@@ -168,10 +170,12 @@ export const Slider: React.FC<SliderProps> = ({
               className={`hiddeh swiper-button-prev bg-[#4a4a4a] rounded-[3px] transition-all`}
               onClick={handlePrev}
             >
-              <img
+              <Image
                 className="w-[30%] h-[30%] "
                 src="/images/arrow.svg"
-                alt=""
+                alt="arrow-prev"
+                width={0}
+                height={0}
               />
             </div>
           )}
@@ -180,10 +184,12 @@ export const Slider: React.FC<SliderProps> = ({
               className={`hidden swiper-button-next bg-[#4a4a4a] rounded-[3px] rotate-180 transition-all`}
               onClick={handleNext}
             >
-              <img
+              <Image
                 className="w-[30%] h-[30%] "
                 src="/images/arrow.svg"
-                alt=""
+                alt="arrow-next"
+                width={0}
+                height={0}
               />
             </div>
           )}
