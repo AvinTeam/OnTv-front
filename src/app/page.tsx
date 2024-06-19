@@ -5,8 +5,8 @@ import Image from "next/image";
 
 const data: any= [
   {
-    path: "images/Image 69.png",
-    logo: "images/logo/Group 953.png",
+    path: "/images/Image 69.png",
+    logo: "/images/logo/Group 953.png",
     alt: "test",
     descriptions:{
       title: "خبر های روز",
@@ -14,8 +14,8 @@ const data: any= [
     }
   },
   {
-    path: "images/Image 70.png",
-    logo: "images/logo/Group 988.png",
+    path: "/images/Image 70.png",
+    logo: "/images/logo/Group 988.png",
     alt: "test",
     descriptions:{
       title: "خبر های روز",
@@ -23,8 +23,8 @@ const data: any= [
     }
   },
   {
-    path: "images/Mask Group 41.png",
-    logo: "images/logo/Group 1011.png",
+    path: "/images/Mask Group 41.png",
+    logo: "/images/logo/Group 1011.png",
     alt: "test",
     descriptions:{
       title: "خبر های روز",
@@ -32,8 +32,8 @@ const data: any= [
     }
   },
   {
-    path: "images/Mask Group 42.png",
-    logo: "images/logo/Group 1013.png",
+    path: "/images/Mask Group 42.png",
+    logo: "/images/logo/Group 1013.png",
     alt: "test",
     descriptions:{
       title: "خبر های روز",
@@ -41,8 +41,8 @@ const data: any= [
     }
   }, 
    {
-    path: "images/Image 72.png",
-    logo: "images/logo/Group 9003.png",
+    path: "/images/Image 72.png",
+    logo: "/images/logo/Group 9003.png",
     alt: "test",
     descriptions:{
       title: "خبر های روز",
@@ -50,8 +50,8 @@ const data: any= [
     }
   },
   {
-    path: "images/Image 70.png",
-    logo: "images/logo/Group 988.png",
+    path: "/images/Image 70.png",
+    logo: "/images/logo/Group 988.png",
     alt: "test",
     descriptions:{
       title: "خبر های روز",
@@ -59,8 +59,8 @@ const data: any= [
     }
   },
   {
-    path: "images/Image 70.png",
-    logo: "images/logo/Group 988.png",
+    path: "/images/Image 70.png",
+    logo: "/images/logo/Group 988.png",
     alt: "test",
     descriptions:{
       title: "خبر های روز",

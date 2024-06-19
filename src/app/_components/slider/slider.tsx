@@ -100,7 +100,6 @@ export const Slider: React.FC<SliderProps> = ({
                       width={60}
                       objectFit="cover"
                       height={60}
-                      className=""
                     />
                   </div>
                   <div className="absolute inset-0 rounded-lg shadow-inner-bottom"></div>

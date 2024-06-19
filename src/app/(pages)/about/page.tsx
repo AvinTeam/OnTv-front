@@ -13,7 +13,7 @@ export default function About() {
         </div>
         <main className="container bg-white p-8 rounded-[5px]">
           <div className="bg-primary">
-            <img src="/images/Rectangle 513.png" />
+            <img src="/images/Rectangle 513.png" alt="map" />
           </div>
           <div className="grid grid-cols-3 items-center justify-center mt-10 mb-20">
             <div className="col-span-1 flex flex-col justify-center items-center">
