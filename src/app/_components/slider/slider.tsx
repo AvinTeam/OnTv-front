@@ -82,7 +82,7 @@ export const Slider: React.FC<SliderProps> = ({
                 <Image
                   width={0}
                   height={0}
-                  objectFit="fill"
+                  objectFit="cover"
                   className="w-full h-full img-slide"
                   src="images/Mask Group 29.png"
                   alt="dd"
@@ -156,7 +156,7 @@ export const Slider: React.FC<SliderProps> = ({
                 <Image
                   width={0}
                   height={0}
-                  objectFit="fill"
+                  objectFit="cover"
                   className="w-full h-full img-slide"
                   src="images/Mask Group 30.png"
                   alt="dd"
@@ -229,7 +229,7 @@ export const Slider: React.FC<SliderProps> = ({
                 <Image
                   width={0}
                   height={0}
-                  objectFit="fill"
+                  objectFit="cover"
                   className="w-full h-full img-slide"
                   src="images/Mask Group 31.png"
                   alt="dd"
@@ -302,7 +302,7 @@ export const Slider: React.FC<SliderProps> = ({
                 <Image
                   width={0}
                   height={0}
-                  objectFit="fill"
+                  objectFit="cover"
                   className="w-full h-full img-slide"
                   src="images/Mask Group 42.png"
                   alt="dd"
@@ -375,7 +375,7 @@ export const Slider: React.FC<SliderProps> = ({
                 <Image
                   width={0}
                   height={0}
-                  objectFit="fill"
+                  objectFit="cover"
                   className="w-full h-full img-slide"
                   src="images/Mask Group 33.png"
                   alt="dd"
@@ -448,7 +448,7 @@ export const Slider: React.FC<SliderProps> = ({
                 <Image
                   width={0}
                   height={0}
-                  objectFit="fill"
+                  objectFit="cover"
                   className="w-full h-full img-slide"
                   src="images/Mask Group 41.png"
                   alt="dd"
@@ -521,7 +521,7 @@ export const Slider: React.FC<SliderProps> = ({
                 <Image
                   width={0}
                   height={0}
-                  objectFit="fill"
+                  objectFit="cover"
                   className="w-full h-full img-slide"
                   src="images/Mask Group 42.png"
                   alt="dd"

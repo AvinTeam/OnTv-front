@@ -20,6 +20,19 @@ const Live = () => {
       },
     ],
   };
+  const fallbackOptions1 = {
+    autoplay: true,
+    controls: true,
+    responsive: true,
+    fluid: true,
+    muted: true,
+    sources: [
+      {
+        src: "https://nehzatmedia.arvanvod.ir/R7qEPk4Xey/joW4p7bJeM/h_,110_200,182_400,274_800,366_1500,548_2500,k.mp4.list/master.m3u8",
+        type: "application/x-mpegURL",
+      },
+    ],
+  };
   const videoJsOptions2 = {
     autoplay: true,
     controls: true,
@@ -33,6 +46,19 @@ const Live = () => {
       },
     ],
   };
+  const fallbackOptions2 = {
+    autoplay: true,
+    controls: true,
+    responsive: true,
+    fluid: true,
+    muted: true,
+    sources: [
+      {
+        src: "https://nehzatmedia.arvanvod.ir/R7qEPk4Xey/joW4p7bJeM/h_,110_200,182_400,274_800,366_1500,548_2500,k.mp4.list/master.m3u8",
+        type: "application/x-mpegURL",
+      },
+    ],
+  };
   const videoJsOptions3 = {
     autoplay: true,
     controls: true,
@@ -42,6 +68,19 @@ const Live = () => {
     sources: [
       {
         src: "https://picamo.arvanlive.ir/hls/ch3/ch3.m3u8",
+        type: "application/x-mpegURL",
+      },
+    ],
+  };
+  const fallbackOptions3 = {
+    autoplay: true,
+    controls: true,
+    responsive: true,
+    fluid: true,
+    muted: true,
+    sources: [
+      {
+        src: "https://nehzatmedia.arvanvod.ir/R7qEPk4Xey/joW4p7bJeM/h_,110_200,182_400,274_800,366_1500,548_2500,k.mp4.list/master.m3u8",
         type: "application/x-mpegURL",
       },
     ],
@@ -62,13 +101,13 @@ const Live = () => {
   return (
        <div className="grid grid-cols-4 md:grid-cols-3 gap-2 md:gap-4n items-center">
         <div className="col-span-4 md:col-span-2 row-span-2">
-          <VideoJS options={videoJsOptions1} onReady={handlePlayerReady} />
+          <VideoJS options={videoJsOptions1} fallbackOptions={fallbackOptions1} onReady={handlePlayerReady} />
         </div>
         <div className="col-span-2 md:col-span-1">
-          <VideoJS options={videoJsOptions2} onReady={handlePlayerReady} />
+          <VideoJS options={videoJsOptions2} fallbackOptions={fallbackOptions2} onReady={handlePlayerReady} />
         </div>
         <div className="col-span-2 md:col-span-1">
-          <VideoJS options={videoJsOptions3} onReady={handlePlayerReady} />
+          <VideoJS options={videoJsOptions3} fallbackOptions={fallbackOptions3} onReady={handlePlayerReady} />
         </div>
       </div>
    );
