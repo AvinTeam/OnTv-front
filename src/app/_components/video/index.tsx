@@ -28,10 +28,8 @@ export const VideoJS = ({
 
   const handlePlayerError = (player: any) => {
     const error = player.error();
-    console.error("Error occurred:", error);
-
+    
     if (error.code === 4) {
-      console.log("Switching to fallback video");
       player.src(fallbackOptions.sources);
       player.play();
     }
