@@ -3,12 +3,12 @@ import Image from "next/image";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="mt-1 overflow-x-auto overflow-y-hidden">
+    <footer className="overflow-x-auto overflow-y-hidden">
       {/* ==================  top footer section ================== */}
-      <div className="bg-base-70 drop-shadow-md">
+      <div className="bg-base-70 drop-shadow-md pt-2 pb-3 md:py-0 flex justify-center items-center">
         <div className="container bg-base-70 px-4">
           <div className="py-2 md:py-0 flex flex-col md:grid md:grid-cols-12 h-[100px] md:h-[141px] gap-2 items-center justify-between w-full">
-            <div className="flex flex-col md:flex-row md:col-span-5 lg:col-span-4 pr-2.5 md:pr-0 h-full items-center md:-mt-8">
+            <div className="flex flex-col md:flex-row md:col-span-5 lg:col-span-4 pr-2.5 md:pr-0 h-full items-center md:-mt-4">
               <Image
                 alt="newspaper"
                 className="bg-primary px-3 hidden md:block py-2 md:w-10 md:h-10 rounded-[10%] ml-2"
@@ -27,13 +27,13 @@ export const Footer: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="flex md:flex-row w-full md:col-span-7 lg:col-span-8 mr-auto md:-mt-8 ">
+            <div className="flex md:flex-row w-full md:col-span-7 lg:col-span-8 mr-auto">
               <input
                 className=" text-[10px] w-full ml-2 peer transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200  border focus:border-2 border-t-transparent md:text-sm lg:text-md px-1 py-1 md:px-2.5 md:py-2.5 rounded-[7px]  "
                 placeholder="ﺟﻬﺖ ﻋﻀﻮﯾﺖ در ﺧﺒﺮﻧﺎﻣﻪ ﺷﻤﺎره ﻣﻮﺑﺎﯾﻞ ﺧﻮد ﺧﻮد را وارد کنید"
               />
               <Link
-                className="ml-0 w-20 md:w-auto text-sm md:text-sm p-0.5 md:p-2.5 bg-gradient-to-r from-gradient-second to-gradient-first text-white items-center text-center justify-between rounded-[7px] sm:w-auto"
+                className="ml-0 w-20 md:w-auto text-xs md:text-sm p-0.5 md:p-2.5 bg-gradient-to-r from-gradient-second to-gradient-first text-white items-center text-center justify-between rounded-[7px] sm:w-auto"
                 href={"/"}
               >
                 عضویت
@@ -49,7 +49,7 @@ export const Footer: React.FC = () => {
           <div className="flex justify-center md:grid md:grid-cols-4 gap-4 md:py-16">
             <div className="col-span-1 flex flex-col justify-center">
               <div className="flex flex-col md:flex-row">
-                <div className="ml-4 flex md:block justify-center">
+                <div className="ml-3 flex md:block justify-center">
                   <Image
                   className="w-10 h-10 md:w-20 md:h-20"
                     alt="OnTVLogo"
@@ -57,12 +57,12 @@ export const Footer: React.FC = () => {
                     height={80}
                     src={"/images/android-chrome-192x192.png"}
                   />
-                <p className="md:hidden mr-4 mt-2 md:text-2xl text-base-content-bg font-black mb-2">
+                <p className="md:hidden mr-2 mt-2 md:text-2xl text-base-content-bg font-black mb-2">
                     آن
                   </p>
                 </div>
-                <div>
-                  <p className="hidden md:block md:text-2xl text-base-content-bg font-black mb-2">
+                <div className="md:mt-3.5">
+                  <p className="hidden md:block md:text-2xl text-base-content-bg font-black mb-0">
                     آن
                   </p>
                   <p className="text-nowrap text-sm md:text-md font-bold">
@@ -70,10 +70,10 @@ export const Footer: React.FC = () => {
                   </p>
                 </div>
               </div>
-              <div className="-mr-1 md:-mr-5 flex gap-3 md:gap-5 pt-1">
+              <div className="-mr-1 md:-mr-3 flex gap-3 md:gap-5 pt-2 md:pt-0 [&>*]:cursor-pointer">
                 <span>
                   <svg
-                    className="w-4 h-4 md:w-9 md:h-9 dark:text-base-content"
+                    className="w-4 h-4 md:w-9 md:h-9 md:-ml-3 dark:text-base-content hover:dark:text-primary"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -90,7 +90,7 @@ export const Footer: React.FC = () => {
                 </span>
                 <span>
                   <svg
-                    className="w-4 h-4 md:w-9 md:h-9 dark:text-base-content"
+                    className="w-4 h-4 md:w-9 md:h-9 dark:text-base-content hover:dark:text-primary"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -107,7 +107,7 @@ export const Footer: React.FC = () => {
                 </span>
                 <span>
                   <svg
-                    className="w-4 h-4 md:w-9 md:h-9 dark:text-base-content"
+                    className="w-4 h-4 md:w-9 md:h-9 dark:text-base-content hover:dark:text-primary"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -125,7 +125,7 @@ export const Footer: React.FC = () => {
                 </span>
                 <span>
                   <svg
-                    className="w-4 h-4 md:w-9 md:h-9 dark:text-base-content"
+                    className="w-4 h-4 md:w-9 md:h-9 dark:text-base-content hover:dark:text-primary"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -143,7 +143,7 @@ export const Footer: React.FC = () => {
                 </span>
                 <span>
                   <svg
-                    className="w-4 h-4 md:w-9 md:h-9 dark:text-base-content"
+                    className="w-4 h-4 md:w-9 md:h-9 dark:text-base-content hover:dark:text-primary"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -222,7 +222,7 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* ================== bottom footer section ==================  */}
-      <div className="h-[25px] dark:bg-base-75  md:h-[52px] flex justify-between items-center">
+      <div className="h-[25px] dark:bg-base-75 py-4 md:py-0 md:h-[52px] flex justify-between items-center">
         <div className="container flex justify-between p-4 sm:h-full ">
           <div className=" flex md:block justify-center w-full items-center text-xs md:text-sm h-full md:justify-end md:items-center">
             © تمام حقوق برای آن محفوظ است.

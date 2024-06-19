@@ -67,7 +67,10 @@ export const Slider: React.FC<SliderProps> = ({
           setIsDisableNext(e.isEnd);
         }}
       >
-           <SwiperSlide>
+
+      {
+        data?.map(item=>(
+          <SwiperSlide>
           <div
             className={`${
               isDescription ? "swiper-item " : ""
@@ -78,90 +81,32 @@ export const Slider: React.FC<SliderProps> = ({
                 isDescription ? "h-[60%]" : "h-full"
               }`}
             >
-              <div className=" w-full h-full rounded-[2px]">
+              <div className=" w-full h-full relative inline-block overflow-hidden">
                 <Image
                   width={0}
                   height={0}
                   objectFit="cover"
-                  className="w-full h-full img-slide"
-                  src="images/Mask Group 29.png"
+                  className={`w-full h-full overflow-hidden img-slide ${isDescription ? "rounded-md" : "rounded-lg"} `}
+                  src={item?.path}
                   alt="dd"
                 />
-              </div>{" "}
-              <div
-                className={`absolute ${
-                  isDescription ? " bottom-[55%]" : "bottom-7"
-                } ${
-                  isDescription ? "right-[45%]" : "right-2"
-                } w-1 h-1 cursor-pointer`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  className={`${
-                    isDescription
-                      ? " hidden md:block player-icon invisible size-12 hover:scale-[0.7] active:scale-[1.4]"
-                      : "size-6 "
-                  }  transition-all text-base-content-bg`}
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z"
-                  />
-                </svg>
-              </div>
-            </div>
-            {isDescription ? (
-              <div className="flex justify-center items-center flex-col w-full h-[40%] md:h-[30%]">
-                <div className=" flex flex-col md:grid md:grid-cols-12 justify-start md:justify-between md:items-center gap-1 w-full mt-2 md:mt-0">
-                  <div className="col-span-3 mb-1 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-1 md:flex md:justify-center text-[10px] md:rounded-[4px]">
-                    خبر های روز
+
+                {!isDescription && (
+                  <>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Image
+                      src={item?.logo}
+                      alt="Logo"
+                      width={60}
+                      objectFit="cover"
+                      height={60}
+                      className=""
+                    />
                   </div>
-                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-1.5 flex justify-center md:px-2 text-[9px] md:mr-auto md:rounded-[4px]">
-                    <span>22 دقیقه پیش</span> <span> | </span>{" "}
-                    <span> 17,526 نمایش</span>
-                  </div>
-                </div>
-                <div className=" mt-1 md:mt-2 text-justify text-[13px] max-w-[100%]">
-                  <h3 className="text-ellipsis overflow-hidden whitespace-nowrap">
-                    مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم
-                  </h3>
-                </div>
+                  <div className="absolute inset-0 rounded-lg shadow-inner-bottom"></div>
+                  </>
+                )}
               </div>
-            ) : null}
-          </div>
-        </SwiperSlide>
-         
-        <SwiperSlide>
-          <div
-            className={`${
-              isDescription ? "swiper-item " : ""
-            } flex flex-col slide-content rounded-md justify-center items-center w-full h-full`}
-          >
-            <div
-              className={`relative w-full ${
-                isDescription ? "h-[60%]" : "h-full"
-              }`}
-            >
-              <div className=" w-full h-full rounded-[2px]">
-                <Image
-                  width={0}
-                  height={0}
-                  objectFit="cover"
-                  className="w-full h-full img-slide"
-                  src="images/Mask Group 30.png"
-                  alt="dd"
-                />
-              </div>{" "}
               <div
                 className={`absolute ${
                   isDescription ? " bottom-[55%]" : "bottom-7"
@@ -198,7 +143,7 @@ export const Slider: React.FC<SliderProps> = ({
               <div className="flex justify-center items-center flex-col w-full h-[40%] md:h-[30%]">
                 <div className=" flex flex-col md:grid md:grid-cols-12 justify-start md:justify-between md:items-center gap-1 w-full mt-2 md:mt-0">
                   <div className="col-span-3  mb-1 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-1 md:flex md:justify-center text-[10px] md:rounded-[4px]">
-                    خبر های روز
+                    {item?.descriptions?.title}
                   </div>
                   <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-2 md:px-2 text-[9px] md:mr-auto md:rounded-[4px]">
                     <span>22 دقیقه پیش</span> <span> | </span>{" "}
@@ -207,379 +152,17 @@ export const Slider: React.FC<SliderProps> = ({
                 </div>
                 <div className=" mt-1 md:mt-2  text-justify text-[13px] max-w-[100%]">
                   <h3 className="text-ellipsis overflow-hidden whitespace-nowrap">
-                    مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم
+                    {item?.descriptions?.dec}
                   </h3>
                 </div>
               </div>
             ) : null}
           </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <div
-            className={`${
-              isDescription ? "swiper-item " : ""
-            } flex flex-col slide-content rounded-md justify-center items-center w-full h-full`}
-          >
-            <div
-              className={`relative w-full ${
-                isDescription ? "h-[60%]" : "h-full"
-              }`}
-            >
-              <div className=" w-full h-full rounded-[2px]">
-                <Image
-                  width={0}
-                  height={0}
-                  objectFit="cover"
-                  className="w-full h-full img-slide"
-                  src="images/Mask Group 31.png"
-                  alt="dd"
-                />
-              </div>{" "}
-              <div
-                className={`absolute ${
-                  isDescription ? " bottom-[55%]" : "bottom-7"
-                } ${
-                  isDescription ? "right-[45%]" : "right-2"
-                } w-1 h-1 cursor-pointer`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  className={`${
-                    isDescription
-                      ? " hidden md:block player-icon invisible size-12 hover:scale-[0.7] active:scale-[1.4]"
-                      : "size-6 "
-                  }  transition-all text-base-content-bg`}
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z"
-                  />
-                </svg>
-              </div>
-            </div>
-            {isDescription ? (
-              <div className="flex justify-center items-center flex-col w-full h-[40%] md:h-[30%]">
-                <div className=" flex flex-col md:grid md:grid-cols-12 justify-start md:justify-between md:items-center gap-1 w-full mt-2 md:mt-0">
-                  <div className="col-span-3 mb-1 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-1 md:flex md:justify-center text-[10px] md:rounded-[4px]">
-                    خبر های روز
-                  </div>
-                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-2 md:px-2 text-[9px] md:mr-auto md:rounded-[4px]">
-                    <span>22 دقیقه پیش</span> <span> | </span>{" "}
-                    <span> 17,526 نمایش</span>
-                  </div>
-                </div>
-                <div className=" mt-1 md:mt-2  text-justify text-[13px] max-w-[100%]">
-                  <h3 className="text-ellipsis overflow-hidden whitespace-nowrap">
-                    مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم
-                  </h3>
-                </div>
-              </div>
-            ) : null}
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div
-            className={`${
-              isDescription ? "swiper-item " : ""
-            } flex flex-col slide-content rounded-md justify-center items-center w-full h-full`}
-          >
-            <div
-              className={`relative w-full ${
-                isDescription ? "h-[60%]" : "h-full"
-              }`}
-            >
-              <div className=" w-full h-full rounded-[2px]">
-                <Image
-                  width={0}
-                  height={0}
-                  objectFit="cover"
-                  className="w-full h-full img-slide"
-                  src="images/Mask Group 42.png"
-                  alt="dd"
-                />
-              </div>{" "}
-              <div
-                className={`absolute ${
-                  isDescription ? " bottom-[55%]" : "bottom-7"
-                } ${
-                  isDescription ? "right-[45%]" : "right-2"
-                } w-1 h-1 cursor-pointer`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  className={`${
-                    isDescription
-                      ? " hidden md:block player-icon invisible size-12 hover:scale-[0.7] active:scale-[1.4]"
-                      : "size-6 "
-                  }  transition-all text-base-content-bg`}
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z"
-                  />
-                </svg>
-              </div>
-            </div>
-            {isDescription ? (
-              <div className="flex justify-center items-center flex-col w-full h-[40%] md:h-[30%]">
-                <div className=" flex flex-col md:grid md:grid-cols-12 justify-start md:justify-between md:items-center gap-1 w-full mt-2 md:mt-0">
-                  <div className="col-span-3 mb-1 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-1 md:flex md:justify-center text-[10px] md:rounded-[4px]">
-                    خبر های روز
-                  </div>
-                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-2 md:px-2 text-[9px] md:mr-auto md:rounded-[4px]">
-                    <span>22 دقیقه پیش</span> <span> | </span>{" "}
-                    <span> 17,526 نمایش</span>
-                  </div>
-                </div>
-                <div className=" mt-1 md:mt-2  text-justify text-[13px] max-w-[100%]">
-                  <h3 className="text-ellipsis overflow-hidden whitespace-nowrap">
-                    مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم
-                  </h3>
-                </div>
-              </div>
-            ) : null}
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div
-            className={`${
-              isDescription ? "swiper-item " : ""
-            } flex flex-col slide-content rounded-md justify-center items-center w-full h-full`}
-          >
-            <div
-              className={`relative w-full ${
-                isDescription ? "h-[60%]" : "h-full"
-              }`}
-            >
-              <div className=" w-full h-full rounded-[2px]">
-                <Image
-                  width={0}
-                  height={0}
-                  objectFit="cover"
-                  className="w-full h-full img-slide"
-                  src="images/Mask Group 33.png"
-                  alt="dd"
-                />
-              </div>{" "}
-              <div
-                className={`absolute ${
-                  isDescription ? " bottom-[55%]" : "bottom-7"
-                } ${
-                  isDescription ? "right-[45%]" : "right-2"
-                } w-1 h-1 cursor-pointer`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  className={`${
-                    isDescription
-                      ? " hidden md:block player-icon invisible size-12 hover:scale-[0.7] active:scale-[1.4]"
-                      : "size-6 "
-                  }  transition-all text-base-content-bg`}
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z"
-                  />
-                </svg>
-              </div>
-            </div>
-            {isDescription ? (
-              <div className="flex justify-center items-center flex-col w-full h-[40%] md:h-[30%]">
-                <div className=" flex flex-col md:grid md:grid-cols-12 justify-start md:justify-between md:items-center gap-1 w-full mt-2 md:mt-0">
-                  <div className="col-span-3 mb-1 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-1 md:flex md:justify-center text-[10px] md:rounded-[4px]">
-                    خبر های روز
-                  </div>
-                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-2 md:px-2 text-[9px] md:mr-auto md:rounded-[4px]">
-                    <span>22 دقیقه پیش</span> <span> | </span>{" "}
-                    <span> 17,526 نمایش</span>
-                  </div>
-                </div>
-                <div className=" mt-1 md:mt-2  text-justify text-[13px] max-w-[100%]">
-                  <h3 className="text-ellipsis overflow-hidden whitespace-nowrap">
-                    مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم
-                  </h3>
-                </div>
-              </div>
-            ) : null}
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div
-            className={`${
-              isDescription ? "swiper-item " : ""
-            } flex flex-col slide-content rounded-md justify-center items-center w-full h-full`}
-          >
-            <div
-              className={`relative w-full ${
-                isDescription ? "h-[60%]" : "h-full"
-              }`}
-            >
-              <div className=" w-full h-full rounded-[2px]">
-                <Image
-                  width={0}
-                  height={0}
-                  objectFit="cover"
-                  className="w-full h-full img-slide"
-                  src="images/Mask Group 41.png"
-                  alt="dd"
-                />
-              </div>{" "}
-              <div
-                className={`absolute ${
-                  isDescription ? " bottom-[55%]" : "bottom-7"
-                } ${
-                  isDescription ? "right-[45%]" : "right-2"
-                } w-1 h-1 cursor-pointer`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  className={`${
-                    isDescription
-                      ? " hidden md:block player-icon invisible size-12 hover:scale-[0.7] active:scale-[1.4]"
-                      : "size-6 "
-                  }  transition-all text-base-content-bg`}
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z"
-                  />
-                </svg>
-              </div>
-            </div>
-            {isDescription ? (
-              <div className="flex justify-center items-center flex-col w-full h-[40%] md:h-[30%]">
-                <div className=" flex flex-col md:grid md:grid-cols-12 justify-start md:justify-between md:items-center gap-1 w-full mt-2 md:mt-0">
-                  <div className="col-span-3 mb-1 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-1 md:flex md:justify-center text-[10px] md:rounded-[4px]">
-                    خبر های روز
-                  </div>
-                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-2 md:px-2 text-[9px] md:mr-auto md:rounded-[4px]">
-                    <span>22 دقیقه پیش</span> <span> | </span>{" "}
-                    <span> 17,526 نمایش</span>
-                  </div>
-                </div>
-                <div className=" mt-1 md:mt-2  text-justify text-[13px] max-w-[100%]">
-                  <h3 className="text-ellipsis overflow-hidden whitespace-nowrap">
-                    مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم
-                  </h3>
-                </div>
-              </div>
-            ) : null}
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div
-            className={`${
-              isDescription ? "swiper-item " : ""
-            } flex flex-col slide-content rounded-md justify-center items-center w-full h-full`}
-          >
-            <div
-              className={`relative w-full ${
-                isDescription ? "h-[60%]" : "h-full"
-              }`}
-            >
-              <div className=" w-full h-full rounded-[2px]">
-                <Image
-                  width={0}
-                  height={0}
-                  objectFit="cover"
-                  className="w-full h-full img-slide"
-                  src="images/Mask Group 42.png"
-                  alt="dd"
-                />
-              </div>{" "}
-              <div
-                className={`absolute ${
-                  isDescription ? " bottom-[55%]" : "bottom-7"
-                } ${
-                  isDescription ? "right-[45%]" : "right-2"
-                } w-1 h-1 cursor-pointer`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  className={`${
-                    isDescription
-                      ? " hidden md:block player-icon invisible size-12 hover:scale-[0.7] active:scale-[1.4]"
-                      : "size-6 "
-                  }  transition-all text-base-content-bg`}
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z"
-                  />
-                </svg>
-              </div>
-            </div>
-            {isDescription ? (
-              <div className="flex justify-center items-center flex-col w-full h-[40%] md:h-[30%]">
-                <div className=" flex flex-col md:grid md:grid-cols-12 justify-start md:justify-between md:items-center gap-1 w-full mt-2 md:mt-0">
-                  <div className="col-span-3 mb-1 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-1 md:flex md:justify-center text-[10px] md:rounded-[4px]">
-                    خبر های روز
-                  </div>
-                  <div className="col-span-9 md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-2 md:px-2 text-[9px] md:mr-auto md:rounded-[4px]">
-                    <span>22 دقیقه پیش</span> <span> | </span>{" "}
-                    <span> 17,526 نمایش</span>
-                  </div>
-                </div>
-                <div className=" mt-1 md:mt-2  text-justify text-[13px] max-w-[100%]">
-                  <h3 className="text-ellipsis overflow-hidden whitespace-nowrap">
-                    مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم
-                  </h3>
-                </div>
-              </div>
-            ) : null}
-          </div>
-        </SwiperSlide>
- 
+        ))
+      }
+      
+
         <div className="hidden md:block">
           {!isDisablePrev && (
             <div
