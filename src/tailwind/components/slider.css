@@ -5,14 +5,14 @@
 .swiper-pagination {
   display: none !important;
 }
- 
+
 .swiper-button-next:hover {
   background-color: #ffffff;
 }
 .swiper-button-next::after {
   content: "" !important;
 }
- 
+
 .swiper-button-prev:hover {
   background-color: #ffffff;
 }
@@ -20,18 +20,27 @@
 .swiper-button-prev::after {
   content: "" !important;
 }
- 
-.swiper-item:hover .player-icon{
+
+.swiper-item:hover .player-icon {
   visibility: visible;
   transition: all 0.2s ease-in;
 }
 
-.swiper-item:hover .img-slide{
+.swiper-item:hover .img-slide {
   filter: hue-rotate(35deg);
- 
+}
+
+.bg-dark::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0);
+  opacity: 0.2;
 }
 
 .shadow-inner-bottom {
-     box-shadow: inset 0px -60px 15px -10px rgba(0, 0, 0, 0.7);
+  box-shadow: inset 0px -45px 15px -10px rgba(0, 0, 0, 0.7);
 }
- 

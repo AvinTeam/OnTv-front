@@ -82,11 +82,10 @@ export const Slider: React.FC<SliderProps> = ({
                 isDescription ? "h-[60%]" : "h-full"
               }`}
             >
-              <div className="w-full h-full relative overflow-hidden">
+              <div className={`w-full ${isDescription ? "" : "bg-dark"} h-full relative overflow-hidden`}>
                 <Image
                   width={0}
                   height={0}
-                  style={{objectFit: "cover"}}
                   className={`w-full h-full overflow-hidden img-slide ${isDescription ? "rounded-md " : "rounded-lg blur-[0.3px] "} `}
                   src={item?.path}
                   alt="dd"
@@ -98,10 +97,10 @@ export const Slider: React.FC<SliderProps> = ({
                     <Image
                       src={item?.logo}
                       alt="Logo"
-                      width={60}
-                      className="w-[30px] h-[40px] md:w-[60px] md:h-[70px] min-w-[max-content]"
+                      width={0}
+                      className="w-5 h-5 md:w-16 md:h-10 z-30 overflow-visible"
                       style={{objectFit: "cover"}}
-                      height={60}
+                      height={0}
                     />
                   </div>
                   <div className="absolute inset-0 rounded-lg shadow-inner-bottom"></div>

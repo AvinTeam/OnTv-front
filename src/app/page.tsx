@@ -5,8 +5,13 @@ import Image from "next/image";
 
 const data: any= [
   {
-    path: "/images/Image 69.png",
+    path: "/images/Mask Group 38.png",
     logo: "/images/logo/Group 953.png",
+    alt: "test",
+  },
+  {
+    path: "/images/Mask Group 39.png",
+    logo: "/images/logo/Group 988.png",
     alt: "test",
   },
   {
@@ -14,31 +19,28 @@ const data: any= [
     logo: "/images/logo/Group 1011.png",
     alt: "test",
   },
-  {
-    path: "/images/Mask Group 42.png",
-    logo: "/images/logo/Group 1013.png",
-    alt: "test",
-  }, 
    {
     path: "/images/Image 72.png",
     logo: "/images/logo/Group 9003.png",
     alt: "test",
   },
+  
   {
-    path: "/images/Image 69.png",
-    logo: "/images/logo/Group 953.png",
+    path: "/images/Mask Group 42.png",
+    logo: "/images/logo/Group 1013.png",
+    alt: "test",
+  }, 
+  {
+    path: "/images/Mask Group 43.png",
+    logo: "/images/logo/Group 1014.png",
     alt: "test",
   },
   {
-    path: "/images/Image 69.png",
-    logo: "/images/logo/Group 953.png",
+    path: "/images/Mask Group 43.png",
+    logo: "/images/logo/Group 1014.png",
     alt: "test",
   },
-  {
-    path: "/images/Mask Group 41.png",
-    logo: "/images/logo/Group 1011.png",
-    alt: "test",
-  },
+
   
 ]
 const dataDec: any= [
