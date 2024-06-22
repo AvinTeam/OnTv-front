@@ -100,7 +100,7 @@ const Live = () => {
     });
   };
   return (
-    <div className="grid grid-cols-4 md:grid-cols-3 gap-2 md:gap-4n items-center select-none overflow-hidden">
+    <div className="grid grid-cols-4 md:grid-cols-3 gap-2 md:gap-4n items-center overflow-hidden">
       <div className="relative col-span-4 md:col-span-2 row-span-2">
         <VideoJS
           options={videoJsOptions1}
@@ -138,7 +138,7 @@ const Live = () => {
           fallbackOptions={fallbackOptions2}
           onReady={handlePlayerReady}
         />
-        <div className="absolute row-auto left-auto rounded-b-xl mr-2 -bottom-4 md:bottom-0 w-full h-20 bg-transparent">
+        <div className="absolute row-auto left-auto rounded-b-xl mr-1 md:mr-2 -bottom-8 md:bottom-0 w-full h-20 bg-transparent">
           <div className="flex flex-col justify-start items-start">
             <div className="flex justify-start items-center gap-1 md:gap-2">
               <Image
@@ -165,7 +165,7 @@ const Live = () => {
           fallbackOptions={fallbackOptions3}
           onReady={handlePlayerReady}
         />
-        <div className="absolute row-auto left-auto rounded-b-xl -bottom-4 md:bottom-0 w-full h-20 bg-transparent mr-2">
+        <div className="absolute row-auto left-auto rounded-b-xl -bottom-8 mr-1 md:mr-2 md:bottom-0 w-full h-20 bg-transparent">
           <div className="flex flex-col justify-start items-start">
             <div className="flex justify-start items-center gap-1 md:gap-2">
               <Image
