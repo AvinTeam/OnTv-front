@@ -107,7 +107,7 @@ const Live = () => {
           fallbackOptions={fallbackOptions1}
           onReady={handlePlayerReady}
         />
-        <div className="absolute row-auto left-auto rounded-b-xl -bottom-4  md:bottom-6 w-full h-20 bg-transparent">
+        <div className="absolute pointer-events-none row-auto left-auto rounded-b-xl -bottom-4  md:bottom-6 w-full h-20 bg-transparent">
           <div className="flex justify-between items-center">
             <div className="flex flex-col mr-4">
               <div className="flex justify-start items-center gap-2">
@@ -138,7 +138,7 @@ const Live = () => {
           fallbackOptions={fallbackOptions2}
           onReady={handlePlayerReady}
         />
-        <div className="absolute row-auto left-auto rounded-b-xl mr-1 md:mr-2 -bottom-8 md:bottom-0 w-full h-20 bg-transparent">
+        <div className="absolute pointer-events-none row-auto left-auto rounded-b-xl mr-1 md:mr-2 -bottom-8 md:bottom-4 w-full h-20 bg-transparent">
           <div className="flex flex-col justify-start items-start">
             <div className="flex justify-start items-center gap-1 md:gap-2">
               <Image
@@ -165,7 +165,7 @@ const Live = () => {
           fallbackOptions={fallbackOptions3}
           onReady={handlePlayerReady}
         />
-        <div className="absolute row-auto left-auto rounded-b-xl -bottom-8 mr-1 md:mr-2 md:bottom-0 w-full h-20 bg-transparent">
+        <div className="absolute pointer-events-none row-auto left-auto rounded-b-xl -bottom-8 mr-1 md:mr-2 md:bottom-4 w-full h-20 bg-transparent">
           <div className="flex flex-col justify-start items-start">
             <div className="flex justify-start items-center gap-1 md:gap-2">
               <Image
