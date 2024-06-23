@@ -4,6 +4,7 @@ import videojs from "video.js";
 import "video.js/dist/video-js.css";
 import VideoJS from "@/app/_components/video";
 import Image from "next/image";
+import Link from "next/link";
 
 const Live = () => {
   const playerRef = React.useRef(null);
@@ -107,7 +108,7 @@ const Live = () => {
           fallbackOptions={fallbackOptions1}
           onReady={handlePlayerReady}
         />
-        <div className="absolute pointer-events-none row-auto left-auto rounded-b-xl -bottom-4  md:bottom-6 w-full h-20 bg-transparent">
+        <div className="absolute pointer-events-none row-auto left-auto rounded-b-xl -bottom-4  md:bottom-3 w-full h-20 bg-transparent">
           <div className="flex justify-between items-center">
             <div className="flex flex-col mr-4">
               <div className="flex justify-start items-center gap-2">
@@ -126,9 +127,9 @@ const Live = () => {
                 در حال پخش / به سمت خدا / مجری نجم الدین شریعتی / ساعت 22 تا 24
               </p>
             </div>
-            <div className="flex text-[7px] md:text-sm justify-center text-nowrap items-center text-primary-content hover:bg-box-slider-bg-text cursor-pointer ml-2 md:ml-4 border bottom-3 px-1 md:px-2 py-1 rounded-sm md:rounded-md ">
+            <Link href={"/verify"} className="flex text-[7px] md:text-sm pointer-events-auto justify-center text-nowrap items-center text-primary-content hover:bg-box-slider-bg-text cursor-pointer ml-2 md:ml-4 border bottom-3 px-1 md:px-4 py-1 md:py-2 rounded-sm md:rounded-md ">
               جدول پخش
-            </div>
+            </Link>
           </div>
         </div>
       </div>
@@ -138,7 +139,7 @@ const Live = () => {
           fallbackOptions={fallbackOptions2}
           onReady={handlePlayerReady}
         />
-        <div className="absolute pointer-events-none row-auto left-auto rounded-b-xl mr-1 md:mr-2 -bottom-8 md:bottom-4 w-full h-20 bg-transparent">
+        <div className="absolute pointer-events-none row-auto left-auto rounded-b-xl mr-1 md:mr-2 -bottom-8 md:bottom-0 w-full h-20 bg-transparent">
           <div className="flex flex-col justify-start items-start">
             <div className="flex justify-start items-center gap-1 md:gap-2">
               <Image
@@ -165,7 +166,7 @@ const Live = () => {
           fallbackOptions={fallbackOptions3}
           onReady={handlePlayerReady}
         />
-        <div className="absolute pointer-events-none row-auto left-auto rounded-b-xl -bottom-8 mr-1 md:mr-2 md:bottom-4 w-full h-20 bg-transparent">
+        <div className="absolute pointer-events-none row-auto left-auto rounded-b-xl -bottom-8 mr-1 md:mr-2 md:bottom-0 w-full h-20 bg-transparent">
           <div className="flex flex-col justify-start items-start">
             <div className="flex justify-start items-center gap-1 md:gap-2">
               <Image

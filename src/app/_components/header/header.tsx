@@ -104,13 +104,12 @@ export const Header: React.FC = () => {
           </ul>
         </nav>
         <div className="hidden md:flex text-primary-content justify-end ml-4">
-          پخش آزمایشی
-          {/* <Link
+           <Link
             href="/signin"
             className="px-4 py-2 bg-transparent text-secondary-content border border-text-secondary-content border-spacing-1 text-black rounded-md hover:bg-gray-100"
           >
             ورود/ثبت نام
-          </Link> */}
+          </Link>  
         </div>
       </div>
     </header>

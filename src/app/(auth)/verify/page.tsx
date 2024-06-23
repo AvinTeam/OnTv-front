@@ -3,18 +3,18 @@ import Link from "next/link";
 
 export default function Verify() {
   return (
-    <div className="px-10 py-4 md:w-[450px] md:h-[450px] bg-base-50 flex justify-around items-center flex-col rounded-sm">
+    <div className="px-10 py-4 w-[330px] h-[400px] md:w-[450px] md:h-[450px] bg-base-50 flex justify-around items-center flex-col rounded-sm">
       <div className="flex gap-3 mt-10">
         <Image
           src={"/images/android-chrome-192x192.png"}
           width={0}
           height={0}
-          className="w-20 h-20"
+          className="w-14 h-14 md:w-20 md:h-20 mt-3 md:mt-0"
           alt="logo"
         />
         <div className="flex mt-2 flex-col gap-2">
           <p className="text-base-content-slider font-bold">ورود به آن</p>
-          <p className="text-sm">
+          <p className="text-[10px] md:text-sm mb-6 md:mb-0">
             جهت ورود یا ثبت‌نام در آن، شماره موبایل خود را وارد کنید.
           </p>
         </div>
@@ -29,7 +29,7 @@ export default function Verify() {
         </div>
         <p className="text-center font-bold text-lg">22 : 01</p>
         <Link
-          className="ml-0 w-20 md:w-auto text-xs md:text-sm p-0.5 md:p-2.5 bg-gradient-to-r from-gradient-second to-gradient-first font-bold text-white items-center flex text-center justify-center rounded-[7px] sm:w-auto"
+          className="w-auto text-xs md:text-sm p-2.5 bg-gradient-to-r from-gradient-second to-gradient-first font-bold text-white items-center flex text-center justify-center rounded-[7px] sm:w-auto"
           href={"/"}
         >
           تایید کد
@@ -37,7 +37,7 @@ export default function Verify() {
         <p className="text-center cursor-pointer"> ارسال دوباره کد</p>
       </div>
       <div className="mr-auto flex justify-center items-center gap-1 cursor-pointer">
-        <span>بازگشت</span>
+        <Link href={"/signin"}>بازگشت</Link>
         <span>
           <Image src={"images/icon.webp"} alt="arrow" width={6} height={6} />
         </span>
