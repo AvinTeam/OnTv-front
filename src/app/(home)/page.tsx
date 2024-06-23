@@ -1,6 +1,6 @@
-import "./globals.css";
-import Live from "./_components/live/live";
-import { Slider } from "./_components/slider/slider";
+import "../globals.css";
+import Live from "../_components/live/live";
+import { Slider } from "../_components/slider/slider";
 import Image from "next/image";
 
 const data: any= [
@@ -103,10 +103,7 @@ const dataDec: any= [
   
 ]
 
-
-
-
-export default function Home() {
+export default function HomePage() {
   return (
     <main className="flex flex-col w-full overflow-x-auto overflow-y-hidden">
       <div className="container mt-4 mb-4 px-2 md:px-0 overflow-x-auto">

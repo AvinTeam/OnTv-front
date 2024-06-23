@@ -126,7 +126,7 @@ const Live = () => {
                 در حال پخش / به سمت خدا / مجری نجم الدین شریعتی / ساعت 22 تا 24
               </p>
             </div>
-            <div className="flex text-[7px] md:text-sm justify-center items-center text-primary-content hover:bg-box-slider-bg-text cursor-pointer ml-2 md:ml-4 border bottom-3 px-1 md:px-2 py-1 rounded-sm md:rounded-md ">
+            <div className="flex text-[7px] md:text-sm justify-center text-nowrap items-center text-primary-content hover:bg-box-slider-bg-text cursor-pointer ml-2 md:ml-4 border bottom-3 px-1 md:px-2 py-1 rounded-sm md:rounded-md ">
               جدول پخش
             </div>
           </div>

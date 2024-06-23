@@ -2,9 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import localFont from "next/font/local";
-
-import { Footer } from "./_components/footer/footer";
-import { Header } from "./_components/header/header";
+ 
 
 const roboto = Roboto({
   display: "swap",
@@ -66,10 +64,8 @@ export default function RootLayout({
       className={`${roboto.variable} ${iransans.variable} dark`}
     >
       <body className="min-h-screen grid grid-rows-[78px_1fr_auto] bg-white dark:bg-base-75 dark:text-base-content">
-        <Header />
-        {children}
-        <Footer />
-      </body>
+         {children}
+       </body>
     </html>
   );
 }
