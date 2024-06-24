@@ -287,7 +287,7 @@ export default function HomePage() {
             <p className="text-primary text-sm md:text-xl"> برترین های ماه</p>
             <p className="text-base-content text-xs md:text-md">نمایش همه</p>
           </div>
-          <hr className="w-full pb-4 border-t-[#A0ADB8]" />
+          <hr className="w-full pb-4 border-t-base-70" />
           <Slider data={finalyData} isDescription />
         </div>
         {/* ======================== THE END OF top of month section ============================== */}
