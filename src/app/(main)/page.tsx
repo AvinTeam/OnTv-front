@@ -97,6 +97,58 @@ const dataDec: any = [
     },
   },
 ];
+const finalyData: any = [
+  {
+    path: "/images/Image 52.png",
+    alt: "test",
+    descriptions: {
+      title: "خبر های روز",
+      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
+    },
+  },
+  {
+    path: "/images/Image 53.png",
+    alt: "test",
+    descriptions: {
+      title: "خبر های روز",
+      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
+    },
+  },
+  {
+    path: "/images/Image 54.png",
+    alt: "test",
+    descriptions: {
+      title: "خبر های روز",
+      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
+    },
+  },
+  {
+    path: "/images/Image 55.png",
+    alt: "test",
+    descriptions: {
+      title: "خبر های روز",
+      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
+    },
+  },
+  {
+    path: "/images/Mask Group 33.png",
+    logo: "/images/logo/Group 9003.png",
+    alt: "test",
+    descriptions: {
+      title: "خبر های روز",
+      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
+    },
+  },
+  {
+    path: "/images/Mask Group 33.png",
+    logo: "/images/logo/Group 9003.png",
+    alt: "test",
+    descriptions: {
+      title: "خبر های روز",
+      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
+    },
+  },
+];
 
 export default function HomePage() {
   return (
@@ -236,7 +288,7 @@ export default function HomePage() {
             <p className="text-base-content text-xs md:text-md">نمایش همه</p>
           </div>
           <hr className="w-full pb-4 border-t-[#A0ADB8]" />
-          <Slider data={dataDec} isDescription />
+          <Slider data={finalyData} isDescription />
         </div>
         {/* ======================== THE END OF top of month section ============================== */}
       </div>
