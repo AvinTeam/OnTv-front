@@ -153,75 +153,92 @@ export default function HomePage() {
           <Slider data={dataDec} isDescription />
         </div>
       </div>
-      <div className="mb-8 py-6 md:py-10 bg-[#4A4A4A] px-2 md:px-6 h-[600px] md:h-[830px] xl:h-[540px] overflow-x-auto overflow-y-hidden ">
+      {/* ========================documentry section ============================== */}
+      <div className="py-6 md:py-10 bg-[#4A4A4A] px-2 md:px-6 h-[600px] md:h-[830px] xl:h-[540px] overflow-x-auto overflow-y-hidden ">
         <div className="container">
-        <div className="flex justify-between px-4 mb-4 items-center">
-          <p className="text-primary text-sm md:text-xl"> جدیدترین مستند ها </p>
-          <p className="text-base-content text-xs md:text-md">نمایش همه</p>
-        </div>
-        <hr className="w-full pb-4 border-t-[#A0ADB8]" />
-        <div className="mt-5 flex flex-col xl:flex-row justify-between gap-10">
-          <Image
-            alt="poster"
-            src={"images/Image 83.png"}
-            width={0}
-            height={0}
-            className="h-[170px] md:h-[250px] xl:h-[350px] w-auto rounded-sm"
-          />
-          <div className="ml-auto flex flex-col justify-between items-center gap-4">
-            <div className="flex gap-4">
-              <Image
-                alt="poster"
-                src={"images/Image 90.png"}
-                width={0}
-                height={0}
-                className="h-[70px] md:h-[108px] w-auto rounded-sm"
-              />
-              <div className="text-link-footer-title">
-                <p className="text-sm md:text-xl">مستند نردبان</p>
-                <p className="text-xs md:text-md">
-                  صحبت های شهید حسین امیرعبداللهیان در مورد شهید خصیت عظیم سردار
-                  دلها حاج قاسم سلیمانی
-                </p>
+          <div className="flex justify-between px-4 mb-4 items-center">
+            <p className="text-primary text-sm md:text-xl">
+              {" "}
+              جدیدترین مستند ها{" "}
+            </p>
+            <p className="text-base-content text-xs md:text-md">نمایش همه</p>
+          </div>
+          <hr className="w-full pb-4 border-t-[#A0ADB8]" />
+          <div className="mt-5 flex flex-col xl:flex-row justify-between gap-10">
+            <Image
+              alt="poster"
+              src={"images/Image 83.png"}
+              width={0}
+              height={0}
+              className="h-[170px] md:h-[250px] xl:h-[350px] w-auto rounded-sm"
+            />
+            <div className="ml-auto flex flex-col justify-between items-center gap-4">
+              <div className="flex gap-4">
+                <Image
+                  alt="poster"
+                  src={"images/Image 90.png"}
+                  width={0}
+                  height={0}
+                  className="h-[70px] md:h-[108px] w-auto rounded-sm"
+                />
+                <div className="text-link-footer-title">
+                  <p className="text-sm md:text-xl">مستند نردبان</p>
+                  <p className="text-xs md:text-md">
+                    صحبت های شهید حسین امیرعبداللهیان در مورد شهید خصیت عظیم
+                    سردار دلها حاج قاسم سلیمانی
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div className="flex gap-4">
-              <Image
-                alt="poster"
-                src={"images/Image 91.png"}
-                width={0}
-                height={0}
-                className="h-[70px] md:h-[108px] w-auto rounded-sm"
-              />
-              <div className="text-link-footer-title">
-                <p className="text-sm md:text-xl">سلاح ایرانی</p>
-                <p className="text-xs md:text-md">
-                  صحبت های شهید حسین امیرعبداللهیان در مورد شهید خصیت عظیم سردار
-                  دلها حاج قاسم سلیمانی
-                </p>
+              <div className="flex gap-4">
+                <Image
+                  alt="poster"
+                  src={"images/Image 91.png"}
+                  width={0}
+                  height={0}
+                  className="h-[70px] md:h-[108px] w-auto rounded-sm"
+                />
+                <div className="text-link-footer-title">
+                  <p className="text-sm md:text-xl">سلاح ایرانی</p>
+                  <p className="text-xs md:text-md">
+                    صحبت های شهید حسین امیرعبداللهیان در مورد شهید خصیت عظیم
+                    سردار دلها حاج قاسم سلیمانی
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div className="flex gap-4">
-              <Image
-                alt="poster"
-                src={"images/Image 92.png"}
-                width={0}
-                height={0}
-                className="h-[70px] md:h-[108px] w-auto rounded-sm"
-              />
-              <div className="text-link-footer-title">
-                <p className="text-sm md:text-xl">عشق شمعدانی ها</p>
-                <p className="text-xs md:text-md">
-                  صحبت های شهید حسین امیرعبداللهیان در مورد شهید خصیت عظیم سردار
-                  دلها حاج قاسم سلیمانی
-                </p>
+              <div className="flex gap-4">
+                <Image
+                  alt="poster"
+                  src={"images/Image 92.png"}
+                  width={0}
+                  height={0}
+                  className="h-[70px] md:h-[108px] w-auto rounded-sm"
+                />
+                <div className="text-link-footer-title">
+                  <p className="text-sm md:text-xl">عشق شمعدانی ها</p>
+                  <p className="text-xs md:text-md">
+                    صحبت های شهید حسین امیرعبداللهیان در مورد شهید خصیت عظیم
+                    سردار دلها حاج قاسم سلیمانی
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      {/* ======================== THE END OF documentry section ============================== */}
+      {/* ========================  top of month section ============================== */}
+      <div className="py-6 md:py-10 px-2 md:px-6 h-[250px] md:h-[440px] overflow-x-auto overflow-y-hidden ">
+        <div className="container mx-auto h-36 md:h-80 flex flex-col justify-center items-center">
+          <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
+            <p className="text-primary text-sm md:text-xl"> برترین های ماه</p>
+            <p className="text-base-content text-xs md:text-md">نمایش همه</p>
+          </div>
+          <hr className="w-full pb-4 border-t-[#A0ADB8]" />
+          <Slider data={dataDec} isDescription />
         </div>
+        {/* ======================== THE END OF top of month section ============================== */}
       </div>
     </main>
   );
