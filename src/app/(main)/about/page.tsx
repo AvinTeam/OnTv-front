@@ -3,9 +3,9 @@ import Link from "next/link";
 export default function About() {
   return (
     <>
-      <div className="bg-[#FFFFFF] ">
+      <div className="bg-white">
         <div className="dark:bg-base-70 ">
-          <div className="container h-[180px] flex justify-center items-center py-4">
+          <div className="container h-[150px] flex justify-center items-center py-4">
             <div className="flex justify-center items-center flex-col">
               <h1 className="mb-3 text-primary text-2xl">درباره آن</h1>
               <p>صفحه اصلی / درباره ما</p>
