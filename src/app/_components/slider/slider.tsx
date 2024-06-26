@@ -42,11 +42,11 @@ export const Slider: React.FC<SliderProps> = ({
         pagination={{ clickable: true }}
         breakpoints={{
           0: {
-            slidesPerView: isDescription ? 2.5 : 3.5,
+            slidesPerView: isDescription ? 2.5 : 2.5,
             spaceBetween: 8,
           },
           320: {
-            slidesPerView: isDescription ? 2.5 : 3.5,
+            slidesPerView: isDescription ? 2.5 : 2.5,
             spaceBetween: 8,
           },
           640: {
@@ -58,7 +58,7 @@ export const Slider: React.FC<SliderProps> = ({
             spaceBetween: 8,
           },
           1024: {
-            slidesPerView: isDescription ? 4 : 6,
+            slidesPerView: isDescription ? 4 : 5,
             spaceBetween: 8,
           },
         }}
@@ -88,6 +88,7 @@ export const Slider: React.FC<SliderProps> = ({
                   height={0}
                   className={`w-full h-full overflow-hidden img-slide ${isDescription ? "rounded-md " : "rounded-lg blur-[0.3px] "} `}
                   src={item?.path}
+                  style={{objectFit: "cover"}}
                   alt="dd"
                 />
 
@@ -98,8 +99,8 @@ export const Slider: React.FC<SliderProps> = ({
                       src={item?.logo}
                       alt="Logo"
                       width={0}
-                      className="w-5 h-5 md:w-16 md:h-10 z-30 overflow-visible"
-                      style={{objectFit: "cover"}}
+                      className="w-40 h-5 md:w-48 md:h-10 z-30 overflow-visible"
+                      style={{objectFit: "contain"}}
                       height={0}
                     />
                   </div>

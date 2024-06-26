@@ -81,32 +81,34 @@ export const SliderPodcast: React.FC<SliderProps> = ({ data }: SliderProps) => {
                     className={`w-full h-full flex flex-col relative overflow-hidden rounded-lg`}
                   >
                     <div
-                      className={`h-[40%] overflow-hidden flex gap-[3px] md:gap-[7px] items-end`}
+                      className={`w-[100%] h-[75px] md:h-[98px] relative overflow-hidden flex flex-col justify-center items-center`}
                       style={{ background: item?.bgColor }}
                     >
-                      {lines.map((line, index) => (
-                        <div
-                          key={index}
-                          className="bg-white w-[1px] mt-32 md:mt-[50px] opacity-[0.5]"
-                          style={{ height: `${line.height}px`}}
-                        ></div>
-                      ))}
+                      <Image
+                        src={"/images/voice_rader.svg"}
+                        alt="voice-rader"
+                        width={0}
+                        height={0}
+                        className="w-[90%] h-[100px] absolute top-[15px] md:top-[26px] lg:top-[22px] xl:top-[24px]"
+                      />
                     </div>
-                    <div className="bg-[#6E7174] h-[60%] flex flex-col">
+                    <div className="bg-[#6E7174] h-[110px] md:h-[140px] flex flex-col justify-between">
                       <p className="text-[#B3BAC4] mr-auto text-[8px] md:text-xs mt-1 md:mt-2 ml-2 md:ml-4">
                         {item?.time}
                       </p>
-                      <p className="text-[#D9D9D9] text-[9px] md:text-sm mr-1 md:mr-3 mt-2">
+                      <p className="text-[#D9D9D9] text-[11px] md:text-sm mr-1 -mt-3 leading-4 mb-auto w-[100%] h-3 md:mt-5 ">
                         {item?.description}
                       </p>
                       <div
-                        className={`p-2 mr-auto ml-2 md:ml-0 md:p-3 text-[9px] md:text-xs flex w-8 md:w-16 h-1 md:h-8 mt-auto mb-2 md:mb-3 justify-center items-center md:mr-3 cursor-pointer text-base-50 rounded-[10px] md:rounded-[20px]`}
+                        className={`mr-auto ml-2 md:ml-2 md:p-3 text-[10px] md:text-xs flex w-10 md:w-16 h-4 md:h-8 mt-3 md:mt-2 mb-3 md:mb-3 justify-center items-center lg:md:mr-3 cursor-pointer text-base-50 rounded-[10px] md:rounded-[20px]`}
                         style={{ background: item?.bgColor }}
                       >
                         سرود
                       </div>
                     </div>
-                    <div className={`cursor-pointer absolute bottom-0 top-[48px] md:top-[65px] right-[20px] left-0 size-6 md:size-12 rounded-[50%] transition-all bg-[#6E7174]`}>
+                    <div
+                      className={`cursor-pointer absolute bottom-0 top-[58px] md:top-[80px] right-[20px] left-0 size-8 md:size-12 rounded-[50%] transition-all bg-[#6E7174]`}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"

@@ -3,6 +3,7 @@ import Live from "../_components/live/live";
 import { Slider } from "../_components/slider/slider";
 import { SliderPodcast } from "../_components/slider-podcast/slider-podcast";
 import Image from "next/image";
+import { Tabs } from "../_components/tabs";
 
 const data: any = [
   {
@@ -349,19 +350,48 @@ export default function HomePage() {
       </div>
       {/* ======================== THE END OF top of month section ============================== */}
 
-      <div className="mt-2 md:mt-6 py-6 md:py-10 bg-base-50 px-2 md:px-6 h-[250px] md:h-[440px] overflow-x-auto overflow-y-hidden ">
-        <div className="container mx-auto h-36 md:h-80 flex flex-col justify-center items-center">
-          <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
-            <p className="text-primary text-sm md:text-xl"> پادکست </p>
-            <p className="text-base-content text-xs md:text-md">نمایش همه</p>
+      <div className="mt-2 md:mt-6 py-6 md:py-10 bg-base-50 px-2 md:px-6 h-[300px] md:h-[400px] overflow-x-auto overflow-y-hidden ">
+        <div className="container w-[100%]">
+          <p className="text-nowrap flex justify-end -mb-6 mr-auto w-[100%]">نمایش همه</p>
+          <div className="container mx-auto h-44 md:h-[500px] flex flex-row-reverse">
+             <Tabs
+              tabs={[
+                {
+                  label: " پادکست",
+                  content: <> <SliderPodcast data={podCast} /> </>,
+                },
+                {
+                  label: "تحلیل روز",
+                  content: (
+                    <>
+                      <div>منتن تست تحلیل</div>
+                    </>
+                  ),
+                },
+                {
+                  label: " خبر دست اول",
+                  content: (
+                    <>
+                      <div>متن تست خبر</div>
+                    </>
+                  ),
+                },
+                {
+                  label: "انتخاب سر دبیر",
+                  content: (
+                    <>
+                      <div>متن تست سر دبیر</div>
+                    </>
+                  ),
+                },
+              ]}
+            />
           </div>
-          <hr className="w-full pb-4 border-t-[#A0ADB8]" />
-          <SliderPodcast data={podCast} />
         </div>
       </div>
       {/* ============== START mobile section ============ */}
-      <div className="py-6 md:py-10 px-2 md:px-6 h-[250px] md:h-[440px] overflow-x-auto overflow-y-hidden ">
-        <div className="container mx-auto h-36 md:h-80 flex flex-col justify-center items-center">
+      <div className="py-6 md:py-10 px-2 md:px-6 h-[350px] md:h-[440px] overflow-x-auto overflow-y-hidden ">
+        <div className="container mx-auto h-60 md:h-80 flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">
               {" "}
