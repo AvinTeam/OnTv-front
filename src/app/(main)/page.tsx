@@ -1,6 +1,7 @@
 import "../globals.css";
 import Live from "../_components/live/live";
 import { Slider } from "../_components/slider/slider";
+import { SliderPodcast } from "../_components/slider-podcast/slider-podcast";
 import Image from "next/image";
 
 const data: any = [
@@ -149,6 +150,61 @@ const finalyData: any = [
     },
   },
 ];
+const mobile: any = [
+  {
+    path: "/images/Mask Group 10.png",
+    alt: "test",
+  },
+  {
+    path: "/images/Image 27.png",
+    alt: "test",
+  },
+  {
+    path: "/images/Image 28.png",
+    alt: "test",
+  },
+  {
+    path: "/images/Mask Group 13 (2).png",
+    alt: "test",
+  },
+
+  {
+    path: "/images/Image 27.png",
+    alt: "test",
+  },
+
+  {
+    path: "/images/Mask Group 10.png",
+    alt: "test",
+  },
+];
+const podCast: any = [
+  {
+    time: "22:25:43",
+    description: "نماهنگ من یک بسیجی ام - گروه سرود با ما نورالمهدی همدان",
+    bgColor: "#8C96D9",
+  },
+  {
+    time: "22:25:43",
+    description: "نماهنگ من یک بسیجی ام - گروه سرود با ما نورالمهدی همدان",
+    bgColor: "#6ADEA0",
+  },
+  {
+    time: "22:25:43",
+    description: "نماهنگ من یک بسیجی ام - گروه سرود با ما نورالمهدی همدان",
+    bgColor: "#8C96D9",
+  },
+  {
+    time: "22:25:43",
+    description: "نماهنگ من یک بسیجی ام - گروه سرود با ما نورالمهدی همدان",
+    bgColor: "#C1C557",
+  },
+  {
+    time: "22:25:43",
+    description: "نماهنگ من یک بسیجی ام - گروه سرود با ما نورالمهدی همدان",
+    bgColor: "#C1C557",
+  },
+];
 
 export default function HomePage() {
   return (
@@ -290,8 +346,34 @@ export default function HomePage() {
           <hr className="w-full pb-4 border-t-base-70" />
           <Slider data={finalyData} isDescription />
         </div>
-        {/* ======================== THE END OF top of month section ============================== */}
       </div>
+      {/* ======================== THE END OF top of month section ============================== */}
+
+      <div className="mt-2 md:mt-6 py-6 md:py-10 bg-base-50 px-2 md:px-6 h-[250px] md:h-[440px] overflow-x-auto overflow-y-hidden ">
+        <div className="container mx-auto h-36 md:h-80 flex flex-col justify-center items-center">
+          <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
+            <p className="text-primary text-sm md:text-xl"> پادکست </p>
+            <p className="text-base-content text-xs md:text-md">نمایش همه</p>
+          </div>
+          <hr className="w-full pb-4 border-t-[#A0ADB8]" />
+          <SliderPodcast data={podCast} />
+        </div>
+      </div>
+      {/* ============== START mobile section ============ */}
+      <div className="py-6 md:py-10 px-2 md:px-6 h-[250px] md:h-[440px] overflow-x-auto overflow-y-hidden ">
+        <div className="container mx-auto h-36 md:h-80 flex flex-col justify-center items-center">
+          <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
+            <p className="text-primary text-sm md:text-xl">
+              {" "}
+              ویژه های موبایلی{" "}
+            </p>
+            <p className="text-base-content text-xs md:text-md">نمایش همه</p>
+          </div>
+          <hr className="w-full pb-4 border-t-base-70" />
+          <Slider data={mobile} />
+        </div>
+      </div>
+      {/* ============== THE END OF mobile section ============ */}
     </main>
   );
 }
