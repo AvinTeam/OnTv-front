@@ -257,7 +257,7 @@ export const Footer: React.FC = () => {
       <div className="h-[25px] dark:bg-base-75 container py-4 md:py-0 md:h-[52px] flex justify-between items-center">
        
         <div className="container mx-auto flex md:mr-0 justify-between p-4 sm:h-full ">
-          <div className="-mr-4 md:mr-20 lg:mr-20 xl:mr-2 flex md:block justify-center w-full items-center text-xs md:text-sm h-full md:justify-end md:items-center">
+          <div className="-mr-4 md:mr-20 lg:mr-20 xl:mr-10 flex md:block justify-center w-full items-center text-xs md:text-sm h-full md:justify-end md:items-center">
             © تمام حقوق برای آن محفوظ است.
           </div>
           <ul className="hidden text-xs text-nowrap md:flex justify-end items-center gap-4">
