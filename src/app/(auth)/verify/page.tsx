@@ -37,7 +37,7 @@ export default function Verify() {
         <p className="text-center cursor-pointer"> ارسال دوباره کد</p>
       </div>
       <div className="mr-auto flex justify-center items-center gap-1 cursor-pointer">
-        <Link href={"/signin"}>بازگشت</Link>
+        <Link href={"/signin?html"}>بازگشت</Link>
         <span>
           <Image src={"images/icon.webp"} alt="arrow" width={6} height={6} />
         </span>
