@@ -105,7 +105,7 @@ export const Header: React.FC = () => {
         </nav>
         <div className="hidden md:flex text-primary-content justify-end ml-4">
            <Link
-            href="/signin"
+            href="/signin?html"
             key={Math.random()}
             className="px-4 py-2 bg-transparent text-secondary-content hover:bg-base-content-slider border border-text-secondary-content border-spacing-1 text-black rounded-md hover:bg-gray-100"
           >
