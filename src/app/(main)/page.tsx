@@ -297,7 +297,7 @@ export default function HomePage() {
                 width={0}
                 height={0}
                 style={{ objectFit: "cover" }}
-                className="h-full w-auto rounded-sm"
+                className="h-full w-auto rounded-md"
               />
               <div className="absolute bottom-0 md:bottom-6 flex justify-between items-center">
                 <div>
@@ -321,7 +321,7 @@ export default function HomePage() {
                   src={poster2}
                   width={0}
                   height={0}
-                  className="h-[70px] md:h-[108px] w-auto rounded-sm"
+                  className="h-[70px] md:h-[108px] w-auto rounded-md"
                 />
                 <div className="text-link-footer-title">
                   <p className="text-sm md:text-xl">مستند نردبان</p>
@@ -338,7 +338,7 @@ export default function HomePage() {
                   src={poster3}
                   width={0}
                   height={0}
-                  className="h-[70px] md:h-[108px] w-auto rounded-sm"
+                  className="h-[70px] md:h-[108px] w-auto rounded-md"
                 />
                 <div className="text-link-footer-title">
                   <p className="text-sm md:text-xl">سلاح ایرانی</p>
@@ -355,7 +355,7 @@ export default function HomePage() {
                   src={poster4}
                   width={0}
                   height={0}
-                  className="h-[70px] md:h-[108px] w-auto rounded-sm"
+                  className="h-[70px] md:h-[108px] w-auto rounded-md"
                 />
                 <div className="text-link-footer-title">
                   <p className="text-sm md:text-xl">عشق شمعدانی ها</p>

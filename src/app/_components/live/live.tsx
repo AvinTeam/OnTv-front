@@ -105,7 +105,7 @@ const Live = () => {
   };
 
   return (
-    <div className="grid grid-cols-4 xl:grid-cols-3 gap-2 xl:gap-4n items-center overflow-hidden">
+    <div className="grid grid-cols-4 select-none xl:grid-cols-3 gap-2 xl:gap-4n items-center overflow-hidden">
       <div className="group relative col-span-4 xl:col-span-2 row-span-2">
         <VideoJS
           options={videoJsOptions1}
@@ -116,7 +116,7 @@ const Live = () => {
           className={`absolute group pointer-events-none row-auto left-auto rounded-b-xl mr-1 md:mr-2 -bottom-8 md:bottom-4 w-full h-20 bg-transparent  `}
         >
           <div className=" flex group justify-between items-center">
-            <div className="flex flex-col mr-4 opacity-0 group-hover:opacity-100 peer-focus-within:opacity-100 transition-opacity duration-[2.5s] ease-in-out">
+            <div className="hidden md:flex flex-col mr-4 opacity-0 group-hover:opacity-100 transition-opacity duration-[2.5s] ease-in-out">
               <div className="flex justify-start items-center gap-2">
                 <Image
                   width={0}
@@ -151,7 +151,7 @@ const Live = () => {
           onReady={handlePlayerReady}
         />
         <div className="absolute group pointer-events-none row-auto left-auto rounded-b-xl mr-1 md:mr-2 -bottom-8 md:bottom-2 w-full h-20 bg-transparent">
-          <div className="flex flex-col justify-start items-start opacity-0 group-focus-within:opacity-100  group-hover:opacity-100 transition-opacity duration-[2.5s] ease-in-out">
+          <div className="hidden md:flex flex-col justify-start items-start opacity-0 group-hover:opacity-100 transition-opacity duration-[2.5s] ease-in-out">
             <div className="flex justify-start items-center gap-1 md:gap-2">
               <Image
                 width={0}
@@ -178,7 +178,7 @@ const Live = () => {
           onReady={handlePlayerReady}
         />
         <div className="absolute group pointer-events-none row-auto left-auto rounded-b-xl -bottom-8 mr-1 md:mr-2 md:bottom-2 w-full h-20 bg-transparent">
-          <div className="flex flex-col justify-start items-start opacity-0 group-focus-within:opacity-100 group-hover:opacity-100 transition-opacity duration-[2.5s] ease-in-out">
+          <div className="hidden md:flex flex-col justify-start items-start opacity-0 group-hover:opacity-100 transition-opacity duration-[2.5s] ease-in-out">
             <div className="flex justify-start items-center gap-1 md:gap-2">
               <Image
                 width={0}

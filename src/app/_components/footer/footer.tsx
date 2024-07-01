@@ -243,18 +243,21 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* ================== bottom footer section ==================  */}
-      <div className="h-[25px] dark:bg-base-75 py-4 md:py-0 md:h-[52px] flex justify-between items-center">
-        <div className="flex ml-0 justify-center items-center cursor-pointer container bg-[#6D6B6C] md:h-[52px] w-10 h-[34px] md:w-20 ">
-          <Image
+    <div className="flex relative overflow-hidden">
+    <div className="flex absolute right-0-0 ml-0 justify-center items-center cursor-pointer container bg-[#6D6B6C] md:h-[52px] w-10 h-[34px] md:w-20 ">
+        <Image
             src="/images/Icon.webp"
-            width={20}
-            height={33}
+            width={0}
+            height={0}
+            style={{objectFit: "contain"}}
             alt="arrow"
-            className="w-3 h-3 md:w-auto md:h-auto rotate-90"
+            className="w-3 h-3 md:w-6 md:h-6 rotate-90"
           />
         </div>
-        <div className="container flex md:mr-0 justify-between p-4 sm:h-full ">
-          <div className="-mr-4 md:mr-0 flex md:block justify-center w-full items-center text-xs md:text-sm h-full md:justify-end md:items-center">
+      <div className="h-[25px] dark:bg-base-75 container py-4 md:py-0 md:h-[52px] flex justify-between items-center">
+       
+        <div className="container mx-auto flex md:mr-0 justify-between p-4 sm:h-full ">
+          <div className="-mr-4 md:mr-20 lg:mr-20 xl:mr-2 flex md:block justify-center w-full items-center text-xs md:text-sm h-full md:justify-end md:items-center">
             © تمام حقوق برای آن محفوظ است.
           </div>
           <ul className="hidden text-xs text-nowrap md:flex justify-end items-center gap-4">
@@ -267,6 +270,7 @@ export const Footer: React.FC = () => {
           </ul>
         </div>
       </div>
+    </div>
     </footer>
   );
 };
