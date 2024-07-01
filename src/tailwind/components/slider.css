@@ -5,7 +5,28 @@
 .swiper-pagination {
   display: none !important;
 }
-
+.swiper-button-next{
+  width: 40px !important;
+  height: 80px !important;
+  opacity: 0.7 !important;
+  margin-left: -8px !important;
+  margin-top: -72px !important;
+}
+.swiper-button-prev{
+  width: 40px !important;
+  height: 80px !important;
+  opacity: 0.7 !important;
+  margin-right: -8px !important;
+  margin-right: -8px !important;
+  margin-top: -72px !important;
+}
+.pod{
+  margin-top: -42px !important;
+  
+}
+.button-margin{
+  margin-top: -42px !important;
+}
 .swiper-button-next:hover {
   background-color: #ffffff;
 }

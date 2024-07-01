@@ -7,29 +7,29 @@ export const Footer: React.FC = () => {
       {/* ==================  top footer section ================== */}
       <div className="bg-base-70 drop-shadow-md pt-2 pb-3 md:py-0 flex justify-center items-center">
         <div className="container bg-base-70 px-4">
-          <div className="py-2 md:py-0 flex flex-col md:grid md:grid-cols-12 h-[100px] md:h-[141px] gap-2 items-center justify-between w-full">
-            <div className="flex flex-col md:flex-row md:col-span-5 lg:col-span-4 pr-2.5 md:pr-0 h-full items-center md:-mt-4">
+          <div className="py-2 md:py-3 lg:py-0 flex flex-col lg:grid lg:grid-cols-12 h-[100px] md:h-[141px] gap-2 items-center justify-between w-full">
+            <div className="flex flex-col md:flex-row  lg:col-span-4 pr-2.5 md:pr-0 h-full items-center md:-mt-4">
               <Image
                 alt="newspaper"
                 className="bg-primary px-3 hidden md:block py-2 md:w-10 md:h-10 rounded-[10%] ml-2"
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "contain" }}
                 width={18}
                 sizes="100"
                 height={18}
                 src="/images/newspaper.png"
               />
               <div className="flex flex-col justify-center md:block items-center w-full">
-                <div className=" text-sm mb-1 md:mb-0 text-nowrap font-bold md:text-lg lg:text-xl text-primary">
+                <div className=" text-sm mb-1 md:mb-0 text-nowrap font-bold md:text-lg lg:text-md text-primary">
                   عضویت در خبرنامه
                 </div>
-                <div className="text-xs text-nowrap md:text-md lg:text-lg md:pt-2 text-primary">
+                <div className="text-xs text-nowrap md:text-md lg:text-md md:pt-2 text-primary">
                   برای اطلاع از آخرین اطلاعیه ها، عضو شوید
                 </div>
               </div>
             </div>
-            <div className="flex md:flex-row w-full md:col-span-7 lg:col-span-8 mr-auto">
+            <div className="flex md:flex-row w-full lg:col-span-8 mr-auto">
               <input
-                className=" text-[10px] w-full ml-2 peer transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200  border focus:border-2 border-t-transparent md:text-sm lg:text-md px-1 py-1 md:px-2.5 md:py-2.5 rounded-[7px]  "
+                className=" text-[10px] w-full ml-2 peer transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200  border focus:border-2 border-t-transparent md:text-sm lg:text-md px-1 py-2 md:px-2.5 md:py-2.5 rounded-[7px]  "
                 placeholder="ﺟﻬﺖ ﻋﻀﻮﯾﺖ در ﺧﺒﺮﻧﺎﻣﻪ ﺷﻤﺎره ﻣﻮﺑﺎﯾﻞ ﺧﻮد ﺧﻮد را وارد کنید"
               />
               <Link
@@ -181,7 +181,7 @@ export const Footer: React.FC = () => {
                 </li>
               </ul>
             </div>
-            <div className="hidden md:block text-link-footer-title col-span-1 mr-auto ">
+            <div className="hidden md:block text-link-footer-title col-span-1 mr-[40%] ">
               <div className="font-bold md:text-[9px] lg:text-[10px] xl:text-[16px] text-xl mb-5 sm:text-center sm:flex sm:justify-between">
                 لینک های مرتبط
               </div>
@@ -200,7 +200,7 @@ export const Footer: React.FC = () => {
                 </li>
               </ul>
             </div>
-            <div className="hidden md:block col-span-1 mr-14 xl:mr-auto">
+            <div className="hidden md:block col-span-1 mr-14 md:mr-[24%] xl:mr-[27%]">
               <div className="font-bold md:text-[9px] lg:text-[10px] xl:text-[16px] text-link-footer-title text-xl mb-5 sm:text-center sm:flex sm:justify-between">
                 لینک های مرتبط
               </div>

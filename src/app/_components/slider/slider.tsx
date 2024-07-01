@@ -142,8 +142,8 @@ export const Slider: React.FC<SliderProps> = ({
                     </div>
                   </div>
                   {item?.logo && (
-                    <span className="absolute felx justify-center items-center right-[88%] bottom-2 left-2 bg-base-75 w-8 ">
-                      <p className="text-white text-sm text-center ">02:19</p>
+                    <span className="absolute felx justify-center items-center right-[72%] md:right-[80%] xl:right-[88%] bottom-1 md:bottom-2 left-2 bg-base-75 w-8 ">
+                      <p className="text-white text-[10px] md:text-sm text-center ">02:19</p>
                     </span>
                   )}
                 </div>
@@ -173,7 +173,7 @@ export const Slider: React.FC<SliderProps> = ({
         <div className="hidden md:block">
           {!isDisablePrev && (
             <div
-              className={`hiddeh swiper-button-prev bg-[#4a4a4a] rounded-[3px] transition-all`}
+              className={`hiddeh swiper-button-prev ${!isDescription ? "button-margin" : ""} bg-[#000000] rounded-[3px] transition-all`}
               onClick={handlePrev}
             >
               <Image
@@ -188,7 +188,7 @@ export const Slider: React.FC<SliderProps> = ({
           )}
           {!isDisableNext && (
             <div
-              className={`hidden swiper-button-next bg-[#4a4a4a] rounded-[3px] rotate-180 transition-all`}
+              className={`hiddeh swiper-button-next ${!isDescription ? "button-margin" : ""} bg-[#000000] rounded-[3px] rotate-180 transition-all`}
               onClick={handleNext}
             >
               <Image

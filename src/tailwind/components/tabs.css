@@ -3,7 +3,7 @@
       @apply relative gap-4 md:gap-10 border-b dark:border-[gray]  mb-5 inline-flex cursor-pointer select-none flex-wrap items-center justify-start text-center dark:text-primary;
   
       & > .tab-label {
-        @apply text-current font-bold pb-2 transition-all duration-75 border-b border-transparent text-[12px] md:text-sm lg:text-lg;
+        @apply text-current font-bold pb-2 transition-all duration-75 border-b border-transparent text-[10px] md:text-sm lg:text-lg;
   
         &.tab-active {
           @apply dark:text-primary border-b dark:border-primary;

@@ -27,10 +27,6 @@ export const SliderPodcast: React.FC<SliderProps> = ({ data }: SliderProps) => {
     sliderRef.current?.swiper.slideNext();
   };
 
-  const lines = Array.from({ length: 40 }, (_, i) => ({
-    height: Math.floor(Math.random() * (50 - 20 + 1)) + 20, // random height from 20 to 40
-  }));
-
   return (
     <div className={`select-none container  h-full flex w-full  `}>
       <Swiper
@@ -89,7 +85,7 @@ export const SliderPodcast: React.FC<SliderProps> = ({ data }: SliderProps) => {
                         alt="voice-rader"
                         width={0}
                         height={0}
-                        className="w-[90%] h-[100px] absolute top-[15px] md:top-[26px] lg:top-[22px] xl:top-[24px]"
+                        className="w-[90%] h-[100px] absolute top-[15px] md:top-[28px] lg:top-[32px] xl:top-[24px]"
                       />
                     </div>
                     <div className="bg-[#6E7174] h-[110px] md:h-[140px] flex flex-col justify-between">
@@ -139,7 +135,7 @@ export const SliderPodcast: React.FC<SliderProps> = ({ data }: SliderProps) => {
         <div className="hidden md:block">
           {!isDisablePrev && (
             <div
-              className={`hiddeh swiper-button-prev bg-[#4a4a4a] rounded-[3px] transition-all`}
+              className={`hiddeh swiper-button-prev pod bg-[#000000] rounded-[3px] transition-all`}
               onClick={handlePrev}
             >
               <Image
@@ -154,7 +150,7 @@ export const SliderPodcast: React.FC<SliderProps> = ({ data }: SliderProps) => {
           )}
           {!isDisableNext && (
             <div
-              className={`hidden swiper-button-next bg-[#4a4a4a] rounded-[3px] rotate-180 transition-all`}
+              className={`hidden swiper-button-next pod bg-[#000000] rounded-[3px] rotate-180 transition-all`}
               onClick={handleNext}
             >
               <Image

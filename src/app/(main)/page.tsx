@@ -244,8 +244,8 @@ export default function HomePage() {
       </div>
       <div className="overflow-auto">
         <div className="container px-2 w-full h-full">
-          <div className="flex flex-col md:grid grid-cols-12 gap-2 w-full h-full justify-center items-center content-center">
-            <div className="md:col-span-6 h-full w-full md:h-[105px]">
+          <div className="flex flex-col lg:grid grid-cols-12 gap-2 w-full h-full justify-center items-center content-center">
+            <div className="lg:col-span-6 h-full w-full md:h-[125px]">
               <Image
                 className="w-full h-full "
                 src={banner1}
@@ -255,7 +255,7 @@ export default function HomePage() {
                 alt="banner"
               />
             </div>
-            <div className="md:col-span-6  h-full w-full md:h-[105px]">
+            <div className="lg:col-span-6  h-full w-full md:h-[125px]">
               <Image
                 className="w-full h-full "
                 src={banner2}
@@ -385,7 +385,7 @@ export default function HomePage() {
 
       <div className="mt-2 md:mt-6 py-6 md:py-10 bg-base-50 px-2 md:px-6 h-[300px] md:h-[400px] overflow-x-auto overflow-y-hidden ">
         <div className="container w-[100%]">
-          <p className="text-nowrap flex justify-end -mb-6 mr-auto w-[100%]">
+          <p className="text-base-content text-xs md:text-md text-nowrap flex justify-end -mb-6 mr-auto w-[100%] px-2">
             نمایش همه
           </p>
           <div className="container mx-auto h-44 md:h-[500px] flex flex-row-reverse">
