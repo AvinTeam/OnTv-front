@@ -1,13 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import logo from "../../../../public/images/android-chrome-192x192.png"
 
 export default function Verify() {
   return (
     <div className="px-10 py-4 w-[330px] h-[400px] md:w-[450px] md:h-[450px] bg-base-50 flex justify-around items-center flex-col rounded-sm">
       <div className="flex gap-3 mt-10">
         <Image
-          src={"/images/android-chrome-192x192.png"}
+          src={logo}
           width={0}
+          objectFit="contain"
           height={0}
           className="w-14 h-14 md:w-20 md:h-20 mt-3 md:mt-0"
           alt="logo"
@@ -39,7 +41,7 @@ export default function Verify() {
       <div className="mr-auto flex justify-center items-center gap-1 cursor-pointer">
         <Link href={"/signin?html"}>بازگشت</Link>
         <span>
-          <Image src={"images/icon.webp"} alt="arrow" width={6} height={6} />
+          <Image src={"/images/icon.webp"} alt="arrow" width={6} height={6} />
         </span>
       </div>
     </div>

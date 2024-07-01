@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import map from "../../../../public/images/Rectangle 513.png";
 export default function About() {
   return (
     <>
@@ -14,7 +15,14 @@ export default function About() {
         </div>
         <main className="container bg-white p-8 rounded-[5px]">
           <div className="bg-primary">
-            <Image src="/images/Rectangle 513.png" alt="map" width={0} height={0} className="w-full h-full" />
+            <Image
+              src={map}
+              style={{objectFit: "cover"}}
+              alt="map"
+              width={0}
+              height={0}
+              className="w-full h-full"
+            />
           </div>
           <div className="grid grid-cols-3 items-center justify-center mt-10 mb-8">
             <div className="col-span-1 flex flex-col justify-center items-center">
@@ -102,7 +110,7 @@ export default function About() {
               </div>
             </div>
           </div>
-          <hr className="border-t-[#d8d8d8]"/>
+          <hr className="border-t-[#d8d8d8]" />
           <div className="my-8 text-justify">
             <span>
               کاربر گرامی، لطفاً در صورت وجود هرگونه سوال یا ابهامی، قبل از

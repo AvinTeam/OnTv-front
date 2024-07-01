@@ -172,7 +172,7 @@ export const Footer: React.FC = () => {
                   <Link href={"/"}>ﺗﻤﺎس ﺑﺎ ﻣﺎ</Link>
                 </li>
                 <li className="mb-2">
-                  <Link href={"/about?html=1"} key={Math.random()}>
+                  <Link href={"/about"} key={Math.random()}>
                     درباره ﺳﺎﯾﺖ
                   </Link>
                 </li>
@@ -212,7 +212,7 @@ export const Footer: React.FC = () => {
                   <Link href={"/"}>ﺗﻤﺎس ﺑﺎ ﻣﺎ</Link>
                 </li>
                 <li className="mb-2">
-                  <Link href={"/privacy?html=1"}>حریم خصوصی</Link>
+                  <Link href={"/privacy"}>حریم خصوصی</Link>
                 </li>
                 <li>
                   <Link href={"/"}>خبرگزاری</Link>
@@ -246,7 +246,7 @@ export const Footer: React.FC = () => {
       <div className="h-[25px] dark:bg-base-75 py-4 md:py-0 md:h-[52px] flex justify-between items-center">
         <div className="flex ml-0 justify-center items-center cursor-pointer container bg-[#6D6B6C] md:h-[52px] w-10 h-[34px] md:w-20 ">
           <Image
-            src="images/Icon.webp"
+            src="/images/Icon.webp"
             width={20}
             height={33}
             alt="arrow"

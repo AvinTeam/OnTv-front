@@ -5,7 +5,9 @@ import "video.js/dist/video-js.css";
 import VideoJS from "@/app/_components/video";
 import Image from "next/image";
 import Link from "next/link";
-
+import logo from "../../../../public/images/android-chrome-192x192.png"
+import logo2 from "../../../../public/images/logo/Group 949.png"
+import logo3 from "../../../../public/images/logo/Group 951.png"
 const Live = () => {
   const playerRef = React.useRef(null);
 
@@ -101,8 +103,8 @@ const Live = () => {
     });
   };
   return (
-    <div className="grid grid-cols-4 md:grid-cols-3 gap-2 md:gap-4n items-center overflow-hidden">
-      <div className="relative col-span-4 md:col-span-2 row-span-2">
+    <div className="grid grid-cols-4 xl:grid-cols-3 gap-2 xl:gap-4n items-center overflow-hidden">
+      <div className="relative col-span-4 xl:col-span-2 row-span-2">
         <VideoJS
           options={videoJsOptions1}
           fallbackOptions={fallbackOptions1}
@@ -116,7 +118,8 @@ const Live = () => {
                   width={0}
                   height={0}
                   alt="logo"
-                  src={"/images/android-chrome-192x192.png"}
+                  src={logo}
+                  objectFit="contain"
                   className="w-6 h-6 md:w-12 md:h-12"
                 />
                 <p className="font-bold text-[10px] md:text-[18px]  text-primary-content">
@@ -133,7 +136,7 @@ const Live = () => {
           </div>
         </div>
       </div>
-      <div className="relative col-span-2 md:col-span-1">
+      <div className="relative col-span-2 xl:col-span-1">
         <VideoJS
           options={videoJsOptions2}
           fallbackOptions={fallbackOptions2}
@@ -146,9 +149,9 @@ const Live = () => {
                 width={0}
                 height={0}
                 alt="logo"
-                style={{ objectFit: "fill" }}
-                src={"/images/logo/Group 949.png"}
-                className="w-6 h-6 md:w-12 md:h-12"
+                style={{ objectFit: "contain" }}
+                src={logo2}
+                className="w-6 h-8 md:w-20 md:h-12"
               />
               <p className="font-bold text-[8px] md:text-[14px] text-primary-content">
                 پخش زنده شبکه آن
@@ -160,7 +163,7 @@ const Live = () => {
           </div>
         </div>
       </div>
-      <div className="relative col-span-2 md:col-span-1">
+      <div className="relative col-span-2 xl:col-span-1">
         <VideoJS
           options={videoJsOptions3}
           fallbackOptions={fallbackOptions3}
@@ -171,11 +174,11 @@ const Live = () => {
             <div className="flex justify-start items-center gap-1 md:gap-2">
               <Image
                 width={0}
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "contain" }}
                 height={0}
                 alt="logo"
-                src={"/images/logo/Group 951.png"}
-                className="w-6 h-6 md:w-12 md:h-12"
+                src={logo3}
+                className="w-6 h-6 md:w-14 md:h-12"
               />
               <p className="font-bold text-[8px] md:text-[14px] text-primary-content">
                 پخش زنده شبکه آن

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
+import privacyImg from "../../../../public/images/keyhole.png";
 export default function Privacy() {
   return (
     <div className="bg-white">
@@ -16,7 +16,7 @@ export default function Privacy() {
         <div className="col-span-2">
           <div className="h-[200px] flex flex-col justify-center gap-4 items-center w-auto bg-[#EEEEEE] rounded-sm">
             <Image
-              src={"images/keyhole.png"}
+              src={privacyImg}
               alt="privacy"
               width={0}
               height={0}
