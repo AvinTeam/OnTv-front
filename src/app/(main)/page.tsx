@@ -52,7 +52,7 @@ const dataPro: any = [
     },
   },
   {
-    path:pro3 ,
+    path: pro3,
     alt: "test",
     logo: "/images/logo/Group 392.png",
     descriptions: {
@@ -61,7 +61,7 @@ const dataPro: any = [
     },
   },
   {
-    path:  pro2,
+    path: pro2,
     alt: "test",
     logo: "/images/logo/Group 415.png",
     descriptions: {
@@ -277,7 +277,7 @@ export default function HomePage() {
         <div className="container mx-auto h-44 md:h-80 flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">ویژه ها</p>
-            <p className="text-base-content text-xs md:text-md">نمایش همه</p>
+            <p className="text-base-content text-[10px] md:text-md">نمایش همه</p>
           </div>
           <hr className="w-full pb-4 border-t-base-70" />
           <Slider data={dataDec} isDescription />
@@ -313,7 +313,7 @@ export default function HomePage() {
         <div className="container mx-auto h-36 md:h-80 flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">جدید ترین اخبار</p>
-            <p className="text-base-content text-xs md:text-md">نمایش همه</p>
+            <p className="text-base-content text-[10px] md:text-md">نمایش همه</p>
           </div>
           <hr className="w-full pb-4 border-t-[#A0ADB8]" />
           <Slider data={dataDec} isDescription />
@@ -327,7 +327,7 @@ export default function HomePage() {
               {" "}
               جدیدترین مستند ها{" "}
             </p>
-            <p className="text-base-content text-xs md:text-md">نمایش همه</p>
+            <p className="text-base-content text-[10px] md:text-md">نمایش همه</p>
           </div>
           <hr className="w-full pb-4 border-t-[#A0ADB8]" />
           <div className="mt-5 flex flex-col xl:flex-row justify-between gap-10">
@@ -416,7 +416,7 @@ export default function HomePage() {
         <div className="container mx-auto h-36 md:h-80 flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl"> برترین های ماه</p>
-            <p className="text-base-content text-xs md:text-md">نمایش همه</p>
+            <p className="text-base-content text-[10px] md:text-md">نمایش همه</p>
           </div>
           <hr className="w-full pb-4 border-t-base-70" />
           <Slider data={finalyData} isDescription />
@@ -426,7 +426,7 @@ export default function HomePage() {
 
       <div className="mt-2 md:mt-6 py-6 md:py-10 bg-base-50 px-2 md:px-6 h-[300px] md:h-[400px] overflow-x-auto overflow-y-hidden ">
         <div className="container w-[100%]">
-          <p className="text-base-content text-xs md:text-md text-nowrap flex justify-end -mb-6 mr-auto w-[100%] px-2">
+          <p className="text-base-content text-[10px] md:text-md text-nowrap flex justify-end -mb-6 mr-auto w-[100%] px-2">
             نمایش همه
           </p>
           <div className="container mx-auto h-44 md:h-[500px] flex flex-row-reverse">
@@ -478,7 +478,7 @@ export default function HomePage() {
               {" "}
               ویژه های موبایلی{" "}
             </p>
-            <p className="text-base-content text-xs md:text-md">نمایش همه</p>
+            <p className="text-base-content text-[10px] md:text-md">نمایش همه</p>
           </div>
           <hr className="w-full pb-4 border-t-base-70" />
           <Slider data={mobile} />
@@ -486,16 +486,47 @@ export default function HomePage() {
       </div>
       {/* ============== THE END OF mobile section ============ */}
 
-      <div className="mt-2 md:mt-6 py-6 md:py-4 bg-base-50 px-2 md:px-6 h-[250px] md:h-[300px] overflow-x-auto overflow-y-hidden ">
+      <div className="mt-2 md:mt-6 py-0 md:pt-0 md:pb-4 bg-base-50 px-2 md:px-6 h-[190px] md:h-[320px] overflow-x-auto overflow-y-hidden ">
         <div className="container mx-auto h-36 md:h-60 flex flex-col justify-center items-center">
-          <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
+          <div className="flex w-full justify-between pt-8 my-2 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">
               برنامه های شبکه آن
             </p>
-            <p className="text-base-content text-xs md:text-md">نمایش همه</p>
+            <p className="text-base-content text-[10px] md:text-md">نمایش همه</p>
           </div>
-          <hr className="w-full pb-4 border-t-[#A0ADB8]" />
+          <hr className="w-full pb-2 md:pb-4 border-t-[#A0ADB8]" />
           <SliderProgram data={dataPro} />
+        </div>
+      </div>
+
+      <div className="px-2 md:px-6 mt-0 h-[120px] md:h-[240px] overflow-x-auto overflow-y-hidden ">
+        <div className="container mx-auto h-20 md:h-56 flex flex-col justify-center items-center">
+          <div className="flex w-full justify-between pt-8 my-3 md:pt-4 md:pb-1 px-2 items-center">
+            <p className="text-primary text-sm md:text-xl">هشتک های داغ</p>
+            <p className="text-base-content text-[10px] md:text-md">نمایش همه</p>
+          </div>
+          <hr className="w-full border-t-base-70" />
+          <div className="flex bg-gray-100 text-nowrap [&>*]:mr-1 [&>*]:text-[8px] md:[&>*]:text-[12px] md:[&>*]:mr-3 lg:[&>*]:text-[16px] lg:[&>*]:mr-10 md:[&>*]:mt-2 p-4 rounded overflow-hidden">
+            <p>#رئیس‌جمهور</p>
+            <p>#انتخابات-ایران</p>
+            <p>#انتخابات</p>
+            <p>#تشعیع-باشکوه</p>
+            <p>#رئیس‌جمهور</p>
+            <p>#نمایشگاه-کتاب-تهران</p>
+            <p>#فلسطین-غزه</p>
+            <p>#اخبار-دست-اول</p>
+            <p>#رئیس‌جمهور</p>
+          </div>
+          <div className="flex text-nowrap bg-gray-100 [&>*]:mr-1 [&>*]:text-[8px] md:[&>*]:text-[12px] md:[&>*]:mr-3 lg:[&>*]:text-[16px] lg:[&>*]:mr-10 p-4 rounded">
+            <p>#رئیس‌جمهور</p>
+            <p>#رئیس‌جمهور</p>
+            <p>#رئیس‌جمهور</p>
+            <p>#رئیس‌جمهور</p>
+            <p>#رئیس‌جمهور</p>
+            <p className="text-blue-500 text-base-content-slider mr-4">
+              بیشتر...
+            </p>
+          </div>
         </div>
       </div>
     </main>
