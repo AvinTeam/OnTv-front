@@ -294,7 +294,7 @@ export default function HomePage() {
         <div className="container mx-auto h-44 md:h-80 flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">ویژه ها</p>
-            <p className="text-base-content text-[10px] md:text-md">
+            <p className="text-base-content text-[10px]md:text-md lg:text-sm">
               نمایش همه
             </p>
           </div>
@@ -332,7 +332,7 @@ export default function HomePage() {
         <div className="container mx-auto h-36 md:h-80 flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">جدید ترین اخبار</p>
-            <p className="text-base-content text-[10px] md:text-md">
+            <p className="text-base-content text-[10px] md:text-md lg:text-sm">
               نمایش همه
             </p>
           </div>
@@ -348,7 +348,7 @@ export default function HomePage() {
               {" "}
               جدیدترین مستند ها{" "}
             </p>
-            <p className="text-base-content text-[10px] md:text-md">
+            <p className="text-base-content text-[10px] md:text-md lg:text-sm">
               نمایش همه
             </p>
           </div>
@@ -439,7 +439,7 @@ export default function HomePage() {
         <div className="container mx-auto h-36 md:h-80 flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl"> برترین های ماه</p>
-            <p className="text-base-content text-[10px] md:text-md">
+            <p className="text-base-content text-[10px] md:text-md lg:text-sm">
               نمایش همه
             </p>
           </div>
@@ -451,7 +451,7 @@ export default function HomePage() {
 
       <div className="mt-2 md:mt-6 py-6 md:py-10 bg-base-50 px-2 md:px-6 h-[300px] md:h-[400px] overflow-x-auto overflow-y-hidden ">
         <div className="container w-[100%]">
-          <p className="text-base-content text-[10px] md:text-md text-nowrap flex justify-end -mb-6 mr-auto w-[100%] px-2">
+          <p className="text-base-content text-[10px] md:text-md lg:text-sm text-nowrap flex justify-end -mb-6 mr-auto w-[100%] px-2">
             نمایش همه
           </p>
           <div className="container mx-auto h-44 md:h-[500px] flex flex-row-reverse">
@@ -503,7 +503,7 @@ export default function HomePage() {
               {" "}
               ویژه های موبایلی{" "}
             </p>
-            <p className="text-base-content text-[10px] md:text-md">
+            <p className="text-base-content text-[10px] md:text-md lg:text-sm">
               نمایش همه
             </p>
           </div>
@@ -519,7 +519,7 @@ export default function HomePage() {
             <p className="text-primary text-sm md:text-xl">
               برنامه های شبکه آن
             </p>
-            <p className="text-base-content text-[10px] md:text-md">
+            <p className="text-base-content text-[10px] md:text-md lg:text-sm">
               نمایش همه
             </p>
           </div>
@@ -532,7 +532,7 @@ export default function HomePage() {
         <div className="container mx-auto h-64 flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-4 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">هشتک های داغ</p>
-            <p className="text-base-content text-[10px] md:text-md">
+            <p className="text-base-content text-[10px] md:text-md lg:text-sm">
               نمایش همه
             </p>
           </div>
