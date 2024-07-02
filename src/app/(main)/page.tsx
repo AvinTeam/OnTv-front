@@ -2,6 +2,7 @@ import "../globals.css";
 import Live from "../_components/live/live";
 import { Slider } from "../_components/slider/slider";
 import { SliderPodcast } from "../_components/slider-podcast/slider-podcast";
+import { SliderProgram } from "../_components/slider-program/slider-program";
 import Image from "next/image";
 import { Tabs } from "../_components/tabs";
 import poster1 from "../../../public/images/Image 83.webp";
@@ -22,20 +23,62 @@ import item5 from "../../../public/images/Mask Group 42.png";
 import logo5 from "../../../public/images/logo/Group 1013.png";
 import item6 from "../../../public/images/Mask Group 43.png";
 import logo6 from "../../../public/images/logo/Group 1014.png";
-import mobile1 from "../../../public/images/Mask Group 10.png"
-import mobile2 from "../../../public/images/Image 27.png"
-import mobile3 from "../../../public/images/Image 28.png"
-import mobile4 from "../../../public/images/Mask Group 13 (2).png"
-import mobile5 from "../../../public/images/Image 27.png"
-import mobile6 from "../../../public/images/Mask Group 10.png"
-import finalyData1 from "../../../public/images/Image 52.png"
-import finalyData2 from "../../../public/images/Image 53.png"
-import finalyData3 from "../../../public/images/Image 54.png"
-import finalyData4 from "../../../public/images/Image 55.png"
-import dataDec1 from "../../../public/images/Mask Group 29.png"
-import dataDec2 from "../../../public/images/Mask Group 30.png"
-import dataDec3 from "../../../public/images/Mask Group 31.png"
-import dataDec4 from "../../../public/images/Mask Group 33.png"
+import mobile1 from "../../../public/images/Mask Group 10.png";
+import mobile2 from "../../../public/images/Image 27.png";
+import mobile3 from "../../../public/images/Image 28.png";
+import mobile4 from "../../../public/images/Mask Group 13 (2).png";
+import mobile5 from "../../../public/images/Image 27.png";
+import mobile6 from "../../../public/images/Mask Group 10.png";
+import finalyData1 from "../../../public/images/Image 52.png";
+import finalyData2 from "../../../public/images/Image 53.png";
+import finalyData3 from "../../../public/images/Image 54.png";
+import finalyData4 from "../../../public/images/Image 55.png";
+import dataDec1 from "../../../public/images/Mask Group 29.png";
+import dataDec2 from "../../../public/images/Mask Group 30.png";
+import dataDec3 from "../../../public/images/Mask Group 31.png";
+import dataDec4 from "../../../public/images/Mask Group 33.png";
+import pro1 from "../../../public/images/Mask Group 16.png";
+import pro2 from "../../../public/images/Mask Group 15.png";
+import pro3 from "../../../public/images/Mask Group 17.png";
+
+const dataPro: any = [
+  {
+    path: pro1,
+    alt: "test",
+    logo: "/images/logo/Group 368.png",
+    descriptions: {
+      title: "برنامه ترکیبی تکیه",
+      dec: "برنامه ترکیبی / ساعت 15",
+    },
+  },
+  {
+    path:pro3 ,
+    alt: "test",
+    logo: "/images/logo/Group 392.png",
+    descriptions: {
+      title: "برنامه ترکیبی تکیه",
+      dec: "برنامه ترکیبی / ساعت 15",
+    },
+  },
+  {
+    path:  pro2,
+    alt: "test",
+    logo: "/images/logo/Group 415.png",
+    descriptions: {
+      title: "برنامه ترکیبی تکیه",
+      dec: "برنامه ترکیبی / ساعت 15",
+    },
+  },
+  {
+    path: pro3,
+    alt: "test",
+    logo: "/images/logo/Group 368.png",
+    descriptions: {
+      title: "برنامه ترکیبی تکیه",
+      dec: "برنامه ترکیبی / ساعت 15",
+    },
+  },
+];
 const data: any = [
   {
     path: item1,
@@ -68,13 +111,12 @@ const data: any = [
     logo: logo6,
     alt: "test",
   },
-  
 ];
 const dataDec: any = [
   {
     path: dataDec1,
-     alt: "test",
-     logo: "/images/logo/Group 1011.png",
+    alt: "test",
+    logo: "/images/logo/Group 1011.png",
     descriptions: {
       title: "خبر های روز",
       dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
@@ -91,7 +133,7 @@ const dataDec: any = [
   {
     path: dataDec3,
     logo: "/images/logo/Group 9003.png",
-     alt: "test",
+    alt: "test",
     descriptions: {
       title: "خبر های روز",
       dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
@@ -126,7 +168,7 @@ const dataDec: any = [
 ];
 const finalyData: any = [
   {
-    path:  finalyData1,
+    path: finalyData1,
     alt: "test",
     descriptions: {
       title: "خبر های روز",
@@ -165,7 +207,6 @@ const finalyData: any = [
       dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
     },
   },
-  
 ];
 const mobile: any = [
   {
@@ -444,6 +485,19 @@ export default function HomePage() {
         </div>
       </div>
       {/* ============== THE END OF mobile section ============ */}
+
+      <div className="mt-2 md:mt-6 py-6 md:py-4 bg-base-50 px-2 md:px-6 h-[250px] md:h-[300px] overflow-x-auto overflow-y-hidden ">
+        <div className="container mx-auto h-36 md:h-60 flex flex-col justify-center items-center">
+          <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
+            <p className="text-primary text-sm md:text-xl">
+              برنامه های شبکه آن
+            </p>
+            <p className="text-base-content text-xs md:text-md">نمایش همه</p>
+          </div>
+          <hr className="w-full pb-4 border-t-[#A0ADB8]" />
+          <SliderProgram data={dataPro} />
+        </div>
+      </div>
     </main>
   );
 }

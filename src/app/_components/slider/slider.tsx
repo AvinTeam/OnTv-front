@@ -105,7 +105,7 @@ export const Slider: React.FC<SliderProps> = ({
                             src={item?.logo}
                             alt="Logo"
                             width={0}
-                            className="w-40 h-5 md:w-48 md:h-10 z-30 overflow-visible scale-y-125 scale-x-150"
+                            className="w-40 h-[40px] md:w-[100px] md:h-[80px] lg:w-[140px] lg:h-[100px] z-30 overflow-visible "
                             style={{ objectFit: "contain" }}
                             height={0}
                           />
