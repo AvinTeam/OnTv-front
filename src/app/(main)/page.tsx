@@ -40,7 +40,24 @@ import dataDec4 from "../../../public/images/Mask Group 33.png";
 import pro1 from "../../../public/images/Mask Group 16.png";
 import pro2 from "../../../public/images/Mask Group 15.png";
 import pro3 from "../../../public/images/Mask Group 17.png";
-
+import Link from "next/link";
+const links = [
+  "#رئیس‌-جمهور",
+  "#انتخابات-ایران",
+  "#انتخابات",
+  "#تشعیع-باشکوه",
+  "#رئیس‌جمهور",
+  "#نمایشگاه-کتاب-تهران",
+  "#فلسطین-غزه",
+  "#اخبار-دست-اول",
+  "#رئیس‌-جمهور",
+  "#رئیس‌-جمهور",
+  "#رئیس‌-جمهور",
+  "#رئیس‌-جمهور",
+  "#رئیس‌-جمهور",
+  "#رئیس‌-جمهور",
+  "بیشتر...",
+];
 const dataPro: any = [
   {
     path: pro1,
@@ -277,7 +294,9 @@ export default function HomePage() {
         <div className="container mx-auto h-44 md:h-80 flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">ویژه ها</p>
-            <p className="text-base-content text-[10px] md:text-md">نمایش همه</p>
+            <p className="text-base-content text-[10px] md:text-md">
+              نمایش همه
+            </p>
           </div>
           <hr className="w-full pb-4 border-t-base-70" />
           <Slider data={dataDec} isDescription />
@@ -313,21 +332,25 @@ export default function HomePage() {
         <div className="container mx-auto h-36 md:h-80 flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">جدید ترین اخبار</p>
-            <p className="text-base-content text-[10px] md:text-md">نمایش همه</p>
+            <p className="text-base-content text-[10px] md:text-md">
+              نمایش همه
+            </p>
           </div>
           <hr className="w-full pb-4 border-t-[#A0ADB8]" />
           <Slider data={dataDec} isDescription />
         </div>
       </div>
       {/* ========================documentry section ============================== */}
-      <div className="py-6 md:py-10 bg-[#4A4A4A] px-2 md:px-6 h-[600px] md:h-[830px] xl:h-[540px] overflow-x-auto overflow-y-hidden ">
+      <div className="py-6 md:py-10 bg-[#4A4A4A] px-2 md:px-6 h-[600px] md:h-[880px] lg:h-[880px] xl:h-[540px] overflow-x-auto overflow-y-hidden ">
         <div className="container">
           <div className="flex justify-between px-4 mb-4 items-center">
             <p className="text-primary text-sm md:text-xl">
               {" "}
               جدیدترین مستند ها{" "}
             </p>
-            <p className="text-base-content text-[10px] md:text-md">نمایش همه</p>
+            <p className="text-base-content text-[10px] md:text-md">
+              نمایش همه
+            </p>
           </div>
           <hr className="w-full pb-4 border-t-[#A0ADB8]" />
           <div className="mt-5 flex flex-col xl:flex-row justify-between gap-10">
@@ -366,7 +389,7 @@ export default function HomePage() {
                 />
                 <div className="text-link-footer-title">
                   <p className="text-sm md:text-xl">مستند نردبان</p>
-                  <p className="text-xs md:text-md">
+                  <p className="text-xs md:text-md text-justify">
                     صحبت های شهید حسین امیرعبداللهیان در مورد شهید خصیت عظیم
                     سردار دلها حاج قاسم سلیمانی
                   </p>
@@ -383,7 +406,7 @@ export default function HomePage() {
                 />
                 <div className="text-link-footer-title">
                   <p className="text-sm md:text-xl">سلاح ایرانی</p>
-                  <p className="text-xs md:text-md">
+                  <p className="text-xs md:text-md text-justify">
                     صحبت های شهید حسین امیرعبداللهیان در مورد شهید خصیت عظیم
                     سردار دلها حاج قاسم سلیمانی
                   </p>
@@ -400,7 +423,7 @@ export default function HomePage() {
                 />
                 <div className="text-link-footer-title">
                   <p className="text-sm md:text-xl">عشق شمعدانی ها</p>
-                  <p className="text-xs md:text-md">
+                  <p className="text-xs md:text-md text-justify">
                     صحبت های شهید حسین امیرعبداللهیان در مورد شهید خصیت عظیم
                     سردار دلها حاج قاسم سلیمانی
                   </p>
@@ -416,7 +439,9 @@ export default function HomePage() {
         <div className="container mx-auto h-36 md:h-80 flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl"> برترین های ماه</p>
-            <p className="text-base-content text-[10px] md:text-md">نمایش همه</p>
+            <p className="text-base-content text-[10px] md:text-md">
+              نمایش همه
+            </p>
           </div>
           <hr className="w-full pb-4 border-t-base-70" />
           <Slider data={finalyData} isDescription />
@@ -471,14 +496,16 @@ export default function HomePage() {
         </div>
       </div>
       {/* ============== START mobile section ============ */}
-      <div className="py-6 md:py-10 px-2 md:px-6 h-[350px] md:h-[440px] overflow-x-auto overflow-y-hidden ">
-        <div className="container mx-auto h-60 md:h-80 flex flex-col justify-center items-center">
+      <div className="py-6 md:py-10 px-2 md:px-6 h-[350px] md:h-[480px] lg:h-[440px] xl:h-[520px] overflow-x-auto overflow-y-hidden ">
+        <div className="container mx-auto h-60 md:h-80 lg:h-80 xl:h-[440px] flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">
               {" "}
               ویژه های موبایلی{" "}
             </p>
-            <p className="text-base-content text-[10px] md:text-md">نمایش همه</p>
+            <p className="text-base-content text-[10px] md:text-md">
+              نمایش همه
+            </p>
           </div>
           <hr className="w-full pb-4 border-t-base-70" />
           <Slider data={mobile} />
@@ -486,46 +513,45 @@ export default function HomePage() {
       </div>
       {/* ============== THE END OF mobile section ============ */}
 
-      <div className="mt-2 md:mt-6 py-0 md:pt-0 md:pb-4 bg-base-50 px-2 md:px-6 h-[190px] md:h-[320px] overflow-x-auto overflow-y-hidden ">
-        <div className="container mx-auto h-36 md:h-60 flex flex-col justify-center items-center">
+      <div className="mt-2 md:mt-6 py-0 md:pt-4 xl:pt-7 md:pb-4 bg-base-50 px-2 md:px-6 h-[190px] md:h-[240px] lg:h-[300px] overflow-x-auto overflow-y-hidden ">
+        <div className="container mx-auto h-36 md:h-44 lg:h-44 flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-2 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">
               برنامه های شبکه آن
             </p>
-            <p className="text-base-content text-[10px] md:text-md">نمایش همه</p>
+            <p className="text-base-content text-[10px] md:text-md">
+              نمایش همه
+            </p>
           </div>
           <hr className="w-full pb-2 md:pb-4 border-t-[#A0ADB8]" />
           <SliderProgram data={dataPro} />
         </div>
       </div>
 
-      <div className="px-2 md:px-6 mt-0 h-[120px] md:h-[240px] overflow-x-auto overflow-y-hidden ">
-        <div className="container mx-auto h-20 md:h-56 flex flex-col justify-center items-center">
+      <div className="px-2 md:px-6 mt-0 h-[280px] md:h-[260px] overflow-x-auto overflow-y-hidden ">
+        <div className="container mx-auto h-64 flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-4 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">هشتک های داغ</p>
-            <p className="text-base-content text-[10px] md:text-md">نمایش همه</p>
-          </div>
-          <hr className="w-full border-t-base-70" />
-          <div className="flex bg-gray-100 text-nowrap [&>*]:mr-1 [&>*]:text-[8px] md:[&>*]:text-[12px] md:[&>*]:mr-3 lg:[&>*]:text-[16px] lg:[&>*]:mr-10 md:[&>*]:mt-2 p-4 rounded overflow-hidden">
-            <p>#رئیس‌جمهور</p>
-            <p>#انتخابات-ایران</p>
-            <p>#انتخابات</p>
-            <p>#تشعیع-باشکوه</p>
-            <p>#رئیس‌جمهور</p>
-            <p>#نمایشگاه-کتاب-تهران</p>
-            <p>#فلسطین-غزه</p>
-            <p>#اخبار-دست-اول</p>
-            <p>#رئیس‌جمهور</p>
-          </div>
-          <div className="flex text-nowrap bg-gray-100 [&>*]:mr-1 [&>*]:text-[8px] md:[&>*]:text-[12px] md:[&>*]:mr-3 lg:[&>*]:text-[16px] lg:[&>*]:mr-10 p-4 rounded">
-            <p>#رئیس‌جمهور</p>
-            <p>#رئیس‌جمهور</p>
-            <p>#رئیس‌جمهور</p>
-            <p>#رئیس‌جمهور</p>
-            <p>#رئیس‌جمهور</p>
-            <p className="text-blue-500 text-base-content-slider mr-4">
-              بیشتر...
+            <p className="text-base-content text-[10px] md:text-md">
+              نمایش همه
             </p>
+          </div>
+          <hr className="w-full border-t-base-70 pb-6 overflow-hidden" />
+          <div className="flex flex-wrap gap-1 p-0">
+            {links.map((link, index) => (
+              <div key={index} className="p-1 md:p-2 bg-gray-100 ">
+                <Link
+                  href="#"
+                  className={`text-[10px] ${
+                    index === links?.length - 1
+                      ? "text-base-content-slider"
+                      : ""
+                  } md:text-md lg:text-lg xl:text-xl`}
+                >
+                  {link}
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
       </div>

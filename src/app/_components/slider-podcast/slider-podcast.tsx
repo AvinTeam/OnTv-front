@@ -103,7 +103,7 @@ export const SliderPodcast: React.FC<SliderProps> = ({ data }: SliderProps) => {
                       </div>
                     </div>
                     <div
-                      className={`cursor-pointer absolute bottom-0 top-[58px] md:top-[80px] right-[20px] left-0 size-8 md:size-12 rounded-[50%] transition-all bg-[#6E7174]`}
+                      className={`cursor-pointer absolute bottom-0 top-[58px] md:top-[80px] right-[20px] left-0 size-9 md:size-12 rounded-[50%] transition-all bg-[#6E7174]`}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

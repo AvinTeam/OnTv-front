@@ -25,10 +25,10 @@ export default function Privacy() {
             <p className="text-primary">حریم خصوصی</p>
           </div>
           <div className="mt-10">
-            <div className="font-bold md:text-[9px] text-input-text lg:text-[10px] xl:text-[16px] text-xl mb-5 sm:text-center sm:flex sm:justify-between">
+            <div className="font-bold text-[16px] text-input-text lg:text-[12px] xl:text-[16px] text-xl mb-5 sm:text-center sm:flex sm:justify-between">
               دسته بندی ها
             </div>
-            <ul className="[&>*]:text-base-content md:text-[9px]  lg:text-[10px] xl:text-[16px]">
+            <ul className="[&>*]:text-base-content md:text-[14px] xl:text-[16px]">
               <li className="mb-2">
                 <Link href={"/"}> سوالات متداول </Link>
               </li>

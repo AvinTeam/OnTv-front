@@ -53,8 +53,9 @@ export const Footer: React.FC = () => {
                   <Image
                     className="w-10 h-10 md:w-20 md:h-20"
                     alt="OnTVLogo"
-                    width={80}
-                    height={80}
+                    width={0}
+                    style={{ objectFit: "contain" }}
+                    height={0}
                     src={"/images/android-chrome-192x192.png"}
                   />
                   <p className="md:hidden mr-2 mt-2 md:text-2xl text-base-content-bg font-black mb-2">
@@ -62,7 +63,7 @@ export const Footer: React.FC = () => {
                   </p>
                 </div>
                 <div className="md:mt-3.5">
-                  <p className="hidden mr-3 md:block md:text-2xl text-base-content-bg font-black mb-0">
+                  <p className="hidden mr-0 md:block md:text-2xl text-base-content-bg font-black mb-0">
                     آن
                   </p>
                   <p className="text-nowrap text-sm md:text-md font-bold">
@@ -70,10 +71,10 @@ export const Footer: React.FC = () => {
                   </p>
                 </div>
               </div>
-              <div className="-mr-1 md:-mr-3 flex gap-3 md:gap-0 lg:gap-5 pt-2 md:pt-0 [&>*]:cursor-pointer">
+              <div className="flex gap-2 md:gap-0 lg:gap-3 pt-2 md:pt-0 [&>*]:cursor-pointer">
                 <span>
                   <svg
-                    className="w-4 h-4 md:w-9 md:h-6 lg:h-9 md:-ml-3 dark:text-input-text hover:dark:text-primary"
+                    className="w-4 h-4 md:w-9 md:h-5 lg:h-8 md:-ml-3 dark:text-input-text hover:dark:text-primary"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -90,7 +91,7 @@ export const Footer: React.FC = () => {
                 </span>
                 <span>
                   <svg
-                    className="w-4 h-4 md:w-9 md:h-6 lg:h-9 dark:text-input-text hover:dark:text-primary"
+                    className="w-4 h-4 md:w-9 md:h-5 lg:h-8 md:-ml-2 dark:text-input-text hover:dark:text-primary"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -107,7 +108,7 @@ export const Footer: React.FC = () => {
                 </span>
                 <span>
                   <svg
-                    className="w-4 h-4 md:w-9 md:h-6 lg:h-9  dark:text-input-text hover:dark:text-primary"
+                    className="w-4 h-4 md:w-9 md:h-5 lg:h-8 md:-ml-2  dark:text-input-text hover:dark:text-primary"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -125,7 +126,7 @@ export const Footer: React.FC = () => {
                 </span>
                 <span>
                   <svg
-                    className="w-4 h-4 md:w-9 md:h-6 lg:h-9  dark:text-input-text hover:dark:text-primary"
+                    className="w-4 h-4 md:w-9 md:h-5 lg:h-8 md:-ml-2 dark:text-input-text hover:dark:text-primary"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -143,7 +144,7 @@ export const Footer: React.FC = () => {
                 </span>
                 <span>
                   <svg
-                    className="w-4 h-4 md:w-9 md:h-6 lg:h-9  dark:text-input-text hover:dark:text-primary"
+                    className="w-4 h-4 md:w-9 md:h-5 lg:h-8 md:-ml-2  dark:text-input-text hover:dark:text-primary"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -243,34 +244,33 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* ================== bottom footer section ==================  */}
-    <div className="flex relative overflow-hidden">
-    <div className="flex absolute right-0-0 ml-0 justify-center items-center cursor-pointer container bg-[#6D6B6C] md:h-[52px] w-10 h-[34px] md:w-20 ">
-        <Image
+      <div className="flex relative overflow-hidden">
+        <div className="flex absolute right-0 ml-0 justify-center items-center cursor-pointer container bg-[#6D6B6C] md:h-[52px] w-10 h-[34px] md:w-16 ">
+          <Image
             src="/images/Icon.webp"
             width={0}
             height={0}
-            style={{objectFit: "contain"}}
+            style={{ objectFit: "contain" }}
             alt="arrow"
-            className="w-3 h-3 md:w-6 md:h-6 rotate-90"
+            className="w-3 h-3 md:w-[18px] md:h-6 rotate-90"
           />
         </div>
-      <div className="h-[25px] dark:bg-base-75 container py-4 md:py-0 md:h-[52px] flex justify-between items-center">
-       
-        <div className="container mx-auto flex md:mr-0 justify-between p-4 sm:h-full ">
-          <div className="-mr-4 md:mr-20 lg:mr-20 xl:mr-10 flex md:block justify-center w-full items-center text-xs md:text-sm h-full md:justify-end md:items-center">
-            © تمام حقوق برای آن محفوظ است.
+        <div className="flex absolute right-0 md:right-20 ml-0 md:mt-4 justify-center md:block w-full items-center text-xs md:text-sm h-full md:justify-end md:items-center">
+          © تمام حقوق برای آن محفوظ است.
+        </div>
+        <div className="h-[25px] dark:bg-base-75 mx-auto container py-4 md:py-0 md:h-[52px] flex justify-between items-center">
+          <div className="w-full flex md:mr-auto justify-between p-4 sm:h-full ">
+            <ul className="hidden text-xs text-nowrap md:flex justify-end items-center gap-4 mr-auto">
+              <li>آنلاین</li>
+              <li>کانال ها</li>
+              <li>زمان پخش</li>
+              <li>اخبار صوتی</li>
+              <li>ویژه ها</li>
+              <li>آرشیو محتوایی</li>
+            </ul>
           </div>
-          <ul className="hidden text-xs text-nowrap md:flex justify-end items-center gap-4">
-            <li>آنلاین</li>
-            <li>کانال ها</li>
-            <li>زمان پخش</li>
-            <li>اخبار صوتی</li>
-            <li>ویژه ها</li>
-            <li>آرشیو محتوایی</li>
-          </ul>
         </div>
       </div>
-    </div>
     </footer>
   );
 };
