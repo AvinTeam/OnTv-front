@@ -6,8 +6,36 @@
 
 html {
   font-family: var(--font-iransans);
+  scrollbar-width: thin;
+  scrollbar-color: #414042 #221d1f;
 }
 
 :lang(en) {
   font-family: var(--font-roboto);
+}
+
+::-webkit-scrollbar {
+  width: 7px !important;
+  height: 4px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: #414042;
+  border-radius: 55px !important;
+  margin: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #414042;
+  border-radius: 10px;
+  border: 2px solid #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #414042;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #414042 #221d1f;
 }

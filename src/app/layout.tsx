@@ -63,7 +63,7 @@ export default function RootLayout({
       dir="rtl"
       className={`${roboto.variable} ${iransans.variable} dark`}
     >
-      <body className="min-h-screen grid grid-rows-[78px_1fr_auto] bg-white dark:bg-base-75 dark:text-base-content">
+      <body className="min-h-screen grid grid-rows-[60px_1fr_auto] bg-white dark:bg-base-75 dark:text-base-content">
          {children}
        </body>
     </html>

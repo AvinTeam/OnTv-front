@@ -39,7 +39,7 @@ export default function Verify() {
         <p className="text-center text-[12px] cursor-pointer"> ارسال دوباره کد</p>
       </div>
       <div className="mr-auto flex justify-center items-center gap-1 cursor-pointer">
-        <Link href={"/signin?html"} className="text-sm">بازگشت</Link>
+        <Link href={"/signin"} className="text-sm">بازگشت</Link>
         <span>
           <Image src={"/images/icon.webp"} style={{objectFit:"contain"}} className="ml-3" alt="arrow" width={6} height={6} />
         </span>

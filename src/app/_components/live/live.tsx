@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import videojs from "video.js";
 import "video.js/dist/video-js.css";
 import VideoJS from "@/app/_components/video";
@@ -10,8 +10,6 @@ import logo2 from "../../../../public/images/logo/Group 949.png";
 import logo3 from "../../../../public/images/logo/Group 951.png";
 const Live = () => {
   const playerRef = React.useRef(null);
-  const [showText, setShowText] = useState<boolean>(false);
-
   const videoJsOptions1 = {
     autoplay: true,
     controls: true,
@@ -136,7 +134,7 @@ const Live = () => {
             </div>
 
             <Link
-              href={"/verify"}
+              href={"/show-on"}
               className="flex text-[7px] md:text-sm pointer-events-auto justify-center text-nowrap items-center text-primary-content hover:bg-box-slider-bg-text cursor-pointer ml-2 md:ml-4 border bottom-3 px-1 md:px-4 py-1 md:py-2 rounded-sm md:rounded-md "
             >
               جدول پخش

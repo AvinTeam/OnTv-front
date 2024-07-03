@@ -4,18 +4,20 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  async rewrites() {
-    const isProd = process.env.NODE_ENV === "production";
-    return isProd
-      ? [
-          {
-            source: "/about.html",
-            destination: "/about",
-          },
-        ]
-      : [];
-  },
   trailingSlash: true,
+
+  async rewrites() {
+    return [
+      {
+        source: "/",
+        destination: "/index.html",
+      },
+      {
+        source: "/:path*/",
+        destination: "/:path*.html",
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

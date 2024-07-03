@@ -2,8 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 export const Header: React.FC = () => {
   return (
-    <header className="mx-auto w-full to-80% md:to-40% bg-gradient-to-r from-gradient-second to-gradient-first overflow-auto">
-      <div className="container mx-auto grid grid-cols-[auto_auto] md:grid-cols-[auto_1fr_auto] justify-between items-center gap-4">
+    <header className="mx-auto w-full sticky top-0 z-[1000] to-80% md:to-40% h-full bg-gradient-to-r from-gradient-second to-gradient-first overflow-auto">
+      <div className="container mx-auto grid h-full grid-cols-[auto_auto] md:grid-cols-[auto_1fr_auto] justify-between items-center gap-4">
         {/* ================= mobole menue =============== */}
         <div className="md:hidden mr-2 bg-base-content-bg p-2 text-base-content rounded-md">
           <svg
@@ -22,11 +22,13 @@ export const Header: React.FC = () => {
             />
           </svg>
         </div>
-        <div className="flex ml-0 mr-4 h-[78px] w-20 py-2.5 justify-center items-center md:dark:bg-primary">
+        <div className="flex ml-0 mr-4 h-full overflow-hidden w-20 py-2.5 justify-center items-center md:dark:bg-primary">
           <Image
             alt="OnTVLogo"
-            width={60}
-            height={60}
+            width={0}
+            style={{objectFit: "contain"}}
+            className="w-12 h-12"
+            height={0}
             src={"/images/android-chrome-192x192.png"}
           />
         </div>
@@ -105,7 +107,7 @@ export const Header: React.FC = () => {
         </nav>
         <div className="hidden md:flex text-primary-content justify-end ml-4">
            <Link
-            href="/signin?html"
+            href="/signin"
             key={Math.random()}
             className="px-4 py-2 bg-transparent text-secondary-content hover:bg-base-content-slider border border-text-secondary-content border-spacing-1 text-black rounded-md hover:bg-gray-100"
           >
