@@ -148,7 +148,7 @@ const Live = () => {
           fallbackOptions={fallbackOptions2}
           onReady={handlePlayerReady}
         />
-        <div className="absolute group pointer-events-none row-auto left-auto rounded-b-xl mr-1 md:mr-2 -bottom-8 md:bottom-2 w-full h-20 bg-transparent">
+        <div className="absolute flex justify-between items-center group pointer-events-none row-auto left-auto rounded-b-xl mr-1 md:mr-2 -bottom-8 md:bottom-2 w-full h-20 bg-transparent">
           <div className="hidden md:flex flex-col justify-start items-start opacity-0 group-hover:opacity-100 transition-opacity duration-[2.5s] ease-in-out">
             <div className="flex justify-start items-center gap-1 md:gap-2">
               <Image
@@ -167,6 +167,12 @@ const Live = () => {
               در حال پخش / به سمت خدا / مجری نجم الدین شریعتی / ساعت 22 تا 24
             </p>
           </div>
+          <Link
+            href={"/show-on"}
+            className="flex text-[7px] md:text-sm pointer-events-auto justify-center text-nowrap items-center text-primary-content hover:bg-box-slider-bg-text cursor-pointer ml-2 md:ml-4 border mb-6 md:mb-0  px-1 md:px-4 py-1 md:py-2 rounded-sm md:rounded-md "
+          >
+            جدول پخش
+          </Link>
         </div>
       </div>
       <div className="relative group col-span-2 xl:col-span-1">
@@ -175,7 +181,7 @@ const Live = () => {
           fallbackOptions={fallbackOptions3}
           onReady={handlePlayerReady}
         />
-        <div className="absolute group pointer-events-none row-auto left-auto rounded-b-xl -bottom-8 mr-1 md:mr-2 md:bottom-2 w-full h-20 bg-transparent">
+        <div className="absolute flex justify-between items-center group pointer-events-none row-auto left-auto rounded-b-xl -bottom-8 mr-1 md:mr-2 md:bottom-2 w-full h-20 bg-transparent">
           <div className="hidden md:flex flex-col justify-start items-start opacity-0 group-hover:opacity-100 transition-opacity duration-[2.5s] ease-in-out">
             <div className="flex justify-start items-center gap-1 md:gap-2">
               <Image
@@ -194,6 +200,12 @@ const Live = () => {
               در حال پخش / به سمت خدا / مجری نجم الدین شریعتی / ساعت 22 تا 24
             </p>
           </div>
+          <Link
+            href={"/show-on"}
+            className="flex text-[7px] md:text-sm pointer-events-auto justify-center text-nowrap items-center text-primary-content hover:bg-box-slider-bg-text cursor-pointer ml-2 md:ml-4 border mb-6 md:mb-0 px-1 md:px-4 py-1 md:py-2 rounded-sm md:rounded-md "
+          >
+            جدول پخش
+          </Link>
         </div>
       </div>
     </div>

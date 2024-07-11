@@ -354,7 +354,7 @@ export default function HomePage() {
           </div>
           <hr className="w-full pb-4 border-t-[#A0ADB8]" />
           <div className="mt-5 flex flex-col xl:flex-row justify-between gap-10">
-            <div className="relative h-[170px] md:h-[350px] xl:h-[350px] mx-auto">
+            <Link href={"/show-on"} className="relative h-[170px] md:h-[350px] xl:h-[350px] mx-auto">
               <Image
                 alt="poster"
                 src={poster1}
@@ -377,9 +377,9 @@ export default function HomePage() {
                   32:68
                 </p>
               </div>
-            </div>
+            </Link>
             <div className="ml-auto flex flex-col justify-between items-center gap-4">
-              <div className="flex gap-4">
+              <Link href={"/show-on"} className="flex gap-4">
                 <Image
                   alt="poster"
                   src={poster2}
@@ -394,9 +394,9 @@ export default function HomePage() {
                     سردار دلها حاج قاسم سلیمانی
                   </p>
                 </div>
-              </div>
+              </Link>
 
-              <div className="flex gap-4">
+              <Link href={"/show-on"} className="flex gap-4">
                 <Image
                   alt="poster"
                   src={poster3}
@@ -411,9 +411,9 @@ export default function HomePage() {
                     سردار دلها حاج قاسم سلیمانی
                   </p>
                 </div>
-              </div>
+              </Link>
 
-              <div className="flex gap-4">
+              <Link href={"/show-on"} className="flex gap-4">
                 <Image
                   alt="poster"
                   src={poster4}
@@ -428,7 +428,7 @@ export default function HomePage() {
                     سردار دلها حاج قاسم سلیمانی
                   </p>
                 </div>
-              </div>
+              </Link>
             </div>
           </div>
         </div>

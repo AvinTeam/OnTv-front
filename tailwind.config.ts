@@ -12,7 +12,6 @@ export const tailwindColors: ColorObject = {
   "primary-content": "#FFFFFF",
   secondary: "#C7E24E",
   "secondary-content": "#FFFFFF",
-  "base-25": "#414042",
   "base-50": "#373737",
   "base-70": "#414042",
   "base-75": "#221D1F",

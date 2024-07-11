@@ -102,7 +102,7 @@ export default function ShowOn() {
             <hr />
             <div className="mt-4">
               {dataDec?.map((item, idx) => (
-                <div key={idx} className="rounded-md mb-2">
+                <div key={idx} className="rounded-md mb-2 overflow-auto">
                   <Image
                     src={item.path}
                     style={{ objectFit: "cover" }}

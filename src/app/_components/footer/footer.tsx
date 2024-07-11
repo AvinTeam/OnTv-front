@@ -44,7 +44,7 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* ==================  main footer section ================== */}
-      <div className="dark:bg-base-25 p-2 md:p-0">
+      <div className="dark:bg-base-70 p-2 md:p-0">
         <div className="container">
           <div className="flex justify-center md:grid md:grid-cols-5 gap-4 md:py-16">
             <div className="col-span-1 flex flex-col justify-center">

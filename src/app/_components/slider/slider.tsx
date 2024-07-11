@@ -9,6 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { SliderProps } from "./slider.types";
+import Link from "next/link";
 
 export const Slider: React.FC<SliderProps> = ({
   data,
@@ -31,7 +32,7 @@ export const Slider: React.FC<SliderProps> = ({
   };
 
   return (
-    <div className={`select-none container  h-full flex w-full  `}>
+    <div className={`select-none container h-full flex w-full`}>
       <Swiper
         ref={sliderRef}
         modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -70,7 +71,8 @@ export const Slider: React.FC<SliderProps> = ({
         {data?.map((item, idx) => (
           <div className="w-full h-full" key={idx}>
             <SwiperSlide>
-              <div
+              <Link 
+              href={"/show-on"}
                 className={`${
                   isDescription ? "swiper-item " : ""
                 } flex flex-col slide-content rounded-md justify-center items-center w-full h-full`}
@@ -165,7 +167,7 @@ export const Slider: React.FC<SliderProps> = ({
                     </div>
                   </div>
                 ) : null}
-              </div>
+              </Link>
             </SwiperSlide>
           </div>
         ))}

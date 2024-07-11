@@ -74,7 +74,7 @@ export const SliderPodcast: React.FC<SliderProps> = ({ data }: SliderProps) => {
               >
                 <div className={"relative w-full h-full "}>
                   <div
-                    className={`w-full h-full flex flex-col relative overflow-hidden rounded-lg`}
+                    className={`w-full h-full flex flex-col relative overflow-hidden rounded-md md:rounded-lg`}
                   >
                     <div
                       className={`w-[100%] h-[75px] md:h-[98px] relative overflow-hidden flex flex-col justify-center items-center`}

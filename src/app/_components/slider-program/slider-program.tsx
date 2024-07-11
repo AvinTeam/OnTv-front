@@ -9,6 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { SliderProps } from "./slider-program.types";
+import Link from "next/link";
 
 export const SliderProgram: React.FC<SliderProps> = ({ data }: SliderProps) => {
   const [isDisablePrev, setIsDisablePrev] = useState<boolean>(true);
@@ -67,11 +68,12 @@ export const SliderProgram: React.FC<SliderProps> = ({ data }: SliderProps) => {
         {data?.map((item, idx) => (
           <div className="w-full h-full" key={idx}>
             <SwiperSlide>
-              <div
+              <Link
+                href={"/show-on"}
                 className={`flex flex-col slide-content rounded-md justify-center items-center w-full h-full`}
               >
                 <div className="relative w-full h-full overflow-hidden">
-                  <div className={`w-full h-full relative overflow-hidden`}>
+                  <div className={`w-full h-full relative overflow-hidden rounded-md md:rounded-lg`}>
                     <Image
                       width={0}
                       height={0}
@@ -103,7 +105,7 @@ export const SliderProgram: React.FC<SliderProps> = ({ data }: SliderProps) => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </SwiperSlide>
           </div>
         ))}

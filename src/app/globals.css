@@ -7,7 +7,7 @@
 html {
   font-family: var(--font-iransans);
   scrollbar-width: thin;
-  scrollbar-color: #414042 #221d1f;
+  scrollbar-color: #292929 transparent;
 }
 
 :lang(en) {
@@ -17,25 +17,23 @@ html {
 ::-webkit-scrollbar {
   width: 7px !important;
   height: 4px !important;
+  border-radius: 20px !important;
 }
 
 ::-webkit-scrollbar-track {
-  background: #414042;
-  border-radius: 55px !important;
+  background: #221d1f;
+  border-radius: 20px !important;
   margin: 2px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #414042;
-  border-radius: 10px;
-  border: 2px solid #f1f1f1;
-}
+   border-radius: 20px !important;
+ }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #414042;
-}
+ }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #414042 #221d1f;
+  scrollbar-color: rgba(0,0,0,0.2) transparent;
 }
