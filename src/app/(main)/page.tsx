@@ -288,7 +288,7 @@ const podCast: any = [
 
 export default async function HomePage() {
 
-  const [lives, setLives] = useState<any>({});
+  const [lives, setLives] = useState<any>([]);
 
   // const [postsNews, postsIsSpecial, postsIsUnderLive, lives] = await Promise.all([
   //   getPostsNews(),
