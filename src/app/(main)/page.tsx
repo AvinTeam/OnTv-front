@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import "../globals.css";
 import Live from "../_components/live/live";
@@ -45,7 +45,7 @@ import pro3 from "../../../public/images/Mask Group 17.png";
 import Link from "next/link";
 import { API_URL } from "@/configs/global";
 import { PostUnderLive } from "@/types/types/post-under-live.interface";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 const links = [
   "#رئیس‌-جمهور",
   "#انتخابات-ایران",
@@ -286,29 +286,38 @@ const podCast: any = [
   },
 ];
 
+async function gatLives() {
+  const res = await fetch(`${API_URL}lives`, {
+    cache: "no-store",
+  });
+  if (res.ok) return res.json();
+}
+async function getPostsIsUnderLive() {
+  const res = await fetch(`${API_URL}post?is_under_live=1`, {
+    cache: "no-store",
+  });
+  if (res.ok) return res.json();
+}
+async function getPostsIsSpecial() {
+  const res = await fetch(`${API_URL}post?is_special=1`, {
+    cache: "no-store",
+  });
+  if (res.ok) return res.json();
+}
+async function getPostsNews() {
+  const res = await fetch(`${API_URL}post`, {
+    cache: "no-store",
+  });
+  if (res.ok) return res.json();
+}
+
 export default async function HomePage() {
-
-  const [lives, setLives] = useState<any>([]);
-
   // const [postsNews, postsIsSpecial, postsIsUnderLive, lives] = await Promise.all([
   //   getPostsNews(),
   //   getPostsIsSpecial(),
   //   getPostsIsUnderLive(),
   //   gatLives()
   // ]);
-  useEffect(() => {
-    // gatLives().then(s => {
-    //   setLives(s);
-    // })
-  })
-
-  const onLoad = () => {
-
-
-    //   getPostsNews(),
-    //   getPostsIsSpecial(),
-    //   getPostsIsUnderLive(),F
-  }
 
   // console.log(postsNews);
   // console.log(postsIsSpecial);
@@ -316,36 +325,17 @@ export default async function HomePage() {
   // console.log(lives.lives.data[0]);
   // console.log("test");
 
-  async function gatLives() {
-    const res = await fetch(`${API_URL}lives`, {
-      cache: "no-store",
-    });
-    if (res.ok) return res.json();
-  }
-  async function getPostsIsUnderLive() {
-    const res = await fetch(`${API_URL}post?is_under_live=1`, {
-      cache: "no-store",
-    });
-    if (res.ok) return res.json();
-  }
-  async function getPostsIsSpecial() {
-    const res = await fetch(`${API_URL}post?is_special=1`, {
-      cache: "no-store",
-    });
-    if (res.ok) return res.json();
-  }
-  async function getPostsNews() {
-    const res = await fetch(`${API_URL}post`, {
-      cache: "no-store",
-    });
-    if (res.ok) return res.json();
-  }
+
 
   return (
     <main className="flex flex-col w-full overflow-x-auto overflow-y-hidden">
       <div className="container mt-4 mb-4 px-2 xl:px-0 overflow-x-auto">
         {/* <Live data={lives?.lives?.data} /> */}
-        <Live data={lives?.lives?.data} />
+        <Live data={[
+          { url: 'https://picamo.arvanlive.ir/hls/ch1/ch1.m3u8', slug: '', order: 0, title: '', user: '' },
+          { url: 'https://picamo.arvanlive.ir/hls/ch1/ch2.m3u8', slug: '', order: 0, title: '', user: '' },
+          { url: 'https://picamo.arvanlive.ir/hls/ch1/ch3.m3u8', slug: '', order: 0, title: '', user: '' },
+        ]} />
       </div>
       {/* <div className="h-20 md:h-40 px-2 md:px-6 overflow-x-auto "> */}
       {/* <Slider data={postsIsUnderLive?.posts?.data} /> */}

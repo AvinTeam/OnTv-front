@@ -9,7 +9,7 @@ import logo from "../../../../public/images/android-chrome-192x192.png";
 import logo2 from "../../../../public/images/logo/Group 949.png";
 import logo3 from "../../../../public/images/logo/Group 951.png";
 import { Live as LivesType } from "@/types/lives/live.interface";
-const Live = ({ data }: { data: LivesType }) => {
+const Live = ({ data }: { data: LivesType[] }) => {
   const playerRef = React.useRef(null);
   const videoJsOptions1 = {
     autoplay: true,
@@ -19,7 +19,7 @@ const Live = ({ data }: { data: LivesType }) => {
     muted: true,
     sources: [
       {
-        src: data?.url,
+        src: data?.length > 0 ? data[0]?.url : '',
         type: "application/x-mpegURL",
       },
     ],
@@ -45,7 +45,7 @@ const Live = ({ data }: { data: LivesType }) => {
     muted: true,
     sources: [
       {
-        src: data?.url,
+        src: data?.length > 1 ? data[1]?.url : '',
         type: "application/x-mpegURL",
       },
     ],
@@ -71,7 +71,7 @@ const Live = ({ data }: { data: LivesType }) => {
     muted: true,
     sources: [
       {
-        src: "https://picamo.arvanlive.ir/hls/ch3/ch3.m3u8",
+        src: data?.length > 2 ? data[2]?.url : '',
         type: "application/x-mpegURL",
       },
     ],
