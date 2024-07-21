@@ -344,8 +344,8 @@ export default async function HomePage() {
           <Slider data={mobile} />
         </div>
       </div>
-      <div className="py-6 md:py-0 px-2 md:px-6 h-[450px] md:h-[480px] lg:h-[540px] xl:h-[620px] overflow-x-auto overflow-y-hidden ">
-        <div className="container mx-auto h-60 md:h-80 lg:h-96 xl:h-[540px] flex flex-col justify-center items-center">
+      <div className="py-6 md:py-0 px-2 md:px-6 h-[450px] md:h-[480px] lg:h-[360px] xl:h-[520px] overflow-x-auto overflow-y-hidden ">
+        <div className="container mx-auto h-60 md:h-80 lg:h-80 xl:h-[460px] flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">
               {" "}
