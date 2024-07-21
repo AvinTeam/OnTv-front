@@ -297,13 +297,13 @@ export default async function HomePage() {
   //   gatLives()
   // ]);
   useEffect(() => {
-    // onLoad();
-  })
-
-  const onLoad = () => {
     // gatLives().then(s => {
     //   setLives(s);
     // })
+  })
+
+  const onLoad = () => {
+
 
     //   getPostsNews(),
     //   getPostsIsSpecial(),
@@ -344,6 +344,7 @@ export default async function HomePage() {
   return (
     <main className="flex flex-col w-full overflow-x-auto overflow-y-hidden">
       <div className="container mt-4 mb-4 px-2 xl:px-0 overflow-x-auto">
+        {/* <Live data={lives?.lives?.data} /> */}
         <Live data={lives?.lives?.data} />
       </div>
       {/* <div className="h-20 md:h-40 px-2 md:px-6 overflow-x-auto "> */}
