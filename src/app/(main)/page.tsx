@@ -1,3 +1,5 @@
+'use client'
+
 import "../globals.css";
 import Live from "../_components/live/live";
 import { Slider } from "../_components/slider/slider";
@@ -43,6 +45,7 @@ import pro3 from "../../../public/images/Mask Group 17.png";
 import Link from "next/link";
 import { API_URL } from "@/configs/global";
 import { PostUnderLive } from "@/types/types/post-under-live.interface";
+import { useEffect, useState } from "react";
 const links = [
   "#رئیس‌-جمهور",
   "#انتخابات-ایران",
@@ -283,50 +286,66 @@ const podCast: any = [
   },
 ];
 
-async function gatLives() {
-  const res = await fetch(`${API_URL}lives`, {
-    cache: "no-store",
-  });
-  if (res.ok) return res.json();
-}
-async function getPostsIsUnderLive(){
-  const res = await fetch(`${API_URL}post?is_under_live=1`, {
-    cache: "no-store",
-  });
-  if (res.ok) return res.json();
-}
-async function getPostsIsSpecial() {
-  const res = await fetch(`${API_URL}post?is_special=1`, {
-    cache: "no-store",
-  });
-  if (res.ok) return res.json();
-}
-async function getPostsNews() {
-  const res = await fetch(`${API_URL}post`, {
-    cache: "no-store",
-  });
-  if (res.ok) return res.json();
-}
-
 export default async function HomePage() {
-  const [postsNews, postsIsSpecial, postsIsUnderLive, lives] = await Promise.all([
-    getPostsNews(),
-    getPostsIsSpecial(),
-    getPostsIsUnderLive(),
-    gatLives()
-  ]);
+
+  const [lives, setLives] = useState<any>({});
+
+  // const [postsNews, postsIsSpecial, postsIsUnderLive, lives] = await Promise.all([
+  //   getPostsNews(),
+  //   getPostsIsSpecial(),
+  //   getPostsIsUnderLive(),
+  //   gatLives()
+  // ]);
+  useEffect(() => {
+    onLoad();
+  })
+
+  const onLoad = async () => {
+    setLives(await gatLives());
+
+    //   getPostsNews(),
+    //   getPostsIsSpecial(),
+    //   getPostsIsUnderLive(),F
+  }
+
   // console.log(postsNews);
   // console.log(postsIsSpecial);
-  console.log(postsIsUnderLive?.posts?.data);
+  // console.log(postsIsUnderLive?.posts?.data);
   // console.log(lives.lives.data[0]);
-  console.log("test");
+  // console.log("test");
+
+  async function gatLives() {
+    const res = await fetch(`${API_URL}lives`, {
+      cache: "no-store",
+    });
+    if (res.ok) return res.json();
+  }
+  async function getPostsIsUnderLive() {
+    const res = await fetch(`${API_URL}post?is_under_live=1`, {
+      cache: "no-store",
+    });
+    if (res.ok) return res.json();
+  }
+  async function getPostsIsSpecial() {
+    const res = await fetch(`${API_URL}post?is_special=1`, {
+      cache: "no-store",
+    });
+    if (res.ok) return res.json();
+  }
+  async function getPostsNews() {
+    const res = await fetch(`${API_URL}post`, {
+      cache: "no-store",
+    });
+    if (res.ok) return res.json();
+  }
+
   return (
     <main className="flex flex-col w-full overflow-x-auto overflow-y-hidden">
       <div className="container mt-4 mb-4 px-2 xl:px-0 overflow-x-auto">
-        <Live data={lives?.lives?.data}/>
+        <Live data={lives?.lives?.data} />
       </div>
       {/* <div className="h-20 md:h-40 px-2 md:px-6 overflow-x-auto "> */}
-        {/* <Slider data={postsIsUnderLive?.posts?.data} /> */}
+      {/* <Slider data={postsIsUnderLive?.posts?.data} /> */}
       {/* </div> */}
 
       <div className="py-6 md:pt-3 px-2 md:px-6 h-[450px] md:h-[580px] lg:h-[440px] xl:h-[620px] overflow-x-auto overflow-y-hidden ">
@@ -522,7 +541,7 @@ export default async function HomePage() {
         </div>
       </div> */}
       {/* ======================== THE END OF top of month section ============================== */}
-{/* 
+      {/* 
       <div className="mt-2 md:mt-6 py-6 md:py-10 bg-base-50 px-2 md:px-6 h-[300px] md:h-[400px] overflow-x-auto overflow-y-hidden ">
         <div className="container w-[100%]">
           <p className="text-base-content text-[10px] md:text-md lg:text-sm text-nowrap flex justify-end -mb-6 mr-auto w-[100%] px-2">
@@ -616,11 +635,10 @@ export default async function HomePage() {
               <div key={index} className="p-1 md:p-2 bg-gray-100 ">
                 <Link
                   href="#"
-                  className={`text-[10px] ${
-                    index === links?.length - 1
-                      ? "text-base-content-slider"
-                      : ""
-                  } md:text-md lg:text-lg xl:text-xl`}
+                  className={`text-[10px] ${index === links?.length - 1
+                    ? "text-base-content-slider"
+                    : ""
+                    } md:text-md lg:text-lg xl:text-xl`}
                 >
                   {link}
                 </Link>
