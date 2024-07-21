@@ -5,8 +5,8 @@ export const Footer: React.FC = () => {
   return (
     <footer className="overflow-x-auto overflow-y-hidden">
       {/* ==================  top footer section ================== */}
-      <div className="bg-base-70 drop-shadow-md pt-2 pb-3 md:py-0 flex justify-center items-center">
-        <div className="container bg-base-70 px-4">
+      <div className="bg-[#000000] drop-shadow-md pt-2 pb-3 md:py-0 flex justify-center items-center">
+        <div className="container bg-[#000000] px-4">
           <div className="py-2 md:py-3 lg:py-0 flex flex-col lg:grid lg:grid-cols-12 h-[100px] md:h-[141px] gap-2 items-center justify-between w-full">
             <div className="flex flex-col md:flex-row  lg:col-span-4 pr-2.5 md:pr-0 h-full items-center md:-mt-4">
               <Image
@@ -44,7 +44,7 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* ==================  main footer section ================== */}
-      <div className="dark:bg-base-70 p-2 md:p-0">
+      <div className="dark:bg-[#000000] p-2 md:p-0">
         <div className="container">
           <div className="flex justify-center md:grid md:grid-cols-5 gap-4 md:py-16">
             <div className="col-span-1 flex flex-col justify-center">

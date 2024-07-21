@@ -8,7 +8,8 @@ import Link from "next/link";
 import logo from "../../../../public/images/android-chrome-192x192.png";
 import logo2 from "../../../../public/images/logo/Group 949.png";
 import logo3 from "../../../../public/images/logo/Group 951.png";
-const Live = () => {
+import { Live as LivesType } from "@/types/lives/live.interface";
+const Live = ({ data }: { data: LivesType }) => {
   const playerRef = React.useRef(null);
   const videoJsOptions1 = {
     autoplay: true,
@@ -18,7 +19,7 @@ const Live = () => {
     muted: true,
     sources: [
       {
-        src: "https://picamo.arvanlive.ir/hls/ch1/ch1.m3u8",
+        src: data?.url,
         type: "application/x-mpegURL",
       },
     ],
@@ -31,7 +32,7 @@ const Live = () => {
     muted: true,
     sources: [
       {
-        src: "https://nehzatmedia.arvanvod.ir/R7qEPk4Xey/joW4p7bJeM/h_,110_200,182_400,274_800,366_1500,548_2500,k.mp4.list/master.m3u8",
+        src: data?.url,
         type: "application/x-mpegURL",
       },
     ],
@@ -44,7 +45,7 @@ const Live = () => {
     muted: true,
     sources: [
       {
-        src: "https://picamo.arvanlive.ir/hls/ch2/ch2.m3u8",
+        src: data?.url,
         type: "application/x-mpegURL",
       },
     ],

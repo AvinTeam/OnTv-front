@@ -41,6 +41,8 @@ import pro1 from "../../../public/images/Mask Group 16.png";
 import pro2 from "../../../public/images/Mask Group 15.png";
 import pro3 from "../../../public/images/Mask Group 17.png";
 import Link from "next/link";
+import { API_URL } from "@/configs/global";
+import { PostUnderLive } from "@/types/types/post-under-live.interface";
 const links = [
   "#رئیس‌-جمهور",
   "#انتخابات-ایران",
@@ -281,16 +283,85 @@ const podCast: any = [
   },
 ];
 
-export default function HomePage() {
+async function gatLives() {
+  const res = await fetch(`${API_URL}lives`, {
+    cache: "no-store",
+  });
+  if (res.ok) return res.json();
+}
+async function getPostsIsUnderLive(){
+  const res = await fetch(`${API_URL}post?is_under_live=1`, {
+    cache: "no-store",
+  });
+  if (res.ok) return res.json();
+}
+async function getPostsIsSpecial() {
+  const res = await fetch(`${API_URL}post?is_special=1`, {
+    cache: "no-store",
+  });
+  if (res.ok) return res.json();
+}
+async function getPostsNews() {
+  const res = await fetch(`${API_URL}post`, {
+    cache: "no-store",
+  });
+  if (res.ok) return res.json();
+}
+
+export default async function HomePage() {
+  const [postsNews, postsIsSpecial, postsIsUnderLive, lives] = await Promise.all([
+    getPostsNews(),
+    getPostsIsSpecial(),
+    getPostsIsUnderLive(),
+    gatLives()
+  ]);
+  // console.log(postsNews);
+  // console.log(postsIsSpecial);
+  console.log(postsIsUnderLive?.posts?.data);
+  // console.log(lives.lives.data[0]);
+  console.log("test");
   return (
     <main className="flex flex-col w-full overflow-x-auto overflow-y-hidden">
       <div className="container mt-4 mb-4 px-2 xl:px-0 overflow-x-auto">
-        <Live />
+        <Live data={lives?.lives?.data}/>
       </div>
-      <div className="h-20 md:h-40 px-2 md:px-6 overflow-x-auto ">
-        <Slider data={data} />
+      {/* <div className="h-20 md:h-40 px-2 md:px-6 overflow-x-auto "> */}
+        {/* <Slider data={postsIsUnderLive?.posts?.data} /> */}
+      {/* </div> */}
+
+      <div className="py-6 md:pt-3 px-2 md:px-6 h-[450px] md:h-[580px] lg:h-[440px] xl:h-[620px] overflow-x-auto overflow-y-hidden ">
+        <div className="container mx-auto h-60 md:h-80 lg:h-96 xl:h-[540px] flex flex-col justify-center items-center">
+          <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
+            <p className="text-primary text-sm md:text-xl">
+              {" "}
+              روی آن تن{" "}
+            </p>
+            <p className="text-base-content text-[10px] md:text-md lg:text-sm">
+              نمایش همه
+            </p>
+          </div>
+          <hr className="w-full pb-0 border-t-base-70" />
+          <Slider data={mobile} />
+        </div>
       </div>
-      <div className="mt-4 mb-2 md:mb-6 md:mt-16 py-6 md:py-10 bg-base-50 px-2 md:px-6 h-[270px] md:h-[440px] overflow-x-auto overflow-y-hidden ">
+      <div className="py-6 md:py-0 px-2 md:px-6 h-[450px] md:h-[480px] lg:h-[540px] xl:h-[620px] overflow-x-auto overflow-y-hidden ">
+        <div className="container mx-auto h-60 md:h-80 lg:h-96 xl:h-[540px] flex flex-col justify-center items-center">
+          <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
+            <p className="text-primary text-sm md:text-xl">
+              {" "}
+              اتاق خبر{" "}
+            </p>
+            <p className="text-base-content text-[10px] md:text-md lg:text-sm">
+              نمایش همه
+            </p>
+          </div>
+          <hr className="w-full pb-2 border-t-base-70" />
+          <Slider data={mobile} />
+        </div>
+      </div>
+
+
+      <div className="mt-4 mb-2 md:mb-6 md:mt-16 py-6 md:py-10 bg-[#000000] px-2 md:px-6 h-[270px] md:h-[440px] overflow-x-auto overflow-y-hidden ">
         <div className="container mx-auto h-44 md:h-80 flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">ویژه ها</p>
@@ -328,7 +399,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      <div className="mt-2 md:mt-6 py-6 md:py-10 bg-base-50 px-2 md:px-6 h-[250px] md:h-[440px] overflow-x-auto overflow-y-hidden ">
+      <div className="mt-2 md:mt-6 py-6 md:py-10 bg-[#000000] px-2 md:px-6 h-[250px] md:h-[440px] overflow-x-auto overflow-y-hidden ">
         <div className="container mx-auto h-36 md:h-80 flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">جدید ترین اخبار</p>
@@ -341,7 +412,7 @@ export default function HomePage() {
         </div>
       </div>
       {/* ========================documentry section ============================== */}
-      <div className="py-6 md:py-10 bg-[#4A4A4A] px-2 md:px-6 h-[600px] md:h-[880px] lg:h-[880px] xl:h-[540px] overflow-x-auto overflow-y-hidden ">
+      {/* <div className="py-6 md:py-10 bg-[#4A4A4A] px-2 md:px-6 h-[600px] md:h-[880px] lg:h-[880px] xl:h-[540px] overflow-x-auto overflow-y-hidden ">
         <div className="container">
           <div className="flex justify-between px-4 mb-4 items-center">
             <p className="text-primary text-sm md:text-xl">
@@ -354,7 +425,10 @@ export default function HomePage() {
           </div>
           <hr className="w-full pb-4 border-t-[#A0ADB8]" />
           <div className="mt-5 flex flex-col xl:flex-row justify-between gap-10">
-            <Link href={"/show-on"} className="relative h-[170px] md:h-[350px] xl:h-[350px] mx-auto">
+            <Link
+              href={"/show-on"}
+              className="relative h-[170px] md:h-[350px] xl:h-[350px] mx-auto"
+            >
               <Image
                 alt="poster"
                 src={poster1}
@@ -432,10 +506,10 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* ======================== THE END OF documentry section ============================== */}
       {/* ========================  top of month section ============================== */}
-      <div className="py-6 md:py-10 px-2 md:px-6 h-[250px] md:h-[440px] overflow-x-auto overflow-y-hidden ">
+      {/* <div className="py-6 md:py-10 px-2 md:px-6 h-[250px] md:h-[440px] overflow-x-auto overflow-y-hidden ">
         <div className="container mx-auto h-36 md:h-80 flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl"> برترین های ماه</p>
@@ -446,9 +520,9 @@ export default function HomePage() {
           <hr className="w-full pb-4 border-t-base-70" />
           <Slider data={finalyData} isDescription />
         </div>
-      </div>
+      </div> */}
       {/* ======================== THE END OF top of month section ============================== */}
-
+{/* 
       <div className="mt-2 md:mt-6 py-6 md:py-10 bg-base-50 px-2 md:px-6 h-[300px] md:h-[400px] overflow-x-auto overflow-y-hidden ">
         <div className="container w-[100%]">
           <p className="text-base-content text-[10px] md:text-md lg:text-sm text-nowrap flex justify-end -mb-6 mr-auto w-[100%] px-2">
@@ -494,9 +568,9 @@ export default function HomePage() {
             />
           </div>
         </div>
-      </div>
+      </div> */}
       {/* ============== START mobile section ============ */}
-      <div className="py-6 md:py-10 px-2 md:px-6 h-[350px] md:h-[480px] lg:h-[440px] xl:h-[520px] overflow-x-auto overflow-y-hidden ">
+      {/* <div className="py-6 md:py-10 px-2 md:px-6 h-[350px] md:h-[480px] lg:h-[440px] xl:h-[520px] overflow-x-auto overflow-y-hidden ">
         <div className="container mx-auto h-60 md:h-80 lg:h-80 xl:h-[440px] flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">
@@ -510,10 +584,10 @@ export default function HomePage() {
           <hr className="w-full pb-4 border-t-base-70" />
           <Slider data={mobile} />
         </div>
-      </div>
+      </div> */}
       {/* ============== THE END OF mobile section ============ */}
 
-      <div className="mt-2 md:mt-6 py-0 md:pt-4 xl:pt-7 md:pb-4 bg-base-50 px-2 md:px-6 h-[190px] md:h-[240px] lg:h-[300px] overflow-x-auto overflow-y-hidden ">
+      {/* <div className="mt-2 md:mt-6 py-0 md:pt-4 xl:pt-7 md:pb-4 bg-base-50 px-2 md:px-6 h-[190px] md:h-[240px] lg:h-[300px] overflow-x-auto overflow-y-hidden ">
         <div className="container mx-auto h-36 md:h-44 lg:h-44 flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-2 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">
@@ -526,7 +600,7 @@ export default function HomePage() {
           <hr className="w-full pb-2 md:pb-4 border-t-[#A0ADB8]" />
           <SliderProgram data={dataPro} />
         </div>
-      </div>
+      </div> */}
 
       <div className="px-2 md:px-6 mt-0 h-[280px] md:h-[260px] overflow-x-auto overflow-y-hidden ">
         <div className="container mx-auto h-64 flex flex-col justify-center items-center">

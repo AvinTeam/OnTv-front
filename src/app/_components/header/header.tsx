@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 export const Header: React.FC = () => {
   return (
-    <header className="mx-auto w-full sticky top-0 z-[1000] to-80% md:to-40% h-full bg-gradient-to-r from-gradient-second to-gradient-first overflow-auto">
+    <header className="mx-auto w-full sticky top-0 z-[1000] bg-[#000099] overflow-auto">
       <div className="container mx-auto grid h-full grid-cols-[auto_auto] md:grid-cols-[auto_1fr_auto] justify-between items-center gap-4">
         {/* ================= mobole menue =============== */}
         <div className="md:hidden mr-2 bg-base-content-bg p-2 text-base-content rounded-md">
@@ -36,14 +36,14 @@ export const Header: React.FC = () => {
           <ul className="flex justify-between gap-4 text-primary-content">
             <li className="mr-4">
               <Link href="#" className="hover:underline">
-                آن لاین
+                صفحه نخست  
               </Link>
             </li>
-            {/* <li className="flex justify-center items-center gap-1">
+            <li className="flex justify-center items-center gap-1">
               <Link href="#" className="hover:underline">
-                کانال ها
+                  تولیدات  
               </Link>
-              <svg
+              {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="11.468"
                 height="7.442"
@@ -55,14 +55,14 @@ export const Header: React.FC = () => {
                   fill-rule="evenodd"
                   data-name="Path 36"
                 />
-              </svg>{" "}
+              </svg>{" "} */}
             </li>
             <li>
               <Link href="#" className="hover:underline">
-                زمان پخش
+                آرشیو  
               </Link>
             </li>
-            <li className="flex justify-center items-center gap-1">
+            {/* <li className="flex justify-center items-center gap-1">
               <Link href="#" className="hover:underline">
                 اخبار صوتی
               </Link>
@@ -79,15 +79,20 @@ export const Header: React.FC = () => {
                   data-name="Path 36"
                 />
               </svg>{" "}
+            </li> */}
+            <li>
+              <Link href="#" className="hover:underline">
+                درباره ما
+              </Link>
             </li>
             <li>
               <Link href="#" className="hover:underline">
-                ویژه ها
+                ارتباط با ما
               </Link>
             </li>
-            <li className="flex justify-center items-center gap-1">
+            {/* <li className="flex justify-center items-center gap-1">
               <Link href="#" className="hover:underline">
-                آرشیو محتوای
+                   
               </Link>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +107,7 @@ export const Header: React.FC = () => {
                   data-name="Path 36"
                 />
               </svg>{" "}
-            </li> */}
+            </li>  */}
           </ul>
         </nav>
         <div className="hidden md:flex text-primary-content justify-end ml-4">
