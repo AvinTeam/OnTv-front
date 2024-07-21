@@ -4,20 +4,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  trailingSlash: true,
-
-  async rewrites() {
-    return [
-      {
-        source: "/",
-        destination: "/index.html",
-      },
-      {
-        source: "/:path*/",
-        destination: "/:path*.html",
-      },
-    ];
-  },
+  // trailingSlash: true,
 };
 
 module.exports = nextConfig;
