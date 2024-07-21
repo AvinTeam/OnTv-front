@@ -297,11 +297,13 @@ export default async function HomePage() {
   //   gatLives()
   // ]);
   useEffect(() => {
-    onLoad();
+    // onLoad();
   })
 
-  const onLoad = async () => {
-    setLives(await gatLives());
+  const onLoad = () => {
+    // gatLives().then(s => {
+    //   setLives(s);
+    // })
 
     //   getPostsNews(),
     //   getPostsIsSpecial(),
