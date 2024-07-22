@@ -326,7 +326,7 @@ export default async function HomePage() {
 
 
   return (
-    <main className="flex flex-col w-full overflow-x-auto overflow-y-hidden">
+    <main className="flex flex-col w-full overflow-x-auto overflow-y-hidden bg-[#000000]">
       <div className="container mt-4 mb-4 px-2 xl:px-0 overflow-x-auto">
         <Live data={lives?.lives?.data} />
         {/* <Live data={[
@@ -339,7 +339,7 @@ export default async function HomePage() {
       {/* <Slider data={postsIsUnderLive?.posts?.data} /> */}
       {/* </div> */}
 
-      <div className="py-6 md:pt-3 px-2 md:px-6 h-[450px] md:h-[580px] lg:h-[440px] xl:h-[620px] overflow-x-auto overflow-y-hidden ">
+      <div className="py-6 md:pt-3 px-2 md:px-6 h-[450px] bg-[#000000] md:h-[580px] lg:h-[440px] xl:h-[620px] overflow-x-auto overflow-y-hidden ">
         <div className="container mx-auto h-60 md:h-80 lg:h-96 xl:h-[540px] flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">
@@ -354,7 +354,7 @@ export default async function HomePage() {
           <Slider data={mobile} />
         </div>
       </div>
-      <div className="py-6 md:py-0 px-2 md:px-6 h-[450px] md:h-[480px] lg:h-[360px] xl:h-[520px] overflow-x-auto overflow-y-hidden ">
+      <div className="py-6 md:py-0 px-2 md:px-6 h-[450px] md:h-[480px] lg:h-[360px] bg-[#000000] xl:h-[520px] overflow-x-auto overflow-y-hidden ">
         <div className="container mx-auto h-60 md:h-80 lg:h-80 xl:h-[460px] flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">
@@ -409,7 +409,7 @@ export default async function HomePage() {
           </div>
         </div>
       </div>
-      <div className="mt-2 md:mt-6 py-6 md:py-10 bg-[#000000] px-2 md:px-6 h-[250px] md:h-[440px] overflow-x-auto overflow-y-hidden ">
+      {/* <div className="mt-2 md:mt-6 py-6 md:py-10 bg-[#000000] px-2 md:px-6 h-[250px] md:h-[440px] overflow-x-auto overflow-y-hidden ">
         <div className="container mx-auto h-36 md:h-80 flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">جدید ترین اخبار</p>
@@ -420,7 +420,7 @@ export default async function HomePage() {
           <hr className="w-full pb-4 border-t-[#A0ADB8]" />
           <Slider data={dataDec} isDescription />
         </div>
-      </div>
+      </div> */}
       {/* ========================documentry section ============================== */}
       {/* <div className="py-6 md:py-10 bg-[#4A4A4A] px-2 md:px-6 h-[600px] md:h-[880px] lg:h-[880px] xl:h-[540px] overflow-x-auto overflow-y-hidden ">
         <div className="container">
@@ -612,7 +612,7 @@ export default async function HomePage() {
         </div>
       </div> */}
 
-      <div className="px-2 md:px-6 mt-0 h-[280px] md:h-[260px] overflow-x-auto overflow-y-hidden ">
+     {/* <div className="px-2 md:px-6 mt-0 h-[280px] md:h-[260px] overflow-x-auto overflow-y-hidden ">
         <div className="container mx-auto h-64 flex flex-col justify-center items-center">
           <div className="flex w-full justify-between pt-8 my-3 md:pt-4 md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">هشتک های داغ</p>
@@ -637,7 +637,7 @@ export default async function HomePage() {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
     </main>
   );
 }
