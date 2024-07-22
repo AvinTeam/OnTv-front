@@ -1,5 +1,3 @@
-"use client"
-
 import "../globals.css";
 import Live from "../_components/live/live";
 import { Slider } from "../_components/slider/slider";
@@ -312,12 +310,12 @@ async function getPostsNews() {
 }
 
 export default async function HomePage() {
-  // const [postsNews, postsIsSpecial, postsIsUnderLive, lives] = await Promise.all([
-  //   getPostsNews(),
-  //   getPostsIsSpecial(),
-  //   getPostsIsUnderLive(),
-  //   gatLives()
-  // ]);
+  const [postsNews, postsIsSpecial, postsIsUnderLive, lives] = await Promise.all([
+    getPostsNews(),
+    getPostsIsSpecial(),
+    getPostsIsUnderLive(),
+    gatLives()
+  ]);
 
   // console.log(postsNews);
   // console.log(postsIsSpecial);
@@ -330,12 +328,12 @@ export default async function HomePage() {
   return (
     <main className="flex flex-col w-full overflow-x-auto overflow-y-hidden">
       <div className="container mt-4 mb-4 px-2 xl:px-0 overflow-x-auto">
-        {/* <Live data={lives?.lives?.data} /> */}
-        <Live data={[
+        <Live data={lives?.lives?.data} />
+        {/* <Live data={[
           { url: 'https://picamo.arvanlive.ir/hls/ch1/ch1.m3u8', slug: '', order: 0, title: '', user: '' },
           { url: 'https://picamo.arvanlive.ir/hls/ch1/ch2.m3u8', slug: '', order: 0, title: '', user: '' },
           { url: 'https://picamo.arvanlive.ir/hls/ch1/ch3.m3u8', slug: '', order: 0, title: '', user: '' },
-        ]} />
+        ]} /> */}
       </div>
       {/* <div className="h-20 md:h-40 px-2 md:px-6 overflow-x-auto "> */}
       {/* <Slider data={postsIsUnderLive?.posts?.data} /> */}

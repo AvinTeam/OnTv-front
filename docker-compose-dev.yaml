@@ -1,0 +1,16 @@
+services:
+  app:
+    container_name: ontv-front
+    image: ontv/frontend
+    hostname: ontv-front
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - 3000:3000
