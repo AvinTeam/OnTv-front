@@ -6,19 +6,21 @@
   display: none !important;
 }
 .swiper-button-next{
-  width: 40px !important;
-  height: 80px !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 25px !important;
   opacity: 0.7 !important;
   margin-left: -8px !important;
-  margin-top: -40px !important;
+  margin-top: -27px !important;
 }
 .swiper-button-prev{
-  width: 40px !important;
-  height: 80px !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 25px !important;
   opacity: 0.7 !important;
   margin-right: -8px !important;
   margin-right: -8px !important;
-  margin-top: -40px !important;
+  margin-top: -27px !important;
 }
 .pod{
   margin-top: -42px !important;

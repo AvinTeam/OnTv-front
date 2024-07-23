@@ -46,14 +46,18 @@ export const Slider: React.FC<SliderProps> = ({
             spaceBetween: 8,
           },
           320: {
-            slidesPerView: displayCount === "eight" ? 2.5 : 1.5,
+            slidesPerView: displayCount === "eight" ? 3 : 1.5,
+            spaceBetween: 8,
+          },
+          437: {
+            slidesPerView: displayCount === "eight" ? 4 : 1.5,
             spaceBetween: 8,
           },
           768: {
             slidesPerView: 4,
             spaceBetween: 8,
           },
-          1024: {
+          984: {
             slidesPerView: displayCount === "eight" ? 6 : 4,
             spaceBetween: 8,
           },
@@ -76,7 +80,7 @@ export const Slider: React.FC<SliderProps> = ({
           <div className="hidden md:block">
             {!isDisablePrev && (
               <div
-                className={`hiddeh swiper-button-prev bg-[#000000] rounded-[3px] transition-all`}
+                className={`hiddeh h-[100px] swiper-button-prev bg-[#000000] rounded-[3px] transition-all`}
                 onClick={handlePrev}
               >
                 <Image

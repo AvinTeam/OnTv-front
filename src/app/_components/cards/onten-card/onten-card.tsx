@@ -27,7 +27,7 @@ export const OntenCard: React.FC<OntenCardProps> = ({
               className="w-full h-full rounded-md overflow-auto"
             />
           </div>
-          <div className=" text-[11px] p-1 opacity-0 md:group-hover:opacity-[1] flex absolute top-0 right-0 font-light z-30 bottom-1 left-0 hover:transition hover:duration-[0.3s] ease-in-out  items-end text-white">
+          <div className=" text-[11px] p-1 opacity-0 group-hover:opacity-[1] flex absolute top-0 right-0 font-light z-30 bottom-1 left-0 hover:transition hover:duration-[0.3s] ease-in-out  items-end text-white">
             <div className="flex flex-col gap-1">
               <div
                 className="h-[20px] w-[70px] rounded-[500px] flex justify-around items-center font-bold"
@@ -69,8 +69,8 @@ export const OntenCard: React.FC<OntenCardProps> = ({
             </div>
           </div>
           <div
-            className="opacity-0 md:group-hover:opacity-[1] rounded-md overflow-auto absolute top-0  transition duration-[0.3s] ease-in-out right-0 bottom-0 left-0 z-10 "
-            style={{ backgroundColor: "rgba(41, 41, 41, .7)" }}
+            className="opacity-0 group-hover:opacity-[1] rounded-md overflow-auto absolute top-0  transition duration-[0.3s] ease-in-out right-0 bottom-0 left-0 z-10 "
+            style={{ background: "linear-gradient(180deg,transparent,rgba(0,0,0,.8))" }}
           ></div>
         </Link>
          <div className="w-full h-[15%] text-white text-[10px] font-light md:text-[11px] xl:text-[14px]">

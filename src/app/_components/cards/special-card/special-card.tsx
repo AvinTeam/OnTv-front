@@ -12,8 +12,11 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({
 }) => {
   return (
     <>
-      <div className="w-full h-full">
-        <Link href={"#"} className="group w-full relative">
+      <div className="w-full h-full flex flex-col gap-2">
+        <Link
+          href={"#"}
+          className="group w-full h-[95%]  relative"
+        >
           <div className=" w-full h-full group">
             <Image
               src={path}
@@ -24,14 +27,15 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({
               className="w-full h-full rounded-md overflow-auto"
             />
           </div>
-          <div className=" text-[11px] p-1 opacity-0 md:group-hover:opacity-[1] flex absolute top-0 right-0 font-light z-30 bottom-1 left-0 hover:transition hover:duration-[0.3s] ease-in-out  items-end text-white">
+          <div className=" text-[11px] p-1 opacity-0 group-hover:opacity-[1] flex absolute top-0 right-0 font-light z-30 bottom-1 left-0 hover:transition hover:duration-[0.3s] ease-in-out  items-end text-white">
             <div className="flex flex-col gap-1">
               <div
-                className="h-[22px] w-[70px] rounded-[500px] text-[10px] flex justify-around items-center content-center font-bold"
+                className="h-[20px] w-[70px] rounded-[500px] flex justify-around items-center font-bold"
                 style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
               >
                 <svg
                   fill="#bababa"
+
                   height="20px"
                   width="20px"
                   version="1.1"
@@ -61,12 +65,12 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({
                 12,234
               </div>
               <div>سیاسی - اجتماعی</div>
-              <p>مراسم شهدای خدمت</p>
+              <p>خبر های روز</p>
             </div>
           </div>
           <div
-            className="opacity-0 md:group-hover:opacity-[1] rounded-md overflow-auto absolute top-0  transition duration-[0.3s] ease-in-out right-0 bottom-0 left-0 z-10 "
-            style={{ backgroundColor: "rgba(41, 41, 41, .7)" }}
+            className="opacity-0 group-hover:opacity-[1] rounded-md overflow-auto absolute top-0  transition duration-[0.3s] ease-in-out right-0 bottom-0 left-0 z-10 "
+            style={{ background: "linear-gradient(180deg,transparent,rgba(0,0,0,.8))" }}
           ></div>
         </Link>
       </div>
