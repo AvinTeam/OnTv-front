@@ -339,41 +339,23 @@ export default async function HomePage() {
       {/* <Slider data={postsIsUnderLive?.posts?.data} /> */}
       {/* </div> */}
 
-      <div className="py-6 md:pt-3 px-2 md:px-6 h-[450px] bg-[#000000] md:h-[580px] lg:h-[440px] xl:h-[620px] overflow-x-auto overflow-y-hidden ">
-        <div className="container mx-auto h-60 md:h-80 lg:h-96 xl:h-[540px] flex flex-col justify-center items-center">
-          <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
-            <p className="text-primary text-sm md:text-xl">
-              {" "}
-              روی آن تن{" "}
-            </p>
-            <p className="text-base-content text-[10px] md:text-md lg:text-sm">
-              نمایش همه
-            </p>
-          </div>
-          <hr className="w-full pb-0 border-t-base-70" />
-          <Slider data={mobile} />
-        </div>
-      </div>
-      <div className="py-6 md:py-0 px-2 md:px-6 h-[450px] md:h-[480px] lg:h-[360px] bg-[#000000] xl:h-[520px] overflow-x-auto overflow-y-hidden ">
-        <div className="container mx-auto h-60 md:h-80 lg:h-80 xl:h-[460px] flex flex-col justify-center items-center">
-          <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
-            <p className="text-primary text-sm md:text-xl">
-              {" "}
-              اتاق خبر{" "}
-            </p>
-            <p className="text-base-content text-[10px] md:text-md lg:text-sm">
-              نمایش همه
-            </p>
-          </div>
-          <hr className="w-full pb-2 border-t-base-70" />
-          <Slider data={mobile} />
-        </div>
-      </div>
-
-
-      <div className="mt-4 mb-2 md:mb-6 md:mt-16 py-6 md:py-10 bg-[#000000] px-2 md:px-6 h-[270px] md:h-[440px] overflow-x-auto overflow-y-hidden ">
+      <div className="py-6 md:py-10 bg-[#000000] px-2 md:px-6 h-[270px] md:h-[440px] overflow-x-auto overflow-y-hidden ">
         <div className="container mx-auto h-44 md:h-80 flex flex-col justify-center items-center">
-          <div className="flex w-full justify-between pt-8 my-3 md:pt-8 md:pb-1 px-2 items-center">
+          <div className="flex w-full justify-between my-3  md:pb-1 px-2 items-center">
+            <p className="text-primary text-sm md:text-xl">روی آن تن</p>
+            <p className="text-base-content text-[10px]md:text-md lg:text-sm">
+              نمایش همه
+            </p>
+          </div>
+          <hr className="w-full pb-4 border-t-base-70" />
+          <Slider data={mobile} />
+        </div>
+      </div>
+
+
+      <div className="py-6 md:py-0 bg-[#000000] px-2 md:px-6 h-[270px] md:h-[370px] overflow-x-auto overflow-y-hidden ">
+        <div className="container mx-auto h-44 md:h-80 flex flex-col justify-center items-center">
+          <div className="flex w-full justify-between my-3  md:pb-1 px-2 items-center">
             <p className="text-primary text-sm md:text-xl">ویژه ها</p>
             <p className="text-base-content text-[10px]md:text-md lg:text-sm">
               نمایش همه
@@ -383,7 +365,7 @@ export default async function HomePage() {
           <Slider data={dataDec} isDescription />
         </div>
       </div>
-      <div className="overflow-auto">
+      <div className="overflow-auto mb-10">
         <div className="container px-2 w-full h-full">
           <div className="flex flex-col lg:grid grid-cols-12 gap-2 w-full h-full justify-center items-center content-center">
             <div className="lg:col-span-6 h-full w-full md:h-[125px]">
