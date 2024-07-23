@@ -5,7 +5,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="overflow-x-auto overflow-y-hidden">
       {/* ==================  top footer section ================== */}
-      <div className="bg-[#000000] drop-shadow-md pt-2 pb-3 md:py-0 flex justify-center items-center">
+      {/* <div className="bg-[#000000] drop-shadow-md pt-2 pb-3 md:py-0 flex justify-center items-center">
         <div className="container bg-[#000000] px-4">
           <div className="py-2 md:py-3 lg:py-0 flex flex-col lg:grid lg:grid-cols-12 h-[100px] md:h-[141px] gap-2 items-center justify-between w-full">
             <div className="flex flex-col md:flex-row  lg:col-span-4 pr-2.5 md:pr-0 h-full items-center md:-mt-4">
@@ -41,10 +41,10 @@ export const Footer: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* ==================  main footer section ================== */}
-      <div className="dark:bg-[#000000] p-2 md:p-0">
+      {/* <div className="dark:bg-[#000000] p-2 md:p-0">
         <div className="container">
           <div className="flex justify-center md:grid md:grid-cols-5 gap-4 md:py-16">
             <div className="col-span-1 flex flex-col justify-center">
@@ -241,11 +241,11 @@ export const Footer: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* ================== bottom footer section ==================  */}
-      <div className="flex relative overflow-hidden">
-        <div className="flex absolute right-0 ml-0 justify-center items-center cursor-pointer container bg-[#6D6B6C] md:h-[52px] w-10 h-[34px] md:w-16 ">
+      <div className="flex relative overflow-hidden bg-[#000000]">
+        <div className="flex absolute right-0 ml-0 justify-center items-center cursor-pointer container bg-[#000000] md:h-[52px] w-10 h-[34px] md:w-16 ">
           <Image
             src="/images/Icon.webp"
             width={0}
@@ -258,7 +258,7 @@ export const Footer: React.FC = () => {
         <div className="flex absolute right-0 md:right-20 ml-0 md:mt-4 justify-center md:block w-full items-center text-xs md:text-sm h-full md:justify-end md:items-center">
           © تمام حقوق برای آن محفوظ است.
         </div>
-        <div className="h-[25px] dark:bg-base-75 mx-auto container py-4 md:py-0 md:h-[52px] flex justify-between items-center">
+        <div className="h-[25px] bg-[#000000] mx-auto container py-4 md:py-0 md:h-[52px] flex justify-between items-center">
           <div className="w-full flex md:mr-auto justify-between p-4 sm:h-full ">
             <ul className="hidden text-xs text-nowrap md:flex justify-end items-center gap-4 mr-auto">
               <li>آنلاین</li>
