@@ -4,8 +4,6 @@ import Live from "../_components/live/live";
 import { Slider } from "../_components/slider/slider";
 
 import Image from "next/image";
-import banner1 from "../../../public/images/banner-2.png";
-import banner2 from "../../../public/images/banner-1.png";
 import mov_11 from "../../../public/images/Mask Group 13 (2).png";
 import mov_12 from "../../../public/images/Mask Group 10.png";
 import mov_13 from "../../../public/images/Image 28.png";
@@ -20,6 +18,9 @@ import { API_URL } from "@/configs/global";
 import { OntenCard } from "../_components/cards/onten-card";
 import { SpecialCard } from "../_components/cards/special-card";
 import Link from "next/link";
+import BannerFull from "../_components/banners/banner-full/banner-full";
+import BannerTwo from "../_components/banners/banner-two/banner-two";
+import BannerFour from "../_components/banners/banner-four/banner-four";
 
 const dataDec: any = [
   {
@@ -234,51 +235,7 @@ export default async function HomePage() {
       </div>
 
       {/* ===============================> start BANNER_SECTION <=============================*/}
-      <div className="overflow-auto md:py-2">
-        <div className="grid col-span-12 row-span-2 md:grid md:grid-cols-12 gap-2 w-full h-full">
-          <div className="md:col-span-6 w-full lg:col-span-12 md:h-[125px] lg:h-[170px] xl:h-[200px]">
-            <Image
-              className="w-full h-full"
-              src={banner}
-              width={0}
-              height={0}
-              style={{ objectFit: "cover" }}
-              alt="banner"
-            />
-          </div>
-          <div className="md:col-span-6 w-full lg:hidden md:h-[125px]">
-            <Image
-              className="w-full h-full "
-              src={banner}
-              width={0}
-              height={0}
-              style={{ objectFit: "cover" }}
-              alt="banner"
-            />
-          </div>
-          {/* ===========> MOBILE_AUTO <============ */}
-          <div className="md:hidden w-full md:h-[125px]">
-            <Image
-              className="w-full h-full"
-              src={banner}
-              width={0}
-              height={0}
-              style={{ objectFit: "cover" }}
-              alt="banner"
-            />
-          </div>
-          <div className="md:hidden w-full md:h-[125px]">
-            <Image
-              className="w-full h-full "
-              src={banner}
-              width={0}
-              height={0}
-              style={{ objectFit: "cover" }}
-              alt="banner"
-            />
-          </div>
-        </div>
-      </div>
+      <BannerFull />
       {/* ===============================> end of BANNER_SECTION <=============================*/}
 
       <div className="container px-3 md:px-0  overflow-auto py-2 mb-4">
@@ -325,52 +282,12 @@ export default async function HomePage() {
         </div>
       </div>
 
-   {/* ===============================> start BANNER_SECTION <=============================*/}
-   <div className="overflow-auto md:py-2">
-        <div className="grid col-span-12 row-span-2 md:grid md:grid-cols-12 gap-2 w-full h-full">
-          <div className="md:col-span-6 w-full lg:col-span-12 md:h-[125px] lg:h-[170px] xl:h-[180px]">
-            <Image
-              className="w-full h-full"
-              src={banner}
-              width={0}
-              height={0}
-              style={{ objectFit: "cover" }}
-              alt="banner"
-            />
-          </div>
-          <div className="md:col-span-6 w-full lg:hidden md:h-[125px]">
-            <Image
-              className="w-full h-full "
-              src={banner}
-              width={0}
-              height={0}
-              style={{ objectFit: "cover" }}
-              alt="banner"
-            />
-          </div>
-          {/* ===========> MOBILE_AUTO <============ */}
-          <div className="md:hidden w-full md:h-[125px]">
-            <Image
-              className="w-full h-full"
-              src={banner}
-              width={0}
-              height={0}
-              style={{ objectFit: "cover" }}
-              alt="banner"
-            />
-          </div>
-          <div className="md:hidden w-full md:h-[125px]">
-            <Image
-              className="w-full h-full "
-              src={banner}
-              width={0}
-              height={0}
-              style={{ objectFit: "cover" }}
-              alt="banner"
-            />
-          </div>
-        </div>
-      </div>
+      {/* ===============================> start BANNER_SECTION <=============================*/}
+      <BannerTwo />
+      {/* ===============================> end of BANNER_SECTION <=============================*/}
+      
+      {/* ===============================> start BANNER_SECTION <=============================*/}
+      {/* <BannerFour classname="mt-2" /> */}
       {/* ===============================> end of BANNER_SECTION <=============================*/}
 
 
