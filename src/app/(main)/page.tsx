@@ -283,7 +283,7 @@ export default async function HomePage() {
       </div>
 
       {/* ===============================> start BANNER_SECTION <=============================*/}
-      <BannerTwo />
+      <BannerTwo classname="mb-16" />
       {/* ===============================> end of BANNER_SECTION <=============================*/}
       
       {/* ===============================> start BANNER_SECTION <=============================*/}
