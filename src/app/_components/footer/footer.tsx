@@ -1,274 +1,194 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="overflow-x-auto overflow-y-hidden">
-      {/* ==================  top footer section ================== */}
-      {/* <div className="bg-[#000000] drop-shadow-md pt-2 pb-3 md:py-0 flex justify-center items-center">
-        <div className="container bg-[#000000] px-4">
-          <div className="py-2 md:py-3 lg:py-0 flex flex-col lg:grid lg:grid-cols-12 h-[100px] md:h-[141px] gap-2 items-center justify-between w-full">
-            <div className="flex flex-col md:flex-row  lg:col-span-4 pr-2.5 md:pr-0 h-full items-center md:-mt-4">
-              <Image
-                alt="newspaper"
-                className="bg-primary px-3 hidden md:block py-2 md:w-10 md:h-10 rounded-[10%] ml-2"
-                style={{ objectFit: "contain" }}
-                width={18}
-                sizes="100"
-                height={18}
-                src="/images/newspaper.png"
-              />
-              <div className="flex flex-col justify-center md:block items-center w-full">
-                <div className=" text-sm mb-1 md:mb-0 text-nowrap font-bold md:text-lg lg:text-md text-primary">
-                  عضویت در خبرنامه
-                </div>
-                <div className="text-xs text-nowrap md:text-md lg:text-md md:pt-2 text-primary">
-                  برای اطلاع از آخرین اطلاعیه ها، عضو شوید
-                </div>
-              </div>
-            </div>
-            <div className="flex md:flex-row w-full lg:col-span-8 mr-auto">
-              <input
-                className=" text-[10px] w-full ml-2 peer transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200  border focus:border-2 border-t-transparent md:text-sm lg:text-md px-1 py-2 md:px-2.5 md:py-2.5 rounded-[7px]  "
-                placeholder="ﺟﻬﺖ ﻋﻀﻮﯾﺖ در ﺧﺒﺮﻧﺎﻣﻪ ﺷﻤﺎره ﻣﻮﺑﺎﯾﻞ ﺧﻮد ﺧﻮد را وارد کنید"
-              />
+    <footer className="overflow-x-auto overflow-visible sm:-mb-4">
+      {/* ================== bottom footer section ==================  */}
+      <div className="fixed overflow-visible bg-[#0f0f0f] w-full py-[6px] border-t-[#161616] z-50 bottom-0 right-0 left-0">
+        <div className="container overflow-visible flex justify-between items-center ">
+          <ul className="flex [&>*]:text-[#e8e8e8] [&>*]:cursor-pointer justify-between items-center [&>*]:font-light md:[&>*]:ml-[2px]">
+            <li className="hover:bg-[#242424] in py-[4px] px-2 transition-all rounded-md">
               <Link
-                className="ml-0 w-20 md:w-auto text-xs md:text-sm p-0.5 md:p-2.5 bg-gradient-to-r from-gradient-second to-gradient-first text-white items-center flex text-center justify-center rounded-[7px] sm:w-auto"
-                href={"/"}
+                className="flex justify-center md:mt-auto items-center gap-1 md:-mr-2 text-nowrap text-[10px]"
+                href={"#"}
               >
-                عضویت
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="gray"
+                  width={"13px"}
+                  height={"13px"}
+                >
+                  <path d="M15 20.5H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2ZM19.5 3.5h-15a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3v-10a3 3 0 0 0-3-3Zm1 13a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1v-10a1 1 0 0 1 1-1h15a1 1 0 0 1 1 1Z"></path>
+                </svg>
+                <p>آنلاین</p>
               </Link>
-            </div>
-          </div>
-        </div>
-      </div> */}
-
-      {/* ==================  main footer section ================== */}
-      {/* <div className="dark:bg-[#000000] p-2 md:p-0">
-        <div className="container">
-          <div className="flex justify-center md:grid md:grid-cols-5 gap-4 md:py-16">
-            <div className="col-span-1 flex flex-col justify-center">
-              <div className="flex flex-col md:flex-row">
-                <div className="ml-3 flex md:block justify-center">
-                  <Image
-                    className="w-10 h-10 md:w-20 md:h-20"
-                    alt="OnTVLogo"
-                    width={0}
-                    style={{ objectFit: "contain" }}
-                    height={0}
-                    src={"/images/android-chrome-192x192.png"}
-                  />
-                  <p className="md:hidden mr-2 mt-2 md:text-2xl text-base-content-bg font-black mb-2">
-                    آن
-                  </p>
-                </div>
-                <div className="md:mt-3.5">
-                  <p className="hidden mr-0 md:block md:text-2xl text-base-content-bg font-black mb-0">
-                    آن
-                  </p>
-                  <p className="text-nowrap text-sm md:text-md font-bold">
-                    اولین شبکه خبری آنلاین
-                  </p>
-                </div>
+            </li>
+            <li className="hover:bg-[#242424] py-[4px] px-2 transition-all rounded-md">
+              <Link
+                href={"#"}
+                className="text-nowrap text-[10px]"
+              >
+                کانال ها
+              </Link>
+            </li>
+            <li className="hover:bg-[#242424] py-[4px] px-2 transition-all rounded-md">
+              <Link
+                href={"#"}
+                className="text-nowrap text-[10px]"
+              >
+                زمان پخش
+              </Link>
+            </li>
+            <li className="hover:bg-[#242424] hidden md:block py-[4px] px-2 transition-all rounded-md">
+              <Link
+                href={"#"}
+                className="text-nowrap text-[10px]"
+              >
+                اخبار صوتی
+              </Link>
+            </li>
+            <li className="hover:bg-[#242424]  hidden md:block  py-[4px] px-2 transition-all rounded-md">
+              <Link
+                href={"#"}
+                className="text-nowrap text-[10px]"
+              >
+                ویژه ها
+              </Link>
+            </li>
+            <li className="hover:bg-[#242424] hidden md:block py-[4px] px-2 transition-all rounded-md">
+              <Link
+                href={"#"}
+                className="text-nowrap text-[10px]"
+              >
+                آرشیو محتوایی
+              </Link>
+            </li>
+            <li className="hover:bg-[#242424] mt-1 group flex md:hidden gap-1 justify-center items-center py-[4px] px-2 transition-all rounded-md">
+              <p className="text-nowrap text-[10px] ">
+                سایر لینک ها
+              </p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="gray"
+                width={"13px"}
+                height={"13px"}
+                viewBox="0 0 24 24"
+              >
+                <path d="M17 16H7a1 1 0 0 1-.77-1.64l5-6a1 1 0 0 1 1.54 0l5 6A1 1 0 0 1 17 16Z"></path>
+              </svg>
+              <div className="w-[170px] -left-[400px] group-hover:opacity-100 group-hover:right-[150px] p-2 z-[1000] translate-y-[-90px] rounded-md absolute bg-[#0f0f0f] border border-[#282828]  ">
+                <ul>
+                  <li className="mb-2 hover:bg-[#242424] pr-2 py-[8px] text-[11px] md:text-[12px] flex justify-start transition-all rounded-md">
+                    <Link href={"#"}>
+                      <p>ویژه ها</p>
+                    </Link>
+                  </li>
+                  <li className="mb-2 hover:bg-[#242424] pr-2 py-[8px] text-[11px] md:text-[12px]  flex justify-starttransition-all rounded-md">
+                    <Link href={"#"}>
+                      <p>اخبار صوتی</p>
+                    </Link>
+                  </li>
+                  <li className="mb-2 flex justify-start pr-2 hover:bg-[#242424] py-[8px] text-[11px] md:text-[12px] transition-all rounded-md">
+                    <Link href={"#"}>
+                      <p>آرشیو محتوایی</p>
+                    </Link>
+                  </li>
+                  
+                </ul>
               </div>
-              <div className="flex gap-2 md:gap-0 lg:gap-3 pt-2 md:pt-0 [&>*]:cursor-pointer">
-                <span>
-                  <svg
-                    className="w-4 h-4 md:w-9 md:h-5 lg:h-8 md:-ml-3 dark:text-input-text hover:dark:text-primary"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
+            </li>
+          </ul>
+          <ul className="flex group relative overflow-visible [&>*]:text-[10px] [&>*]:text-[#e8e8e8] [&>*]:cursor-pointer [&>*]:font-light [&>*]">
+            <li className="hover:bg-[#242424] py-[4px] flex justify-center items-center content-center gap-1 -ml-2 px-2 transition-all rounded-md">
+              <p className="text-nowrap text-[10px] ">
+                شبکه های اجتماعی
+              </p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="gray"
+                width={"13px"}
+                height={"13px"}
+                viewBox="0 0 24 24"
+              >
+                <path d="M17 16H7a1 1 0 0 1-.77-1.64l5-6a1 1 0 0 1 1.54 0l5 6A1 1 0 0 1 17 16Z"></path>
+              </svg>
+            </li>
+            <div className="w-[170px] right-[800px] group-hover:opacity-100 group-hover:-right-16 p-2 z-[1000] left-3 translate-y-[-187px] rounded-md absolute bg-[#0f0f0f] border border-[#282828]  ">
+              <ul>
+                <li className="mb-2 hover:bg-[#242424] pr-2 py-[8px] text-[11px] md:text-[12px] flex justify-start transition-all rounded-md">
+                  <Link
+                    href={"#"}
+                    className="flex justify-center items-center gap-1"
                   >
-                    <path
-                      fillRule="evenodd"
-                      d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </span>
-                <span>
-                  <svg
-                    className="w-4 h-4 md:w-9 md:h-5 lg:h-8 md:-ml-2 dark:text-input-text hover:dark:text-primary"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M22 5.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.343 8.343 0 0 1-2.605.981A4.13 4.13 0 0 0 15.85 4a4.068 4.068 0 0 0-4.1 4.038c0 .31.035.618.105.919A11.705 11.705 0 0 1 3.4 4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 6.1 13.635a4.192 4.192 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 2 18.184 11.732 11.732 0 0 0 8.291 20 11.502 11.502 0 0 0 19.964 8.5c0-.177 0-.349-.012-.523A8.143 8.143 0 0 0 22 5.892Z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </span>
-                <span>
-                  <svg
-                    className="w-4 h-4 md:w-9 md:h-5 lg:h-8 md:-ml-2  dark:text-input-text hover:dark:text-primary"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fill="currentColor"
-                      fillRule="evenodd"
-                      d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </span>
-                <span>
-                  <svg
-                    className="w-4 h-4 md:w-9 md:h-5 lg:h-8 md:-ml-2 dark:text-input-text hover:dark:text-primary"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M12.51 8.796v1.697a3.738 3.738 0 0 1 3.288-1.684c3.455 0 4.202 2.16 4.202 4.97V19.5h-3.2v-5.072c0-1.21-.244-2.766-2.128-2.766-1.827 0-2.139 1.317-2.139 2.676V19.5h-3.19V8.796h3.168ZM7.2 6.106a1.61 1.61 0 0 1-.988 1.483 1.595 1.595 0 0 1-1.743-.348A1.607 1.607 0 0 1 5.6 4.5a1.601 1.601 0 0 1 1.6 1.606Z"
-                      clip-rule="evenodd"
-                    />
-                    <path d="M7.2 8.809H4V19.5h3.2V8.809Z" />
-                  </svg>
-                </span>
-                <span>
-                  <svg
-                    className="w-4 h-4 md:w-9 md:h-5 lg:h-8 md:-ml-2  dark:text-input-text hover:dark:text-primary"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M21.7 8.037a4.26 4.26 0 0 0-.789-1.964 2.84 2.84 0 0 0-1.984-.839c-2.767-.2-6.926-.2-6.926-.2s-4.157 0-6.928.2a2.836 2.836 0 0 0-1.983.839 4.225 4.225 0 0 0-.79 1.965 30.146 30.146 0 0 0-.2 3.206v1.5a30.12 30.12 0 0 0 .2 3.206c.094.712.364 1.39.784 1.972.604.536 1.38.837 2.187.848 1.583.151 6.731.2 6.731.2s4.161 0 6.928-.2a2.844 2.844 0 0 0 1.985-.84 4.27 4.27 0 0 0 .787-1.965 30.12 30.12 0 0 0 .2-3.206v-1.516a30.672 30.672 0 0 0-.202-3.206Zm-11.692 6.554v-5.62l5.4 2.819-5.4 2.801Z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </span>
-              </div>
-            </div>
-            <div className="hidden md:block text-link-footer-title col-span-1 mr-auto ">
-              <div className="font-bold md:text-[9px] lg:text-[10px] xl:text-[16px] text-xl mb-5 sm:text-center sm:flex sm:justify-between">
-                لینک های مرتبط
-              </div>
-              <ul className="[&>*]:text-base-content md:text-[9px]  lg:text-[10px] xl:text-[16px]">
-                <li className="mb-2">
-                  <Link href={"/"}>ﻋﻀﻮﯾﺖ در ﺧﺒﺮﻧﺎﻣﻪ</Link>
-                </li>
-                <li className="mb-2">
-                  <Link href={"/"}>ﺗﻤﺎس ﺑﺎ ﻣﺎ</Link>
-                </li>
-                <li className="mb-2">
-                  <Link href={"/about"} key={Math.random()}>
-                    درباره ﺳﺎﯾﺖ
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="gray"
+                      width={"15px"}
+                      height={"15px"}
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="m10.56 2.12-1.93-.51a3.25 3.25 0 0 0-4 2.31l-.46 1.82a10 10 0 0 1 6.39-3.62ZM2.08 13.59l-.47 1.78a3.25 3.25 0 0 0 2.31 4l1.85.49a10 10 0 0 1-3.69-6.27ZM20.08 4.65 18 4.1a9.94 9.94 0 0 1 3.81 6.67l.57-2.14a3.25 3.25 0 0 0-2.3-3.98ZM13.39 21.86l2 .53a3.25 3.25 0 0 0 4-2.31l.56-2.1a10 10 0 0 1-6.56 3.88Z"></path>
+                      <path d="M12 2.9a9.1 9.1 0 1 0 9.1 9.1A9.09 9.09 0 0 0 12 2.9ZM6.84 7.44a2.6 2.6 0 1 1 2.07 3 2.6 2.6 0 0 1-2.07-3Zm3.79 7.86a2.6 2.6 0 1 1-2.06-3 2.6 2.6 0 0 1 2.06 3Zm.19-3.45a1.16 1.16 0 1 1 .91 1.35 1.15 1.15 0 0 1-.91-1.35Zm6.34 4.71a2.6 2.6 0 1 1-2.07-3 2.6 2.6 0 0 1 2.07 3Zm1.32-6.88a2.6 2.6 0 1 1-2.06-3 2.6 2.6 0 0 1 2.06 3Z"></path>
+                    </svg>
+                    <p>آپارات</p>
                   </Link>
                 </li>
-                <li>
-                  <Link href={"/"}>خبرگزاری</Link>
+                <li className="mb-2 hover:bg-[#242424] pr-2 py-[8px] text-[11px] md:text-[12px]  flex justify-starttransition-all rounded-md">
+                  <Link
+                    href={"#"}
+                    className="flex justify-center items-center gap-1"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="gray"
+                      width={"15px"}
+                      height={"15px"}
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M2.48 11 21.1 3.78c.9-.31 1.62.22 1.34 1.52l-3.17 14.94c-.23 1.06-.86 1.32-1.74.82L12.7 17.5l-2.33 2.24a1.23 1.23 0 0 1-1 .48l.35-4.92 9-8.08c.39-.34-.09-.54-.6-.2L7 14l-4.74-1.5c-1-.33-1.06-1 .22-1.53Z"></path>
+                    </svg>
+                    <p>تلگرام</p>
+                  </Link>
+                </li>
+                <li className="mb-2 flex justify-start pr-2 hover:bg-[#242424] py-[8px] text-[11px] md:text-[12px] transition-all rounded-md">
+                  <Link
+                    href={"#"}
+                    className="flex justify-center items-center gap-1"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="gray"
+                      width={"15px"}
+                      height={"15px"}
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M22.63 5.33a8.51 8.51 0 0 1-2.47.7 4.4 4.4 0 0 0 1.9-2.45 8.53 8.53 0 0 1-2.74 1.08 4.21 4.21 0 0 0-6.07-.2 4.45 4.45 0 0 0-1.36 3.21 4.88 4.88 0 0 0 .11 1 12.1 12.1 0 0 1-8.87-4.58A4.49 4.49 0 0 0 4.45 10a4.21 4.21 0 0 1-1.95-.58v.05A4.4 4.4 0 0 0 6 13.8a4.24 4.24 0 0 1-2 .07 4.33 4.33 0 0 0 4 3.07 8.52 8.52 0 0 1-5.33 1.88 8.91 8.91 0 0 1-1-.07 12 12 0 0 0 6.61 2c7.91 0 12.22-6.7 12.23-12.52l.4-.92a8.81 8.81 0 0 0 1.72-1.98Z"></path>
+                    </svg>
+                    <p>توئیتر</p>
+                  </Link>
+                </li>
+                <li className="mb-2 hover:bg-[#242424] pr-2 flex justify-start text-[11px] md:text-[12px] py-[8px] transition-all rounded-md">
+                  <Link
+                    href={"#"}
+                    className="flex justify-center items-center gap-1"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="gray"
+                      width={"15px"}
+                      height={"15px"}
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M22.44 7.68A7.69 7.69 0 0 0 22 5.13a5.32 5.32 0 0 0-3.08-3.08 7.59 7.59 0 0 0-2.54-.49c-1.16-.05-1.52-.06-4.38-.06-2.84 0-3.2 0-4.31.06a7.87 7.87 0 0 0-2.54.51 5.32 5.32 0 0 0-3.1 3.1 7.69 7.69 0 0 0-.49 2.55C1.51 8.84 1.5 9.19 1.5 12s0 3.2.06 4.32a8 8 0 0 0 .53 2.51A5.32 5.32 0 0 0 5.17 22a7.84 7.84 0 0 0 2.54.49c1.11 0 1.47.06 4.31.06s3.2 0 4.31-.06a7.84 7.84 0 0 0 2.54-.49A5.32 5.32 0 0 0 22 18.87a7.69 7.69 0 0 0 .49-2.55c0-1.12.06-1.48.06-4.32s-.05-3.2-.11-4.32Zm-1.94 8.56a5.9 5.9 0 0 1-.36 2 3.49 3.49 0 0 1-2 2 5.38 5.38 0 0 1-1.94.36c-1.1.06-1.43.07-4.23.07s-3.13 0-4.23-.07a5.38 5.38 0 0 1-1.94-.36 3.49 3.49 0 0 1-2-2 5.6 5.6 0 0 1-.36-1.94c-.08-1.11-.08-1.44-.08-4.24s0-3.13.06-4.24a5.63 5.63 0 0 1 .38-1.94 3.48 3.48 0 0 1 2-2 5.85 5.85 0 0 1 1.94-.36c1.1-.08 1.44-.08 4.23-.08s3.13 0 4.23.06a5.85 5.85 0 0 1 1.94.36 3.54 3.54 0 0 1 2 2 5.86 5.86 0 0 1 .36 1.95c.05 1.1.06 1.44.06 4.23s0 3.1-.06 4.2Z"></path>
+                      <path d="M12 6.64A5.36 5.36 0 1 0 17.34 12 5.35 5.35 0 0 0 12 6.64Zm0 8.83A3.48 3.48 0 1 1 15.46 12 3.47 3.47 0 0 1 12 15.47ZM17.46 4.86a1.26 1.26 0 1 0 1.26 1.26 1.25 1.25 0 0 0-1.26-1.26Z"></path>
+                    </svg>
+                    <p>اینستاگرام</p>
+                  </Link>
                 </li>
               </ul>
             </div>
-            <div className="hidden md:block text-link-footer-title col-span-1 mr-[40%] ">
-              <div className="font-bold md:text-[9px] lg:text-[10px] xl:text-[16px] text-xl mb-5 sm:text-center sm:flex sm:justify-between">
-                لینک های مرتبط
-              </div>
-              <ul className="[&>*]:text-base-content md:text-[9px]  lg:text-[10px] xl:text-[16px]">
-                <li className="mb-2">
-                  <Link href={"/"}>ﻋﻀﻮﯾﺖ در ﺧﺒﺮﻧﺎﻣﻪ</Link>
-                </li>
-                <li className="mb-2">
-                  <Link href={"/"}>ﺗﻤﺎس ﺑﺎ ﻣﺎ</Link>
-                </li>
-                <li className="mb-2">
-                  <Link href={"/"}>درباره ﺳﺎﯾﺖ</Link>
-                </li>
-                <li>
-                  <Link href={"/"}>خبرگزاری</Link>
-                </li>
-              </ul>
-            </div>
-            <div className="hidden md:block col-span-1 mr-14 md:mr-[24%] xl:mr-[27%]">
-              <div className="font-bold md:text-[9px] lg:text-[10px] xl:text-[16px] text-link-footer-title text-xl mb-5 sm:text-center sm:flex sm:justify-between">
-                لینک های مرتبط
-              </div>
-              <ul className="[&>*]:text-base-content md:text-[9px]  lg:text-[10px] xl:text-[16px]">
-                <li className="mb-2">
-                  <Link href={"/"}>ﻋﻀﻮﯾﺖ در ﺧﺒﺮﻧﺎﻣﻪ</Link>
-                </li>
-                <li className="mb-2">
-                  <Link href={"/"}>ﺗﻤﺎس ﺑﺎ ﻣﺎ</Link>
-                </li>
-                <li className="mb-2">
-                  <Link href={"/privacy"}>حریم خصوصی</Link>
-                </li>
-                <li>
-                  <Link href={"/"}>خبرگزاری</Link>
-                </li>
-              </ul>
-            </div>
-            <div className="hidden md:block col-span-1 mr-auto">
-              <div className="font-bold md:text-[9px] lg:text-[10px] xl:text-[16px] text-link-footer-title text-xl mb-5 sm:text-center sm:flex sm:justify-between">
-                راه های ارتباطی
-              </div>
-              <ul className="[&>*]:text-base-content md:text-[9px] lg:text-[10px] xl:text-[16px]">
-                <li className="mb-2">
-                  <Link href={"/"}>پشتیبانی : support@tekye.net </Link>
-                </li>
-                <li className="mb-2">
-                  <Link href={"/"}>مطبوعات : press@tekye.net</Link>
-                </li>
-                <li className="mb-2">
-                  <Link href={"/"}>همکاری : partnerships@tekye.net</Link>
-                </li>
-                <li>
-                  <Link href={"/"}>محتوا : media@tekye.net</Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div> */}
-
-      {/* ================== bottom footer section ==================  */}
-      <div className="flex relative overflow-hidden bg-[#000000]">
-        <div className="flex absolute right-0 ml-0 justify-center items-center cursor-pointer container bg-[#000000] md:h-[52px] w-10 h-[34px] md:w-16 ">
-          <Image
-            src="/images/Icon.webp"
-            width={0}
-            height={0}
-            style={{ objectFit: "contain" }}
-            alt="arrow"
-            className="w-3 h-3 md:w-[18px] md:h-6 rotate-90"
-          />
-        </div>
-        <div className="flex absolute right-0 md:right-20 ml-0 md:mt-4 justify-center md:block w-full items-center text-xs md:text-sm h-full md:justify-end md:items-center">
-          © تمام حقوق برای آن محفوظ است.
-        </div>
-        <div className="h-[25px] bg-[#000000] mx-auto container py-4 md:py-0 md:h-[52px] flex justify-between items-center">
-          <div className="w-full flex md:mr-auto justify-between p-4 sm:h-full ">
-            <ul className="hidden text-xs text-nowrap md:flex justify-end items-center gap-4 mr-auto">
-              <li>آنلاین</li>
-              <li>کانال ها</li>
-              <li>زمان پخش</li>
-              <li>اخبار صوتی</li>
-              <li>ویژه ها</li>
-              <li>آرشیو محتوایی</li>
-            </ul>
-          </div>
+          </ul>
         </div>
       </div>
     </footer>
