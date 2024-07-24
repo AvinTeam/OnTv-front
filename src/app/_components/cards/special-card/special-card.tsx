@@ -13,10 +13,7 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({
   return (
     <>
       <div className="w-full h-full flex flex-col gap-2">
-        <Link
-          href={"#"}
-          className="group w-full h-[95%]  relative"
-        >
+        <Link href={"#"} className="group w-full h-[95%]  relative">
           <div className=" w-full h-full group">
             <Image
               src={path}
@@ -31,11 +28,14 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({
             <div className="flex flex-col gap-1">
               <div
                 className="h-[20px] w-[70px] rounded-[500px] flex justify-around items-center font-bold"
-                style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
+                style={{
+                  backdropFilter: "blur(20px)",
+                  backgroundColor: "hsla(0, 0%, 5%, .25)",
+                  boxShadow: "inset 0 0 0 1px transparent",
+                }}
               >
                 <svg
                   fill="#bababa"
-
                   height="20px"
                   width="20px"
                   version="1.1"
@@ -70,7 +70,9 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({
           </div>
           <div
             className="opacity-0 group-hover:opacity-[1] rounded-md overflow-auto absolute top-0  transition duration-[0.3s] ease-in-out right-0 bottom-0 left-0 z-10 "
-            style={{ background: "linear-gradient(180deg,transparent,rgba(0,0,0,.8))" }}
+            style={{
+              background: "linear-gradient(180deg,transparent,rgba(0,0,0,.8))",
+            }}
           ></div>
         </Link>
       </div>

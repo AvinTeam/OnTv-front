@@ -1,3 +1,4 @@
+import React from "react";
 import "../globals.css";
 import Live from "../_components/live/live";
 import { Slider } from "../_components/slider/slider";
@@ -13,14 +14,9 @@ import mov_21 from "../../../public/images/Mask Group 29.png";
 import mov_22 from "../../../public/images/Mask Group 30.png";
 import mov_23 from "../../../public/images/Mask Group 31.png";
 import mov_24 from "../../../public/images/Mask Group 33.png";
-import mov_1 from "../../../public/images/mov_1.webp";
-import mov_2 from "../../../public/images/mov_2.webp";
-import mov_3 from "../../../public/images/mov_3.webp";
-import mov_4 from "../../../public/images/mov_4.webp";
-import mov_5 from "../../../public/images/mov_5.webp";
+import banner from "../../../public/images/banner.jpg";
 
 import { API_URL } from "@/configs/global";
-import React, { useEffect, useState } from "react";
 import { OntenCard } from "../_components/cards/onten-card";
 import { SpecialCard } from "../_components/cards/special-card";
 import Link from "next/link";
@@ -100,7 +96,7 @@ const dataDec5: any = [
       dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
     },
   },
- 
+
   {
     path: mov_22,
     alt: "test",
@@ -109,7 +105,7 @@ const dataDec5: any = [
       dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
     },
   },
- 
+
   {
     path: mov_23,
     alt: "test",
@@ -118,7 +114,7 @@ const dataDec5: any = [
       dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
     },
   },
- 
+
   {
     path: mov_24,
     alt: "test",
@@ -127,7 +123,7 @@ const dataDec5: any = [
       dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
     },
   },
- 
+
   {
     path: mov_21,
     alt: "test",
@@ -144,8 +140,6 @@ const dataDec5: any = [
       dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
     },
   },
- 
- 
 ];
 
 async function gatLives() {
@@ -202,7 +196,10 @@ export default async function HomePage() {
       <div className="container px-3 md:px-0 overflow-auto pt-2 mb-6">
         <div className="flex w-full justify-between my-3  md:pb-1 items-center">
           <p className="text-white text-sm md:text-xl">روی آن تن</p>
-          <Link href={"#"} className="text-[#f8bd3b] text-[11px] md:text-[13px] lg:text-[13px] flex gap-1 justify-center items-center">
+          <Link
+            href={"#"}
+            className="text-[#f8bd3b] text-[11px] md:text-[13px] lg:text-[13px] flex gap-1 justify-center items-center"
+          >
             نمایش همه
             <div className="rotate-180">
               <svg
@@ -236,36 +233,61 @@ export default async function HomePage() {
         </div>
       </div>
 
-      <div className="overflow-auto py-2">
-        <div className="container w-full h-full">
-          <div className="flex flex-col lg:grid grid-cols-12 gap-2 w-full h-full justify-center items-center content-center">
-            <div className="lg:col-span-6 h-full w-full md:h-[125px]">
-              <Image
-                className="w-full h-full "
-                src={banner1}
-                width={0}
-                height={0}
-                style={{ objectFit: "cover" }}
-                alt="banner"
-              />
-            </div>
-            <div className="lg:col-span-6  h-full w-full md:h-[125px]">
-              <Image
-                className="w-full h-full "
-                src={banner2}
-                width={0}
-                style={{ objectFit: "cover" }}
-                height={0}
-                alt="banner"
-              />{" "}
-            </div>
+      {/* ===============================> start BANNER_SECTION <=============================*/}
+      <div className="overflow-auto md:py-2">
+        <div className="grid col-span-12 row-span-2 md:grid md:grid-cols-12 gap-2 w-full h-full">
+          <div className="md:col-span-6 w-full lg:col-span-12 md:h-[125px] lg:h-[170px] xl:h-[200px]">
+            <Image
+              className="w-full h-full"
+              src={banner}
+              width={0}
+              height={0}
+              style={{ objectFit: "cover" }}
+              alt="banner"
+            />
+          </div>
+          <div className="md:col-span-6 w-full lg:hidden md:h-[125px]">
+            <Image
+              className="w-full h-full "
+              src={banner}
+              width={0}
+              height={0}
+              style={{ objectFit: "cover" }}
+              alt="banner"
+            />
+          </div>
+          {/* ===========> MOBILE_AUTO <============ */}
+          <div className="md:hidden w-full md:h-[125px]">
+            <Image
+              className="w-full h-full"
+              src={banner}
+              width={0}
+              height={0}
+              style={{ objectFit: "cover" }}
+              alt="banner"
+            />
+          </div>
+          <div className="md:hidden w-full md:h-[125px]">
+            <Image
+              className="w-full h-full "
+              src={banner}
+              width={0}
+              height={0}
+              style={{ objectFit: "cover" }}
+              alt="banner"
+            />
           </div>
         </div>
       </div>
+      {/* ===============================> end of BANNER_SECTION <=============================*/}
+
       <div className="container px-3 md:px-0  overflow-auto py-2 mb-4">
         <div className="flex w-full justify-between my-3  md:pb-1 items-center">
           <p className="text-white text-sm md:text-xl">ویژه ها</p>
-          <Link href={"#"} className="text-[#f8bd3b] text-[11px] md:text-[13px] lg:text-[13px] flex gap-1 justify-center items-center">
+          <Link
+            href={"#"}
+            className="text-[#f8bd3b] text-[11px] md:text-[13px] lg:text-[13px] flex gap-1 justify-center items-center"
+          >
             نمایش همه
             <div className="rotate-180">
               <svg
@@ -295,9 +317,63 @@ export default async function HomePage() {
           </Link>
         </div>
         <div className="h-[150px] md:h-[110px] lg:h-[140px] 2xl:h-[180px]">
-          <Slider Component={SpecialCard} data={dataDec5} displayCount={'five'} />
+          <Slider
+            Component={SpecialCard}
+            data={dataDec5}
+            displayCount={"five"}
+          />
         </div>
       </div>
+
+   {/* ===============================> start BANNER_SECTION <=============================*/}
+   <div className="overflow-auto md:py-2">
+        <div className="grid col-span-12 row-span-2 md:grid md:grid-cols-12 gap-2 w-full h-full">
+          <div className="md:col-span-6 w-full lg:col-span-12 md:h-[125px] lg:h-[170px] xl:h-[180px]">
+            <Image
+              className="w-full h-full"
+              src={banner}
+              width={0}
+              height={0}
+              style={{ objectFit: "cover" }}
+              alt="banner"
+            />
+          </div>
+          <div className="md:col-span-6 w-full lg:hidden md:h-[125px]">
+            <Image
+              className="w-full h-full "
+              src={banner}
+              width={0}
+              height={0}
+              style={{ objectFit: "cover" }}
+              alt="banner"
+            />
+          </div>
+          {/* ===========> MOBILE_AUTO <============ */}
+          <div className="md:hidden w-full md:h-[125px]">
+            <Image
+              className="w-full h-full"
+              src={banner}
+              width={0}
+              height={0}
+              style={{ objectFit: "cover" }}
+              alt="banner"
+            />
+          </div>
+          <div className="md:hidden w-full md:h-[125px]">
+            <Image
+              className="w-full h-full "
+              src={banner}
+              width={0}
+              height={0}
+              style={{ objectFit: "cover" }}
+              alt="banner"
+            />
+          </div>
+        </div>
+      </div>
+      {/* ===============================> end of BANNER_SECTION <=============================*/}
+
+
       {/* ========================documentry section ============================== */}
       {/* <div className="py-6 md:py-10 bg-[#4A4A4A] px-2 md:px-6 h-[600px] md:h-[880px] lg:h-[880px] xl:h-[540px] overflow-x-auto overflow-y-hidden ">
         <div className="container">
