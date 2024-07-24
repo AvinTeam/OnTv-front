@@ -75,7 +75,7 @@ export const OntenCard: React.FC<OntenCardProps> = ({
             }}
           ></div>
         </Link>
-        <div className="w-full h-[15%] text-white text-[10px] font-light md:text-[11px] xl:text-[14px]">
+        <div className="w-full h-[15%] text-white text-[10px] font-light md:text-[11px] xl:text-[13px]">
           <p>مراسم شهدای خدمت</p>
         </div>
       </div>

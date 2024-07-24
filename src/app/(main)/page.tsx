@@ -168,13 +168,13 @@ async function getPostsNews() {
 }
 
 export default async function HomePage() {
-  const [postsNews, postsIsSpecial, postsIsUnderLive, lives] =
-    await Promise.all([
-      getPostsNews(),
-      getPostsIsSpecial(),
-      getPostsIsUnderLive(),
-      gatLives(),
-    ]);
+  // const [ lives] =
+  //   await Promise.all([
+  //     // getPostsNews(),
+  //     // getPostsIsSpecial(),
+  //     // getPostsIsUnderLive(),
+  //     gatLives(),
+  //   ]);
 
   // console.log(postsNews);
   // console.log(postsIsSpecial);
@@ -185,12 +185,12 @@ export default async function HomePage() {
   return (
     <main className="flex flex-col w-full overflow-x-scroll overflow-y-hidden bg-[#000000]">
       <div className="container mt-4 mb-4 px-2 xl:px-0 overflow-x-auto">
-        <Live data={lives?.lives?.data} />
-        {/* <Live data={[
+        {/* <Live data={lives?.lives?.data} /> */}
+       <Live data={[
           { url: 'https://picamo.arvanlive.ir/hls/ch1/ch1.m3u8', slug: '', order: 0, title: '', user: '' },
           { url: 'https://picamo.arvanlive.ir/hls/ch1/ch2.m3u8', slug: '', order: 0, title: '', user: '' },
           { url: 'https://picamo.arvanlive.ir/hls/ch1/ch3.m3u8', slug: '', order: 0, title: '', user: '' },
-        ]} /> */}
+        ]} />  
       </div>
 
       <div className="container px-3 md:px-0 overflow-auto pt-2 mb-6">
