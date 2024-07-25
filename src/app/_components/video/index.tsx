@@ -58,7 +58,7 @@ export const VideoJS = ({
       player.on("error", () => handlePlayerError(player));
       // let qualityLevels = player.qualityLevels()
 
-      if (player) player.hlsQualitySelector({ displayCurrentQuality: true });
+      if (player) (player as any).hlsQualitySelector({ displayCurrentQuality: true });
       // player.qualitySelectorHls({
       // });
 
