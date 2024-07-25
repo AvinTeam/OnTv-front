@@ -30,9 +30,10 @@ const Live = ({ data }: { data: LivesType[] }) => {
     responsive: true,
     fluid: true,
     muted: true,
+    loop: true,
     sources: [
       {
-        src: "https://nehzatmedia.arvanvod.ir/R7qEPk4Xey/joW4p7bJeM/h_,110_200,182_400,274_800,366_1500,548_2500,k.mp4.list/master.m3u8",
+        src: "https://nehzatmedia.arvanvod.ir/R7qEPk4Xey/vKPe7geblG/h_,144_200,240_400,360_800,480_1500,k.mp4.list/master.m3u8",
         type: "application/x-mpegURL",
       },
     ],
@@ -56,9 +57,10 @@ const Live = ({ data }: { data: LivesType[] }) => {
     responsive: true,
     fluid: true,
     muted: true,
+    loop: true,
     sources: [
       {
-        src: "https://nehzatmedia.arvanvod.ir/R7qEPk4Xey/joW4p7bJeM/h_,110_200,182_400,274_800,366_1500,548_2500,k.mp4.list/master.m3u8",
+        src: "https://nehzatmedia.arvanvod.ir/R7qEPk4Xey/ENL9QJ0rlQ/h_,144_200,240_400,360_800,480_1500,k.mp4.list/master.m3u8",
         type: "application/x-mpegURL",
       },
     ],
@@ -82,9 +84,10 @@ const Live = ({ data }: { data: LivesType[] }) => {
     responsive: true,
     fluid: true,
     muted: true,
+    loop: true,
     sources: [
       {
-        src: "https://nehzatmedia.arvanvod.ir/R7qEPk4Xey/joW4p7bJeM/h_,110_200,182_400,274_800,366_1500,548_2500,k.mp4.list/master.m3u8",
+        src: "https://nehzatmedia.arvanvod.ir/R7qEPk4Xey/OLDz83JbMR/h_,144_200,240_400,360_800,480_1500,k.mp4.list/master.m3u8",
         type: "application/x-mpegURL",
       },
     ],
@@ -100,6 +103,11 @@ const Live = ({ data }: { data: LivesType[] }) => {
 
     player.on("dispose", () => {
       videojs.log("player will dispose");
+    });
+
+    player.on('ended', function () {
+      videojs.log("player video is done!");
+      player.play()
     });
   };
 

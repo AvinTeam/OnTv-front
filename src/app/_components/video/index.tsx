@@ -4,6 +4,10 @@ import React from "react";
 import videojs from "video.js";
 import "video.js/dist/video-js.css";
 import lang_fa from "../../../../public/lang/videojs/fa.json";
+import qualitySelector from 'videojs-hls-quality-selector';
+// import contribQualityLevels from 'videojs-contrib-quality-levels'
+// import 'videojs-quality-selector-hls'
+
 type IOptionsType = {
   autoplay: boolean;
   controls: boolean;
@@ -13,10 +17,10 @@ type IOptionsType = {
   sources: { src: string; type: string }[];
 };
 type IProp = {
-    options: IOptionsType;
-    onReady: (player: any)=> void;
-    fallbackOptions: IOptionsType;
-  }
+  options: IOptionsType;
+  onReady: (player: any) => void;
+  fallbackOptions: IOptionsType;
+}
 export const VideoJS = ({
   options,
   onReady,
@@ -26,15 +30,17 @@ export const VideoJS = ({
   const videoRef = React.useRef<any>(null);
   const playerRef = React.useRef<any>(null);
 
+  videojs.registerPlugin('hlsQualitySelector', qualitySelector)
+
   const handlePlayerError = (player: any) => {
     const error = player.error();
-    
+
     if (error.code === 4) {
       player.src(fallbackOptions.sources);
       player.play();
     }
   };
-  
+
   React.useEffect(() => {
     // Make sure Video.js player is only initialized once
     if (!playerRef.current) {
@@ -50,12 +56,24 @@ export const VideoJS = ({
       }));
 
       player.on("error", () => handlePlayerError(player));
- 
+      // let qualityLevels = player.qualityLevels()
+
+      if (player) (player as any).hlsQualitySelector({ displayCurrentQuality: true });
+      // player.qualitySelectorHls({
+      // });
+
     } else {
       const player = playerRef.current;
 
       player.autoplay(options.autoplay);
       player.src(options.sources);
+
+      // if (player) player.hlsQualitySelector({ displayCurrentQuality: true });
+      // player.qualitySelectorHls({
+
+      // });
+
+
     }
   }, [options, fallbackOptions, videoRef, onReady, handlePlayerError]);
 

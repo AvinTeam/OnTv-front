@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 
-import banner from "../../../../../public/images/banner.jpg";
+import cover1 from "../../../../../public/images/cover1.png";
 import { BannerFullProps } from './banner-full.types';
 
 const BannerFull: React.FC<BannerFullProps> = ({ classname }) => {
@@ -11,7 +11,7 @@ const BannerFull: React.FC<BannerFullProps> = ({ classname }) => {
                 <div className="w-full col-span-12 h-[100%]">
                     <Image
                         className="w-full h-full"
-                        src={banner}
+                        src={cover1}
                         width={0}
                         height={0}
                         style={{ objectFit: "cover" }}
