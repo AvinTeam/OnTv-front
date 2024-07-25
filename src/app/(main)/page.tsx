@@ -235,7 +235,7 @@ export default async function HomePage() {
       </div>
 
       {/* ===============================> start BANNER_SECTION <=============================*/}
-      <BannerFull />
+      <BannerFour />
       {/* ===============================> end of BANNER_SECTION <=============================*/}
 
       <div className="container px-3 md:px-0  overflow-auto py-2 mb-4">
