@@ -187,11 +187,11 @@ export default async function HomePage() {
     <main className="flex flex-col w-full overflow-x-scroll overflow-y-hidden bg-[#000000]">
       <div className="container mt-4 mb-4 px-2 xl:px-0 overflow-x-auto">
         {/* <Live data={lives?.lives?.data} /> */}
-       <Live data={[
+        <Live data={[
           { url: 'https://picamo.arvanlive.ir/hls/ch1/ch1.m3u8', slug: '', order: 0, title: '', user: '' },
           { url: 'https://picamo.arvanlive.ir/hls/ch1/ch2.m3u8', slug: '', order: 0, title: '', user: '' },
           { url: 'https://picamo.arvanlive.ir/hls/ch1/ch3.m3u8', slug: '', order: 0, title: '', user: '' },
-        ]} />  
+        ]} />
       </div>
 
       <div className="container px-3 md:px-0 overflow-auto pt-2 mb-6">
@@ -273,7 +273,7 @@ export default async function HomePage() {
             </div>
           </Link>
         </div>
-        <div className="h-[150px] md:h-[110px] lg:h-[140px] 2xl:h-[180px]">
+        <div className="h-[170px] md:h-[130px] lg:h-[160px] 2xl:h-[200px]">
           <Slider
             Component={SpecialCard}
             data={dataDec5}
@@ -282,10 +282,222 @@ export default async function HomePage() {
         </div>
       </div>
 
+      <div className="container px-3 md:px-0 overflow-auto pt-2 mb-6">
+        <div className="flex w-full justify-between my-3  md:pb-1 items-center">
+          <p className="text-white text-sm md:text-xl">روی آن تن</p>
+          <Link
+            href={"#"}
+            className="text-[#f8bd3b] text-[11px] md:text-[13px] lg:text-[13px] flex gap-1 justify-center items-center"
+          >
+            نمایش همه
+            <div className="rotate-180">
+              <svg
+                fill="#f8bd3b"
+                height="8px"
+                width="8px"
+                version="1.1"
+                id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512.005 512.005"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <g>
+                    <g>
+                      <path d="M388.418,240.923L153.751,6.256c-8.341-8.341-21.824-8.341-30.165,0s-8.341,21.824,0,30.165L343.17,256.005 L123.586,475.589c-8.341,8.341-8.341,21.824,0,30.165c4.16,4.16,9.621,6.251,15.083,6.251c5.461,0,10.923-2.091,15.083-6.251 l234.667-234.667C396.759,262.747,396.759,249.264,388.418,240.923z"></path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </Link>
+        </div>
+        <div className="h-[230px] md:h-[300px] lg:h-[290px] 2xl:h-[350px]">
+          <Slider Component={OntenCard} data={dataDec} displayCount={"eight"} />
+        </div>
+      </div>
+
+      <div className="container px-3 md:px-0 overflow-auto pt-2 mb-6">
+        <div className="flex w-full justify-between my-3  md:pb-1 items-center">
+          <p className="text-white text-sm md:text-xl">روی آن تن</p>
+          <Link
+            href={"#"}
+            className="text-[#f8bd3b] text-[11px] md:text-[13px] lg:text-[13px] flex gap-1 justify-center items-center"
+          >
+            نمایش همه
+            <div className="rotate-180">
+              <svg
+                fill="#f8bd3b"
+                height="8px"
+                width="8px"
+                version="1.1"
+                id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512.005 512.005"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <g>
+                    <g>
+                      <path d="M388.418,240.923L153.751,6.256c-8.341-8.341-21.824-8.341-30.165,0s-8.341,21.824,0,30.165L343.17,256.005 L123.586,475.589c-8.341,8.341-8.341,21.824,0,30.165c4.16,4.16,9.621,6.251,15.083,6.251c5.461,0,10.923-2.091,15.083-6.251 l234.667-234.667C396.759,262.747,396.759,249.264,388.418,240.923z"></path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </Link>
+        </div>
+        <div className="h-[230px] md:h-[300px] lg:h-[290px] 2xl:h-[350px]">
+          <Slider Component={OntenCard} data={dataDec} displayCount={"eight"} />
+        </div>
+      </div>
+
       {/* ===============================> start BANNER_SECTION <=============================*/}
-      <BannerTwo classname="mb-16" />
+      <BannerTwo />
       {/* ===============================> end of BANNER_SECTION <=============================*/}
-      
+
+      <div className="container px-3 md:px-0  overflow-auto py-2 mb-4">
+        <div className="flex w-full justify-between my-3  md:pb-1 items-center">
+          <p className="text-white text-sm md:text-xl">ویژه ها</p>
+          <Link
+            href={"#"}
+            className="text-[#f8bd3b] text-[11px] md:text-[13px] lg:text-[13px] flex gap-1 justify-center items-center"
+          >
+            نمایش همه
+            <div className="rotate-180">
+              <svg
+                fill="#f8bd3b"
+                height="8px"
+                width="8px"
+                version="1.1"
+                id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512.005 512.005"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <g>
+                    <g>
+                      <path d="M388.418,240.923L153.751,6.256c-8.341-8.341-21.824-8.341-30.165,0s-8.341,21.824,0,30.165L343.17,256.005 L123.586,475.589c-8.341,8.341-8.341,21.824,0,30.165c4.16,4.16,9.621,6.251,15.083,6.251c5.461,0,10.923-2.091,15.083-6.251 l234.667-234.667C396.759,262.747,396.759,249.264,388.418,240.923z"></path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </Link>
+        </div>
+        <div className="h-[170px] md:h-[130px] lg:h-[160px] 2xl:h-[200px]">
+          <Slider
+            Component={SpecialCard}
+            data={dataDec5}
+            displayCount={"five"}
+          />
+        </div>
+      </div>
+
+      <div className="container px-3 md:px-0  overflow-auto py-2 mb-4">
+        <div className="flex w-full justify-between my-3  md:pb-1 items-center">
+          <p className="text-white text-sm md:text-xl">ویژه ها</p>
+          <Link
+            href={"#"}
+            className="text-[#f8bd3b] text-[11px] md:text-[13px] lg:text-[13px] flex gap-1 justify-center items-center"
+          >
+            نمایش همه
+            <div className="rotate-180">
+              <svg
+                fill="#f8bd3b"
+                height="8px"
+                width="8px"
+                version="1.1"
+                id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512.005 512.005"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <g>
+                    <g>
+                      <path d="M388.418,240.923L153.751,6.256c-8.341-8.341-21.824-8.341-30.165,0s-8.341,21.824,0,30.165L343.17,256.005 L123.586,475.589c-8.341,8.341-8.341,21.824,0,30.165c4.16,4.16,9.621,6.251,15.083,6.251c5.461,0,10.923-2.091,15.083-6.251 l234.667-234.667C396.759,262.747,396.759,249.264,388.418,240.923z"></path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </Link>
+        </div>
+        <div className="h-[170px] md:h-[130px] lg:h-[160px] 2xl:h-[200px]">
+          <Slider
+            Component={SpecialCard}
+            data={dataDec5}
+            displayCount={"five"}
+          />
+        </div>
+      </div>
+
+      <div className="container px-3 md:px-0  overflow-auto py-2 mb-4">
+        <div className="flex w-full justify-between my-3  md:pb-1 items-center">
+          <p className="text-white text-sm md:text-xl">ویژه ها</p>
+          <Link
+            href={"#"}
+            className="text-[#f8bd3b] text-[11px] md:text-[13px] lg:text-[13px] flex gap-1 justify-center items-center"
+          >
+            نمایش همه
+            <div className="rotate-180">
+              <svg
+                fill="#f8bd3b"
+                height="8px"
+                width="8px"
+                version="1.1"
+                id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512.005 512.005"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <g>
+                    <g>
+                      <path d="M388.418,240.923L153.751,6.256c-8.341-8.341-21.824-8.341-30.165,0s-8.341,21.824,0,30.165L343.17,256.005 L123.586,475.589c-8.341,8.341-8.341,21.824,0,30.165c4.16,4.16,9.621,6.251,15.083,6.251c5.461,0,10.923-2.091,15.083-6.251 l234.667-234.667C396.759,262.747,396.759,249.264,388.418,240.923z"></path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </Link>
+        </div>
+        <div className="h-[170px] md:h-[130px] lg:h-[160px] 2xl:h-[200px]">
+          <Slider
+            Component={SpecialCard}
+            data={dataDec5}
+            displayCount={"five"}
+          />
+        </div>
+      </div>
+
       {/* ===============================> start BANNER_SECTION <=============================*/}
       {/* <BannerFour classname="mt-2" /> */}
       {/* ===============================> end of BANNER_SECTION <=============================*/}
@@ -508,6 +720,7 @@ export default async function HomePage() {
           </div>
         </div>
       </div> */}
+      <div className="mb-16"></div>
     </main>
   );
 }

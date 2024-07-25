@@ -13,7 +13,7 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({
   return (
     <>
       <div className="w-full h-full flex flex-col gap-2">
-        <Link href={"#"} className="group w-full h-[95%]  relative">
+        <Link href={"#"} className="group w-full h-[85%]  relative">
           <div className=" w-full h-full group">
             <Image
               src={path}
@@ -75,6 +75,9 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({
             }}
           ></div>
         </Link>
+        <div className="w-full h-[15%] text-white text-[10px] font-light md:text-[11px] xl:text-[13px]">
+          <p>مراسم شهدای خدمت</p>
+        </div>
       </div>
     </>
   );
