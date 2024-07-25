@@ -229,7 +229,7 @@ export default async function HomePage() {
             </div>
           </Link>
         </div>
-        <div className="h-[230px] md:h-[300px] lg:h-[250px] 2xl:h-[350px]">
+        <div className="h-[230px] md:h-[300px] lg:h-[290px] 2xl:h-[350px]">
           <Slider Component={OntenCard} data={dataDec} displayCount={"eight"} />
         </div>
       </div>

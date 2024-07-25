@@ -31,7 +31,7 @@ export const Slider: React.FC<SliderProps> = ({
   };
 
   return (
-    <div className={`select-none container h-full flex w-full`}>
+    <div className={`select-none container h-full flex w-full overflow-visible`}>
       <Swiper
         ref={sliderRef}
         modules={[Navigation, Pagination, Scrollbar, A11y]}
