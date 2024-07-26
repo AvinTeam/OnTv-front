@@ -1,0 +1,31 @@
+/* Customizing quality box background */
+.vjs-menu .vjs-menu-content {
+  font-family: var(--font-iransans) !important;
+  background-color: #333;
+  width: 140px !important;
+  border-radius: 8px !important;
+  z-index: 100;
+}
+
+/* Customizing quality menu item background */
+.vjs-menu .vjs-menu-item {
+  background-color: #444;
+  color: #fff;
+}
+
+/* Customizing selected items */
+.vjs-menu .vjs-menu-item.vjs-selected {
+  background-color: #333;
+  color: rgb(253, 65, 65);
+}
+
+/* Changing text color of items */
+.vjs-menu .vjs-menu-item {
+  color: #fff;
+}
+
+/* Showing a check mark for selected items */
+.vjs-menu .vjs-menu-item.vjs-selected::before {
+  content: "✔";
+  margin-right: 8px;
+}

@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { createPortal } from 'react-dom';
 import Image from "next/image";
+import SearchModal from "./searchModal";
 const bg_color_first: string =
   "linear-gradient(180deg,hsla(0,0%,5%,.4),hsla(0,0%,5%,.4) .41%,hsla(0,0%,5%,.399) .9%,hsla(0,0%,5%,.396) 1.64%,hsla(0,0%,5%,.391) 2.84%,hsla(0,0%,5%,.383) 4.68%,hsla(0,0%,5%,.372) 7.35%,hsla(0,0%,5%,.356) 11.04%,hsla(0,0%,5%,.336) 15.94%,hsla(0,0%,5%,.31) 22.23%,hsla(0,0%,5%,.278) 30.12%,hsla(0,0%,5%,.238) 39.78%,hsla(0,0%,5%,.192) 51.41%,hsla(0,0%,5%,.137) 65.2%,hsla(0,0%,5%,.073) 81.33%,hsla(0,0%,5%,0))";
 const bg_color_second: string = "hsla(0,0%,5%,.75)";
@@ -27,114 +27,118 @@ export const Header: React.FC = () => {
   }, []);
   return (
     <header
-      className="mx-auto w-full sticky top-0 z-[1000] overflow-auto transition-all"
+      className="mx-auto w-full sticky top-0 z-[1000] overflow-visible transition-all"
       style={{
         background: bgColor,
         backdropFilter: bgColor === bg_color_first ? "none" : "blur(40px)",
       }}
     >
-      <div className="container mx-auto grid h-full grid-cols-[auto_auto] md:grid-cols-[auto_1fr_auto] justify-between items-center gap-4">
+      <div className="container mx-auto grid h-full overflow-visible grid-cols-[auto_1fr] justify-between items-center gap-1">
         {/* ================= mobole menue =============== */}
-        <div className="md:hidden mr-2 bg-base-content-bg p-2 text-base-content rounded-md">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            width={"30px"}
-            height={"30px"}
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
-          </svg>
-        </div>
-        <div className="flex ml-0 mr-4 h-full overflow-hidden w-20 py-2.5 justify-center items-center">
+        <div className="flex ml-0 mr-0 md:mr-4 h-full overflow-hidden w-14 md:w-20 py-2.5 justify-center items-center">
           <Image
             alt="OnTVLogo"
             width={0}
             style={{ objectFit: "contain" }}
-            className="w-12 h-12"
+            className="w-9 md:w-12 h-9 md:h-12"
             height={0}
             src={"/images/android-chrome-192x192.png"}
           />
         </div>
-        <nav className="hidden md:flex justify-start">
-          <ul className="flex justify-between gap-4 text-primary-content">
-            <li className="mr-4 flex justify-center items-center">
+        <nav className="flex justify-start ml-auto">
+          <ul className="flex justify-between gap-1 md:gap-4 text-primary-content">
+            <li className="mr-0 md:mr-4 flex justify-center items-center">
               <Link
                 href="#"
-                className="hover:bg-[#242424] text-center rounded-md px-3 py-[6px] text-[11px] md:text-[12px] "
+                className="hover:bg-[#242424] flex gap-1 justify-center items-center text-center rounded-md px-1 py-[6px] text-[10px] text-nowrap md:text-[12px] "
               >
-                صفحه نخست
+                <svg viewBox="0 0 20 20" fill="orange" width={18} height={18}>
+                  <path
+                    fill="url(#fire-on_svg__a)"
+                    d="M14.982 9.296c-.203-.264-.45-.493-.678-.722-.59-.528-1.258-.906-1.822-1.46-.996-.977-1.403-2.436-1.174-3.795.085-.507-.355-1.003-.802-.75-.352.197-.678.43-.98.672-2.28 1.83-3.178 5.06-2.104 7.832.035.088.07.176.07.29 0 .194-.131.37-.307.44-.203.089-.414.036-.581-.105a.51.51 0 0 1-.123-.15 4.173 4.173 0 0 1-.839-1.965c-.095-.63-.942-1.067-1.21-.49a6.481 6.481 0 0 0-.592 3.08c.053.44.106.88.256 1.32.123.529.36 1.057.624 1.523.95 1.522 2.597 2.614 4.365 2.834 1.884.237 3.899-.106 5.342-1.408 1.61-1.461 2.174-3.802 1.347-5.809l-.115-.228c-.184-.405-.677-1.11-.677-1.11ZM12.2 14.84c-.247.211-.651.44-.968.528-.715.255-1.43.066-1.99-.278-.267-.164-.168-.547.107-.699a2.41 2.41 0 0 0 1.188-1.549c.15-.704-.133-1.285-.247-1.962a3.954 3.954 0 0 1-.053-.94c.027-.345.448-.375.645-.09.037.052.074.102.112.15.678.88 1.743 1.267 1.971 2.464.036.123.053.246.053.378.027.722-.29 1.514-.818 1.998Z"
+                  ></path>
+                  <defs>
+                    <radialGradient
+                      id="fire-on_svg__a"
+                      cx="0"
+                      cy="0"
+                      r="1"
+                      gradientTransform="rotate(-115.942 13.225 6.684) scale(20.573 28.2969)"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stop-color="#F58540"></stop>
+                      <stop offset="0.542" stop-color="#F99F3E"></stop>
+                      <stop offset="1" stop-color="#FEC23B"></stop>
+                    </radialGradient>
+                  </defs>
+                </svg>
+                <p>صفحه نخست</p>
               </Link>
             </li>
             <li className="flex justify-center items-center gap-1">
               <Link
                 href="#"
-                className="hover:bg-[#242424] text-center rounded-md px-3 py-[6px] text-[11px] md:text-[12px] "
+                className="hover:bg-[#242424] text-nowrap text-center rounded-md px-1 py-[6px] text-[10px] md:text-[12px] "
               >
                 تولیدات
               </Link>
-              {/* <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="11.468"
-                height="7.442"
-                viewBox="677.333 698 11.468 7.442"
-              >
-                <path
-                  d="m683.067 705.442-5.734-5.734 1.708-1.708 4.026 4.026 4.026-4.026 1.708 1.708-5.734 5.734Z"
-                  fill="#fff"
-                  fill-rule="evenodd"
-                  data-name="Path 36"
-                />
-              </svg>{" "} */}
             </li>
+            <ul className="group">
+              <li className="flex group justify-center items-center">
+                <div className="hover:bg-[#242424] flex gap-1 text-nowrap justify-center items-center text-center rounded-md px-1 py-[6px] text-[10px] md:text-[12px] ">
+                  <p>آرشیو</p>
+                  <div className="rotate-180">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="gray"
+                      width={"13px"}
+                      height={"13px"}
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M17 16H7a1 1 0 0 1-.77-1.64l5-6a1 1 0 0 1 1.54 0l5 6A1 1 0 0 1 17 16Z"></path>
+                    </svg>
+                  </div>
+                </div>
+              </li>
+              <div className="w-[170px] translate-y-[-300px] group-hover:translate-y-[0px] group-hover:opacity-100 group-hover:right-40 md:group-hover:right-80 p-2 z-[1000] rounded-md absolute bg-[#0f0f0f] border border-[#282828]  ">
+                <ul>
+                  <li className="mb-2 cursor-pointer hover:bg-[#242424] pr-2 py-[8px] text-[10px] text-nowrap md:text-[12px] flex justify-start transition-all rounded-md">
+                    <Link
+                      href={"#"}
+                      className="flex justify-center items-center gap-1"
+                    >
+                      <div className="w-3 h-3 ml-1 border-base-75 bg-[#0f0f0f] border rounded-[50%]"></div>
+                      <p>اجتماعی</p>
+                    </Link>
+                  </li>
+                  <li className="mb-2 cursor-pointer hover:bg-[#242424] pr-2 py-[8px] text-[10px] text-nowrap md:text-[12px]  flex justify-starttransition-all rounded-md">
+                    <Link
+                      href={"#"}
+                      className="flex justify-center items-center gap-1"
+                    >
+                      <div className="w-3 h-3 ml-1 border-base-75 bg-[#0f0f0f] border rounded-[50%]"></div>
+
+                      <p>سیاسی</p>
+                    </Link>
+                  </li>
+                  <li className="mb-2 cursor-pointer hover:bg-[#242424] pr-2 py-[8px] text-[10px] text-nowrap md:text-[12px]  flex justify-starttransition-all rounded-md">
+                    <Link
+                      href={"#"}
+                      className="flex justify-center items-center gap-1"
+                    >
+                      <div className="w-3 h-3 ml-1 border-base-75 bg-[#0f0f0f] border rounded-[50%]"></div>
+
+                      <p>فرهنگی</p>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </ul>
+
             <li className="flex justify-center items-center">
               <Link
                 href="#"
-                className="hover:bg-[#242424] flex gap-1 justify-center items-center text-center rounded-md px-3 py-[6px] text-[11px] md:text-[12px] "
-              >
-                <p>آرشیو</p>
-               <div className="rotate-180">
-               <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="gray"
-                  width={"13px"}
-                  height={"13px"}
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M17 16H7a1 1 0 0 1-.77-1.64l5-6a1 1 0 0 1 1.54 0l5 6A1 1 0 0 1 17 16Z"></path>
-                </svg>
-               </div>
-              </Link>
-            </li>
-    
-            {/* <li className="flex justify-center items-center gap-1">
-              <Link href="#" className="hover:underline">
-                اخبار صوتی
-              </Link>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="11.468"
-                height="7.442"
-                viewBox="677.333 698 11.468 7.442"
-              >
-                <path
-                  d="m683.067 705.442-5.734-5.734 1.708-1.708 4.026 4.026 4.026-4.026 1.708 1.708-5.734 5.734Z"
-                  fill="#fff"
-                  fill-rule="evenodd"
-                  data-name="Path 36"
-                />
-              </svg>{" "}
-            </li> */}
-            <li className="flex justify-center items-center">
-              <Link
-                href="#"
-                className="hover:bg-[#242424] text-center rounded-md px-3 py-[6px] text-[11px] md:text-[12px] "
+                className="hover:bg-[#242424] text-center rounded-md px-1 py-[6px] text-[10px] text-nowrap md:text-[12px] "
               >
                 درباره ما
               </Link>
@@ -142,106 +146,38 @@ export const Header: React.FC = () => {
             <li className="flex justify-center items-center">
               <Link
                 href="#"
-                className="hover:bg-[#242424] text-center rounded-md px-3 py-[6px] text-[11px] md:text-[12px] "
+                className="hover:bg-[#242424] text-center rounded-md px-1 py-[6px] text-[10px] text-nowrap md:text-[12px] "
               >
                 ارتباط با ما
               </Link>
             </li>
             <li className="flex justify-center items-center">
-               <div
-               onClick={()=> setIsSearchActive(true)}
-                 className="cursor-pointer hover:bg-[#242424] flex gap-1 justify-center items-center text-center rounded-md pl-3 pr-1 py-[6px] text-[11px] md:text-[12px] "
+              <div
+                onClick={() => setIsSearchActive(true)}
+                className="cursor-pointer hover:bg-[#242424] flex gap-1 justify-center items-center text-center rounded-md pl-3 pr-1 py-[6px] text-[10px] text-nowrap md:text-[12px] "
               >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="gray" width={'18px'} height={'18px'} viewBox="0 0 24 24"><path d="M19.16 4.84a8 8 0 0 0-12 10.56l-4.4 4.39a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l4.42-4.39a8 8 0 0 0 10.56-12Zm-1.42 9.9a6 6 0 1 1 0-8.48 6 6 0 0 1 0 8.48Z"></path></svg>
-                <p>جستجو</p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="gray"
+                  width={"18px"}
+                  height={"18px"}
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M19.16 4.84a8 8 0 0 0-12 10.56l-4.4 4.39a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l4.42-4.39a8 8 0 0 0 10.56-12Zm-1.42 9.9a6 6 0 1 1 0-8.48 6 6 0 0 1 0 8.48Z"></path>
+                </svg>
+                <p className="hidden md:block">جستجو</p>
               </div>
             </li>
-            {/* <li className="flex justify-center items-center gap-1">
-              <Link href="#" className="hover:underline">
-                   
-              </Link>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="11.468"
-                height="7.442"
-                viewBox="677.333 698 11.468 7.442"
-              >
-                <path
-                  d="m683.067 705.442-5.734-5.734 1.708-1.708 4.026 4.026 4.026-4.026 1.708 1.708-5.734 5.734Z"
-                  fill="#fff"
-                  fill-rule="evenodd"
-                  data-name="Path 36"
-                />
-              </svg>{" "}
-            </li>  */}
           </ul>
         </nav>
-        {/* <div className="hidden md:flex text-primary-content justify-end ml-4">
-          <Link
-            href="/signin"
-            key={Math.random()}
-            className="px-4 py-2 bg-transparent text-secondary-content hover:bg-base-content-slider border border-text-secondary-content border-spacing-1 text-black rounded-md hover:bg-gray-100"
-          >
-            ورود/ثبت نام
-          </Link>
-        </div> */}
       </div>
       {isSearchActive && (
-        // <div className="fixed inset-0 bg-[black] bg-opacity-90 z-50 flex items-center justify-start">
-        //   <div className="  mx-auto p-4 text-white">
-        //     <button
-        //       className="absolute top-4 right-4 text-2xl"
-        //       onClick={() => setIsSearchActive(false)}
-        //     >
-        //       xhfhfghfhg
-        //     </button>
-        //     <input
-        //       type="text"
-        //       placeholder="Search..."
-        //       className="w-full p-4 text-black"
-        //     />
-        //   </div>
-        // </div>
-      <SearchModal isOpen={isSearchActive} onClose={()=> setIsSearchActive(false)} />
+        <SearchModal
+          isOpen={isSearchActive}
+          onClose={() => setIsSearchActive(false)}
+        />
       )}
     </header>
-  );
-};
-
-
-const SearchModal = ({ isOpen, onClose }: any) => {
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  }, [isOpen]);
-
-  if (!isOpen) return null;
-
-  return createPortal(
-    <div className="fixed bg-[black] w-full h-full bg-opacity-90 z-[1000] flex items-center justify-around">
-      <div className="container w-full h-full mt-48 mx-auto p-4 text-white relative">
-       <div className="flex mr-[100%">
-        <input
-          type="text"
-          width={400}
-          height={200}
-          
-          placeholder="جستجو..."
-          className="w-full p-4 rounded-md bottom-1 border-base-content-bg text-black bg-base-75 outline-none"
-        />
-      </div>
-       <button
-          className="absolute cursor-pointer mr-auto pt-2 w-10 h-10 flex justify-center items-center rounded-[50%] bg-base-70 top-4 right-4 text-2xl"
-          onClick={onClose}
-        >
-          &times;
-        </button>
-       </div>
-    </div>,
-    document.body
   );
 };
 
