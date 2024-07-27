@@ -76,7 +76,7 @@ export const Slider: React.FC<SliderProps> = ({
             <Component {...item} />
           </SwiperSlide>
         ))}
-        {displayCount === "five" && (
+        {displayCount !== "eight" && (
           <div className="hidden md:block">
             {!isDisablePrev && (
               <div
