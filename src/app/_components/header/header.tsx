@@ -8,6 +8,7 @@ const bg_color_first: string =
 const bg_color_second: string = "hsla(0,0%,5%,.75)";
 export const Header: React.FC = () => {
   const [bgColor, setBgColor] = useState(bg_color_first);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
 
   useEffect(() => {
@@ -33,19 +34,120 @@ export const Header: React.FC = () => {
         backdropFilter: bgColor === bg_color_first ? "none" : "blur(40px)",
       }}
     >
-      <div className="container mx-auto grid h-full overflow-visible grid-cols-[auto_1fr] justify-between items-center gap-1">
+      <div className="container mx-auto grid h-full overflow-visible md:grid-cols-[auto_1fr] justify-between items-center gap-1">
         {/* ================= mobole menue =============== */}
-        <div className="flex ml-0 mr-0 md:mr-4 h-full overflow-hidden w-14 md:w-20 py-2.5 justify-center items-center">
-          <Image
-            alt="OnTVLogo"
-            width={0}
-            style={{ objectFit: "contain" }}
-            className="w-9 md:w-12 h-9 md:h-12"
-            height={0}
-            src={"/images/android-chrome-192x192.png"}
-          />
+        <div className="flex ml-0 mr-0 md:mr-4 h-full gap-4 md:gap-0 justify-start overflow-hidden w-[100%] md:md:w-20 py-2.5 md:justify-center items-center">
+          <div
+            className="md:hidden mr-4"
+            onClick={() => setShowMobileMenu(true)}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="white"
+              width={35}
+              height={35}
+              xmlns="http://www.w3.org/2000/svg"
+              stroke="#ffffff"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M4 17H20M4 12H20M4 7H20"
+                  stroke="#fff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          <div className="w-full h-full">
+            <Image
+              alt="OnTVLogo"
+              width={0}
+              style={{ objectFit: "contain" }}
+              className="w-[60px] md:w-12 h-[60px] md:h-12 -mt-[10px] md:mt-0"
+              height={0}
+              src={"/images/android-chrome-192x192.png"}
+            />
+          </div>
+          <div
+            className="w-full h-full mt-4 md:hidden"
+            onClick={() => setIsSearchActive(true)}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="#fff"
+              width={"24px"}
+              height={"24px"}
+              viewBox="0 0 24 24"
+            >
+              <path d="M19.16 4.84a8 8 0 0 0-12 10.56l-4.4 4.39a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l4.42-4.39a8 8 0 0 0 10.56-12Zm-1.42 9.9a6 6 0 1 1 0-8.48 6 6 0 0 1 0 8.48Z"></path>
+            </svg>
+          </div>
         </div>
-        <nav className="flex justify-start ml-auto">
+        {showMobileMenu && (
+          <div className="z-[12000] bg-base-75 fixed top-0 left-0 right-0 w-[100%] h-[300px] flex justify-center items-star ">
+            <div className="w-[90%] h-[300px]">
+              <div className="flex flex-col justify-start items-start gap-3">
+                <div className="flex justify-start gap-6 items-center">
+                  <div
+                    className="md:hidden mr-4 bg-base-70 flex rounded-md justify-center items-center  p-1 mt-3"
+                    onClick={() => setShowMobileMenu(false)}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="white"
+                      width={20}
+                      height={20}
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="m13.41 12 6.3-6.29a1 1 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1 1 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l6.29-6.3 6.29 6.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42Z"></path>
+                    </svg>
+                  </div>
+                  <div className="w-full h-full">
+                    <Image
+                      alt="OnTVLogo"
+                      width={0}
+                      style={{ objectFit: "contain" }}
+                      className="w-[60px] md:w-12 h-[60px] md:h-12 mt-2"
+                      height={0}
+                      src={"/images/android-chrome-192x192.png"}
+                    />
+                  </div>
+                  <div
+                    className="w-full h-full mt-4 md:hidden"
+                    onClick={() => setIsSearchActive(true)}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="#fff"
+                      width={"24px"}
+                      height={"24px"}
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M19.16 4.84a8 8 0 0 0-12 10.56l-4.4 4.39a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l4.42-4.39a8 8 0 0 0 10.56-12Zm-1.42 9.9a6 6 0 1 1 0-8.48 6 6 0 0 1 0 8.48Z"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <ul className="mr-4 [&>*]:mt-2 [&>*]:text-white">
+                    <li>فیلم</li>
+                    <li>سریال</li>
+                    <li>دسته بندی</li>
+                    <li>کودک و نوجوان</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+        <nav className="hidden md:flex justify-start ml-auto">
           <ul className="flex justify-between gap-1 md:gap-4 text-primary-content">
             <li className="mr-0 md:mr-4 flex justify-center items-center">
               <Link
@@ -177,6 +279,12 @@ export const Header: React.FC = () => {
           onClose={() => setIsSearchActive(false)}
         />
       )}
+      {/* {showMobileMenu && (
+        <SearchModal
+          isOpen={isSearchActive}
+          onClose={() => setShowMobileMenu(false)}
+        />
+      )} */}
     </header>
   );
 };
