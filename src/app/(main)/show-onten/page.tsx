@@ -1,10 +1,10 @@
 import { OntenCard } from "@/app/_components/cards/onten-card";
 import { Slider } from "@/app/_components/slider/slider";
 import Link from "next/link";
-import mov_11 from "../../../../public/images/Mask Group 13 (2).png";
-import mov_12 from "../../../../public/images/Mask Group 10.png";
-import mov_13 from "../../../../public/images/Image 28.png";
-import mov_14 from "../../../../public/images/Image 27.png";
+import mov_11 from "../../../../public/images/Mask Group 29.png";
+import mov_12 from "../../../../public/images/Mask Group 30.png";
+import mov_13 from "../../../../public/images/Mask Group 31.png";
+import mov_14 from "../../../../public/images/Mask Group 33.png";
 import Image from "next/image";
 
 const dataDec: any = [
@@ -72,41 +72,136 @@ const dataDec: any = [
       dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
     },
   },
+  {
+    path: mov_13,
+    alt: "test",
+    descriptions: {
+      title: "خبر های روز",
+      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
+    },
+  },
+  {
+    path: mov_14,
+    alt: "test",
+    descriptions: {
+      title: "خبر های روز",
+      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
+    },
+  },
+  {
+    path: mov_13,
+    alt: "test",
+    descriptions: {
+      title: "خبر های روز",
+      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
+    },
+  },
+  {
+    path: mov_14,
+    alt: "test",
+    descriptions: {
+      title: "خبر های روز",
+      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
+    },
+  },
+  {
+    path: mov_13,
+    alt: "test",
+    descriptions: {
+      title: "خبر های روز",
+      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
+    },
+  },
+  {
+    path: mov_14,
+    alt: "test",
+    descriptions: {
+      title: "خبر های روز",
+      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
+    },
+  },
+  {
+    path: mov_13,
+    alt: "test",
+    descriptions: {
+      title: "خبر های روز",
+      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
+    },
+  },
+  {
+    path: mov_14,
+    alt: "test",
+    descriptions: {
+      title: "خبر های روز",
+      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
+    },
+  },
+  {
+    path: mov_13,
+    alt: "test",
+    descriptions: {
+      title: "خبر های روز",
+      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
+    },
+  },
+  {
+    path: mov_14,
+    alt: "test",
+    descriptions: {
+      title: "خبر های روز",
+      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
+    },
+  },
+  {
+    path: mov_14,
+    alt: "test",
+    descriptions: {
+      title: "خبر های روز",
+      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
+    },
+  },
+  {
+    path: mov_14,
+    alt: "test",
+    descriptions: {
+      title: "خبر های روز",
+      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
+    },
+  },
 ];
 
 export default async function ShowOnten() {
   return (
     <div className="overflow-hidden">
-      <div className="w-full h-[410px] to-90% flex py-5 justify-center items-center bg-gradient-to-r from-[#221D1F] to-[#341173]">
-        <div className="container flex gap-4 w-full h-full">
-          <div className="w-[300px] bg-primary rounded-md overflow-auto">
+      <div className="w-full h-[410px] to-90% flex py-4 md:py-2 justify-center items-center bg-gradient-to-r from-[#221D1F] to-[#341173]">
+        <div className="container flex sm:flex-col justify-center sm:items-center lg:items-start md:justify-start lg:flex-row gap-6 w-full h-full select-none">
+          <div className="hidden md:inline-block md:w-[150px] lg:w-[200px] md:h-[270px] lg:mt-14 rounded-md overflow-auto shadow-2xl">
             <Image
               src={"/images/1_0.jpg"}
               alt="poster"
-              objectFit="cover"
               width={0}
               height={0}
-              className="w-full h-full"
+              className="w-full h-full shadow-md object-cover"
             />
           </div>
-          <div className="flex flex-col gap-3 items-start">
-            <h2 className="text-white text-2xl mt-24">
+          <div className="flex flex-col gap-3 lg:items-start items-center justify-center">
+            <h2 className="text-white text-2xl lg:mt-24">
               برنامه گفتگو محور جهانمرد
             </h2>
-            <p className="text-sm mt-2 font-light">
+            <p className="text-sm w-[300px] text-[#B3BAC4] mt-3 font-light">
               صحبت های شهید حسین امیرعبداللهیان در مورد شخصیت عظیم سردار دلها
               شهید حاج قاسم سلیمانی
             </p>
             <div className="flex gap-2">
-              <div className="text-sm mt-2 font-light border text-white border-[#4E16BE] px-3 py-1 rounded-[30px] flex justify-center items-center cursor-pointer">
+              <div className="text-sm mt-2 font-light border text-[#B088FF] hover:border-[#3b3ece] border-[#4E16BE] px-3 py-1 rounded-[30px] flex justify-center items-center cursor-pointer">
                 گفتگو محور
               </div>
-              <div className="text-sm mt-2 font-light border text-white border-[#4E16BE] px-3 py-1 rounded-[30px] flex justify-center items-center cursor-pointer">
+              <div className="text-sm mt-2 font-light border text-[#B088FF] hover:border-[#3b3ece] border-[#4E16BE] px-3 py-1 rounded-[30px] flex justify-center items-center cursor-pointer">
                 سیاسی
               </div>
             </div>
-            <div className="flex gap-1 mt-1">
-              <div>
+            <div className="flex gap-1 mt-2 ">
+              <div className="cursor-pointer">
                 <svg
                   version="1.1"
                   width={24}
@@ -138,7 +233,7 @@ export default async function ShowOnten() {
                 </svg>
               </div>
 
-              <div className="flex ml-[2px]">
+              <div className="flex ml-[2px] cursor-pointer">
                 <svg
                   fill="#fff"
                   width={24}
@@ -246,7 +341,7 @@ export default async function ShowOnten() {
                 </svg>
               </div>
 
-              <div>85%</div>
+              <div className="text-[#B088FF]">85%</div>
             </div>
           </div>
         </div>
@@ -286,164 +381,162 @@ export default async function ShowOnten() {
             </div>
           </Link>
         </div>
-        <div className="h-[230px] md:h-[300px] lg:h-[290px] 2xl:h-[350px]">
-          <Slider
-            Component={OntenCard}
-            data={dataDec}
-            displayCount={8}
-            isShowIcon={false}
-          />
-        </div>
-        <div className="h-[230px] md:h-[300px] lg:h-[290px] 2xl:h-[350px]">
-          <Slider
-            Component={OntenCard}
-            data={dataDec}
-            displayCount={8}
-            isShowIcon={false}
-          />
-        </div>
-        <div className="h-[230px] md:h-[300px] lg:h-[290px] 2xl:h-[350px]">
-          <Slider
-            Component={OntenCard}
-            data={dataDec}
-            displayCount={8}
-            isShowIcon={false}
-          />
-        </div>
-        <div className="h-[230px] md:h-[300px] lg:h-[290px] 2xl:h-[350px]">
-          <Slider
-            Component={OntenCard}
-            data={dataDec}
-            displayCount={8}
-            isShowIcon={false}
-          />
-        </div>
-        <div className="h-[230px] md:h-[300px] lg:h-[290px] 2xl:h-[350px]">
-          <Slider
-            Component={OntenCard}
-            data={dataDec}
-            displayCount={8}
-            isShowIcon={false}
-          />
-        </div>
       </div>
-      <div className="h-[400px]  mb-4 to-90% bg-gradient-to-r from-[#341173] to-[#221D1F]">
-        <div className="container flex flex-col justify-between gap-6">
-          <h5 className="my-6 text-white">عوامل برنامه</h5>
-          <div className="grid grid-cols-9 w-full h-full justify-center items-center">
-            <div className="col-span-3 flex flex-col gap-8">
-              <div className="flex gap-4">
-                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-                <div>
-                  <h5 className="text-white">محمد حسین دوست محمدی</h5>
-                  <p>گارگردان و مدیر هنری</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-                <div>
-                  <h5 className="text-white">محمد حسین دوست محمدی</h5>
-                  <p>گارگردان و مدیر هنری</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-                <div>
-                  <h5 className="text-white">محمد حسین دوست محمدی</h5>
-                  <p>گارگردان و مدیر هنری</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-span-3 flex flex-col gap-8">
-              <div className="flex gap-4">
-                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-                <div>
-                  <h5 className="text-white">محمد حسین دوست محمدی</h5>
-                  <p>گارگردان و مدیر هنری</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-                <div>
-                  <h5 className="text-white">محمد حسین دوست محمدی</h5>
-                  <p>گارگردان و مدیر هنری</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-                <div>
-                  <h5 className="text-white">محمد حسین دوست محمدی</h5>
-                  <p>گارگردان و مدیر هنری</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-span-3 flex flex-col gap-8">
-              <div className="flex gap-4">
-                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-                <div>
-                  <h5 className="text-white">محمد حسین دوست محمدی</h5>
-                  <p>گارگردان و مدیر هنری</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-                <div>
-                  <h5 className="text-white">محمد حسین دوست محمدی</h5>
-                  <p>گارگردان و مدیر هنری</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-                <div>
-                  <h5 className="text-white">محمد حسین دوست محمدی</h5>
-                  <p>گارگردان و مدیر هنری</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="container flex w-full justify-between my-3 md:pb-1 items-center mt-4">
-        <p className="text-white text-sm md:text-xl">ویژه های آن</p>
-        <Link
-          href={"/show-onten"}
-          className="text-[#f8bd3b] text-[11px] md:text-[13px] lg:text-[13px] flex gap-1 justify-center items-center"
-        >
-          نمایش همه
-          <div className="rotate-180">
-            <svg
-              fill="#f8bd3b"
-              height="8px"
-              width="8px"
-              version="1.1"
-              id="Layer_1"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512.005 512.005"
+      <div className=" #221D1F">
+        <div className="container flex flex-col md:grid md:grid-cols-12 justify-center items-center gap-2 mx-auto overflow-auto">
+          {dataDec?.map((item: any, idx: any) => (
+            <Link
+              href={"#"}
+              key={idx}
+              className="w-auto md:col-span-6 lg:col-span-3 overflow-auto mb-5"
             >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></g>
-              <g id="SVGRepo_iconCarrier">
-                <g>
-                  <g>
-                    <path d="M388.418,240.923L153.751,6.256c-8.341-8.341-21.824-8.341-30.165,0s-8.341,21.824,0,30.165L343.17,256.005 L123.586,475.589c-8.341,8.341-8.341,21.824,0,30.165c4.16,4.16,9.621,6.251,15.083,6.251c5.461,0,10.923-2.091,15.083-6.251 l234.667-234.667C396.759,262.747,396.759,249.264,388.418,240.923z"></path>
-                  </g>
-                </g>
-              </g>
-            </svg>
-          </div>
-        </Link>
+              <div className="rounded-md overflow-auto h-[140px]">
+                <Image
+                  src={item.path}
+                  width={0}
+                  height={0}
+                  alt={item.alt}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="pb-[9px] mt-2 md:pb-0 flex justify-center items-center flex-col w-full h-[40%] md:h-[30%]">
+                <div className="  md:mt-4 grid grid-cols-12 justify-between items-center gap-1 w-full mt-4">
+                  <div className="col-span-3 mb-1 bg-box-slider-bg-text text-nowrap text-base-content-slider py-1 px-1 flex justify-center text-[10px] rounded-[20px]">
+                    {item?.descriptions?.title}
+                  </div>
+                  <div className="col-span-9 bg-box-slider-bg-text text-nowrap text-box-slider-text-l py-1 px-2 text-[9px] mr-auto rounded-[20px]">
+                    <span className="text-white"> 32:65 </span>
+                    <span>
+                      <div className="inline">&nbsp;</div> |
+                    </span>
+                    <span>32,65 نمایش </span>
+                  </div>
+                </div>
+                <div className=" mt-1 md:mt-2 text-justify text-[12px] md:text-[14px] max-w-[100%] md:min-w-[100%]">
+                  <h3 className="mb-1 text-ellipsis dark:text-description-text md:text-clip overflow-hidden whitespace-nowrap md:text-wrap md:ml-auto ">
+                    {item?.descriptions?.dec}
+                  </h3>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
-      <div className="h-[230px] md:h-[300px] lg:h-[290px] 2xl:h-[350px] mb-8">
-        <Slider
-          Component={OntenCard}
-          data={dataDec}
-          displayCount={8}
-          isShowIcon={false}
-        />
+      <div className="h-[200px] lg:h-[400px] to-90% bg-gradient-to-r from-[#341173] overflow-x-auto to-[#221D1F] mb-16">
+        <div className="container flex flex-col justify-between gap-6 overflow-x-scroll lg:overflow-hidden">
+          <h5 className="my-6 text-white mr-6">عوامل برنامه</h5>
+          {/* mobile & tablet view  */}
+          <div className="flex lg:hidden gap-3 overflow-x-scroll">
+            <div className="flex gap-4 mr-4">
+              <div className="w-16 h-16 bg-white rounded-[50%]"></div>
+              <div>
+                <h5 className="text-white text-xl text-nowrap">
+                  محمد حسین دوست محمدی
+                </h5>
+                <p className="font-light text-nowrap">گارگردان و مدیر هنری</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="w-16 h-16 bg-white rounded-[50%]"></div>
+              <div>
+                <h5 className="text-white text-xl text-nowrap">
+                  محمد حسین دوست محمدی
+                </h5>
+                <p className="font-light text-nowrap">گارگردان و مدیر هنری</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="w-16 h-16 bg-white rounded-[50%]"></div>
+              <div>
+                <h5 className="text-white text-xl text-nowrap">
+                  محمد حسین دوست محمدی
+                </h5>
+                <p className="font-light text-nowrap">گارگردان و مدیر هنری</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="w-16 h-16 bg-white rounded-[50%]"></div>
+              <div>
+                <h5 className="text-white text-xl text-nowrap">
+                  محمد حسین دوست محمدی
+                </h5>
+                <p className="font-light text-nowrap">گارگردان و مدیر هنری</p>
+              </div>
+            </div>
+          </div>
+          {/* mobile & tablet view  */}
+          <div className="hidden lg:grid grid-cols-9 w-full h-full justify-center items-center mr-6">
+            <div className="col-span-3 flex flex-col gap-8">
+              <div className="flex gap-4">
+                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
+                <div>
+                  <h5 className="text-white text-xl">محمد حسین دوست محمدی</h5>
+                  <p className="font-light">گارگردان و مدیر هنری</p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
+                <div>
+                  <h5 className="text-white text-xl">محمد حسین دوست محمدی</h5>
+                  <p className="font-light">گارگردان و مدیر هنری</p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
+                <div>
+                  <h5 className="text-white text-xl">محمد حسین دوست محمدی</h5>
+                  <p className="font-light">گارگردان و مدیر هنری</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-span-3 flex flex-col gap-8">
+              <div className="flex gap-4">
+                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
+                <div>
+                  <h5 className="text-white text-xl">محمد حسین دوست محمدی</h5>
+                  <p className="font-light">گارگردان و مدیر هنری</p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
+                <div>
+                  <h5 className="text-white text-xl">محمد حسین دوست محمدی</h5>
+                  <p className="font-light">گارگردان و مدیر هنری</p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
+                <div>
+                  <h5 className="text-white text-xl">محمد حسین دوست محمدی</h5>
+                  <p className="font-light">گارگردان و مدیر هنری</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-span-3 flex flex-col gap-8">
+              <div className="flex gap-4">
+                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
+                <div>
+                  <h5 className="text-white text-xl">محمد حسین دوست محمدی</h5>
+                  <p className="font-light">گارگردان و مدیر هنری</p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
+                <div>
+                  <h5 className="text-white text-xl">محمد حسین دوست محمدی</h5>
+                  <p className="font-light">گارگردان و مدیر هنری</p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
+                <div>
+                  <h5 className="text-white text-xl">محمد حسین دوست محمدی</h5>
+                  <p className="font-light">گارگردان و مدیر هنری</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
