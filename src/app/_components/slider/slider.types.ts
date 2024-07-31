@@ -9,5 +9,6 @@ type SliderItem = {
 export type SliderProps = {
   data: SliderItem[];
   Component: ElementType;
-  displayCount: string
+  displayCount: number;
+  isShowIcon: boolean
 };

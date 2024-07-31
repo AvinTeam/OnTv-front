@@ -13,6 +13,7 @@ export const Slider: React.FC<SliderProps> = ({
   data,
   Component,
   displayCount,
+  isShowIcon = true
 }: SliderProps) => {
   const [isDisablePrev, setIsDisablePrev] = useState<boolean>(true);
   const [isDisableNext, setIsDisableNext] = useState<boolean>(false);
@@ -42,15 +43,15 @@ export const Slider: React.FC<SliderProps> = ({
         pagination={{ clickable: true }}
         breakpoints={{
           0: {
-            slidesPerView: displayCount === "eight" ? 2.5 : 1.5,
+            slidesPerView: displayCount === 8 ? 2.5 : 1.5,
             spaceBetween: 8,
           },
           320: {
-            slidesPerView: displayCount === "eight" ? 3 : 1.5,
+            slidesPerView: displayCount === 8 ? 3 : 1.5,
             spaceBetween: 8,
           },
           437: {
-            slidesPerView: displayCount === "eight" ? 4 : 1.5,
+            slidesPerView: displayCount === 8 ? 4 : 1.5,
             spaceBetween: 8,
           },
           768: {
@@ -58,11 +59,11 @@ export const Slider: React.FC<SliderProps> = ({
             spaceBetween: 8,
           },
           984: {
-            slidesPerView: displayCount === "eight" ? 6 : 4,
+            slidesPerView: displayCount === 8 ? 6 : 4,
             spaceBetween: 8,
           },
           1200: {
-            slidesPerView: displayCount === "eight" ? 8 : 5,
+            slidesPerView: displayCount,
             spaceBetween: 5,
           },
         }}
@@ -76,7 +77,7 @@ export const Slider: React.FC<SliderProps> = ({
             <Component {...item} />
           </SwiperSlide>
         ))}
-        {displayCount !== "eight" && (
+        { isShowIcon && (
           <div className="hidden md:block">
             {!isDisablePrev && (
               <div

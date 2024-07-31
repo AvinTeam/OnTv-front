@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="overflow-x-auto overflow-visible sm:-mb-4">
+    <footer className="fixed overflow-x-auto w-full overflow-visible sm:-mb-4  z-[1000]">
       {/* ================== bottom footer section ==================  */}
-      <div className="fixed overflow-visible bg-[#0f0f0f] w-full py-[6px] border-t-[#161616] z-50 bottom-0 right-0 left-0">
+      <div className="fixed overflow-visible bg-[#0f0f0f] w-full py-[6px] border-t-[#161616] bottom-0 right-0 left-0">
         <div className="container overflow-visible flex justify-between items-center ">
           <ul className="flex [&>*]:text-[#e8e8e8] [&>*]:cursor-pointer justify-between items-center [&>*]:font-light md:[&>*]:ml-[2px]">
             <li className="hover:bg-[#242424] in py-[4px] px-2 transition-all rounded-md">

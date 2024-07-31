@@ -230,7 +230,7 @@ export default async function HomePage() {
           </Link>
         </div>
         <div className="h-[230px] md:h-[300px] lg:h-[290px] 2xl:h-[350px]">
-          <Slider Component={OntenCard} data={dataDec} displayCount={"eight"} />
+          <Slider Component={OntenCard} data={dataDec} displayCount={8} isShowIcon={false}/>
         </div>
       </div>
 
@@ -277,7 +277,8 @@ export default async function HomePage() {
           <Slider
             Component={SpecialCard}
             data={dataDec5}
-            displayCount={"five"}
+            displayCount={5}
+            isShowIcon
           />
         </div>
       </div>
@@ -318,7 +319,7 @@ export default async function HomePage() {
           </Link>
         </div>
         <div className="h-[230px] md:h-[300px] lg:h-[290px] 2xl:h-[350px]">
-          <Slider Component={OntenCard} data={dataDec} displayCount={"eight"} />
+          <Slider Component={OntenCard} data={dataDec} displayCount={8} isShowIcon={false}/>
         </div>
       </div>
 
@@ -358,7 +359,7 @@ export default async function HomePage() {
           </Link>
         </div>
         <div className="h-[230px] md:h-[300px] lg:h-[290px] 2xl:h-[350px]">
-          <Slider Component={OntenCard} data={dataDec} displayCount={"eight"} />
+          <Slider Component={OntenCard} data={dataDec} displayCount={8} isShowIcon={false} />
         </div>
       </div>
 
@@ -405,7 +406,8 @@ export default async function HomePage() {
           <Slider
             Component={SpecialCard}
             data={dataDec5}
-            displayCount={"five"}
+            displayCount={5}
+            isShowIcon
           />
         </div>
       </div>
@@ -449,7 +451,8 @@ export default async function HomePage() {
           <Slider
             Component={SpecialCard}
             data={dataDec5}
-            displayCount={"five"}
+            isShowIcon
+            displayCount={5}
           />
         </div>
       </div>
@@ -493,7 +496,8 @@ export default async function HomePage() {
           <Slider
             Component={SpecialCard}
             data={dataDec5}
-            displayCount={"five"}
+            isShowIcon
+            displayCount={5}
           />
         </div>
       </div>
