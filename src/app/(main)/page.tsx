@@ -198,7 +198,7 @@ export default async function HomePage() {
         <div className="flex w-full justify-between my-3  md:pb-1 items-center">
           <p className="text-white text-sm md:text-xl">روی آن تن</p>
           <Link
-            href={"#"}
+            href={"/show-onten"}
             className="text-[#f8bd3b] text-[11px] md:text-[13px] lg:text-[13px] flex gap-1 justify-center items-center"
           >
             نمایش همه
