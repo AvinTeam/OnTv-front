@@ -66,7 +66,7 @@ export const Header: React.FC = () => {
               </g>
             </svg>
           </div>
-          <div className="w-full h-full">
+          <Link href={"/"} className="w-full h-full">
             <Image
               alt="OnTVLogo"
               width={0}
@@ -75,7 +75,7 @@ export const Header: React.FC = () => {
               height={0}
               src={"/images/android-chrome-192x192.png"}
             />
-          </div>
+          </Link>
           <div
             className="w-full h-full mt-4 md:hidden"
             onClick={() => setIsSearchActive(true)}

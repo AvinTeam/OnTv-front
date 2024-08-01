@@ -10,5 +10,8 @@ export type SliderProps = {
   data: SliderItem[];
   Component: ElementType;
   displayCount: number;
-  isShowIcon: boolean
+  isShowIcon: boolean;
+  smCount?: number;
+  mdCount?: number;
+  lgCount?: number;
 };

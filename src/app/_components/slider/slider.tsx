@@ -13,7 +13,10 @@ export const Slider: React.FC<SliderProps> = ({
   data,
   Component,
   displayCount,
-  isShowIcon = true
+  isShowIcon = true,
+  smCount,
+  mdCount,
+  lgCount
 }: SliderProps) => {
   const [isDisablePrev, setIsDisablePrev] = useState<boolean>(true);
   const [isDisableNext, setIsDisableNext] = useState<boolean>(false);
@@ -43,27 +46,27 @@ export const Slider: React.FC<SliderProps> = ({
         pagination={{ clickable: true }}
         breakpoints={{
           0: {
-            slidesPerView: displayCount === 8 ? 2.5 : 1.5,
+            slidesPerView: smCount ? smCount : displayCount === 8 ? 2.5 : 1.5,
             spaceBetween: 8,
           },
           320: {
-            slidesPerView: displayCount === 8 ? 3 : 1.5,
+            slidesPerView: smCount ? smCount : displayCount === 8 ? 3 : 1.5,
             spaceBetween: 8,
           },
           437: {
-            slidesPerView: displayCount === 8 ? 4 : 1.5,
+            slidesPerView: mdCount ? smCount : displayCount === 8 ? 4 : 1.5,
             spaceBetween: 8,
           },
           768: {
-            slidesPerView: 4,
+            slidesPerView: mdCount ? mdCount : 4,
             spaceBetween: 8,
           },
           984: {
-            slidesPerView: displayCount === 8 ? 6 : 4,
+            slidesPerView: lgCount ? lgCount : displayCount === 8 ? 6 : 4,
             spaceBetween: 8,
           },
           1200: {
-            slidesPerView: displayCount,
+            slidesPerView: lgCount ? lgCount : displayCount,
             spaceBetween: 5,
           },
         }}
