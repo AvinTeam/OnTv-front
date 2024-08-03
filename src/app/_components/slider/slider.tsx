@@ -75,7 +75,7 @@ export const Slider: React.FC<SliderProps> = ({
           setIsDisableNext(e.isEnd);
         }}
       >
-        {data?.map((item: any, idx) => (
+        {data?.map((item: any, idx: number) => (
           <SwiperSlide key={idx}>
             <Component {...item} />
           </SwiperSlide>

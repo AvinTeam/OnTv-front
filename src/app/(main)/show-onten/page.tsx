@@ -1,4 +1,3 @@
-import { OntenCard } from "@/app/_components/cards/onten-card";
 import { Slider } from "@/app/_components/slider/slider";
 import Link from "next/link";
 import mov_11 from "../../../../public/images/Mask Group 29.png";
@@ -6,6 +5,9 @@ import mov_12 from "../../../../public/images/Mask Group 30.png";
 import mov_13 from "../../../../public/images/Mask Group 31.png";
 import mov_14 from "../../../../public/images/Mask Group 33.png";
 import Image from "next/image";
+// import { OntenCard } from "@/app/_components/cards/onten-card";
+import Box from "./components/box";
+import { Fragment } from "react";
 
 const dataDec: any = [
   {
@@ -168,6 +170,12 @@ const dataDec: any = [
       dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
     },
   },
+];
+const data = [
+  { name: "محمد حسین دوست محمدی", title: "گارگردان و مدیر هنری" },
+  { name: "محمد حسین دوست محمدی", title: "گارگردان و مدیر هنری" },
+  { name: "محمد حسین دوست محمدی", title: "گارگردان و مدیر هنری" },
+  { name: "محمد حسین دوست محمدی", title: "گارگردان و مدیر هنری" },
 ];
 const bg =
   "https://gateway.telewebion.com/sites/default/files/images/backgrounds/1403/%D8%B3%D8%B1%D8%B2%D9%85%DB%8C%D9%86-%D9%85%D8%A7%D8%AF%D8%B1%DB%8C-%D9%81%D8%B5%D9%84-%D8%B3%D9%88%D9%85-3_0.jpg";
@@ -431,118 +439,43 @@ export default async function ShowOnten() {
           ))}
         </div>
       </div>
-      <div className="h-[200px] lg:h-[400px] to-90% bg-gradient-to-r from-[#341173] overflow-x-auto to-[#221D1F] mb-16">
-        <div className="container flex flex-col justify-between gap-6 overflow-x-scroll lg:overflow-hidden">
+      <div className="h-[200px] lg:h-[400px] to-90% bg-gradient-to-r from-[#341173] to-[#221D1F] mb-16">
+        <div className="container flex flex-col justify-between gap-6 overflow-hidden">
           <h5 className="my-6 text-white mr-6">عوامل برنامه</h5>
           {/* mobile & tablet view  */}
-          <div className="flex lg:hidden gap-3 overflow-x-scroll">
-            <div className="flex gap-4 mr-4">
-              <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-              <div>
-                <h5 className="text-white text-xl text-nowrap">
-                  محمد حسین دوست محمدی
-                </h5>
-                <p className="font-light text-nowrap">گارگردان و مدیر هنری</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-              <div>
-                <h5 className="text-white text-xl text-nowrap">
-                  محمد حسین دوست محمدی
-                </h5>
-                <p className="font-light text-nowrap">گارگردان و مدیر هنری</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-              <div>
-                <h5 className="text-white text-xl text-nowrap">
-                  محمد حسین دوست محمدی
-                </h5>
-                <p className="font-light text-nowrap">گارگردان و مدیر هنری</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-              <div>
-                <h5 className="text-white text-xl text-nowrap">
-                  محمد حسین دوست محمدی
-                </h5>
-                <p className="font-light text-nowrap">گارگردان و مدیر هنری</p>
-              </div>
+          <div className="lg:hidden w-full overflow-hidden">
+            <div className="h-[120px] md:h-[130px] w-full overflow-hidden">
+              <Slider
+                Component={Box}
+                data={data}
+                isShowIcon={false}
+                mdCount={2.5}
+                displayCount={5}
+              />
             </div>
           </div>
           {/* mobile & tablet view  */}
           <div className="hidden lg:grid grid-cols-9 w-full h-full justify-center items-center mr-6">
             <div className="col-span-3 flex flex-col gap-8">
-              <div className="flex gap-4">
-                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-                <div>
-                  <h5 className="text-white text-xl">محمد حسین دوست محمدی</h5>
-                  <p className="font-light">گارگردان و مدیر هنری</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-                <div>
-                  <h5 className="text-white text-xl">محمد حسین دوست محمدی</h5>
-                  <p className="font-light">گارگردان و مدیر هنری</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-                <div>
-                  <h5 className="text-white text-xl">محمد حسین دوست محمدی</h5>
-                  <p className="font-light">گارگردان و مدیر هنری</p>
-                </div>
-              </div>
+              {data?.slice(0, 3).map((item, idx) => (
+                <Fragment key={idx}>
+                  <Box title={item.title} name={item.name} />
+                </Fragment>
+              ))}
             </div>
             <div className="col-span-3 flex flex-col gap-8">
-              <div className="flex gap-4">
-                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-                <div>
-                  <h5 className="text-white text-xl">محمد حسین دوست محمدی</h5>
-                  <p className="font-light">گارگردان و مدیر هنری</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-                <div>
-                  <h5 className="text-white text-xl">محمد حسین دوست محمدی</h5>
-                  <p className="font-light">گارگردان و مدیر هنری</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-                <div>
-                  <h5 className="text-white text-xl">محمد حسین دوست محمدی</h5>
-                  <p className="font-light">گارگردان و مدیر هنری</p>
-                </div>
-              </div>
+              {data?.slice(0, 3).map((item, idx) => (
+                <Fragment key={idx}>
+                  <Box title={item.title} name={item.name} />
+                </Fragment>
+              ))}
             </div>
             <div className="col-span-3 flex flex-col gap-8">
-              <div className="flex gap-4">
-                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-                <div>
-                  <h5 className="text-white text-xl">محمد حسین دوست محمدی</h5>
-                  <p className="font-light">گارگردان و مدیر هنری</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-                <div>
-                  <h5 className="text-white text-xl">محمد حسین دوست محمدی</h5>
-                  <p className="font-light">گارگردان و مدیر هنری</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="w-16 h-16 bg-white rounded-[50%]"></div>
-                <div>
-                  <h5 className="text-white text-xl">محمد حسین دوست محمدی</h5>
-                  <p className="font-light">گارگردان و مدیر هنری</p>
-                </div>
-              </div>
+              {data?.slice(0, 3).map((item, idx) => (
+                <Fragment key={idx}>
+                  <Box title={item.title} name={item.name} />
+                </Fragment>
+              ))}
             </div>
           </div>
         </div>
