@@ -21,6 +21,7 @@ import Link from "next/link";
 import BannerFull from "../_components/banners/banner-full/banner-full";
 import BannerTwo from "../_components/banners/banner-two/banner-two";
 import BannerFour from "../_components/banners/banner-four/banner-four";
+import { Skeleton } from "../_components/skeleton";
 
 const dataDec: any = [
   {
@@ -187,11 +188,31 @@ export default async function HomePage() {
     <main className="flex flex-col w-full overflow-x-scroll overflow-y-hidden bg-[#000000]">
       <div className="container mt-4 mb-4 px-2 xl:px-0 overflow-x-auto">
         {/* <Live data={lives?.lives?.data} /> */}
-        <Live data={[
-          { url: 'https://picamo.arvanlive.ir/hls/ch1/ch1.m3u8', slug: '', order: 0, title: '', user: '' },
-          { url: 'https://picamo.arvanlive.ir/hls/ch1/ch2.m3u8', slug: '', order: 0, title: '', user: '' },
-          { url: 'https://picamo.arvanlive.ir/hls/ch1/ch3.m3u8', slug: '', order: 0, title: '', user: '' },
-        ]} />
+        <Live
+          data={[
+            {
+              url: "https://picamo.arvanlive.ir/hls/ch1/ch1.m3u8",
+              slug: "",
+              order: 0,
+              title: "",
+              user: "",
+            },
+            {
+              url: "https://picamo.arvanlive.ir/hls/ch1/ch2.m3u8",
+              slug: "",
+              order: 0,
+              title: "",
+              user: "",
+            },
+            {
+              url: "https://picamo.arvanlive.ir/hls/ch1/ch3.m3u8",
+              slug: "",
+              order: 0,
+              title: "",
+              user: "",
+            },
+          ]}
+        />
       </div>
 
       <div className="container px-3 md:px-0 overflow-auto pt-2 mb-6">
@@ -230,7 +251,12 @@ export default async function HomePage() {
           </Link>
         </div>
         <div className="h-[230px] md:h-[300px] lg:h-[290px] 2xl:h-[350px]">
-          <Slider Component={OntenCard} data={dataDec} displayCount={8} isShowIcon={false}/>
+          <Slider
+            Component={OntenCard}
+            data={dataDec}
+            displayCount={8}
+            isShowIcon={false}
+          />
         </div>
       </div>
 
@@ -319,7 +345,12 @@ export default async function HomePage() {
           </Link>
         </div>
         <div className="h-[230px] md:h-[300px] lg:h-[290px] 2xl:h-[350px]">
-          <Slider Component={OntenCard} data={dataDec} displayCount={8} isShowIcon={false}/>
+          <Slider
+            Component={OntenCard}
+            data={dataDec}
+            displayCount={8}
+            isShowIcon={false}
+          />
         </div>
       </div>
 
@@ -359,7 +390,12 @@ export default async function HomePage() {
           </Link>
         </div>
         <div className="h-[230px] md:h-[300px] lg:h-[290px] 2xl:h-[350px]">
-          <Slider Component={OntenCard} data={dataDec} displayCount={8} isShowIcon={false} />
+          <Slider
+            Component={OntenCard}
+            data={dataDec}
+            displayCount={8}
+            isShowIcon={false}
+          />
         </div>
       </div>
 
@@ -505,7 +541,6 @@ export default async function HomePage() {
       {/* ===============================> start BANNER_SECTION <=============================*/}
       {/* <BannerFour classname="mt-2" /> */}
       {/* ===============================> end of BANNER_SECTION <=============================*/}
-
 
       {/* ========================documentry section ============================== */}
       {/* <div className="py-6 md:py-10 bg-[#4A4A4A] px-2 md:px-6 h-[600px] md:h-[880px] lg:h-[880px] xl:h-[540px] overflow-x-auto overflow-y-hidden ">

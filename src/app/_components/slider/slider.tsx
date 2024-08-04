@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide, SwiperRef } from "swiper/react";
 import "swiper/css";
@@ -8,6 +8,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { SliderProps } from "./slider.types";
 import Image from "next/image";
+import { Skeleton } from "../skeleton";
 
 export const Slider: React.FC<SliderProps> = ({
   data,
@@ -16,10 +17,11 @@ export const Slider: React.FC<SliderProps> = ({
   isShowIcon = true,
   smCount,
   mdCount,
-  lgCount
+  lgCount,
 }: SliderProps) => {
   const [isDisablePrev, setIsDisablePrev] = useState<boolean>(true);
   const [isDisableNext, setIsDisableNext] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const sliderRef = useRef<SwiperRef>(null);
 
   const handlePrev = () => {
@@ -34,8 +36,58 @@ export const Slider: React.FC<SliderProps> = ({
     sliderRef.current?.swiper.slideNext();
   };
 
+ 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      setIsLoading(false);
+    };
+
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-around w-full h-full">
+        <div className="flex flex-col justify-between w-[400px] h-[150px] md:w-[130px] md:h-[120px] lg:w-[200px] lg:h-[150px]">
+        <Skeleton type="rectangle" color={70} />
+        <div className="w-16 h-2">
+        <Skeleton type="rectangle" />
+        </div>
+        </div>
+        <div className="hidden md:flex flex-col justify-between md:w-[130px] md:h-[120px] lg:w-[200px] lg:h-[150px]">
+        <Skeleton type="rectangle" color={70} />
+        <div className="w-16 h-2">
+        <Skeleton type="rectangle" />
+        </div>
+        </div>
+        <div className="hidden md:flex flex-col justify-between md:w-[130px] md:h-[120px] lg:w-[200px] lg:h-[150px]">
+        <Skeleton type="rectangle" color={70} />
+        <div className="w-16 h-2">
+        <Skeleton type="rectangle" />
+        </div>
+        </div>
+        <div className="hidden md:flex flex-col justify-between md:w-[130px] md:h-[120px] lg:w-[200px] lg:h-[150px]">
+        <Skeleton type="rectangle" color={70} />
+        <div className="w-16 h-2">
+        <Skeleton type="rectangle" />
+        </div>
+        </div>
+        <div className="hidden md:flex flex-col justify-between md:w-[130px] md:h-[120px] lg:w-[200px] lg:h-[150px]">
+        <Skeleton type="rectangle" color={70} />
+        <div className="w-16 h-2">
+        <Skeleton type="rectangle" />
+        </div>
+        </div>
+       </div>
+    );
+  }
+
   return (
-    <div className={`select-none container h-full flex w-full overflow-visible`}>
+    <div
+      className={`select-none container h-full flex w-full overflow-visible`}
+    >
       <Swiper
         ref={sliderRef}
         modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -80,7 +132,7 @@ export const Slider: React.FC<SliderProps> = ({
             <Component {...item} />
           </SwiperSlide>
         ))}
-        { isShowIcon && (
+        {isShowIcon && (
           <div className="hidden md:block">
             {!isDisablePrev && (
               <div
