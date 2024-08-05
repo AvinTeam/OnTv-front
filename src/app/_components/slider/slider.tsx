@@ -94,6 +94,7 @@ export const Slider: React.FC<SliderProps> = ({
           nextEl: "custom-swiper-button-next",
           prevEl: "custom-swiper-button-prev",
         }}
+        touchEventsTarget="container"
         pagination={{ clickable: true }}
         breakpoints={{
           0: {
