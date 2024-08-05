@@ -78,9 +78,9 @@ export default function ShowOn() {
   return (
     <main>
       <div className="">
-        <div className="lg:bg-gradient-to-l lg:to-80% lg:from-[#341173] lg:to-[#221D1F] lg:h-[550px] xl:h-[630px] 2xl:h-[91vh]">
+        <div className="lg:bg-gradient-to-l lg:to-80% lg:from-[#341173] lg:to-[#221D1F] lg:h-[550px] xl:h-[630px] 2xl:h-[85vh]">
           <div className="lg:container mx-auto my-5 lg:grid lg:grid-cols-12 gap-2">
-            <div className="flex flex-col lg:col-span-9 2xl:col-span-10">
+            <div className="flex flex-col lg:col-span-9">
               <div className="flex flex-col gap-3 lg:gap-0 pb-4 md:pb-10 lg:pb-0 bg-gradient-to-l lg:bg-none to-80% from-[#341173] to-[#221D1F]">
                 <div className="sm:mt-2 px-4 md:px-0 container mx-auto lg:h-[320px] xl:h-[420px] 2xl:h-auto">
                   <Live />
@@ -280,12 +280,12 @@ export default function ShowOn() {
                 </div>
               </div>
             </div>
-            <div className="hidden lg:block col-span-10 lg:col-span-3 2xl:col-span-2 rounded-[12px] overflow-auto p-2 md:h-[500px] lg:h-[1100px] xl:h-[1500px]">
+            <div className="hidden lg:block col-span-10 lg:col-span-3 rounded-[12px] overflow-auto p-2 md:h-[500px] lg:h-[1100px] xl:h-[1500px]">
               <p className="mb-2 text-base-content-slider">جدیدترین ها</p>
               <div className="mt-4">
                 {dataDec?.map((item, idx) => (
                   <div key={idx} className="rounded-md mb-2 overflow-auto">
-                    <div className="rounded-md overflow-auto h-[140px]">
+                    <div className="rounded-md overflow-auto h-[140px] 2xl:h-[200px]">
                       <Image
                         src={item.path}
                         width={0}
