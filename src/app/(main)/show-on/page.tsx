@@ -98,7 +98,7 @@ export default function ShowOn() {
                     </p>
                   </div>
                   <div className="mt-6">
-                    <div className="flex justify-between items-center">
+                    <div className="flex mt-10 md:mt-6 justify-between items-center">
                       <div className="flex gap-2 justify-center items-center">
                         <div className="w-10 h-10 bg-white rounded-[50%]"></div>
                         <div>
@@ -110,8 +110,9 @@ export default function ShowOn() {
                           </p>
                         </div>
                       </div>
-                      <div className="flex sm:flex-col md:flex-row flex-col-reverse items-end gap-3 justify-center md:items-center">
-                        <div className="flex gap-1 text-[#B3BAC4] text-sm cursor-pointer ">
+                      <div className="flex sm:flex-col md:flex-row flex-col-reverse items-end gap-1 justify-center md:items-center">
+                      <div className="flex gap-2">
+                      <div className="flex gap-1 text-[#B3BAC4] text-sm cursor-pointer ">
                           <span>
                             <svg
                               width={20}
@@ -149,7 +150,7 @@ export default function ShowOn() {
                             دانلود
                           </p>
                         </div>
-                        <div className="flex gap-1 text-[#B3BAC4] text-sm cursor-pointer">
+                        <div className="flex md:ml-2 lg:ml-4 gap-1 text-[#B3BAC4] text-sm cursor-pointer">
                           <span>
                             <svg
                               viewBox="0 0 24 24"
@@ -178,6 +179,8 @@ export default function ShowOn() {
                             اشتراک گزاری
                           </p>
                         </div>
+
+                      </div>
                         <div className="md:bg-box-slider-bg-text text-nowrap h-7 text-box-slider-text-l md:py-1.5 md:px-6 text-[11px] md:mr-auto md:rounded-[20px]">
                           <span>22 دقیقه پیش</span> <span> | </span>
                           <span> 17,526 نمایش</span>
