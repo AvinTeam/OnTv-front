@@ -28,68 +28,77 @@ export const Header: React.FC = () => {
   }, []);
   return (
     <header
-      className="mx-auto w-full sticky top-0 z-[1000] overflow-visible transition-all"
+      className="mx-auto w-full select-none sticky top-0 z-[1000] overflow-visible transition-all"
       style={{
         background: bgColor,
         backdropFilter: bgColor === bg_color_first ? "none" : "blur(40px)",
       }}
     >
-      <div className="container mx-auto grid h-full overflow-visible md:grid-cols-[auto_1fr] justify-between items-center gap-1">
+      <div className="container mx-auto block md:grid h-full overflow-visible md:grid-cols-[auto_1fr] justify-between items-center gap-1">
         {/* ================= mobole menue =============== */}
-        <div className="flex ml-0 mr-0 md:mr-4 h-full gap-4 md:gap-0 justify-start overflow-hidden w-[100%] md:md:w-20 py-2.5 md:justify-center items-center">
-          <div
-            className="md:hidden mr-4"
-            onClick={() => setShowMobileMenu(true)}
-          >
-            <svg
-              viewBox="0 0 24 24"
-              fill="white"
-              width={35}
-              height={35}
-              xmlns="http://www.w3.org/2000/svg"
-              stroke="#ffffff"
+        <div className="flex ml-0 mr-0 md:mr-4 h-full gap-4 md:gap-0 justify-between overflow-hidden w-full md:md:w-20 py-2.5 md:justify-center items-center">
+          <div className="flex justify-start items-center gap-3">
+            <div
+              className="md:hidden mr-4"
+              onClick={() => setShowMobileMenu(true)}
             >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></g>
-              <g id="SVGRepo_iconCarrier">
-                <path
-                  d="M4 17H20M4 12H20M4 7H20"
-                  stroke="#fff"
-                  stroke-width="1.5"
+              <svg
+                viewBox="0 0 24 24"
+                fill="white"
+                width={35}
+                height={35}
+                xmlns="http://www.w3.org/2000/svg"
+                stroke="#ffffff"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                ></path>
-              </g>
-            </svg>
-          </div>
-          <Link href={"/"} className="w-full h-full">
-            <Image
-              alt="OnTVLogo"
-              width={0}
-              style={{ objectFit: "contain" }}
-              className="w-[60px] md:w-12 h-[60px] md:h-12 -mt-[10px] md:mt-0"
-              height={0}
-              src={"/images/android-chrome-192x192.png"}
-            />
-          </Link>
-          <div
-            className="w-full h-full mt-4 md:hidden"
-            onClick={() => setIsSearchActive(true)}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="#fff"
-              width={"24px"}
-              height={"24px"}
-              viewBox="0 0 24 24"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    d="M4 17H20M4 12H20M4 7H20"
+                    stroke="#fff"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </g>
+              </svg>
+            </div>
+            <Link href={"/"} className="w-full h-full">
+              <Image
+                alt="OnTVLogo"
+                width={0}
+                style={{ objectFit: "contain" }}
+                className="w-[45px] md:w-12 h-[45px] md:h-12"
+                height={0}
+                src={"/images/android-chrome-192x192.png"}
+              />
+            </Link>
+            <div
+              className="w-full h-full md:hidden"
+              onClick={() => setIsSearchActive(true)}
             >
-              <path d="M19.16 4.84a8 8 0 0 0-12 10.56l-4.4 4.39a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l4.42-4.39a8 8 0 0 0 10.56-12Zm-1.42 9.9a6 6 0 1 1 0-8.48 6 6 0 0 1 0 8.48Z"></path>
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="#fff"
+                width={"24px"}
+                height={"24px"}
+                viewBox="0 0 24 24"
+              >
+                <path d="M19.16 4.84a8 8 0 0 0-12 10.56l-4.4 4.39a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l4.42-4.39a8 8 0 0 0 10.56-12Zm-1.42 9.9a6 6 0 1 1 0-8.48 6 6 0 0 1 0 8.48Z"></path>
+              </svg>
+            </div>
+           
           </div>
+          <Link
+            href={"/signin"}
+            className="md:hidden ml-2 text-white text-xs md:text-md rounded-md flex justify-center items-center bg-base-50 hover:bg-base-25 py-2 px-4"
+          >
+            ورود
+          </Link>
         </div>
         {showMobileMenu && (
           <div className="z-[12000] bg-base-75 fixed top-0 left-0 right-0 w-[100%] h-[300px] flex justify-center items-star ">
@@ -147,7 +156,7 @@ export const Header: React.FC = () => {
             </div>
           </div>
         )}
-        <nav className="hidden md:flex justify-start ml-auto">
+        <nav className="hidden md:flex justify-between items-center ml-auto w-full">
           <ul className="flex justify-between gap-1 md:gap-4 text-primary-content">
             <li className="mr-0 md:mr-4 flex justify-center items-center">
               <Link
@@ -271,6 +280,12 @@ export const Header: React.FC = () => {
               </div>
             </li>
           </ul>
+          <Link
+            href={"/signin"}
+            className="mr-auto text-white text-sm md:text-md rounded-md flex justify-center items-center bg-base-50 hover:bg-base-25 py-2 px-4"
+          >
+            ورود
+          </Link>
         </nav>
       </div>
       {isSearchActive && (
@@ -279,12 +294,6 @@ export const Header: React.FC = () => {
           onClose={() => setIsSearchActive(false)}
         />
       )}
-      {/* {showMobileMenu && (
-        <SearchModal
-          isOpen={isSearchActive}
-          onClose={() => setShowMobileMenu(false)}
-        />
-      )} */}
     </header>
   );
 };
