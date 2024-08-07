@@ -18,6 +18,7 @@ const Live = () => {
         type: "application/x-mpegURL",
       },
     ],
+
   };
   const fallbackOptions1 = {
     autoplay: true,
@@ -47,6 +48,7 @@ const Live = () => {
   };
   return (
     <VideoJS
+      data-setup='{"liveui": true}'
       options={videoJsOptions1}
       fallbackOptions={fallbackOptions1}
       onReady={handlePlayerReady}

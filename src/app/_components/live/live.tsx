@@ -15,6 +15,7 @@ const Live = ({ data }: { data: LivesType[] }) => {
     autoplay: true,
     controls: true,
     responsive: true,
+    liveui: true,
     fluid: true,
     muted: true,
     sources: [
@@ -42,6 +43,7 @@ const Live = ({ data }: { data: LivesType[] }) => {
     autoplay: true,
     controls: true,
     responsive: true,
+    liveui: true,
     fluid: true,
     muted: true,
     sources: [
@@ -55,7 +57,6 @@ const Live = ({ data }: { data: LivesType[] }) => {
     autoplay: true,
     controls: true,
     responsive: true,
-    fluid: true,
     muted: true,
     loop: true,
     sources: [
@@ -69,6 +70,7 @@ const Live = ({ data }: { data: LivesType[] }) => {
     autoplay: true,
     controls: true,
     responsive: true,
+    liveui: true,
     fluid: true,
     muted: true,
     sources: [
