@@ -14,7 +14,7 @@ const Live = () => {
     muted: true,
     sources: [
       {
-        src: "https://picamo.arvanlive.ir/hls/ch1/ch1.m3u8",
+        src: "https://ontv.arvanlive.ir/hls/on1/on1.m3u8",
         type: "application/x-mpegURL",
       },
     ],

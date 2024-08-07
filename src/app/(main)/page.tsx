@@ -191,21 +191,21 @@ export default async function HomePage() {
         <Live
           data={[
             {
-              url: "https://picamo.arvanlive.ir/hls/ch1/ch1.m3u8",
+              url: "https://ontv.arvanlive.ir/hls/on1/on1.m3u8",
               slug: "",
               order: 0,
               title: "",
               user: "",
             },
             {
-              url: "https://picamo.arvanlive.ir/hls/ch1/ch2.m3u8",
+              url: "https://ontv.arvanlive.ir/hls/on2/on2.m3u8",
               slug: "",
               order: 0,
               title: "",
               user: "",
             },
             {
-              url: "https://picamo.arvanlive.ir/hls/ch1/ch3.m3u8",
+              url: "https://ontv.arvanlive.ir/hls/on3/on3.m3u8",
               slug: "",
               order: 0,
               title: "",
