@@ -58,6 +58,7 @@ const Live = ({ data }: { data: LivesType[] }) => {
     controls: true,
     responsive: true,
     muted: true,
+    fluid: true,
     loop: true,
     sources: [
       {
