@@ -6,8 +6,8 @@ const UserProfile = ({ mobile }: { mobile: string }) => {
       <div className="w-10 h-10 rounded-full cursor-pointer bg-white"></div>
       <div className=" translate-y-[-300px] group-hover:absolute group-hover:translate-y-[0px] group-hover:w-52 group-hover:h-72 group-hover:left-8 p-2 z-[1000] rounded-md absolute bg-base-70 border border-[#282828]">
         <div className="hidden group-hover:flex overflow-hidden flex-col  ">
-          <div className="flex flex-col gap-3 mt-3 text-center">{mobile}</div>
-           <div className="w-full h-8 flex py-4 mt-2 justify-center bg-[#434444] text-secondary rounded-md  items-center">
+          <div className="flex flex-col gap-3 mt-3 text-center text-sm">{mobile}</div>
+           <div className="w-full text-xs h-8 flex py-4 mt-2 justify-center bg-[#434444] text-secondary rounded-md  items-center">
             اشتراک رایگان
           </div>
           <Link href={"/user/dashboard"} className="flex gap-2 mt-6 mr-4 pb-2 justify-start items-center">
@@ -57,15 +57,15 @@ const UserProfile = ({ mobile }: { mobile: string }) => {
                 </g>
               </svg>
             </span>
-            <span>حساب کاربری</span>
+            <span className="text-sm">حساب کاربری</span>
           </Link>
-          <Link href={"/user/edit-profile"} className="flex gap-2 mt-3 mr-3.5  justify-start items-center">
-            <span  className="w-6 h-6 flex justify-center items-center bg-[#868e98] text-[#fff] p-2 text-center rounded-full">
+          <Link href={"/user/edit-profile"} className="flex gap-2 mt-3 mr-3.5 justify-start items-center">
+            <span  className="w-5 h-5 flex text-xs justify-center items-center bg-[#868e98] text-[#fff] p-2 text-center rounded-full">
              +
             </span>
-            <span>افزودن پروفایل جدید</span>
+            <span className="text-sm">افزودن پروفایل جدید</span>
           </Link>
-          <div className="flex gap-2 mt-14 mr-4 pb-5 justify-start items-center">
+          <div className="flex gap-2 mt-20 mr-4 pb-5 justify-start items-center">
             <span>
               <svg
                 width={16}
@@ -91,7 +91,7 @@ const UserProfile = ({ mobile }: { mobile: string }) => {
                 </g>
               </svg>
             </span>
-            <span>خروج ار حساب کاربری</span>
+            <span className="text-sm">خروج ار حساب کاربری</span>
           </div>
         </div>
       </div>
