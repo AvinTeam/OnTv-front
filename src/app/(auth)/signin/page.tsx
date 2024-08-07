@@ -1,10 +1,25 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../../../public/images/android-chrome-192x192.png";
-export default async function SignIn() {
+import { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { AUTH_URL } from "@/configs/global";
+export default function SignIn() {
+  const router = useRouter();
+  const [mobile, setMobile] = useState<string>();
+  const handelSubmit = () => {
+    axios
+      .post(`${AUTH_URL}mobile/auth/send_otp`, { mobile })
+      .then(({ data }) => {
+        if (data.success) router.push(`/verify?mobile=${mobile}`);
+        setMobile("")
+      });
+  };
   return (
     <div className="px-10 py-4 w-[330px] h-[360px] bg-base-50 flex justify-around items-center flex-col rounded-md">
-      <Link href={"/"} className="flex gap-3 mt-6">
+      <div className="flex gap-3 mt-6">
         <Image
           src={logo}
           width={0}
@@ -19,21 +34,21 @@ export default async function SignIn() {
             جهت ورود یا ثبت‌نام در آن، شماره موبایل خود را وارد کنید.
           </p>
         </div>
-      </Link>
+      </div>
       <div className="flex flex-col gap-4">
-        <div className="grid grid-cols-12 gap-2">
-          <input className="col-span-10 p-2 rounded-md focus:outline-none bg-base-25 text-white" />
-          <input
-            value={"98+"}
-            className="col-span-2 p-2 text-[12px] rounded-md focus:outline-none bg-base-25 text-white"
-          />
-        </div>
-        <Link
-          className="text-xs  p-2 bg-base-25 font-bold text-white items-center flex text-center justify-center rounded-[7px] w-auto"
-          href={"/"}
+        <input
+          className="p-2 rounded-md focus:outline-none bg-base-25 text-white"
+          value={mobile}
+          onChange={(event: any) => {
+            setMobile(event.target.value);
+          }}
+        />
+        <button
+          onClick={handelSubmit}
+          className="text-xs p-2.5 bg-base-25 font-bold text-white items-center flex text-center justify-center rounded-[7px] w-auto"
         >
           ثبت نام
-        </Link>
+        </button>
       </div>
       <div className="mr-auto flex justify-center items-center gap-1 cursor-pointer">
         <Link href={"/"} className="text-sm">
@@ -48,8 +63,8 @@ export default async function SignIn() {
             version="1.1"
             id="Layer_1"
             xmlns="http://www.w3.org/2000/svg"
-             viewBox="0 0 512.005 512.005"
-           >
+            viewBox="0 0 512.005 512.005"
+          >
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
             <g
               id="SVGRepo_tracerCarrier"

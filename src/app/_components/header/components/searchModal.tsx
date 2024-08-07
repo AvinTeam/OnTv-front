@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
-import { Slider } from "../slider/slider";
+import { Slider } from "../../slider/slider";
 const dataDec5: any[] = [
   { title: "سیاسی" },
   { title: "اجتماعی" },

@@ -1,16 +1,20 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import SearchModal from "./searchModal";
+import SearchModal from "./components/searchModal";
+import { useRouter } from "next/navigation";
+import UserProfile from "./components/user-profile/user-profile";
 const bg_color_first: string =
   "linear-gradient(180deg,hsla(0,0%,5%,.4),hsla(0,0%,5%,.4) .41%,hsla(0,0%,5%,.399) .9%,hsla(0,0%,5%,.396) 1.64%,hsla(0,0%,5%,.391) 2.84%,hsla(0,0%,5%,.383) 4.68%,hsla(0,0%,5%,.372) 7.35%,hsla(0,0%,5%,.356) 11.04%,hsla(0,0%,5%,.336) 15.94%,hsla(0,0%,5%,.31) 22.23%,hsla(0,0%,5%,.278) 30.12%,hsla(0,0%,5%,.238) 39.78%,hsla(0,0%,5%,.192) 51.41%,hsla(0,0%,5%,.137) 65.2%,hsla(0,0%,5%,.073) 81.33%,hsla(0,0%,5%,0))";
 const bg_color_second: string = "hsla(0,0%,5%,.75)";
 export const Header: React.FC = () => {
+  const router = useRouter()
   const [bgColor, setBgColor] = useState(bg_color_first);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -26,6 +30,20 @@ export const Header: React.FC = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useLayoutEffect(() => {
+    const token = localStorage.getItem("user_token");
+    const userData = localStorage.getItem("user_name");
+    const parsedData = userData ? JSON.parse(userData) : null;
+
+    if (token && parsedData) {
+      setIsLoggedIn(true);
+      setUsername(parsedData.mobile);
+    } else{
+      router.push("/")
+    }
+  }, []);
+
   return (
     <header
       className="mx-auto w-full select-none sticky top-0 z-[1000] overflow-visible transition-all"
@@ -91,14 +109,17 @@ export const Header: React.FC = () => {
                 <path d="M19.16 4.84a8 8 0 0 0-12 10.56l-4.4 4.39a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l4.42-4.39a8 8 0 0 0 10.56-12Zm-1.42 9.9a6 6 0 1 1 0-8.48 6 6 0 0 1 0 8.48Z"></path>
               </svg>
             </div>
-           
           </div>
-          <Link
-            href={"/signin"}
-            className="md:hidden ml-2 text-white text-xs md:text-md rounded-md flex justify-center items-center bg-base-50 hover:bg-base-25 py-2 px-4"
-          >
-            ورود
-          </Link>
+          {isLoggedIn ? (
+            <div className="w-8 h-8 rounded-full"></div>
+          ) : (
+            <Link
+              href={"/signin"}
+              className="md:hidden ml-2 text-white text-xs md:text-md rounded-md flex justify-center items-center bg-base-50 hover:bg-base-25 py-2 px-4"
+            >
+              ورود
+            </Link>
+          )}
         </div>
         {showMobileMenu && (
           <div className="z-[12000] bg-base-75 fixed top-0 left-0 right-0 w-[100%] h-[300px] flex justify-center items-star ">
@@ -280,12 +301,20 @@ export const Header: React.FC = () => {
               </div>
             </li>
           </ul>
-          <Link
-            href={"/signin"}
-            className="mr-auto text-white text-sm md:text-md rounded-md flex justify-center items-center bg-base-50 hover:bg-base-25 py-2 px-4"
-          >
-            ورود
-          </Link>
+          <div className="group">
+            {isLoggedIn ? (
+              <>
+               <UserProfile mobile={username} />
+              </>
+            ) : (
+              <Link
+                href={"/signin"}
+                className="mr-auto text-white text-sm md:text-md rounded-md flex justify-center items-center bg-base-50 hover:bg-base-25 py-2 px-4"
+              >
+                ورود
+              </Link>
+            )}
+          </div>
         </nav>
       </div>
       {isSearchActive && (
