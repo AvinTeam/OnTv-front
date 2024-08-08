@@ -7,14 +7,20 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { AUTH_URL } from "@/configs/global";
 export default function SignIn() {
+  const [isLoding, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
   const [mobile, setMobile] = useState<string>();
   const handelSubmit = () => {
+    setIsLoading(true);
     axios
       .post(`${AUTH_URL}mobile/auth/send_otp`, { mobile })
       .then(({ data }) => {
         if (data.success) router.push(`/verify?mobile=${mobile}`);
-        setMobile("")
+        setMobile("");
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setIsLoading(false);
       });
   };
   return (
@@ -45,9 +51,10 @@ export default function SignIn() {
         />
         <button
           onClick={handelSubmit}
-          className="text-xs p-2.5 bg-base-25 font-bold text-white items-center flex text-center justify-center rounded-[7px] w-auto"
+          disabled={isLoding}
+          className={`text-xs p-2.5 bg-base-25 font-bold ${isLoding ? 'text-[gray]' : "text-white"} items-center flex text-center justify-center rounded-[7px] w-auto`}
         >
-          ثبت نام
+          {isLoding ? "در حال درخواست" : "ثبت نام"}
         </button>
       </div>
       <div className="mr-auto flex justify-center items-center gap-1 cursor-pointer">

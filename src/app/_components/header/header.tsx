@@ -33,16 +33,11 @@ export const Header: React.FC = () => {
   }, []);
 
   useLayoutEffect(() => {
-    console.log("sjdbbbbbbbbbbbbbbbbbbbbbbbb")
-    console.log("sjdbbbbbbbbbbbbbbbbbbbbbbbb")
-    console.log("sjdbbbbbbbbbbbbbbbbbbbbbbbb")
-    console.log("sjdbbbbbbbbbbbbbbbbbbbbbbbb")
     const token = localStorage.getItem("user_token");
     const userData = localStorage.getItem("user_name");
     const parsedData = userData ? JSON.parse(userData) : null;
 
     if (token && parsedData) {
-      console.log(parsedData)
       setAvatar(parsedData.avatar)
       setIsLoggedIn(true);
       setUsername(parsedData.mobile);
