@@ -41,11 +41,11 @@ export const Header: React.FC = () => {
       setAvatar(parsedData.avatar)
       setIsLoggedIn(true);
       setUsername(parsedData.mobile);
-    } else{
+    } else {
       router.push("/")
     }
   }, []);
- 
+
 
   return (
     <header
@@ -57,7 +57,7 @@ export const Header: React.FC = () => {
     >
       <div className="container mx-auto block md:grid h-full overflow-visible md:grid-cols-[auto_1fr] justify-between items-center gap-1">
         {/* ================= mobole menue =============== */}
-        <div className="flex ml-0 mr-0 md:mr-4 h-full gap-4 md:gap-0 justify-between overflow-hidden w-full md:md:w-20 py-2.5 md:justify-center items-center">
+        <div className="flex ml-0 mr-0 md:mr-4 h-full gap-4 md:gap-0 justify-between  w-full md:md:w-20 py-2.5 md:justify-center items-center">
           <div className="flex justify-start items-center gap-3">
             <div
               className="md:hidden mr-4"
@@ -113,16 +113,20 @@ export const Header: React.FC = () => {
               </svg>
             </div>
           </div>
-          {isLoggedIn ? (
-            <div className="w-8 h-8 rounded-full"></div>
-          ) : (
-            <Link
-              href={"/signin"}
-              className="md:hidden ml-2 text-white text-xs md:text-md rounded-md flex justify-center items-center bg-base-50 hover:bg-base-25 py-2 px-4"
-            >
-              ورود
-            </Link>
-          )}
+          <div className="group block md:hidden ml-4">
+            {isLoggedIn ? (
+              <>
+                <UserProfile mobile={username} avatar={avatar} />
+              </>
+            ) : (
+              <Link
+                href={"/signin"}
+                className="mr-auto text-white text-sm md:text-md rounded-md flex justify-center items-center bg-base-50 hover:bg-base-25 py-2 px-4"
+              >
+                ورود / ثبت نام
+              </Link>
+            )}
+          </div>
         </div>
         {showMobileMenu && (
           <div className="z-[12000] bg-base-75 fixed top-0 left-0 right-0 w-[100%] h-[300px] flex justify-center items-star ">
@@ -167,6 +171,7 @@ export const Header: React.FC = () => {
                       <path d="M19.16 4.84a8 8 0 0 0-12 10.56l-4.4 4.39a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l4.42-4.39a8 8 0 0 0 10.56-12Zm-1.42 9.9a6 6 0 1 1 0-8.48 6 6 0 0 1 0 8.48Z"></path>
                     </svg>
                   </div>
+
                 </div>
                 <div>
                   <ul className="mr-4 [&>*]:mt-2 [&>*]:text-white">
@@ -178,6 +183,7 @@ export const Header: React.FC = () => {
                 </div>
               </div>
             </div>
+
           </div>
         )}
         <nav className="hidden md:flex justify-between items-center ml-auto w-full">
@@ -307,14 +313,14 @@ export const Header: React.FC = () => {
           <div className="group">
             {isLoggedIn ? (
               <>
-               <UserProfile mobile={username} avatar={avatar} />
+                <UserProfile mobile={username} avatar={avatar} />
               </>
             ) : (
               <Link
                 href={"/signin"}
                 className="mr-auto text-white text-sm md:text-md rounded-md flex justify-center items-center bg-base-50 hover:bg-base-25 py-2 px-4"
               >
-                ورود
+                ورود / ثبت نام
               </Link>
             )}
           </div>
