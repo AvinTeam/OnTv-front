@@ -15,6 +15,7 @@ export const Header: React.FC = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
+  const [avatar, setAvatar] = useState<string>("")
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -32,17 +33,24 @@ export const Header: React.FC = () => {
   }, []);
 
   useLayoutEffect(() => {
+    console.log("sjdbbbbbbbbbbbbbbbbbbbbbbbb")
+    console.log("sjdbbbbbbbbbbbbbbbbbbbbbbbb")
+    console.log("sjdbbbbbbbbbbbbbbbbbbbbbbbb")
+    console.log("sjdbbbbbbbbbbbbbbbbbbbbbbbb")
     const token = localStorage.getItem("user_token");
     const userData = localStorage.getItem("user_name");
     const parsedData = userData ? JSON.parse(userData) : null;
 
     if (token && parsedData) {
+      console.log(parsedData)
+      setAvatar(parsedData.avatar)
       setIsLoggedIn(true);
       setUsername(parsedData.mobile);
     } else{
       router.push("/")
     }
   }, []);
+ 
 
   return (
     <header
@@ -304,7 +312,7 @@ export const Header: React.FC = () => {
           <div className="group">
             {isLoggedIn ? (
               <>
-               <UserProfile mobile={username} />
+               <UserProfile mobile={username} avatar={avatar} />
               </>
             ) : (
               <Link

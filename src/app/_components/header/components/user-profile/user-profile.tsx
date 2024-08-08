@@ -1,28 +1,47 @@
+import Image from "next/image";
 import Link from "next/link";
 
-const UserProfile = ({ mobile }: { mobile: string }) => {
+const UserProfile = ({
+  mobile,
+  avatar,
+}: {
+  mobile: string;
+  avatar: string;
+}) => {
   return (
     <>
       <div className="w-10 h-10 rounded-full overflow-hidden flex justify-center items-center bg-[gray] cursor-pointer ">
-        <svg
-          width={40}
-          height={40}
-          viewBox="0 0 64 64"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle cx="32" cy="32" r="32" fill="#5C5C5C"></circle>
-          <path
-            d="M32.0002 35.3346C37.8912 35.3346 42.6668 30.2605 42.6668 24.0013C42.6668 17.7421 37.8912 12.668 32.0002 12.668C26.1091 12.668 21.3335 17.7421 21.3335 24.0013C21.3335 30.2605 26.1091 35.3346 32.0002 35.3346Z"
-            fill="white"
-          ></path>
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M10.2725 55.4949C11.4345 52.5268 13.2034 49.7996 15.5008 47.5021C19.8767 43.1263 25.8116 40.668 32 40.668C38.1884 40.668 44.1233 43.1263 48.4991 47.5021C50.7963 49.7993 52.5651 52.5262 53.7271 55.4939C48.0208 60.7741 40.3869 64.0011 31.9993 64.0011C23.6122 64.0011 15.9787 60.7745 10.2725 55.4949Z"
-            fill="white"
-          ></path>
-        </svg>
+        {avatar ? (
+          <>
+            <Image
+              src={avatar}
+              className="object-cover w-full h-full"
+              width={0}
+              height={0}
+              alt="avatar"
+            />
+          </>
+        ) : (
+          <svg
+            width={40}
+            height={40}
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="32" cy="32" r="32" fill="#5C5C5C"></circle>
+            <path
+              d="M32.0002 35.3346C37.8912 35.3346 42.6668 30.2605 42.6668 24.0013C42.6668 17.7421 37.8912 12.668 32.0002 12.668C26.1091 12.668 21.3335 17.7421 21.3335 24.0013C21.3335 30.2605 26.1091 35.3346 32.0002 35.3346Z"
+              fill="white"
+            ></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M10.2725 55.4949C11.4345 52.5268 13.2034 49.7996 15.5008 47.5021C19.8767 43.1263 25.8116 40.668 32 40.668C38.1884 40.668 44.1233 43.1263 48.4991 47.5021C50.7963 49.7993 52.5651 52.5262 53.7271 55.4939C48.0208 60.7741 40.3869 64.0011 31.9993 64.0011C23.6122 64.0011 15.9787 60.7745 10.2725 55.4949Z"
+              fill="white"
+            ></path>
+          </svg>
+        )}
       </div>
       <div className=" translate-y-[-300px] group-hover:absolute group-hover:translate-y-[0px] group-hover:w-64 group-hover:h-[430px] group-hover:left-14 2xl:group-hover:left-96 p-2 z-[1000] rounded-md absolute bg-base-70 border border-[#282828]">
         <div className="hidden group-hover:flex overflow-hidden [&>*]:transition-all flex-col ">
@@ -38,7 +57,7 @@ const UserProfile = ({ mobile }: { mobile: string }) => {
           <hr />
 
           <Link
-            href={"/user/dashboard"}
+            href={"/user/edit-profile"}
             className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-4 mr-2 pb-2 justify-start items-center"
           >
             <span>
@@ -60,7 +79,7 @@ const UserProfile = ({ mobile }: { mobile: string }) => {
             <span className="text-sm">خرید اشتراک</span>
           </Link>
           <Link
-            href={"/user/dashboard"}
+            href={"/user/edit-profile"}
             className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
           >
             <span>
@@ -80,7 +99,7 @@ const UserProfile = ({ mobile }: { mobile: string }) => {
             <span className="text-sm">نشان شده ها</span>
           </Link>
           <Link
-            href={"/user/dashboard"}
+            href={"/user/edit-profile"}
             className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
           >
             <span>
@@ -110,7 +129,7 @@ const UserProfile = ({ mobile }: { mobile: string }) => {
             <span className="text-sm">مدیریت پروفایل ها</span>
           </Link>
           <Link
-            href={"/user/dashboard"}
+            href={"/user/edit-profile"}
             className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
           >
             <span>

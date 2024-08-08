@@ -1,31 +1,53 @@
+"use client";
+import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useLayoutEffect, useState } from "react";
 const Sidebar: React.FC = () => {
+  const [url, setUrl] = useState<string>();
+  useLayoutEffect(() => {
+    const userData = localStorage.getItem("user_name");
+    const parsedData = userData ? JSON.parse(userData) : null;
+    console.log(parsedData);
+    if (parsedData) {
+      setUrl(parsedData.avatar);
+    }
+  }, []);
+
   return (
     <>
       <aside className="bg-base-70 w-72 mt-4 rounded-lg mr-7 h-[500px] p-4 self-stretch">
         <div className="flex flex-col gap-4 h-[80%] select-none">
           <ul className="flex flex-col gap-4 text-sm justify-center items-center">
             <div className="w-14 overflow-hidden h-14 bg-[gray] flex justify-center items-center rounded-full">
-              <svg
-                width={60}
-                height={60}
-                viewBox="0 0 64 64"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="32" cy="32" r="32" fill="#5C5C5C"></circle>
-                <path
-                  d="M32.0002 35.3346C37.8912 35.3346 42.6668 30.2605 42.6668 24.0013C42.6668 17.7421 37.8912 12.668 32.0002 12.668C26.1091 12.668 21.3335 17.7421 21.3335 24.0013C21.3335 30.2605 26.1091 35.3346 32.0002 35.3346Z"
-                  fill="white"
-                ></path>
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M10.2725 55.4949C11.4345 52.5268 13.2034 49.7996 15.5008 47.5021C19.8767 43.1263 25.8116 40.668 32 40.668C38.1884 40.668 44.1233 43.1263 48.4991 47.5021C50.7963 49.7993 52.5651 52.5262 53.7271 55.4939C48.0208 60.7741 40.3869 64.0011 31.9993 64.0011C23.6122 64.0011 15.9787 60.7745 10.2725 55.4949Z"
-                  fill="white"
-                ></path>
-              </svg>
+              {url ? (
+                <Image
+                  src={url}
+                  className="object-cover w-full h-full"
+                  width={0}
+                  height={0}
+                  alt="avatar"
+                />
+              ) : (
+                <svg
+                  width={60}
+                  height={60}
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="32" cy="32" r="32" fill="#5C5C5C"></circle>
+                  <path
+                    d="M32.0002 35.3346C37.8912 35.3346 42.6668 30.2605 42.6668 24.0013C42.6668 17.7421 37.8912 12.668 32.0002 12.668C26.1091 12.668 21.3335 17.7421 21.3335 24.0013C21.3335 30.2605 26.1091 35.3346 32.0002 35.3346Z"
+                    fill="white"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M10.2725 55.4949C11.4345 52.5268 13.2034 49.7996 15.5008 47.5021C19.8767 43.1263 25.8116 40.668 32 40.668C38.1884 40.668 44.1233 43.1263 48.4991 47.5021C50.7963 49.7993 52.5651 52.5262 53.7271 55.4939C48.0208 60.7741 40.3869 64.0011 31.9993 64.0011C23.6122 64.0011 15.9787 60.7745 10.2725 55.4949Z"
+                    fill="white"
+                  ></path>
+                </svg>
+              )}
             </div>
             <li>09901052798</li>
           </ul>
