@@ -100,9 +100,8 @@ export default function Verify({
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return `${secs < 10 ? "0" : ""}${secs} : ${
-      minutes < 10 ? "0" : ""
-    }${minutes}`;
+    return `${secs < 10 ? "0" : ""}${secs} : ${minutes < 10 ? "0" : ""
+      }${minutes}`;
   };
 
   return (
@@ -143,18 +142,16 @@ export default function Verify({
         <p className="text-center font-bold text-lg">{formatTime(timeLeft)}</p>
         <button
           onClick={handleSubmit}
-          className={`w-auto text-xs text-white md:text-sm p-2 bg-base-25 flex text-center justify-center rounded-[7px] sm:w-auto ${
-            isButtonDisabled ? "opacity-50 cursor-not-allowed" : ""
-          }`}
+          className={`w-auto text-xs text-white md:text-sm p-2 bg-base-25 flex text-center justify-center rounded-[7px] sm:w-auto ${isButtonDisabled ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           disabled={isButtonDisabled}
         >
           تایید کد
         </button>
         <p
           onClick={handleResendCode}
-          className={`text-center text-[12px] cursor-pointer ${
-            isResendEnabled ? "" : "opacity-50 cursor-not-allowed"
-          }`}
+          className={`text-center text-[12px] cursor-pointer ${isResendEnabled ? "" : "opacity-50 cursor-not-allowed"
+            }`}
         >
           ارسال دوباره کد
         </p>
