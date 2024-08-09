@@ -5,13 +5,10 @@ import Link from "next/link";
 import logo from "../../../../public/images/android-chrome-192x192.png";
 import axios from "axios";
 import { AUTH_URL } from "@/configs/global";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
-export default function Verify({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
+export default function Verify() {
+  const searchParams = useSearchParams()
   const router = useRouter();
   const [inputs, setInputs] = useState(Array(4).fill(""));
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -67,10 +64,10 @@ export default function Verify({
 
   const handleResendCode = () => {
     console.log(inputs.join(""));
-    if (searchParams) console.log(searchParams["mobile"]);
+    if (searchParams) console.log(searchParams.get("mobile"));
     axios
       .post(`${AUTH_URL}mobile/auth/send_otp`, {
-        mobile: searchParams["mobile"],
+        mobile: searchParams.get("mobile"),
         code: inputs.join(""),
       })
       .then(() => {
@@ -80,9 +77,10 @@ export default function Verify({
   };
 
   const handleSubmit = () => {
+    if (searchParams) console.log(searchParams.get("mobile"));
     axios
       .post(`${AUTH_URL}mobile/auth/verify_mobile`, {
-        mobile: searchParams["mobile"],
+        mobile: searchParams.get("mobile"),
         code: inputs.join(""),
       })
       .then(({ data }) => {
