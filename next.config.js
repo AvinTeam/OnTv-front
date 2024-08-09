@@ -6,6 +6,10 @@ const nextConfig = {
   },
   trailingSlash: true,
 
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
+
   async rewrites() {
     return [
       {
