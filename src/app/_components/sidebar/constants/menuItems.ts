@@ -1,45 +1,53 @@
-import { SvgIconProps } from "./icons";
-
+import React from "react";
+import {
+  BuySubscriptionIcon,
+  ProfileManagementIcon,
+  HistoryIcon,
+  EditPasswordIcon,
+  BuyHistoryIcon,
+  WatchingIcon,
+} from "../../icons";
+import SavedIcon from "../../icons/Saved";
 export interface MenuItem {
   href: string;
   text: string;
-  icon: React.FC<SvgIconProps>;
+  icon: React.FC<React.SVGProps<SVGSVGElement>>;
 }
 
 export const menuItems: MenuItem[] = [
   {
     href: "/user/history",
     text: "خرید اشتراک",
-    icon: require("./icons").SubscriptionIcon,
+    icon: BuySubscriptionIcon,
   },
   {
     href: "/user/edit-profile",
     text: "ویرایش پروفایل",
-    icon: require("./icons").EditProfileIcon,
+    icon: ProfileManagementIcon,
   },
   {
     href: "/user/history",
     text: "تاریخچه تماشا",
-    icon: require("./icons").HistoryIcon,
+    icon: HistoryIcon,
   },
   {
     href: "/user/edit-profile",
     text: "نشان شده ها",
-    icon: require("./icons").SavedItemsIcon,
+    icon: SavedIcon,
   },
   {
     href: "/user/edit-profile",
     text: "سوابق خرید",
-    icon: require("./icons").BuyHistory,
+    icon: BuyHistoryIcon,
   },
   {
     href: "/user/edit-profile",
     text: "ادامه تماشا",
-    icon: require("./icons").ContinueWatching,
+    icon: WatchingIcon,
   },
   {
     href: "/user/edit-profile",
     text: "تغییر کلمه عبور",
-    icon: require("./icons").EditPassword,
+    icon: EditPasswordIcon,
   },
 ];

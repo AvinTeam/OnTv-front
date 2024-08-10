@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Slider } from "../../slider/slider";
+import { CloseIcon } from "../../icons";
 const dataDec5: any[] = [
   { title: "سیاسی" },
   { title: "اجتماعی" },
@@ -62,15 +63,7 @@ const SearchModal = ({
             className="absolute cursor-pointer mr-[90%] md:mr-[95%] -mt-16 w-10 h-10 flex justify-center items-center rounded-[50%] bg-[hsla(0,0%,100%,.12)] text-2xl"
             onClick={handleClose}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="white"
-              width={24}
-              height={24}
-              viewBox="0 0 24 24"
-            >
-              <path d="m13.41 12 6.3-6.29a1 1 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1 1 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l6.29-6.3 6.29 6.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42Z"></path>
-            </svg>
+            <CloseIcon />
           </button>
         </div>
       </div>

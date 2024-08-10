@@ -6,6 +6,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { AUTH_URL } from "@/configs/global";
+import { ArrowIcon } from "@/app/_components/icons";
 export default function SignIn() {
   const [isLoding, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
@@ -61,33 +62,8 @@ export default function SignIn() {
         <Link href={"/"} className="text-sm">
           بازگشت
         </Link>
-        <span>
-          <svg
-            fill="#fff"
-            height="10px"
-            className="rotate-180"
-            width="10px"
-            version="1.1"
-            id="Layer_1"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512.005 512.005"
-          >
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g
-              id="SVGRepo_tracerCarrier"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            ></g>
-            <g id="SVGRepo_iconCarrier">
-              <g>
-                {" "}
-                <g>
-                  <path d="M388.418,240.923L153.751,6.256c-8.341-8.341-21.824-8.341-30.165,0s-8.341,21.824,0,30.165L343.17,256.005 L123.586,475.589c-8.341,8.341-8.341,21.824,0,30.165c4.16,4.16,9.621,6.251,15.083,6.251c5.461,0,10.923-2.091,15.083-6.251 l234.667-234.667C396.759,262.747,396.759,249.264,388.418,240.923z"></path>
-                </g>
-              </g>
-            </g>
-          </svg>
-        </span>
+        <ArrowIcon width={8} height={8} className="rotate-180" />
+
       </div>
     </div>
   );

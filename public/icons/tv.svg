@@ -1,0 +1,10 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="gray"
+    width="13px"
+    height="13px"
+>
+    <path
+        d="M15 20.5H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2ZM19.5 3.5h-15a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3v-10a3 3 0 0 0-3-3Zm1 13a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1v-10a1 1 0 0 1 1-1h15a1 1 0 0 1 1 1Z"></path>
+</svg>
