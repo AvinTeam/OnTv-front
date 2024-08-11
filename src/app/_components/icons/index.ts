@@ -17,6 +17,8 @@ import HistoryIcon from "./Hiastory";
 import EditPasswordIcon from "./EditPassword";
 import BuyHistoryIcon from "./BuyHistory";
 import WatchingIcon from "./Watching";
+import ViewIcon from "./View";
+import LoadingIcon from "./Loading";
  export {
   AparatIcon,
   ArrowTopIcon,
@@ -36,6 +38,8 @@ import WatchingIcon from "./Watching";
   HistoryIcon,
   EditPasswordIcon,
   BuyHistoryIcon,
-  WatchingIcon
+  WatchingIcon,
+  ViewIcon,
+  LoadingIcon
   
 };

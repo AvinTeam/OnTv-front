@@ -7,13 +7,16 @@ import axios from "axios";
 import { AUTH_URL } from "@/configs/global";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowIcon } from "@/app/_components/icons";
+import { Button } from "@/app/_components/button";
+import { show_toast } from "@/utils/functions";
 
 export default function Verify() {
-  const searchParams = useSearchParams()
+  const searchParams = useSearchParams();
   const router = useRouter();
   const [inputs, setInputs] = useState(Array(4).fill(""));
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [timeLeft, setTimeLeft] = useState(120);
+  const [isLoding, setIsLoading] = useState<boolean>(false);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
   const [isResendEnabled, setIsResendEnabled] = useState(false);
 
@@ -78,6 +81,7 @@ export default function Verify() {
   };
 
   const handleSubmit = () => {
+    setIsLoading(true);
     if (searchParams) console.log(searchParams.get("mobile"));
     axios
       .post(`${AUTH_URL}mobile/auth/verify_mobile`, {
@@ -85,22 +89,25 @@ export default function Verify() {
         code: inputs.join(""),
       })
       .then(({ data }) => {
-        console.log(data)
+        show_toast({ text: data?.message, type: "success" });
+        setIsLoading(false);
         localStorage.setItem("user_token", data.data.token);
         localStorage.setItem("user_name", JSON.stringify(data.data.user));
 
         router.push("/");
       })
       .catch((error) => {
-        console.error("Error verifying code:", error);
+        setIsLoading(false);
+        show_toast({ text: error?.response?.data?.message, type: "error" });
       });
   };
 
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return `${secs < 10 ? "0" : ""}${secs} : ${minutes < 10 ? "0" : ""
-      }${minutes}`;
+    return `${secs < 10 ? "0" : ""}${secs} : ${
+      minutes < 10 ? "0" : ""
+    }${minutes}`;
   };
 
   return (
@@ -139,18 +146,19 @@ export default function Verify() {
           ))}
         </div>
         <p className="text-center font-bold text-lg">{formatTime(timeLeft)}</p>
-        <button
+        <Button
           onClick={handleSubmit}
-          className={`w-auto text-xs text-white md:text-sm p-2 bg-base-25 flex text-center justify-center rounded-[7px] sm:w-auto ${isButtonDisabled ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-          disabled={isButtonDisabled}
+          loading={isLoding}
+          bgColor="#424242"
+          className="py-2 text-white"
         >
-          تایید کد
-        </button>
+          {isLoding ? "درحال درخواست" : "ثبت نام"}
+        </Button>
         <p
           onClick={handleResendCode}
-          className={`text-center text-[12px] cursor-pointer ${isResendEnabled ? "" : "opacity-50 cursor-not-allowed"
-            }`}
+          className={`text-center text-[12px] cursor-pointer ${
+            isResendEnabled ? "" : "opacity-50 cursor-not-allowed"
+          }`}
         >
           ارسال دوباره کد
         </p>
@@ -159,8 +167,8 @@ export default function Verify() {
         <Link href={"/signin"} className="text-sm">
           بازگشت
         </Link>
-          <ArrowIcon width={8} height={8} className="rotate-180" />
-       </div>
+        <ArrowIcon width={8} height={8} className="rotate-180" />
+      </div>
     </div>
   );
 }

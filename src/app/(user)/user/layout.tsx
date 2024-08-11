@@ -1,5 +1,6 @@
 import { Header } from "@/app/_components/header/header";
 import Sidebar from "@/app/_components/sidebar/sidebar";
+import { ToastContainer } from "@/app/_components/tost-container/tost-container";
 
 export default function UserLayout({
   children,
@@ -14,6 +15,7 @@ export default function UserLayout({
         <main className="flex justify-center items-center flex-1">
           {children}
         </main>
+        <ToastContainer />
       </div>
     </>
   );
