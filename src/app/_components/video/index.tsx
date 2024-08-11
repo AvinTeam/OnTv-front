@@ -32,6 +32,7 @@ export const VideoJS = ({
 
   videojs.registerPlugin('hlsQualitySelector', qualitySelector)
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handlePlayerError = (player: any) => {
     const error = player.error();
 

@@ -3,6 +3,7 @@ import React, { forwardRef } from "react";
 import { ButtonProps } from "./button.types";
 import { LoadingIcon } from "../icons";
 
+// eslint-disable-next-line react/display-name
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ children, disabled, loading, color, bgColor, loadingColor, onClick, ...props }, ref) => {
     return (
