@@ -71,16 +71,7 @@ export default function EditProfile() {
       .then(({ data }) => {
         setLoading(false);
 
-        const stUser = localStorage.getItem("user_name");
-        const parsedData = stUser ? JSON.parse(stUser) : null;
-
-        parsedData.avatar = userData?.avatar[0]?.thumbnail?.url
-          ? userData?.avatar[0]?.thumbnail?.url
-          : userData?.avatar
-            ? userData?.avatar
-            : "/images/avatar/avatar.jpg"
-
-        localStorage.setItem("user_name", JSON.stringify(parsedData));
+        localStorage.setItem("user_name", JSON.stringify(data.user));
 
         show_toast({ text: data?.message, type: "success" });
       }).catch(() => {

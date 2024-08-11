@@ -6,6 +6,9 @@ import SearchModal from "./components/searchModal";
 import { useRouter } from "next/navigation";
 import UserProfile from "./components/user-profile/user-profile";
 import { ArrowTopIcon, CloseIcon, HamburgerIcon, HomeIcon, SearchIcon } from "../icons";
+import axios from "../../../core/axios";
+
+
 const bg_color_first: string =
   "linear-gradient(180deg,hsla(0,0%,5%,.4),hsla(0,0%,5%,.4) .41%,hsla(0,0%,5%,.399) .9%,hsla(0,0%,5%,.396) 1.64%,hsla(0,0%,5%,.391) 2.84%,hsla(0,0%,5%,.383) 4.68%,hsla(0,0%,5%,.372) 7.35%,hsla(0,0%,5%,.356) 11.04%,hsla(0,0%,5%,.336) 15.94%,hsla(0,0%,5%,.31) 22.23%,hsla(0,0%,5%,.278) 30.12%,hsla(0,0%,5%,.238) 39.78%,hsla(0,0%,5%,.192) 51.41%,hsla(0,0%,5%,.137) 65.2%,hsla(0,0%,5%,.073) 81.33%,hsla(0,0%,5%,0))";
 const bg_color_second: string = "hsla(0,0%,5%,.75)";
@@ -17,6 +20,8 @@ export const Header: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
   const [avatar, setAvatar] = useState<string>("")
+
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -39,13 +44,34 @@ export const Header: React.FC = () => {
     const parsedData = userData ? JSON.parse(userData) : null;
 
     if (token && parsedData) {
-      setAvatar(parsedData.avatar)
+      setAvatar(parsedData?.avatar[0]?.thumbnail?.url
+        ? parsedData?.avatar[0]?.thumbnail?.url
+        : parsedData?.avatar
+          ? parsedData?.avatar
+          : "/images/avatar/avatar.jpg"
+      )
       setIsLoggedIn(true);
       setUsername(parsedData.mobile);
+      getUserInfo();
     } else {
       router.push("/")
     }
   }, []);
+
+  const getUserInfo = () => {
+    const userData = localStorage.getItem("user_name");
+    const parsedData = userData ? JSON.parse(userData) : null;
+    axios.get(`admin/profile/${parsedData?.id}`).then(({ data }) => {
+      localStorage.setItem("user_name", JSON.stringify(data.user));
+      setAvatar(parsedData?.avatar[0]?.thumbnail?.url
+        ? parsedData?.avatar[0]?.thumbnail?.url
+        : parsedData?.avatar
+          ? parsedData?.avatar
+          : "/images/avatar/avatar.jpg"
+      )
+    }).catch(() => {
+    })
+  };
 
 
   return (
@@ -64,7 +90,7 @@ export const Header: React.FC = () => {
               className="md:hidden mr-4"
               onClick={() => setShowMobileMenu(true)}
             >
-            <HamburgerIcon />
+              <HamburgerIcon />
             </div>
             <Link href={"/"} className="w-full h-full">
               <Image
@@ -147,7 +173,7 @@ export const Header: React.FC = () => {
                 href="#"
                 className="hover:bg-[#242424] flex gap-1 justify-center items-center text-center rounded-md px-1 py-[6px] text-[10px] text-nowrap md:text-[12px] "
               >
-                 <HomeIcon />
+                <HomeIcon />
                 <p>صفحه نخست</p>
               </Link>
             </li>
@@ -163,8 +189,8 @@ export const Header: React.FC = () => {
               <li className="flex group justify-center items-center">
                 <div className="hover:bg-[#242424] flex gap-1 text-nowrap justify-center items-center text-center rounded-md px-1 py-[6px] text-[10px] md:text-[12px] ">
                   <p>آرشیو</p>
-                   <ArrowTopIcon className="rotate-180" />
-                 </div>
+                  <ArrowTopIcon className="rotate-180" />
+                </div>
               </li>
               <div className="w-[170px] translate-y-[-300px] group-hover:translate-y-[0px] group-hover:opacity-100 group-hover:right-40 md:group-hover:right-80 p-2 z-[1000] rounded-md absolute bg-[#0f0f0f] border border-[#282828]  ">
                 <ul>
@@ -222,7 +248,7 @@ export const Header: React.FC = () => {
                 onClick={() => setIsSearchActive(true)}
                 className="cursor-pointer hover:bg-[#242424] flex gap-1 justify-center items-center text-center rounded-md pl-3 pr-1 py-[6px] text-[10px] text-nowrap md:text-[12px] "
               >
-                 <SearchIcon fill="gray" />
+                <SearchIcon fill="gray" />
                 <p className="hidden md:block">جستجو</p>
               </div>
             </li>
