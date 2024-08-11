@@ -27,7 +27,7 @@ const months = [
 ];
 
 export default function EditProfile() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -51,30 +51,39 @@ export default function EditProfile() {
     setImgFile(file);
     if (file) {
       const reader = new FileReader();
-      reader.onload = () => {
-        setSelectedImage(reader.result as string);
-      };
-      reader.readAsDataURL(file);
+
+      setSelectedImage(file);
     }
   };
   const handelSubmit = () => {
     setLoading(true);
+    const formData = new FormData();
+    console.log({ selectedImage })
+
+    formData.append('birthday', convertJalaliToGregorian(`${year}/${month}/${day}`));
+    formData.append('name', name ?? "");
+    formData.append('gender', gender == "خانم" ? '1' : gender == "آقا" ? '2' : '0');
+    formData.append('avatar', selectedImage as any);
     axios
-      .post(`admin/profile/${userId}`, {
-        birthday: convertJalaliToGregorian(`${year}/${month}/${day}`),
-        name: name,
-        gender: gender == "خانم" ? 1 : gender == "آقا" ? 2 : 0,
+      .post(`admin/profile/${userId}`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
       })
       .then(({ data }) => {
         setLoading(false);
-        setDay(null);
-        setMonth(null);
-        setYear(null);
-        setName("");
-        setGender(null);
-        setImgFile(null);
+
+        const stUser = localStorage.getItem("user_name");
+        const parsedData = stUser ? JSON.parse(stUser) : null;
+
+        parsedData.avatar = userData?.avatar[0]?.thumbnail?.url
+          ? userData?.avatar[0]?.thumbnail?.url
+          : userData?.avatar
+            ? userData?.avatar
+            : "/images/avatar/avatar.jpg"
+
+        localStorage.setItem("user_name", JSON.stringify(parsedData));
+
         show_toast({ text: data?.message, type: "success" });
-      }).catch(()=>{
+      }).catch(() => {
         setLoading(false)
       })
   };
@@ -82,7 +91,7 @@ export default function EditProfile() {
   const years = Array.from({ length: 100 }, (_, i) => 1403 - i);
 
   const getUserInfo = () => {
-     axios.get(`admin/profile/${userId}`).then(({ data }) => {
+    axios.get(`admin/profile/${userId}`).then(({ data }) => {
       setLoadingData(false)
       setUserData(data.user);
       setName(data.user.name);
@@ -96,7 +105,7 @@ export default function EditProfile() {
         setMonth(+month);
         setYear(+year);
       }
-    }).catch(()=>{
+    }).catch(() => {
       setLoadingData(false)
     })
   };
@@ -126,10 +135,13 @@ export default function EditProfile() {
               <Image
                 src={
                   selectedImage
-                    ? selectedImage
-                    : userData?.avatar
-                    ? userData?.avatar
-                    : "/images/avatar/avatar.jpg"
+                    ? URL.createObjectURL(selectedImage)
+                    : userData?.avatar[0]?.thumbnail?.url
+                      ? userData?.avatar[0]?.thumbnail?.url
+                      : userData?.avatar
+                        ? userData?.avatar
+                        : "/images/avatar/avatar.jpg"
+
                 }
                 alt="Selected Profile"
                 className="rounded-full object-cover w-full h-full"
@@ -221,7 +233,7 @@ export default function EditProfile() {
               color={loading ? "#424242" : "white"}
               loading={loading}
               loadingColor="#142a58"
-             >
+            >
               {loading ? "درحال درخواست" : "تایید"}
             </Button>
             <Button className="bg-[#424242] w-full h-full py-2 text-white">

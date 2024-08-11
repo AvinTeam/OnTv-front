@@ -12,7 +12,7 @@ const UserProfile = ({
   avatar,
 }: {
   mobile: string;
-  avatar: string;
+  avatar: any;
 }) => {
   const [isShowMenu, setIsShowMenu] = useState(false);
   const imageRef = useRef<HTMLDivElement>(null);
@@ -72,10 +72,10 @@ const UserProfile = ({
             href={"/user/edit-profile"}
             className="flex mb-3 hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
           >
-              <ProfileIcon />
+            <ProfileIcon />
             <span className="text-sm">خودم</span>
             <div className="mr-auto hover:scale-150 hover:transition-all hover:ease-in-out hover:delay-75">
-            <SettingIcon />
+              <SettingIcon />
             </div>
           </Link>
           <hr />
@@ -84,32 +84,32 @@ const UserProfile = ({
             href={"/user/edit-profile"}
             className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-4 mr-2 pb-2 justify-start items-center"
           >
-             <BuySubscriptionIcon />
+            <BuySubscriptionIcon />
             <span className="text-sm">خرید اشتراک</span>
           </Link>
           <Link
             href={"/user/edit-profile"}
             className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
           >
-              <SavedIcon />
+            <SavedIcon />
             <span className="text-sm">نشان شده ها</span>
           </Link>
           <Link
             href={"/user/edit-profile"}
             className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
           >
-             <ProfileManagementIcon />
+            <ProfileManagementIcon />
             <span className="text-sm">مدیریت پروفایل ها</span>
           </Link>
           <Link
             href={"/user/edit-profile"}
             className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
           >
-              <AccountIcon />
+            <AccountIcon />
             <span className="text-sm">حساب کاربری</span>
           </Link>
           <div className="flex gap-2 mt-3 hover:bg-[#434444] py-2 rounded-md px-3 cursor-pointer mr-2 justify-start items-center">
-          <LogoutIcon />
+            <LogoutIcon />
             <span className="text-sm">خروج ار حساب کاربری</span>
           </div>
         </div>
