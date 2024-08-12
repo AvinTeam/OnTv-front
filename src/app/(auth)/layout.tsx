@@ -9,7 +9,7 @@ export default function AuthLayout({
 }) {
   return (
     <main
-      className="w-screen h-screen overflow-auto flex flex-col  items-center"
+      className="w-screen h-screen overflow-auto min-h-screen grid grid-rows-[60px_1fr_auto]"
       style={{ background: "radial-gradient(black, transparent)" }}
     >
       <Header />

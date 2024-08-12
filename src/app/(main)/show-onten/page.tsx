@@ -407,7 +407,7 @@ export default async function ShowOnten() {
               key={idx}
               className="w-screen md:w-auto md:col-span-6 lg:col-span-3 overflow-auto mb-5 px-9 md:px-0"
             >
-              <div className="rounded-md overflow-auto h-[140px]">
+              <div className="rounded-md overflow-auto h-[160px] lg:h-[180px] 2xl:h-[200px]">
                 <Image
                   src={item.path}
                   width={0}

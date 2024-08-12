@@ -18,7 +18,7 @@ export const OntenCard: React.FC<OntenCardProps> = ({
           <div className="relative group w-full h-full flex justify-center items-center">
             <div className="absolute group-hover:opacity-0 transition-all rounded-md top-[6px]  w-[90%] h-full z-10">
               <Image
-                src={path}
+                src={"https://ontv-front-dev-860220ff8e-nehzat.apps.ir-thr-ba1.arvancaas.ir/_next/static/media/Image%2027.dbb98f2b.png"}
                 alt={alt}
                 layout="fill"
                  className="rounded-md overflow-auto opacity-70"
@@ -26,7 +26,7 @@ export const OntenCard: React.FC<OntenCardProps> = ({
             </div>
             <div className="absolute group-hover:opacity-0 transition-all rounded-md top-[10px] w-[95%] h-full z-20">
               <Image
-                src={path}
+                src={"https://ontv-front-dev-860220ff8e-nehzat.apps.ir-thr-ba1.arvancaas.ir/_next/static/media/Image%2027.dbb98f2b.png"}
                 alt={alt}
                 layout="fill"
                  className="rounded-md overflow-auto opacity-85"
@@ -34,7 +34,7 @@ export const OntenCard: React.FC<OntenCardProps> = ({
             </div>
             <div className="relative rounded-md group top-[15px] w-full h-full z-30">
               <Image
-                src={path}
+                src={"https://ontv-front-dev-860220ff8e-nehzat.apps.ir-thr-ba1.arvancaas.ir/_next/static/media/Image%2027.dbb98f2b.png"}
                 alt={alt}
                 layout="fill"
                 objectFit="cover"
