@@ -14,7 +14,7 @@ const Live = () => {
     muted: true,
     sources: [
       {
-        src: "https://ontv.arvanlive.ir/hls/on1/on1.m3u8",
+        src: "https://nehzatmedia.arvanvod.ir/R7qEPk4Xey/ENL9QJ0rlQ/h_,144_200,240_400,360_800,480_1500,k.mp4.list/master.m3u8",
         type: "application/x-mpegURL",
       },
     ],
@@ -28,7 +28,7 @@ const Live = () => {
     muted: true,
     sources: [
       {
-        src: "https://nehzatmedia.arvanvod.ir/R7qEPk4Xey/joW4p7bJeM/h_,110_200,182_400,274_800,366_1500,548_2500,k.mp4.list/master.m3u8",
+        src: "https://nehzatmedia.arvanvod.ir/R7qEPk4Xey/ENL9QJ0rlQ/h_,144_200,240_400,360_800,480_1500,k.mp4.list/master.m3u8",
         type: "application/x-mpegURL",
       },
     ],
