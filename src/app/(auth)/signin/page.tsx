@@ -44,7 +44,7 @@ export default function SignIn() {
 
   return (
    <div className="flex justify-center items-center">
-     <div className="px-8 py-2 w-[300px] md:w-[400px] h-[280px] md:h-[330px] bg-[#292929] flex gap-12 justify-center  flex-col rounded-md">
+     <div className="px-8 py-6 md:py-2 w-[300px] md:w-[400px] h-[290px] md:h-[330px] bg-[#292929] flex gap-12 justify-center  flex-col rounded-md">
       <p className="text-white text-[32px] font-bold text-center mt-4">ورود</p>
       <p className="text-white text-sm text-center -mt-4">
         شماره تلفن همراه خود را وارد نمایید
