@@ -1,4 +1,6 @@
+import { Footer } from "../_components/footer/footer";
 import { ToastContainer } from "../_components/tost-container/tost-container";
+import Header from "./_components/header";
 
 export default function AuthLayout({
   children,
@@ -6,10 +8,14 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="w-screen h-screen dark:bg-[#000000] overflow-auto flex justify-center items-center">
+    <main
+      className="w-screen h-screen overflow-auto flex flex-col  items-center"
+      style={{ background: "radial-gradient(black, transparent)" }}
+    >
+      <Header />
       {children}
+      <Footer />
       <ToastContainer />
-
     </main>
   );
 }
