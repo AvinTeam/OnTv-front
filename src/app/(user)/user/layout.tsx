@@ -10,9 +10,9 @@ export default function UserLayout({
   return (
     <>
       <Header />
-      <div className="flex bg-[#000]">
+      <div className="flex bg-[#000] min-h-screen">
         <Sidebar />
-        <main className="flex justify-center items-center flex-1">
+        <main className="flex justify-center items-center flex-1 ">
           {children}
         </main>
         <ToastContainer />

@@ -114,14 +114,14 @@ export default function EditProfile() {
     return <LoadingSpinner message="در حال دریافت اطلاعات..." />;
   }
   return (
-    <div className="w-full h-full p-4 flex flex-col gap-3 justify-center items-center">
-      <h2 className="text-white mt-6 text-2xl">ویرایش پروفایل</h2>
-      <div className="text-center select-none bg-[#242323] h-full w-[500px] shadow-2xl flex justify-center items-center p-4 rounded-md">
-        <div className="h-full w-full flex flex-col gap-2 p-8">
+    <div className=" h-full p-4 flex flex-col gap-3 justify-center items-center w-screen md:w-full overflow-hidden ">
+      <h2 className="text-white mt-6 text-xl md:text-2xl">ویرایش پروفایل</h2>
+      <div className="text-center select-none bg-[#242323] h-auto min-w-[320px] md:min-w-[500px] overflow-hidden shadow-2xl flex justify-center items-center p-4 rounded-md">
+        <div className="h-full w-full flex flex-col gap-2 p-3 md:p-8">
           <div className="w-full flex flex-col gap-2 text-white justify-center items-center select-none">
             <div
               onClick={handleDivClick}
-              className="cursor-pointer bg-primary w-[70px] h-[70px] rounded-full flex-col gap-2 text-white justify-center items-center"
+              className="cursor-pointer bg-primary w-[60px] h-[60px] md:w-[70px] md:h-[70px] rounded-full flex-col gap-2 text-white justify-center items-center"
             >
               <Image
                 src={
