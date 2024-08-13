@@ -3,7 +3,7 @@ import Image from "next/image";
 import logo from "../../../../public/images/android-chrome-192x192.png";
 function Header() {
   return (
-    <div className="w-full px-20">
+    <div className="w-full px-8 lg:px-20">
       {" "}
       <Image
         src={logo}
