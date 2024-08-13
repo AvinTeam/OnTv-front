@@ -1,92 +1,45 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import logo from "../../../../public/images/android-chrome-192x192.png";
 import axios from "axios";
 import { AUTH_URL } from "@/configs/global";
 import { useRouter, useSearchParams } from "next/navigation";
-import { ArrowIcon } from "@/app/_components/icons";
+import { ArrowIcon, EyesIcon, ViewIcon } from "@/app/_components/icons";
 import { Button } from "@/app/_components/button";
 import { show_toast } from "@/utils/functions";
 
 export default function Verify() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [inputs, setInputs] = useState(Array(4).fill(""));
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [timeLeft, setTimeLeft] = useState(120);
   const [isLoding, setIsLoading] = useState<boolean>(false);
-  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
-  const [isResendEnabled, setIsResendEnabled] = useState(false);
-
-  useEffect(() => {
-    if (inputRefs.current[0]) {
-      inputRefs.current[0].focus();
-    }
-  }, []);
-
-  useEffect(() => {
-    setIsButtonDisabled(inputs.includes(""));
-  }, [inputs]);
-
-  useEffect(() => {
-    if (timeLeft > 0) {
-      const timer = setTimeout(() => {
-        setTimeLeft(timeLeft - 1);
-      }, 1000);
-      return () => clearTimeout(timer);
-    } else {
-      setIsResendEnabled(true);
-    }
-  }, [timeLeft]);
-
-  const handleChange = (index: number, value: string) => {
-    if (value.length <= 1) {
-      const newInputs = [...inputs];
-      newInputs[index] = value;
-      setInputs(newInputs);
-
-      if (value !== "" && inputRefs.current[index + 1]) {
-        inputRefs.current[index + 1]!.focus();
-      }
-    }
-  };
-
-  const handleKeyDown = (
-    index: number,
-    event: React.KeyboardEvent<HTMLInputElement>
-  ) => {
-    if (
-      event.key === "Backspace" &&
-      inputs[index] === "" &&
-      inputRefs.current[index - 1]
-    ) {
-      inputRefs.current[index - 1]!.focus();
-    }
-  };
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [inputValue, setInputValue] = useState("");
+  const [isPasswordType, setIsPasswordType] = useState(false);
 
   const handleResendCode = () => {
-    console.log(inputs.join(""));
     if (searchParams) console.log(searchParams.get("mobile"));
     axios
       .post(`${AUTH_URL}mobile/auth/send_otp`, {
         mobile: searchParams.get("mobile"),
-        code: inputs.join(""),
+        code: inputValue,
       })
-      .then(() => {
-        setTimeLeft(120);
-        setIsResendEnabled(false);
+      .then(({ data }) => {
+        if (!data.success) {
+          show_toast({ text: data?.message, type: "error" });
+        } else {
+          show_toast({ text: data?.message, type: "success" });
+          setTimeLeft(120);
+        }
       });
   };
 
   const handleSubmit = () => {
     setIsLoading(true);
-    if (searchParams) console.log(searchParams.get("mobile"));
     axios
       .post(`${AUTH_URL}mobile/auth/verify_mobile`, {
         mobile: searchParams.get("mobile"),
-        code: inputs.join(""),
+        code: inputValue,
       })
       .then(({ data }) => {
         show_toast({ text: data?.message, type: "success" });
@@ -110,64 +63,70 @@ export default function Verify() {
     }${minutes}`;
   };
 
+  const handleIconClick = () => {
+    setIsPasswordType(!isPasswordType);
+  };
+  useEffect(() => {
+    if (timeLeft > 0) {
+      const timer = setTimeout(() => {
+        setTimeLeft(timeLeft - 1);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [timeLeft]);
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+  useEffect(() => {
+    if (inputValue?.length === 4) {
+      handleSubmit();
+    }
+  }, [inputValue]);
   return (
-    <div className="px-10 py-4 w-[330px] h-[390px] bg-base-50 flex justify-around items-center flex-col rounded-md">
-      <div className="flex gap-3 mt-10">
-        <Image
-          src={logo}
-          width={0}
-          objectFit="contain"
-          height={0}
-          className="w-14 h-14 mt-3"
-          alt="logo"
-        />
-        <div className="flex mt-2 flex-col gap-2">
-          <p className="text-white font-bold text-[12px]">ورود به آن</p>
-          <p className="text-[11px] mb-6">
-            جهت ورود یا ثبت‌نام در آن، شماره موبایل خود را وارد کنید.
+    <div className="flex justify-center items-center">
+      <div className="px-8 py-6 md:py-2 w-[300px] md:w-[400px] h-[310px] md:h-[370px] bg-[#292929] flex gap-12 justify-center  flex-col rounded-md">
+        <div className="ml-auto flex justify-center items-center gap-1 ursor-pointer">
+          <ArrowIcon width={10} height={10} fill="#fff" />
+          <Link href={"/signin"} className="text-md text-white">
+            بازگشت
+          </Link>
+        </div>
+        <p className="text-center text-white -mt-8">
+          رمز عبور خود را وارد کنید
+        </p>
+        <div className="flex flex-col gap-4">
+          <div className="relative">
+            <input
+              ref={inputRef}
+              type={isPasswordType ? "text" : "password"}
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              className="p-2 pr-10 rounded-md focus:outline-none -mt-4 lg:mt-0 w-full bg-[#e8f0fe] text-[black]"
+            />
+            <button onClick={handleIconClick} className="absolute left-4 top-2">
+              {!isPasswordType ? <EyesIcon /> : <ViewIcon fill="gray" />}
+            </button>
+          </div>
+          <p className="text-center font-bold text-lg">
+            {formatTime(timeLeft)}
+          </p>
+          <Button
+            onClick={handleSubmit}
+            loading={isLoding}
+            bgColor="#d42b4d"
+            className="py-2 text-white"
+          >
+            {isLoding ? "درحال درخواست" : "ورود"}
+          </Button>
+          <p
+            onClick={handleResendCode}
+            className={`text-center text-[12px] cursor-pointer text-white`}
+          >
+            ارسال دوباره کد
           </p>
         </div>
-      </div>
-      <div className="flex flex-col gap-4">
-        <div className="grid grid-cols-4 gap-2">
-          {[...inputs].reverse().map((input, index) => (
-            <input
-              key={index}
-              value={inputs[inputs.length - 1 - index]}
-              ref={(el: any) =>
-                (inputRefs.current[inputs.length - 1 - index] = el)
-              }
-              onChange={(e) =>
-                handleChange(inputs.length - 1 - index, e.target.value)
-              }
-              onKeyDown={(e) => handleKeyDown(inputs.length - 1 - index, e)}
-              className="p-2 rounded-md focus:outline-none bg-base-25 text-white text-center"
-            />
-          ))}
-        </div>
-        <p className="text-center font-bold text-lg">{formatTime(timeLeft)}</p>
-        <Button
-          onClick={handleSubmit}
-          loading={isLoding}
-          bgColor="#424242"
-          className="py-2 text-white"
-        >
-          {isLoding ? "درحال درخواست" : "ثبت نام"}
-        </Button>
-        <p
-          onClick={handleResendCode}
-          className={`text-center text-[12px] cursor-pointer ${
-            isResendEnabled ? "" : "opacity-50 cursor-not-allowed"
-          }`}
-        >
-          ارسال دوباره کد
-        </p>
-      </div>
-      <div className="mr-auto flex justify-center items-center gap-1 cursor-pointer">
-        <Link href={"/signin"} className="text-sm">
-          بازگشت
-        </Link>
-        <ArrowIcon width={8} height={8} className="rotate-180" />
       </div>
     </div>
   );

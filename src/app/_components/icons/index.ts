@@ -19,6 +19,7 @@ import BuyHistoryIcon from "./BuyHistory";
 import WatchingIcon from "./Watching";
 import ViewIcon from "./View";
 import LoadingIcon from "./Loading";
+import EyesIcon from "./Eyes";
  export {
   AparatIcon,
   ArrowTopIcon,
@@ -40,6 +41,7 @@ import LoadingIcon from "./Loading";
   BuyHistoryIcon,
   WatchingIcon,
   ViewIcon,
-  LoadingIcon
+  LoadingIcon,
+  EyesIcon
   
 };
