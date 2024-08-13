@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import axios from "../../../../core/axios";
+// import axios from "../../../../core/axios";
+import axios  from "axios"
 import {
   convertGregorianToJalaliFullTim,
   convertJalaliToGregorian,
@@ -102,6 +103,9 @@ export default function EditProfile() {
   };
 
   useLayoutEffect(() => {
+    axios.get("homepage").then(({data})=>{
+      console.log(data)
+    })
     setLoadingData(true)
     const userData = localStorage.getItem("user_name");
     const parsedData = userData ? JSON.parse(userData) : null;

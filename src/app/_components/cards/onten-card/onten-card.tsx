@@ -1,41 +1,46 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { OntenCardProps } from "./onten-card.types";
 import Image from "next/image";
 import Link from "next/link";
 import { ViewIcon } from "../../icons";
 
-export const OntenCard: React.FC<OntenCardProps> = ({
-  alt,
-  logo,
-  descriptions,
-  path,
-}) => {
+export const OntenCard: React.FC<OntenCardProps> = ({ program }) => {
+  console.log("program=========");
+  console.log(program);
+  const { title, poster, description, tags, seen } = program;
+  // useEffect(()=>{
+  //   console.log(program)
+  // },[program])
+  // const { title, description, banner, poster, tags } = program;
   return (
     <>
       <div className="w-full h-full group flex flex-col gap-5 relative overflow-visible">
-        <Link href={"#"} className="group w-full h-[80%] relative overflow-visible">
+        <Link
+          href={"#"}
+          className="group w-full h-[80%] relative overflow-visible"
+        >
           <div className="relative group w-full h-full flex justify-center items-center">
             <div className="absolute group-hover:opacity-0 transition-all rounded-md top-[6px]  w-[90%] h-full z-10">
               <Image
-                src={"https://ontv-front-dev-860220ff8e-nehzat.apps.ir-thr-ba1.arvancaas.ir/_next/static/media/Image%2027.dbb98f2b.png"}
-                alt={alt}
+                src={poster[0].url}
+                alt={"description"}
                 layout="fill"
-                 className="rounded-md overflow-auto opacity-70"
+                className="rounded-md overflow-auto opacity-70"
               />
             </div>
             <div className="absolute group-hover:opacity-0 transition-all rounded-md top-[10px] w-[95%] h-full z-20">
               <Image
-                src={"https://ontv-front-dev-860220ff8e-nehzat.apps.ir-thr-ba1.arvancaas.ir/_next/static/media/Image%2027.dbb98f2b.png"}
-                alt={alt}
+                src={poster[0].url}
+                alt={"description"}
                 layout="fill"
-                 className="rounded-md overflow-auto opacity-85"
+                className="rounded-md overflow-auto opacity-85"
               />
             </div>
             <div className="relative rounded-md group top-[15px] w-full h-full z-30">
               <Image
-                src={"https://ontv-front-dev-860220ff8e-nehzat.apps.ir-thr-ba1.arvancaas.ir/_next/static/media/Image%2027.dbb98f2b.png"}
-                alt={alt}
+                src={poster[0].url}
+                alt={"description"}
                 layout="fill"
                 objectFit="cover"
                 className="rounded-md overflow-auto"
@@ -52,11 +57,11 @@ export const OntenCard: React.FC<OntenCardProps> = ({
                   boxShadow: "inset 0 0 0 1px transparent",
                 }}
               >
-             <ViewIcon />
-                12,234
+                <ViewIcon />
+                {seen} 
               </div>
-              <div>سیاسی - اجتماعی</div>
-              <p>خبر های روز</p>
+              <div>{tags.map((tag) => tag.name).join("-")}</div>
+              <p>{title}</p>
             </div>
           </div>
           <div
@@ -67,7 +72,7 @@ export const OntenCard: React.FC<OntenCardProps> = ({
           ></div>
         </Link>
         <div className="w-full group text-white text-[10px] font-light md:text-[11px] xl:text-[13px]">
-          <p>مراسم شهدای خدمت</p>
+          <p>{description}</p>
         </div>
       </div>
     </>

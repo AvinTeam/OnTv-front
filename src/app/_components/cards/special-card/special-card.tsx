@@ -6,19 +6,20 @@ import Link from "next/link";
 import { ViewIcon } from "../../icons";
 
 export const SpecialCard: React.FC<SpecialCardProps> = ({
-  alt,
-  logo,
-  descriptions,
-  path,
+ program,
+ seen,
+ description
+
 }) => {
+  const { title, poster, tags} = program
   return (
     <>
       <div className="w-full h-full flex flex-col gap-2">
         <Link href={"#"} className="group w-full h-[85%]  relative">
           <div className=" w-full h-full group">
             <Image
-              src={path}
-              alt={path}
+              src={poster[0].url}
+              alt={title}
               width={0}
               style={{ objectFit: "cover" }}
               height={0}
@@ -36,10 +37,10 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({
                 }}
               >
                 <ViewIcon />
-                12,234
+                {seen}
               </div>
-              <div>سیاسی - اجتماعی</div>
-              <p>خبر های روز</p>
+              <div>{tags.map(tag => tag.name).join(' - ')}</div>
+              <p>{title}</p>
             </div>
           </div>
           <div
@@ -50,7 +51,7 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({
           ></div>
         </Link>
         <div className="w-full h-[15%] text-white text-[10px] font-light md:text-[11px] xl:text-[13px]">
-          <p>مراسم شهدای خدمت</p>
+          <p>{description}</p>
         </div>
       </div>
     </>

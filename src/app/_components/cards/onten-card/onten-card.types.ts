@@ -1,7 +1,20 @@
-// import { Tab } from "@/types/tab.type"
-export type OntenCardProps = {
-  path: string;
-  descriptions: { title: string; dec: string };
-  logo: string;
-  alt: string;
-};
+interface Program {
+  id: number;
+  creator: any;
+  title: string;
+  description: string;
+  color: string;
+  status: any;
+  poster: any[];
+  banner: any[];
+  tags: any[];
+  casts: any[];
+  service: any;
+  seen: number;
+  averageOfScore: number | null;
+}
+
+export interface OntenCardProps {
+  id: number;
+  program: Program;
+}

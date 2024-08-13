@@ -46,6 +46,9 @@ export const Slider: React.FC<SliderProps> = ({
 
     fetchData();
   }, []);
+  useEffect(() => {
+    console.log(data)
+  }, [data]);
 
   if (isLoading) {
     return (
@@ -127,8 +130,8 @@ export const Slider: React.FC<SliderProps> = ({
           setIsDisableNext(e.isEnd);
         }}
       >
-        {data?.map((item: any, idx: number) => (
-          <SwiperSlide key={idx}>
+        {data?.map((item: any) => (
+          <SwiperSlide key={item.id}>
             <Component {...item} />
           </SwiperSlide>
         ))}
