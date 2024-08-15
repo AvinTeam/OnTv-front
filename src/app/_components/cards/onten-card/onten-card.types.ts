@@ -1,4 +1,4 @@
-interface Program {
+export interface Program {
   id: number;
   creator: any;
   title: string;
@@ -14,7 +14,11 @@ interface Program {
   averageOfScore: number | null;
 }
 
-export interface OntenCardProps {
+export type IProps = {
   id: number;
   program: Program;
+};
+
+export interface OntenCardProps {
+  data: Program | IProps;
 }

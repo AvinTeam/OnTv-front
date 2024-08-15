@@ -7,6 +7,22 @@ import BannerFour from "../_components/banners/banner-four/banner-four";
 import Tag from "./_components/Tag";
 import Program from "./_components/Program";
 import BannerFull from "../_components/banners/banner-full/banner-full";
+type HomepageConfigItem = {
+  id: number;
+  title: string;
+  type: keyof RenderComponents;
+  order: number;
+  links: any[];
+  tags: any[];
+  program: any[];
+};
+type RenderComponents = {
+  tag: typeof Tag;
+  program: typeof Program;
+  link1: typeof BannerFull;
+  link2: typeof BannerTwo;
+  link4: typeof BannerFour;
+};
 
 async function gatAllData() {
   const res = await fetch(`${API_URL}homepage`, {
@@ -17,14 +33,15 @@ async function gatAllData() {
 
 export default async function HomePage() {
   const allData = await gatAllData();
-  const renderComponents: any = {
+
+  const renderComponents: RenderComponents = {
     tag: Tag,
     program: Program,
     link1: BannerFull,
     link2: BannerTwo,
     link4: BannerFour,
   };
-  console.log(allData)
+  console.log(allData);
 
   return (
     <main className="flex flex-col w-full overflow-x-scroll overflow-y-hidden bg-[#000000]">
@@ -57,15 +74,15 @@ export default async function HomePage() {
         />
       </div>
 
-      {allData.homepage_configs?.map((item: any) => {
+      {allData.homepage_configs?.map((item: HomepageConfigItem) => {
         const Component = renderComponents[item.type];
-        return Component ? (
+        return (
           <React.Fragment key={item.id}>
             <Component data={item} />
           </React.Fragment>
-        ) : null;
+        );
       })}
-        
+
       {/* <div className="py-6 md:py-10 bg-[#4A4A4A] px-2 md:px-6 h-[600px] md:h-[880px] lg:h-[880px] xl:h-[540px] overflow-x-auto overflow-y-hidden ">
         <div className="container">
           <div className="flex justify-between px-4 mb-4 items-center">

@@ -21,13 +21,10 @@ export const Slider: React.FC<SliderProps> = ({
 }: SliderProps) => {
   const [isDisablePrev, setIsDisablePrev] = useState<boolean>(true);
   const [isDisableNext, setIsDisableNext] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
   const sliderRef = useRef<SwiperRef>(null);
 
   const handlePrev = () => {
-    console.log(sliderRef.current?.swiper);
     if (!sliderRef.current) return;
-
     sliderRef.current?.swiper.slidePrev();
   };
 
@@ -36,56 +33,6 @@ export const Slider: React.FC<SliderProps> = ({
     sliderRef.current?.swiper.slideNext();
   };
 
- 
-
-  useEffect(() => {
-    const fetchData = async () => {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      setIsLoading(false);
-    };
-
-    fetchData();
-  }, []);
-  useEffect(() => {
-    console.log(data)
-  }, [data]);
-
-  if (isLoading) {
-    return (
-      <div className="flex justify-around w-full h-full">
-        <div className={`flex flex-col justify-between w-[400px] h-[150px] md:w-[130px] md:h-[120px] lg:w-[200px] lg:h-[${displayCount === 8 ? "250px" : "150px"}]`}>
-        <Skeleton type="rectangle" color={70} />
-        <div className="w-16 h-2">
-        <Skeleton type="rectangle" />
-        </div>
-        </div>
-        <div className={`hidden md:flex flex-col justify-between md:w-[130px] md:h-[120px] lg:w-[200px] lg:h-[${displayCount === 8 ? "250px" : "150px"}]`}>
-        <Skeleton type="rectangle" color={70} />
-        <div className="w-16 h-2">
-        <Skeleton type="rectangle" />
-        </div>
-        </div>
-        <div className={`hidden md:flex flex-col justify-between md:w-[130px] md:h-[120px] lg:w-[200px] lg:h-[${displayCount === 8 ? "250px" : "150px"}]`}>
-        <Skeleton type="rectangle" color={70} />
-        <div className="w-16 h-2">
-        <Skeleton type="rectangle" />
-        </div>
-        </div>
-        <div className={`hidden md:flex flex-col justify-between md:w-[130px] md:h-[120px] lg:w-[200px] lg:h-[${displayCount === 8 ? "250px" : "150px"}]`}>
-        <Skeleton type="rectangle" color={70} />
-        <div className="w-16 h-2">
-        <Skeleton type="rectangle" />
-        </div>
-        </div>
-        <div className={`hidden md:flex flex-col justify-between md:w-[130px] md:h-[120px] lg:w-[200px] lg:h-[${displayCount === 8 ? "250px" : "150px"}]`}>
-        <Skeleton type="rectangle" color={70} />
-        <div className="w-16 h-2">
-        <Skeleton type="rectangle" />
-        </div>
-        </div>
-       </div>
-    );
-  }
   return (
     <div
       className={`select-none container h-full flex w-full overflow-visible`}
@@ -132,7 +79,7 @@ export const Slider: React.FC<SliderProps> = ({
       >
         {data?.map((item: any) => (
           <SwiperSlide key={item.id}>
-            <Component {...item} />
+            <Component data={item} />
           </SwiperSlide>
         ))}
         {isShowIcon && (

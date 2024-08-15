@@ -5,21 +5,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { ViewIcon } from "../../icons";
 
-export const SpecialCard: React.FC<SpecialCardProps> = ({
- program,
- seen,
- description
-
-}) => {
-  const { title, poster, tags} = program
+export const SpecialCard: React.FC<SpecialCardProps> = ({ data }) => {
+  const { seen, description, program} = data
   return (
     <>
       <div className="w-full h-full flex flex-col gap-2">
         <Link href={"#"} className="group w-full h-[85%]  relative">
           <div className=" w-full h-full group">
             <Image
-              src={poster[0].url}
-              alt={title}
+              src={program.poster[0].url}
+              alt={program.title}
               width={0}
               style={{ objectFit: "cover" }}
               height={0}
@@ -39,8 +34,10 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({
                 <ViewIcon />
                 {seen}
               </div>
-              <div>{tags.map(tag => tag.name).join(' - ')}</div>
-              <p>{title}</p>
+              <div>
+                {program.tags.map((tag: any) => tag.name).join(" - ")}
+              </div>
+              <p>{program.title}</p>
             </div>
           </div>
           <div

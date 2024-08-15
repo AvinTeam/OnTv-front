@@ -1,18 +1,19 @@
 "use client";
-import React, { useEffect } from "react";
-import { OntenCardProps } from "./onten-card.types";
+import React from "react";
+import { IProps, OntenCardProps, Program } from "./onten-card.types";
 import Image from "next/image";
 import Link from "next/link";
 import { ViewIcon } from "../../icons";
 
-export const OntenCard: React.FC<OntenCardProps> = ({ program }) => {
-  console.log("program=========");
-  console.log(program);
-  const { title, poster, description, tags, seen } = program;
-  // useEffect(()=>{
-  //   console.log(program)
-  // },[program])
-  // const { title, description, banner, poster, tags } = program;
+export const OntenCard: React.FC<OntenCardProps> = ({ data }) => {
+  const isIProps = (data: Program | IProps): data is IProps => {
+    return (data as IProps).program !== undefined;
+  };
+
+  const actualProgram: Program = isIProps(data) ? data.program : data;
+
+  const { title, poster, description, tags, seen } = actualProgram;
+
   return (
     <>
       <div className="w-full h-full group flex flex-col gap-5 relative overflow-visible">
@@ -58,9 +59,9 @@ export const OntenCard: React.FC<OntenCardProps> = ({ program }) => {
                 }}
               >
                 <ViewIcon />
-                {seen} 
+                {seen}
               </div>
-              <div>{tags.map((tag) => tag.name).join("-")}</div>
+              <div>{tags.map((tag: any) => tag.name).join("-")}</div>
               <p>{title}</p>
             </div>
           </div>

@@ -24,6 +24,7 @@ interface Program {
 }
 
 export type SpecialCardProps = {
+ data:{
   id: number;
   creator: Creator;
   program: Program;
@@ -32,4 +33,5 @@ export type SpecialCardProps = {
   seen: number;
   status: "published";
   poster: any[];
+ }
 };
