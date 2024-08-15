@@ -34,7 +34,7 @@ const Live = ({ data }: { data: LivesType[] }) => {
     loop: true,
     sources: [
       {
-        src: "https://nehzatmedia.arvanvod.ir/R7qEPk4Xey/vKPe7geblG/h_,144_200,240_400,360_800,480_1500,k.mp4.list/master.m3u8",
+        src: "https://nehzatmedia.arvanvod.ir/R7qEPk4Xey/ENL9QJ0rlQ/h_,144_200,240_400,360_800,480_1500,k.mp4.list/master.m3u8",
         type: "application/x-mpegURL",
       },
     ],
@@ -90,7 +90,7 @@ const Live = ({ data }: { data: LivesType[] }) => {
     loop: true,
     sources: [
       {
-        src: "https://nehzatmedia.arvanvod.ir/R7qEPk4Xey/OLDz83JbMR/h_,144_200,240_400,360_800,480_1500,k.mp4.list/master.m3u8",
+        src: "https://nehzatmedia.arvanvod.ir/R7qEPk4Xey/ENL9QJ0rlQ/h_,144_200,240_400,360_800,480_1500,k.mp4.list/master.m3u8",
         type: "application/x-mpegURL",
       },
     ],
