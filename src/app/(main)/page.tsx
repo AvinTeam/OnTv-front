@@ -63,11 +63,11 @@ export default async function HomePage() {
       </div>
 
       <div className="container px-3 md:px-0 overflow-auto pt-2 mb-6">
-        <SliderTitle title={sections.section_1.title} link="#" />
+        <SliderTitle title={sections.section_1?.title} link="#" />
         <div className="h-[230px] md:h-[300px] lg:h-[290px] 2xl:h-[350px]">
           <Slider
             Component={OntenCard}
-            data={sections.section_1.tags[0].programs}
+            data={sections.section_1.tags[0]?.programs}
             displayCount={8}
             isShowIcon={false}
           />
@@ -79,11 +79,11 @@ export default async function HomePage() {
       {/* ===============================> end of BANNER_SECTION <=============================*/}
 
       <div className="container px-3 md:px-0  overflow-auto py-2 mb-4">
-        <SliderTitle title={sections.section_3.title} link="#" />
+        <SliderTitle title={sections.section_3?.title} link="#" />
         <div className="h-[170px] md:h-[130px] lg:h-[160px] 2xl:h-[200px]">
           <Slider
             Component={SpecialCard}
-            data={sections.section_3.program[0].episodes}
+            data={sections.section_3?.program[0]?.episodes}
             displayCount={5}
             isShowIcon
           />
@@ -91,11 +91,11 @@ export default async function HomePage() {
       </div>
 
       <div className="container px-3 md:px-0 overflow-auto pt-2 mb-6">
-        <SliderTitle title={sections.section_4.title} link="#" />
+        <SliderTitle title={sections.section_4?.title} link="#" />
         <div className="h-[230px] md:h-[300px] lg:h-[290px] 2xl:h-[350px]">
           <Slider
             Component={OntenCard}
-            data={sections.section_4.tags[0].programs}
+            data={sections.section_4.tags[0]?.programs}
             displayCount={8}
             isShowIcon={false}
           />
@@ -103,11 +103,11 @@ export default async function HomePage() {
       </div>
 
       <div className="container px-3 md:px-0 overflow-auto pt-2 mb-6">
-        <SliderTitle title={sections.section_5.title} link="#" />
+        <SliderTitle title={sections.section_5?.title} link="#" />
         <div className="h-[230px] md:h-[300px] lg:h-[290px] 2xl:h-[350px]">
           <Slider
             Component={OntenCard}
-            data={sections.section_5.tags[0].programs}
+            data={sections.section_5.tags[0]?.programs}
             displayCount={8}
             isShowIcon={false}
           />
@@ -119,11 +119,11 @@ export default async function HomePage() {
       {/* ===============================> end of BANNER_SECTION <=============================*/}
 
       <div className="container px-3 md:px-0  overflow-auto py-2 mb-4">
-        <SliderTitle title={sections.section_7.title} link="#" />
+        <SliderTitle title={sections.section_7?.title} link="#" />
         <div className="h-[170px] md:h-[130px] lg:h-[160px] 2xl:h-[200px]">
           <Slider
             Component={SpecialCard}
-            data={sections.section_7.program[0].episodes}
+            data={sections.section_7?.program[0]?.episodes}
             displayCount={5}
             isShowIcon
           />
@@ -131,11 +131,11 @@ export default async function HomePage() {
       </div>
 
       <div className="container px-3 md:px-0  overflow-auto py-2 mb-4">
-        <SliderTitle title={sections.section_8.title} link="#" />
+        <SliderTitle title={sections.section_8?.title} link="#" />
         <div className="h-[170px] md:h-[130px] lg:h-[160px] 2xl:h-[200px]">
           <Slider
             Component={SpecialCard}
-            data={sections.section_8.program[0].episodes}
+            data={sections.section_8?.program[0]?.episodes}
             isShowIcon
             displayCount={5}
           />
@@ -143,11 +143,11 @@ export default async function HomePage() {
       </div>
 
       <div className="container px-3 md:px-0  overflow-auto py-2 mb-4">
-        <SliderTitle title={sections.section_9.title} link="#" />
+        <SliderTitle title={sections.section_9?.title} link="#" />
         <div className="h-[170px] md:h-[130px] lg:h-[160px] 2xl:h-[200px]">
           <Slider
             Component={SpecialCard}
-            data={sections.section_9.program[0].episodes}
+            data={sections.section_9?.program[0]?.episodes}
             isShowIcon
             displayCount={5}
           />
