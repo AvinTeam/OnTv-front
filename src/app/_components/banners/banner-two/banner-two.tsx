@@ -3,10 +3,10 @@ import React from "react";
 
 import { BannerTwoProps } from "./banner-two.types";
 
-const BannerTwo: React.FC<BannerTwoProps> = ({ classname, links }) => {
+const BannerTwo: React.FC<BannerTwoProps> = ({ classname, data }) => {
   return (
     <div className={`${classname} grid gap-2 md:grid-cols-2`}>
-      {links.map((item, idx) => (
+      {data?.links?.map((item, idx) => (
         <div key={idx}>
           <div className="col-span-12 md:col-span-6 w-full h-[100%]">
             <Image
