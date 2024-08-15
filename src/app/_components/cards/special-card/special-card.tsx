@@ -13,8 +13,8 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({ data }) => {
         <Link href={"#"} className="group w-full h-[85%]  relative">
           <div className=" w-full h-full group">
             <Image
-              src={program.poster[0].url}
-              alt={program.title}
+              src={program?.poster[0]?.url}
+              alt={program?.title}
               width={0}
               style={{ objectFit: "cover" }}
               height={0}
@@ -35,9 +35,9 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({ data }) => {
                 {seen}
               </div>
               <div>
-                {program.tags.map((tag: any) => tag.name).join(" - ")}
+                {program?.tags.map((tag: any) => tag.name).join(" - ")}
               </div>
-              <p>{program.title}</p>
+              <p>{program?.title}</p>
             </div>
           </div>
           <div
