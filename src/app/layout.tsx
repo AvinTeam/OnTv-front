@@ -1,8 +1,8 @@
+import QueryProvider from "@/providers/react-query-provider";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import localFont from "next/font/local";
- 
 
 const roboto = Roboto({
   display: "swap",
@@ -64,8 +64,8 @@ export default function RootLayout({
       className={`${roboto.variable} ${iransans.variable} dark`}
     >
       <body className="min-h-screen grid grid-rows-[60px_1fr_auto] bg-white dark:bg-base-75 dark:text-base-content">
-         {children}
-       </body>
+        <QueryProvider>{children}</QueryProvider>
+      </body>
     </html>
   );
 }

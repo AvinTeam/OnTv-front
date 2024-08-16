@@ -10,7 +10,7 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({ data }) => {
   return (
     <>
       <div className="w-full h-full flex flex-col gap-2">
-        <Link href={"#"} className="group w-full h-[85%]  relative">
+        <Link href={"/show-on"} className="group w-full h-[85%]  relative">
           <div className=" w-full h-full group">
             <Image
               src={program?.poster[0]?.url}
