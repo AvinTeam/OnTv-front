@@ -5,22 +5,26 @@ import Image from "next/image";
 import SearchModal from "./components/searchModal";
 import { useRouter } from "next/navigation";
 import UserProfile from "./components/user-profile/user-profile";
-import { ArrowTopIcon, CloseIcon, HamburgerIcon, HomeIcon, SearchIcon } from "../icons";
+import {
+  ArrowTopIcon,
+  CloseIcon,
+  HamburgerIcon,
+  HomeIcon,
+  SearchIcon,
+} from "../icons";
 import axios from "../../../core/axios";
-
 
 const bg_color_first: string =
   "linear-gradient(180deg,hsla(0,0%,5%,.4),hsla(0,0%,5%,.4) .41%,hsla(0,0%,5%,.399) .9%,hsla(0,0%,5%,.396) 1.64%,hsla(0,0%,5%,.391) 2.84%,hsla(0,0%,5%,.383) 4.68%,hsla(0,0%,5%,.372) 7.35%,hsla(0,0%,5%,.356) 11.04%,hsla(0,0%,5%,.336) 15.94%,hsla(0,0%,5%,.31) 22.23%,hsla(0,0%,5%,.278) 30.12%,hsla(0,0%,5%,.238) 39.78%,hsla(0,0%,5%,.192) 51.41%,hsla(0,0%,5%,.137) 65.2%,hsla(0,0%,5%,.073) 81.33%,hsla(0,0%,5%,0))";
 const bg_color_second: string = "hsla(0,0%,5%,.75)";
 export const Header: React.FC = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [bgColor, setBgColor] = useState(bg_color_first);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
-  const [avatar, setAvatar] = useState<string>("")
-
+  const [avatar, setAvatar] = useState<string>("");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,35 +48,40 @@ export const Header: React.FC = () => {
     const parsedData = userData ? JSON.parse(userData) : null;
 
     if (token && parsedData) {
-      setAvatar(parsedData?.avatar[0]?.thumbnail?.url
-        ? parsedData?.avatar[0]?.thumbnail?.url
-        : parsedData?.avatar
-          ? parsedData?.avatar
+      setAvatar(
+        parsedData?.avatar?.[0]?.thumbnail?.url
+          ? parsedData.avatar[0].thumbnail.url
+          : parsedData.avatar
+          ? parsedData.avatar
           : "/images/avatar/avatar.jpg"
-      )
+      );
       setIsLoggedIn(true);
       setUsername(parsedData.mobile);
       getUserInfo();
     } else {
-      router.push("/")
+      if (window.location.pathname.startsWith("/user")) {
+        router.push("/");
+      }
     }
   }, []);
 
   const getUserInfo = () => {
     const userData = localStorage.getItem("user_name");
     const parsedData = userData ? JSON.parse(userData) : null;
-    axios.get(`admin/profile/${parsedData?.id}`).then(({ data }) => {
-      localStorage.setItem("user_name", JSON.stringify(data.user));
-      setAvatar(parsedData?.avatar[0]?.thumbnail?.url
-        ? parsedData?.avatar[0]?.thumbnail?.url
-        : parsedData?.avatar
-          ? parsedData?.avatar
-          : "/images/avatar/avatar.jpg"
-      )
-    }).catch(() => {
-    })
+    axios
+      .get(`admin/profile/${parsedData?.id}`)
+      .then(({ data }) => {
+        localStorage.setItem("user_name", JSON.stringify(data.user));
+        setAvatar(
+          parsedData?.avatar[0]?.thumbnail?.url
+            ? parsedData?.avatar[0]?.thumbnail?.url
+            : parsedData?.avatar
+            ? parsedData?.avatar
+            : "/images/avatar/avatar.jpg"
+        );
+      })
+      .catch(() => {});
   };
-
 
   return (
     <header
@@ -151,7 +160,6 @@ export const Header: React.FC = () => {
                   >
                     <SearchIcon width={"24px"} height={"24px"} />
                   </div>
-
                 </div>
                 <div>
                   <ul className="mr-4 [&>*]:mt-2 [&>*]:text-white">
@@ -163,7 +171,6 @@ export const Header: React.FC = () => {
                 </div>
               </div>
             </div>
-
           </div>
         )}
         <nav className="hidden md:flex justify-between items-center ml-auto w-full">
