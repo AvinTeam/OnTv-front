@@ -1,16 +1,17 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { SpecialCardProps } from "./special-card.types";
 import Image from "next/image";
 import Link from "next/link";
 import { ViewIcon } from "../../icons";
 
 export const SpecialCard: React.FC<SpecialCardProps> = ({ data }) => {
+
   const { seen, description, program} = data
   return (
     <>
       <div className="w-full h-full flex flex-col gap-2">
-        <Link href={"/show-on"} className="group w-full h-[85%]  relative">
+        <Link href={`/show-on/${data?.id}`} className="group w-full h-[85%]  relative">
           <div className=" w-full h-full group">
             <Image
               src={program?.poster[0]?.url}

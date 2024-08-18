@@ -1,5 +1,5 @@
-import moment from "jalali-moment";
 import { toast } from "react-toastify";
+import moment from "jalali-moment";
 
 export const show_toast = ({
   text,
@@ -26,7 +26,10 @@ export const show_toast = ({
   }
 };
 export function convertJalaliToGregorian(jalaliDate: string) {
-    return moment.from(jalaliDate, "fa", "YYYY/MM/DD").locale("en").format("YYYY-MM-DD");
+  return moment
+    .from(jalaliDate, "fa", "YYYY/MM/DD")
+    .locale("en")
+    .format("YYYY-MM-DD");
 }
 
 export function convertGregorianToJalaliFullTim(gregorianDate: string) {
@@ -34,3 +37,20 @@ export function convertGregorianToJalaliFullTim(gregorianDate: string) {
     .locale("fa")
     .format("YYYY/MM/DD");
 }
+
+export const calculateTimeAgo = (dateItem: string) => {
+  const date = moment(dateItem);
+  const now = moment();
+
+  const diffInSeconds = now.diff(date, "seconds");
+  const diffInMinutes = now.diff(date, "minutes");
+  const diffInHours = now.diff(date, "hours");
+
+  if (diffInHours > 0) {
+    return `${diffInHours} ساعت قبل`;
+  } else if (diffInMinutes > 0) {
+    return `${diffInMinutes} دقیقه قبل`;
+  } else {
+    return `${diffInSeconds} ثانیه قبل`;
+  }
+};

@@ -41,7 +41,6 @@ export default async function HomePage() {
     link2: BannerTwo,
     link4: BannerFour,
   };
-  console.log(allData);
 
   return (
     <main className="flex flex-col w-full overflow-x-scroll overflow-y-hidden bg-[#000000]">

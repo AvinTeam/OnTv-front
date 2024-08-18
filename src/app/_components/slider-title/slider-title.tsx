@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { SliderTitleProps } from "./slider-title.types";
 import Link from "next/link";
 
@@ -7,15 +7,15 @@ export const SliderTitle: React.FC<SliderTitleProps> = ({ title, link }) => {
   return (
     <>
       <div className="flex w-full justify-between my-3  md:pb-1 items-center">
-        <p className="text-white text-sm md:text-xl">{title}</p>
+        <p className="text-base-content-slider text-sm md:text-xl">{title}</p>
         <Link
           href={link}
-          className="text-[#f8bd3b] text-[11px] md:text-[13px] lg:text-[13px] flex gap-1 justify-center items-center"
+          className="text-[#3FB2DA] text-[11px] md:text-[13px] lg:text-[13px] flex gap-1 justify-center items-center"
         >
           نمایش همه
           <div className="rotate-180">
             <svg
-              fill="#f8bd3b"
+              fill="#3FB2DA"
               height="8px"
               width="8px"
               version="1.1"
