@@ -105,7 +105,7 @@ export const Footer: React.FC = () => {
                     className="flex justify-center items-center gap-1"
                   >
                     <TwitterIcon />
-                    <p>توئیتر</p>
+                    <p>توییتر</p>
                   </Link>
                 </li>
                 <li className="mb-2 hover:bg-[#242424] pr-2 flex justify-start text-[11px] md:text-[12px] py-[8px] transition-all rounded-md">

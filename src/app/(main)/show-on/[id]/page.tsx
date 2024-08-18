@@ -13,6 +13,8 @@ import { SliderTitle } from "@/app/_components/slider-title";
 import { calculateTimeAgo } from "@/utils/functions";
 import { Episode } from "@/types/types/episode-data-showOn.interface";
 import DownloadBox from "./_components/DownloadBox";
+import Link from "next/link";
+import Share from "./_components/Share";
 const dataDec: any[] = [
   {
     path: dataDec1,
@@ -88,7 +90,7 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
         <div className="">
           <div className=" mx-auto my-5 lg:grid lg:grid-cols-12 gap-2 ">
             <div className="flex flex-col lg:col-span-9 ">
-              <div className="flex flex-col gap-3 lg:gap-0 pb-4 md:pb-10 lg:pb-0 bg-gradient-to-l to-80% from-[#341173] to-[#221D1F]">
+              <div className="flex flex-col gap-3 lg:gap-0 pb-4 md:pb-10 lg:pb-0 bg-gradient-to-l to-100% from-[#341173] to-[#221D1F]">
                 <div className="lg:w-[90%] mx-auto">
                   <div className="sm:mt-2 px-4 md:px-0 container mx-auto ">
                     <Live url={publicShow?.Episode?.video?.video_url} />
@@ -132,12 +134,7 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
                                 publicShow?.Episode?.video?.mp4_videos ?? []
                               }
                             />
-                            <div className="flex md:ml-2 lg:ml-4 gap-1 text-[#B3BAC4] text-sm cursor-pointer">
-                              <ShareIcon />
-                              <p className="text-[10px] font-light lg:text-sm text-nowrap">
-                                اشتراک گزاری
-                              </p>
-                            </div>
+                            <Share />
                           </div>
                           <div className="md:bg-box-slider-bg-text text-nowrap h-7 text-box-slider-text-l md:py-1.5 md:px-6 text-[11px] md:mr-auto md:rounded-[20px]">
                             <span>
@@ -189,7 +186,9 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
                 <p className="mb-2 text-base-content-slider">سایر قسمت ها</p>
                 <div className="mt-4">
                   {episodes?.Episodes?.data?.map((item: any) => (
-                    <div
+                    <Link
+                      href={"/show-on"}
+                      as={`/show-on/${item?.id}`}
                       key={item.id}
                       className="rounded-md mb-2 overflow-auto"
                     >
@@ -204,7 +203,7 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
                       </div>
                       <div className="pb-[9px] md:pb-0 flex justify-center items-center flex-col w-full h-[40%] md:h-[30%]">
                         <div className=" flex flex-col md:mt-4 md:flex md:flex-row justify-start md:justify-between md:items-center gap-1 w-full mt-4">
-                          <div className=" font-light mb-1 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-1 md:flex md:justify-center text-[10px] md:rounded-[20px]">
+                          <div className="mb-1 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-1 md:flex md:justify-center text-[10px] md:rounded-[20px]">
                             {item?.title}
                           </div>
                           <div className="md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-1 md:px-2 text-[9px] md:mr-auto md:rounded-[20px]">
@@ -219,7 +218,7 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
                           </h3>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -227,6 +226,7 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
           </div>
         </div>
       </div>
+    
     </main>
   );
 }

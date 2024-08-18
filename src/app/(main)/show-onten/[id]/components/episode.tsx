@@ -57,7 +57,7 @@ function Episode({ data, itemId }: { data: any; itemId: string }) {
         >
           {episode?.Episodes?.data?.map((item: any, idx: any) => (
             <Link
-              href={"#"}
+              href={`/show-on/${item?.id}`}
               key={idx}
               className="w-screen md:w-auto md:col-span-6 lg:col-span-3 overflow-auto mb-5 px-9 md:px-0"
             >
