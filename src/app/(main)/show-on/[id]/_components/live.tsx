@@ -3,7 +3,7 @@ import React from "react";
 import VideoJS from "@/app/_components/video";
 import videojs from "video.js";
 
-const Live = () => {
+const Live = ({url}: {url:string}) => {
   const playerRef = React.useRef(null);
 
   const videoJsOptions1 = {
@@ -14,7 +14,7 @@ const Live = () => {
     muted: true,
     sources: [
       {
-        src: "https://nehzatmedia.arvanvod.ir/R7qEPk4Xey/ENL9QJ0rlQ/h_,144_200,240_400,360_800,480_1500,k.mp4.list/master.m3u8",
+        src: url || "",
         type: "application/x-mpegURL",
       },
     ],
