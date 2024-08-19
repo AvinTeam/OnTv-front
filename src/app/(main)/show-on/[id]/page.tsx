@@ -8,7 +8,6 @@ import { Slider } from "@/app/_components/slider/slider";
 import { SpecialCard } from "@/app/_components/cards/special-card";
 import { NewestCard } from "@/app/_components/cards/newest-card";
 import { gatPublicShow, getAllEpisode } from "./_api/get-all-data";
-import ShareIcon from "@/app/_components/icons/Share";
 import { SliderTitle } from "@/app/_components/slider-title";
 import { calculateTimeAgo } from "@/utils/functions";
 import { Episode } from "@/types/types/episode-data-showOn.interface";

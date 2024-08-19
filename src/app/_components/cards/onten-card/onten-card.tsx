@@ -66,7 +66,7 @@ export const OntenCard: React.FC<OntenCardProps> = ({ data }) => {
             </div>
           </div>
           <div
-            className="opacity-0 h-full group-hover:opacity-100 rounded-md overflow-auto absolute top-6 transition duration-[0.3s] ease-in-out bottom-0 right-0  left-0 z-40"
+            className="opacity-0 top-[15px] h-full group-hover:opacity-100 rounded-md overflow-auto absolute transition duration-[0.3s] ease-in-out right-0  left-0 z-40"
             style={{
               background: "linear-gradient(180deg,transparent,rgba(0,0,0,.8))",
             }}
