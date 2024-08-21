@@ -92,7 +92,7 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
               <div className="flex flex-col gap-3 lg:gap-0 pb-4 md:pb-10 lg:pb-0 bg-gradient-to-l to-100% from-[#341173] to-[#221D1F]">
                 <div className="lg:w-[90%] mx-auto">
                   <div className="sm:mt-2 px-4 md:px-0 container mx-auto ">
-                    <Live url={publicShow?.Episode?.video?.video_url} />
+                    <Live url={publicShow?.Episode?.video?.hls_playlist} />
                   </div>
                   <div className="mt-4 container lg:mb-4 text-white rounded-[12px] py-1 md:py-6 lg:py-2 xl:py-2 px-4 md:px-0 h-[180px] md:h-[150px] lg:h-[170px] xl:h-[170px] 2xl:h-auto">
                     <div className="flex flex-col justify-between">
