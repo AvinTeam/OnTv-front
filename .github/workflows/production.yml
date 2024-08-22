@@ -5,37 +5,38 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    tags: ["prod-*.*.*"]
+
+env:
+  IMAGE_NAME: c0mm4nder/onnyfront
+  ARVAN_IMAGE_NAME: docker.arvancloud.ir/c0mm4nder/onnyfront
+  CONTAINER_NAME: ontv-front-prod
+  REGISTRY : registry-860220ff8e-nehzat.apps.ir-thr-ba1.arvancaas.ir
 
 jobs:
-  build:
-
+  Stage1:
+    name: Build
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [20.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: rm yarn.lock && yarn install --frozen-lockfile
-    - run: CI=false yarn build
-    
-    - uses: shallwefootball/s3-upload-action@master
-      name: Upload S3
-      id: S3
-      with:
-        aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
-        aws_bucket: ${{ secrets.AWS_BUCKET_PRODUCTION }}
-        endpoint: ${{ secrets.AWS_ENDPOINT }}
-        source_dir: 'out'
-        destination_dir: ''
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: master
+
+      - name: Get version
+        run: echo "APP_VERSION=${GITHUB_REF##*/}" >> $GITHUB_ENV
+
+      - name: Build image ontv
+        run: docker build -f .docker/Dockerfile.prod -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.APP_VERSION }} --target production .
+
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ secrets.DOCKER_USERNAME_REG }}
+          password: ${{ secrets.DOCKER_PASSWORD_REG }}
+
+      - name: Push ontv to Dockerhub
+        run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.APP_VERSION }}
