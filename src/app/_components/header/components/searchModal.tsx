@@ -78,7 +78,7 @@ const SearchModal = ({
                     <div className="w-full h-screen overflow-scroll ">
                       {data?.map((item, idx) => (
                         <Link
-                          href={`/all-program/${item?.tags?.[0]?.name}`}
+                          href={`/show-onten/${item?.id}`}
                           onClick={handleClose}
                           key={idx}
                           className="flex gap-4 mt-3 items-center justify-start hover:bg-base-70 rounded-md p-3"
@@ -118,7 +118,7 @@ const SearchModal = ({
                         Component={({ data }) => {
                           return (
                             <Link
-                              href={`/all-program/${data?.name}`}
+                              href={`/all-program/${data?.slug}/tag/all`}
                               onClick={handleClose}
                               className="border cursor-pointer text-sm font-light rounded-md text-[#b3b3b3] py-1.5 flex justify-center items-center hover:border-[gray] border-base-25"
                             >
