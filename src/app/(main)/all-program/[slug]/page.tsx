@@ -8,8 +8,7 @@ export default async function AllProgram({
 }) {
   const slug = decodeURIComponent(params.slug?.split(".")?.[0]);
   const programs = await getAllProgram(slug);
-  console.log(programs?.programs?.data);
-  return (
+ return (
     <div className="bg-[black]">
       <div className="container mb-6 mt-5 flex flex-col shadow-xl p-4 w-screen overflow-auto ">
         <p>ویژه ایرانی</p>
