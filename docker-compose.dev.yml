@@ -3,9 +3,10 @@ services:
     container_name: ontv-front
     image: ontv/frontend
     hostname: ontv-front
+    restart: always
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: .docker/Dockerfile.dev
       target: development
     working_dir: /app
     volumes:

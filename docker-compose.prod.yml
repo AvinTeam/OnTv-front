@@ -3,9 +3,10 @@ services:
     container_name: ontv-front-prod
     image: ontv/frontend-prod
     hostname: ontv-front
+    restart: always
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: .docker/Dockerfile.prod
       target: production
     ports:
       - 3000:3000
