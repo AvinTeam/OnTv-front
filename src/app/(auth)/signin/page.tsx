@@ -49,7 +49,7 @@ export default function SignIn() {
       <p className="text-white text-sm text-center -mt-4">
         شماره تلفن همراه خود را وارد نمایید
       </p>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 z-40">
         <input
           ref={inputRef}  
           className="p-2 rounded-md focus:outline-none bg-[#424242] text-white"

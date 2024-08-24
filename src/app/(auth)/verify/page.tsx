@@ -87,12 +87,12 @@ export default function Verify() {
   return (
     <div className="flex justify-center items-center">
       <div className="px-8 py-6 md:py-2 w-[300px] md:w-[400px] h-[310px] md:h-[370px] bg-[#292929] flex gap-12 justify-center  flex-col rounded-md">
-        <div className="ml-auto flex justify-center items-center gap-1 ursor-pointer">
+        <Link href={"/signin"}  className="ml-auto cursor-pointer z-40 p-1 flex justify-center items-center gap-1 overflow-auto">
           <ArrowIcon width={10} height={10} fill="#fff" />
-          <Link href={"/signin"} className="text-md text-white">
+          <div className="text-md text-white">
             بازگشت
-          </Link>
-        </div>
+          </div>
+        </Link>
         <p className="text-center text-white -mt-8">
           رمز عبور خود را وارد کنید
         </p>
@@ -122,7 +122,7 @@ export default function Verify() {
           </Button>
           <p
             onClick={handleResendCode}
-            className={`text-center text-[12px] cursor-pointer text-white`}
+            className={`text-center z-40 text-[12px] cursor-pointer text-white`}
           >
             ارسال دوباره کد
           </p>

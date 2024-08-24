@@ -1,19 +1,20 @@
 "use client";
-import { AccountIcon, BuySubscriptionIcon, ProfileIcon, ProfileManagementIcon } from "@/app/_components/icons";
+import {
+  AccountIcon,
+  BuySubscriptionIcon,
+  ProfileIcon,
+  ProfileManagementIcon,
+} from "@/app/_components/icons";
 import LogoutIcon from "@/app/_components/icons/Logout";
 import SavedIcon from "@/app/_components/icons/Saved";
 import SettingIcon from "@/app/_components/icons/Setting";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
-const UserProfile = ({
-  mobile,
-  avatar,
-}: {
-  mobile: string;
-  avatar: any;
-}) => {
+const UserProfile = ({ mobile, avatar }: { mobile: string; avatar: any }) => {
+  const router = useRouter();
   const [isShowMenu, setIsShowMenu] = useState(false);
   const imageRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -21,7 +22,10 @@ const UserProfile = ({
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        if (imageRef.current && !imageRef.current.contains(event.target as Node)) {
+        if (
+          imageRef.current &&
+          !imageRef.current.contains(event.target as Node)
+        ) {
           setIsShowMenu(false);
         }
       }
@@ -41,21 +45,20 @@ const UserProfile = ({
         onClick={() => setIsShowMenu((prev) => !prev)}
       >
         <Image
-          src={avatar ?? '/images/avatar/avatar.jpg'}
+          src={avatar ?? "/images/avatar/avatar.jpg"}
           className="object-cover w-full h-full"
           width={0}
           height={0}
           alt="avatar"
         />
-
       </div>
 
       <div
         ref={menuRef}
-        className={`${isShowMenu ? "flex" : "hidden"
-          } mt-3 w-64 h-[480px] -left-3 p-2 z-[1000] rounded-md absolute bg-base-70 shadow-xl`}
+        className={`${
+          isShowMenu ? "flex" : "hidden"
+        } mt-3 w-64 h-[480px] -left-3 p-2 z-[1000] rounded-md absolute bg-base-70 shadow-xl`}
       >
-
         <div className="group-hover:flex overflow-hidden [&>*]:transition-all flex-col ">
           <div className="flex flex-col gap-3 mt-3 text-center text-sm">
             {mobile}
@@ -108,16 +111,27 @@ const UserProfile = ({
             <AccountIcon />
             <span className="text-sm">حساب کاربری</span>
           </Link>
-          <div className="flex gap-2 mt-3 hover:bg-[#434444] py-2 rounded-md px-3 cursor-pointer mr-2 justify-start items-center">
+          <div
+            onClick={() => {
+              localStorage.removeItem("user_token");
+              localStorage.removeItem("user_name");
+              router.push("/");
+            }}
+            className="flex gap-2 mt-3 hover:bg-[#434444] py-2 rounded-md px-3 cursor-pointer mr-2 justify-start items-center"
+          >
             <LogoutIcon />
             <span className="text-sm">خروج ار حساب کاربری</span>
           </div>
         </div>
-        <div data-popper-arrow="true" style={{
-          transform: 'rotate(45deg)',
-          width: 8,
-          height: 8,
-        }} className="absolute left-7 -top-1 bg-base-70"></div>
+        <div
+          data-popper-arrow="true"
+          style={{
+            transform: "rotate(45deg)",
+            width: 8,
+            height: 8,
+          }}
+          className="absolute left-7 -top-1 bg-base-70"
+        ></div>
       </div>
     </div>
   );

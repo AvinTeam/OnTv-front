@@ -6,8 +6,10 @@ import React, { useLayoutEffect, useState } from "react";
 import { menuItems } from "./constants/menuItems";
 import { ProfileIcon } from "../icons";
 import LogoutIcon from "../icons/Logout";
+import { useRouter } from "next/navigation";
 
 const Sidebar: React.FC = () => {
+  const router = useRouter();
   const [url, setUrl] = useState<string>();
   const [mobile, setMobile] = useState<string>();
   useLayoutEffect(() => {
@@ -33,7 +35,7 @@ const Sidebar: React.FC = () => {
                 alt="avatar"
               />
             ) : (
-              <ProfileIcon width={"60px"} height={"60px"} /> 
+              <ProfileIcon width={"60px"} height={"60px"} />
             )}
           </div>
           <p className="text-sm text-[#6d6d6d]">{mobile}</p>
@@ -55,9 +57,16 @@ const Sidebar: React.FC = () => {
         </ul>
         <hr className="w-full border-[#4b4a4a]" />
         <li className="cursor-pointer h-10 flex items-center w-full  [&>*]:transition-all">
-          <button className="h-full flex w-full text-xs items-center p-3 hover:bg-[#434444] rounded-md gap-2">
-             <LogoutIcon />
-             <p> خروج از حساب کاربری</p>{" "}
+          <button
+            onClick={() => {
+              localStorage.removeItem("user_token");
+              localStorage.removeItem("user_name");
+              router.push("/");
+            }}
+            className="h-full flex w-full text-xs items-center p-3 hover:bg-[#434444] rounded-md gap-2"
+          >
+            <LogoutIcon />
+            <p> خروج از حساب کاربری</p>{" "}
           </button>
         </li>
       </div>

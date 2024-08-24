@@ -3,17 +3,27 @@ import type { Metadata } from "next";
 
 import { Footer } from "../_components/footer/footer";
 import { Header } from "../_components/header/header";
+import { API_URL } from "@/configs/global";
 
-export default function HomeLayout({
+async function gatAllMenu(position: string) {
+  const res = await fetch(`${API_URL}menu?position=${position}`, {
+    cache: "no-cache",
+  });
+  if (res.ok) return res.json();
+}
+
+export default async function HomeLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headerMenueItems = await gatAllMenu("header");
+  const footerMenueItems = await gatAllMenu("footer");
   return (
     <>
-      <Header />
+      <Header headerMenueItems={headerMenueItems?.menus} />
       {children}
-      <Footer />
+      <Footer footerMenueItems={footerMenueItems?.menus} />
     </>
   );
 }

@@ -49,7 +49,7 @@ export default function Privacy() {
             </ul>
           </div>
         </div>
-        <div className="col-span-10 text-justify">
+        <div className="col-span-10 text-justify mb-10">
           <h2 className="font-bold  text-[#606770] text-md md:text-xl">
             سیاست حفظ اطلاعات و حریم خصوصی کاربران در آن
           </h2>

@@ -17,7 +17,7 @@ import axios from "../../../core/axios";
 const bg_color_first: string =
   "linear-gradient(180deg,hsla(0,0%,5%,.4),hsla(0,0%,5%,.4) .41%,hsla(0,0%,5%,.399) .9%,hsla(0,0%,5%,.396) 1.64%,hsla(0,0%,5%,.391) 2.84%,hsla(0,0%,5%,.383) 4.68%,hsla(0,0%,5%,.372) 7.35%,hsla(0,0%,5%,.356) 11.04%,hsla(0,0%,5%,.336) 15.94%,hsla(0,0%,5%,.31) 22.23%,hsla(0,0%,5%,.278) 30.12%,hsla(0,0%,5%,.238) 39.78%,hsla(0,0%,5%,.192) 51.41%,hsla(0,0%,5%,.137) 65.2%,hsla(0,0%,5%,.073) 81.33%,hsla(0,0%,5%,0))";
 const bg_color_second: string = "hsla(0,0%,5%,.75)";
-export const Header: React.FC = () => {
+export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
   const router = useRouter();
   const [bgColor, setBgColor] = useState(bg_color_first);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -134,8 +134,8 @@ export const Header: React.FC = () => {
           </div>
         </div>
         {showMobileMenu && (
-          <div className="z-[12000] bg-base-75 fixed top-0 left-0 right-0 w-[100%] h-[300px] flex justify-center items-star ">
-            <div className="w-[90%] h-[300px]">
+          <div className="z-[12000] bg-base-75 fixed top-0 left-0 right-0 w-[100%] h-auto flex justify-center items-star">
+            <div className="w-[90%] h-auto">
               <div className="flex flex-col justify-start items-start gap-3">
                 <div className="flex justify-start gap-6 items-center">
                   <div
@@ -155,18 +155,47 @@ export const Header: React.FC = () => {
                     />
                   </div>
                   <div
-                    className="w-full h-full mt-4 md:hidden"
+                    className="w-full h-full mt-3 md:hidden"
                     onClick={() => setIsSearchActive(true)}
                   >
                     <SearchIcon width={"24px"} height={"24px"} />
                   </div>
                 </div>
-                <div>
-                  <ul className="mr-4 [&>*]:mt-2 [&>*]:text-white">
-                    <li>فیلم</li>
-                    <li>سریال</li>
-                    <li>دسته بندی</li>
-                    <li>کودک و نوجوان</li>
+                <div className="max-h-72 w-full flex justify-start overflow-scroll">
+                  <ul className="mr-4 [&>*]:mt-2 [&>*]:font-light flex flex-col gap-2 pb-4 [&>*]:text-white">
+                    <Link
+                      href={"/"}
+                      onClick={() => setShowMobileMenu(false)}
+                      className="flex gap-1 justify-center items-center"
+                    >
+                      <HomeIcon />
+                      صفحه نخست
+                    </Link>
+                    {headerMenueItems?.map((item) => (
+                      <Link
+                        key={item?.id}
+                        href={`${
+                          item?.url
+                            ? item?.url
+                            : `/all-program/${item?.service?.slug}/tag/all`
+                        }`}
+                        onClick={() => setShowMobileMenu(false)}
+                      >
+                        {item?.name}
+                      </Link>
+                    ))}
+                    <Link
+                      href={"/about"}
+                      onClick={() => setShowMobileMenu(false)}
+                    >
+                      درباره ما
+                    </Link>
+                    <Link
+                      href={"/privacy"}
+                      onClick={() => setShowMobileMenu(false)}
+                    >
+                      ارتباط با ما
+                    </Link>
                   </ul>
                 </div>
               </div>
@@ -177,66 +206,58 @@ export const Header: React.FC = () => {
           <ul className="flex justify-between gap-1 md:gap-4 text-primary-content">
             <li className="mr-0 md:mr-4 flex justify-center items-center">
               <Link
-                href="#"
+                href="/"
                 className="hover:bg-[#242424] flex gap-1 justify-center items-center text-center rounded-md px-1 py-[6px] text-[10px] text-nowrap md:text-[12px] "
               >
                 <HomeIcon />
                 <p>صفحه نخست</p>
               </Link>
             </li>
-            <li className="flex justify-center items-center gap-1">
-              <Link
-                href="#"
-                className="hover:bg-[#242424] text-nowrap text-center rounded-md px-1 py-[6px] text-[10px] md:text-[12px] "
-              >
-                تولیدات
-              </Link>
-            </li>
-            <ul className="group">
-              <li className="flex group justify-center items-center">
-                <div className="hover:bg-[#242424] flex gap-1 text-nowrap justify-center items-center text-center rounded-md px-1 py-[6px] text-[10px] md:text-[12px] ">
-                  <p>آرشیو</p>
-                  <ArrowTopIcon className="rotate-180" />
-                </div>
+            {headerMenueItems?.map((item) => (
+              <li key={item?.id} className="group">
+                <Link
+                  href={`${
+                    item?.url
+                      ? item?.url
+                      : `/all-program/${item?.service?.slug}/tag/all`
+                  }`}
+                  className="flex group justify-center items-center"
+                >
+                  <div className="hover:bg-[#242424] flex gap-1 text-nowrap justify-center items-center text-center rounded-md px-1 py-[6px] text-[10px] md:text-[12px] ">
+                    <p>{item?.name}</p>
+                    {item.children && item.children.length ? (
+                      <ArrowTopIcon className="rotate-180" />
+                    ) : null}
+                  </div>
+                </Link>
+                {item.children && item.children.length > 0 && (
+                  <>
+                    <div className="w-[170px] translate-y-[-300px] group-hover:translate-y-[0px] group-hover:opacity-100 group-hover:right-40 md:group-hover:right-80 p-2 z-[1000] rounded-md absolute bg-[#0f0f0f] border border-[#282828]  ">
+                      <ul>
+                        {item.children?.map((item: any) => (
+                          <li key={item?.id} className="mb-2 cursor-pointer hover:bg-[#242424] pr-2 py-[8px] text-[10px] text-nowrap md:text-[12px] flex justify-start transition-all rounded-md">
+                            <Link
+                              href={`${
+                                item?.url
+                                  ? item?.url
+                                  : `/all-program/${item?.service?.slug}/tag/all`
+                              }`}
+                              className="flex justify-center items-center gap-1"
+                            >
+                              <p>{item?.name}</p>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </>
+                )}
               </li>
-              <div className="w-[170px] translate-y-[-300px] group-hover:translate-y-[0px] group-hover:opacity-100 group-hover:right-40 md:group-hover:right-80 p-2 z-[1000] rounded-md absolute bg-[#0f0f0f] border border-[#282828]  ">
-                <ul>
-                  <li className="mb-2 cursor-pointer hover:bg-[#242424] pr-2 py-[8px] text-[10px] text-nowrap md:text-[12px] flex justify-start transition-all rounded-md">
-                    <Link
-                      href={"#"}
-                      className="flex justify-center items-center gap-1"
-                    >
-                      <div className="w-3 h-3 ml-1 border-base-75 bg-[#0f0f0f] border rounded-[50%]"></div>
-                      <p>اجتماعی</p>
-                    </Link>
-                  </li>
-                  <li className="mb-2 cursor-pointer hover:bg-[#242424] pr-2 py-[8px] text-[10px] text-nowrap md:text-[12px]  flex justify-starttransition-all rounded-md">
-                    <Link
-                      href={"#"}
-                      className="flex justify-center items-center gap-1"
-                    >
-                      <div className="w-3 h-3 ml-1 border-base-75 bg-[#0f0f0f] border rounded-[50%]"></div>
-
-                      <p>سیاسی</p>
-                    </Link>
-                  </li>
-                  <li className="mb-2 cursor-pointer hover:bg-[#242424] pr-2 py-[8px] text-[10px] text-nowrap md:text-[12px]  flex justify-starttransition-all rounded-md">
-                    <Link
-                      href={"#"}
-                      className="flex justify-center items-center gap-1"
-                    >
-                      <div className="w-3 h-3 ml-1 border-base-75 bg-[#0f0f0f] border rounded-[50%]"></div>
-
-                      <p>فرهنگی</p>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </ul>
+            ))}
 
             <li className="flex justify-center items-center">
               <Link
-                href="#"
+                href="/about"
                 className="hover:bg-[#242424] text-center rounded-md px-1 py-[6px] text-[10px] text-nowrap md:text-[12px] "
               >
                 درباره ما
@@ -244,7 +265,7 @@ export const Header: React.FC = () => {
             </li>
             <li className="flex justify-center items-center">
               <Link
-                href="#"
+                href="/privacy"
                 className="hover:bg-[#242424] text-center rounded-md px-1 py-[6px] text-[10px] text-nowrap md:text-[12px] "
               >
                 ارتباط با ما
