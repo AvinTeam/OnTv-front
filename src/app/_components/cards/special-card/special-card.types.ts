@@ -25,13 +25,13 @@ interface Program {
 
 export type SpecialCardProps = {
  data:{
-  id: number;
-  creator: Creator;
-  program: Program;
-  title: string;
-  description: string;
-  seen: number;
-  status: "published";
-  poster: any[];
+  id?: number;
+  creator?: Creator;
+  program?: Program;
+  title?: string;
+  description?: string;
+  seen?: number;
+  status?: "published";
+  poster?: any[];
  }
 };

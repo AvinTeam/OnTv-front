@@ -4,8 +4,7 @@ import Box from "./components/box";
 import { Fragment } from "react";
 import { gatAllProgram, getAllEpisode } from "./_api/get-all-episode";
 import Episode from "./components/episode";
-import StarIcon from "@/app/_components/icons/Star";
-import BadgeIcon from "@/app/_components/icons/Badge";
+import RateAndFavorite from "./components/RateAndFavorite/RateAndFavorite";
 
 export default async function ShowOnten({
   params,
@@ -57,22 +56,7 @@ export default async function ShowOnten({
                 </div>
               )}
             </div>
-            <div className="flex gap-1 mt-2">
-              <div className="cursor-pointer">
-                <BadgeIcon />
-              </div>
-
-              <div className="flex ml-[2px] cursor-pointer">
-                <StarIcon />
-                <StarIcon />
-                <StarIcon />
-                <StarIcon />
-                <StarIcon />
-              </div>
-              <div className="text-[#B088FF]">{`${
-                allData?.Program?.averageOfScore ?? 0
-              }%`}</div>
-            </div>
+            <RateAndFavorite programId={params.id.split(".")[0]} />
           </div>
         </div>
       </div>

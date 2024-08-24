@@ -15,7 +15,7 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({ data }) => {
           <div className=" w-full h-full group">
             <Image
               src={program?.poster[0]?.url}
-              alt={program?.title}
+              alt={program?.title || "image"}
               width={0}
               style={{ objectFit: "cover" }}
               height={0}

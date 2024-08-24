@@ -16,68 +16,60 @@ import Link from "next/link";
 import Share from "./_components/Share";
 const dataDec: any[] = [
   {
-    path: dataDec1,
+    path: "#",
+    poster: dataDec1,
     alt: "test",
-    descriptions: {
-      title: "خبر های روز",
-      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
-    },
+    title: "خبر های روز",
+    description: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
   },
   {
-    path: dataDec2,
+    path: "#",
+    poster: dataDec2,
     alt: "test",
-    descriptions: {
-      title: "خبر های روز",
-      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
-    },
+    title: "خبر های روز",
+    description: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
   },
   {
-    path: dataDec3,
+    path: "#",
+    poster: dataDec3,
     alt: "test",
-    descriptions: {
-      title: "خبر های روز",
-      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
-    },
+    title: "خبر های روز",
+    description: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
   },
   {
-    path: dataDec4,
+    path: "#",
+    poster: dataDec4,
     alt: "test",
-    descriptions: {
-      title: "خبر های روز",
-      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
-    },
+    title: "خبر های روز",
+    description: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
   },
   {
-    path: dataDec4,
+    path: "#",
+    poster: dataDec4,
     alt: "test",
-    descriptions: {
-      title: "خبر های روز",
-      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
-    },
+    title: "خبر های روز",
+    description: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
   },
   {
-    path: dataDec4,
+    path: "#",
+    poster: dataDec4,
     alt: "test",
-    descriptions: {
-      title: "خبر های روز",
-      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
-    },
+    title: "خبر های روز",
+    description: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
   },
   {
-    path: dataDec4,
+    path: "#",
+    poster: dataDec4,
     alt: "test",
-    descriptions: {
-      title: "خبر های روز",
-      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
-    },
+    title: "خبر های روز",
+    description: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
   },
   {
-    path: dataDec4,
+    path: "#",
+    poster: dataDec4,
     alt: "test",
-    descriptions: {
-      title: "خبر های روز",
-      dec: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
-    },
+    title: "خبر های روز",
+    description: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
   },
 ];
 export default async function ShowOn({ params }: { params: { id: string } }) {
@@ -225,7 +217,6 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
           </div>
         </div>
       </div>
-    
     </main>
   );
 }

@@ -91,7 +91,7 @@ const UserProfile = ({ mobile, avatar }: { mobile: string; avatar: any }) => {
             <span className="text-sm">خرید اشتراک</span>
           </Link>
           <Link
-            href={"/user/edit-profile"}
+            href={"/user/bookmarks"}
             className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
           >
             <SavedIcon />

@@ -31,7 +31,7 @@ export const menuItems: MenuItem[] = [
     icon: HistoryIcon,
   },
   {
-    href: "/user/edit-profile",
+    href: "/user/bookmarks",
     text: "نشان شده ها",
     icon: SavedIcon,
   },
