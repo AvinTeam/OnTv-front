@@ -63,7 +63,7 @@ export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
         router.push("/");
       }
     }
-  }, []);
+  }, [router]);
 
   const getUserInfo = () => {
     const userData = localStorage.getItem("user_name");
@@ -121,7 +121,7 @@ export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
           <div className="group block md:hidden ml-4">
             {isLoggedIn ? (
               <>
-                <UserProfile mobile={username} avatar={avatar} />
+                <UserProfile mobile={username} avatar={avatar} setIsLoggedIn={setIsLoggedIn} />
               </>
             ) : (
               <Link
@@ -284,7 +284,7 @@ export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
           <div className="group">
             {isLoggedIn ? (
               <>
-                <UserProfile mobile={username} avatar={avatar} />
+                <UserProfile mobile={username} avatar={avatar} setIsLoggedIn={setIsLoggedIn}/>
               </>
             ) : (
               <Link

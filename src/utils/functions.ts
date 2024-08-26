@@ -1,6 +1,19 @@
 import { toast } from "react-toastify";
 import moment from "jalali-moment";
-
+const months = [
+  "فروردین",
+  "اردیبهشت",
+  "خرداد",
+  "تیر",
+  "مرداد",
+  "شهریور",
+  "مهر",
+  "آبان",
+  "آذر",
+  "دی",
+  "بهمن",
+  "اسفند",
+];
 export const show_toast = ({
   text,
   type,
@@ -54,3 +67,11 @@ export const calculateTimeAgo = (dateItem: string) => {
     return `${diffInSeconds} ثانیه قبل`;
   }
 };
+
+export function convertToJalali(dateString: string): string {
+  const date = moment(dateString);
+  const jalaliDate = date.format("jYYYY/jM/jD");
+  const [jy, jm, jd] = jalaliDate.split("/").map(Number);
+
+  return `${jd} ${months[jm - 1]} ${jy}`;
+}

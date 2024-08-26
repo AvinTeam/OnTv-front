@@ -140,7 +140,7 @@ export default async function ShowOnten({
       </div>
       {/* ================== comments =================== */}
       <div className="container w-full h-full mb-32">
-      <CommentBox id={params.id.split(".")[0]} type="program" />
+        <CommentBox id={params.id.split(".")[0]} type="program" />
       </div>
     </div>
   );

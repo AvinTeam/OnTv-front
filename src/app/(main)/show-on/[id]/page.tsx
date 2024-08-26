@@ -172,8 +172,8 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
                 </div>
               </div>
               {/* ================== comments =================== */}
-              <div className="w-full h-full mb-32 mt-20 px-32">
-                <CommentBox id={params.id.split(".")[0]} type="episode" />
+              <div className="w-full h-full mb-10 mt-20">
+                <CommentBox id={params.id.split(".")[0]}  type="episode" />
               </div>
             </div>
 

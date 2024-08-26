@@ -1,18 +1,31 @@
 "use client";
+import { Button } from "@/app/_components/button";
 import BadgeIcon from "@/app/_components/icons/Badge";
 import StarIcon from "@/app/_components/icons/Star";
+import Modal from "@/app/_components/modal/modal";
+import Toast from "@/app/_components/Tost/Tost";
 import { API_URL } from "@/configs/global";
 import axios from "@/core/axios";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 function RateAndFavorite({ programId }: { programId: string }) {
+  const router = useRouter();
   const [refreshData, setRefreshData] = useState<boolean>(false);
   const [allData, setAllData] = useState<any>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [status, setStatus] = useState<any>();
+  const [isError, setIsError] = useState<boolean>(false);
   const [isAdded, setIsAdded] = useState<boolean>(false);
   const [userRating, setUserRating] = useState<number | null>(null);
+  const [open, setOpen] = useState<boolean>(false);
 
   const handelAddFavorite = () => {
+    setStatus(null);
+    if (isLoggedIn()) {
+      setOpen(true);
+      return;
+    }
     setIsLoading(true);
     axios
       .post(`user/favorite/${programId}`, { status: isAdded ? 0 : 1 })
@@ -20,22 +33,36 @@ function RateAndFavorite({ programId }: { programId: string }) {
         setIsLoading(false);
         setIsAdded(isAdded ? false : true);
       })
-      .catch(() => {
+      .catch((error) => {
         setIsLoading(false);
+        setStatus(error?.response?.status);
+        setIsError(true);
       });
   };
-
+  const isLoggedIn = () => {
+    const token = localStorage.getItem("user_token");
+    return !token;
+  };
   const handleStarClick = (rating: number) => {
+    setStatus(null);
+    if (isLoggedIn()) {
+      setOpen(true);
+      return;
+    }
     setUserRating(rating);
     axios
       .post(`program/storeScore/${programId}`, { score: rating })
       .then(() => {
         setRefreshData((prev) => !prev);
+      })
+      .then((error: any) => {
+        setStatus(error?.response?.status);
+        setIsError(true);
       });
   };
 
   async function gatAllProgram(id: string) {
-    axios.get(`${API_URL}program/publicShow/${id}`).then(({data}) => {
+    axios.get(`${API_URL}program/publicShow/${id}`).then(({ data }) => {
       setAllData(data);
       setIsAdded(data.Program.isFavorite);
       setUserRating(parseFloat(data.Program.averageOfScore));
@@ -44,10 +71,22 @@ function RateAndFavorite({ programId }: { programId: string }) {
 
   useEffect(() => {
     gatAllProgram(programId);
-  }, [refreshData]);
+  }, [refreshData, programId]);
 
   return (
     <>
+      {isError && <Toast message={""} type="error" statusCode={status} />}
+      <Modal open={open} onClose={() => setOpen(false)}>
+        <>
+          <div className="mt-2">لطفا ابتدا در سایت ثبت نام کنید</div>
+          <Button
+            className=" mt-4 bg-primary py-2 text-white"
+            onClick={() => router.push("/signin")}
+          >
+            ثبت نام{" "}
+          </Button>
+        </>
+      </Modal>
       <div className="flex gap-1 mt-2">
         <div
           className="relative cursor-pointer group"

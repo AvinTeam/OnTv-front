@@ -13,7 +13,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
-const UserProfile = ({ mobile, avatar }: { mobile: string; avatar: any }) => {
+const UserProfile = ({ mobile, avatar, setIsLoggedIn }: { mobile: string; avatar: any; setIsLoggedIn: (item: boolean)=> void }) => {
   const router = useRouter();
   const [isShowMenu, setIsShowMenu] = useState(false);
   const imageRef = useRef<HTMLDivElement>(null);
@@ -121,6 +121,7 @@ const UserProfile = ({ mobile, avatar }: { mobile: string; avatar: any }) => {
               localStorage.removeItem("user_name");
               router.push("/");
               setIsShowMenu(false)
+              setIsLoggedIn(false)
             }}
             className="flex gap-2 mt-3 hover:bg-[#434444] py-2 rounded-md px-3 cursor-pointer mr-2 justify-start items-center"
           >

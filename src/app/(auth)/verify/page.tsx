@@ -42,7 +42,11 @@ export default function Verify() {
         code: inputValue,
       })
       .then(({ data }) => {
-        show_toast({ text: data?.message, type: "success" });
+        if (data?.success) {
+          show_toast({ text: data?.message, type: "success" });
+        } else {
+          show_toast({ text: data?.message, type: "warning" });
+        }
         setIsLoading(false);
         localStorage.setItem("user_token", data.data.token);
         localStorage.setItem("user_name", JSON.stringify(data.data.user));
@@ -87,11 +91,12 @@ export default function Verify() {
   return (
     <div className="flex justify-center items-center">
       <div className="px-8 py-6 md:py-2 w-[300px] md:w-[400px] h-[310px] md:h-[370px] bg-[#292929] flex gap-12 justify-center  flex-col rounded-md">
-        <Link href={"/signin"}  className="ml-auto cursor-pointer z-40 p-1 flex justify-center items-center gap-1 overflow-auto">
+        <Link
+          href={"/signin"}
+          className="ml-auto cursor-pointer z-40 p-1 flex justify-center items-center gap-1 overflow-auto"
+        >
           <ArrowIcon width={10} height={10} fill="#fff" />
-          <div className="text-md text-white">
-            بازگشت
-          </div>
+          <div className="text-md text-white">بازگشت</div>
         </Link>
         <p className="text-center text-white -mt-8">
           رمز عبور خود را وارد کنید

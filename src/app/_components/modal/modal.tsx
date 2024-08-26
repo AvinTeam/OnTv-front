@@ -6,7 +6,10 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, title, children }) => {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50" style={{background: "rgb(0,0,0,0.5)"}}>
+    <div
+      className="fixed inset-0 flex items-center justify-center z-50"
+      style={{ background: "rgb(0,0,0,0.5)" }}
+    >
       <div
         className="fixed inset-0 bg-black opacity-50"
         onClick={onClose}
@@ -18,7 +21,7 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, title, children }) => {
             <CloseIcon fill="#6f7285" />
           </button>
         </div>
-        <hr className="pb-2 border-t-base-25" />
+        {title && <hr className="pb-2 border-t-base-25" />}
         {children}
       </div>
     </div>
