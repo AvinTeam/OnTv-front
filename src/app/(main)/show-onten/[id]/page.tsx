@@ -5,6 +5,7 @@ import { Fragment } from "react";
 import { gatAllProgram, getAllEpisode } from "./_api/get-all-episode";
 import Episode from "./components/episode";
 import RateAndFavorite from "./components/RateAndFavorite/RateAndFavorite";
+import CommentBox from "../../_components/commet-box/CommentBox";
 
 export default async function ShowOnten({
   params,
@@ -69,7 +70,10 @@ export default async function ShowOnten({
       <div className=" #221D1F">
         <Episode data={initialData} itemId={params.id.split(".")[0]} />
       </div>
-      <div className="h-[200px] lg:h-[400px] to-90% bg-gradient-to-r from-[#341173] to-[#221D1F] mb-16">
+
+      {/* ================= casts ================== */}
+
+      <div className="lg:h-auto md:pb-10 to-90% bg-gradient-to-r from-[#341173] to-[#221D1F] mb-16">
         <div className="container flex flex-col justify-between gap-6 overflow-hidden">
           <h5 className="my-6 text-white mr-6">عوامل برنامه</h5>
           {/* mobile & tablet view  */}
@@ -77,7 +81,7 @@ export default async function ShowOnten({
             <div className="h-[120px] md:h-[130px] w-full overflow-hidden">
               <Slider
                 Component={Box}
-                data={allData?.Program?.casts}
+                data={[...allData?.Program?.casts]}
                 isShowIcon={false}
                 mdCount={2.5}
                 displayCount={5}
@@ -85,16 +89,18 @@ export default async function ShowOnten({
             </div>
           </div>
           {/* mobile & tablet view  */}
-          <div className="hidden lg:grid grid-cols-9 w-full h-full justify-center items-center mr-6">
+          <div className="hidden lg:grid grid-cols-9 w-full h-auto justify-center items-center mr-6">
             <div className="col-span-3 flex flex-col gap-8">
               {allData?.Program?.casts
                 ?.slice(0, 3)
                 .map((item: any, idx: any) => (
                   <Fragment key={idx}>
                     <Box
-                      position={item.position}
-                      name={item.name}
-                      family={item?.family}
+                      data={{
+                        position: item.position,
+                        name: item?.name,
+                        family: item?.family,
+                      }}
                     />
                   </Fragment>
                 ))}
@@ -105,9 +111,11 @@ export default async function ShowOnten({
                 .map((item: any, idx: any) => (
                   <Fragment key={idx}>
                     <Box
-                      position={item?.position}
-                      name={item?.name}
-                      family={item?.family}
+                      data={{
+                        position: item.position,
+                        name: item?.name,
+                        family: item?.family,
+                      }}
                     />
                   </Fragment>
                 ))}
@@ -118,15 +126,21 @@ export default async function ShowOnten({
                 .map((item: any, idx: any) => (
                   <Fragment key={idx}>
                     <Box
-                      position={item.position}
-                      name={item.name}
-                      family={item?.family}
+                      data={{
+                        position: item.position,
+                        name: item?.name,
+                        family: item?.family,
+                      }}
                     />
                   </Fragment>
                 ))}
             </div>
           </div>
         </div>
+      </div>
+      {/* ================== comments =================== */}
+      <div className="container w-full h-full mb-32">
+      <CommentBox id={params.id.split(".")[0]} type="program" />
       </div>
     </div>
   );

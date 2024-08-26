@@ -14,6 +14,7 @@ import { Episode } from "@/types/types/episode-data-showOn.interface";
 import DownloadBox from "./_components/DownloadBox";
 import Link from "next/link";
 import Share from "./_components/Share";
+import CommentBox from "../../_components/commet-box/CommentBox";
 const dataDec: any[] = [
   {
     path: "#",
@@ -169,6 +170,10 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
                     isShowIcon
                   />
                 </div>
+              </div>
+              {/* ================== comments =================== */}
+              <div className="w-full h-full mb-32 mt-20 px-32">
+                <CommentBox id={params.id.split(".")[0]} type="episode" />
               </div>
             </div>
 
