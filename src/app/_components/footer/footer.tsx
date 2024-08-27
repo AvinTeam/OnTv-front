@@ -75,9 +75,9 @@ export const Footer = ({ footerMenueItems }: { footerMenueItems: any[] }) => {
               <p className="text-nowrap text-[10px] ">شبکه های اجتماعی</p>
               <ArrowTopIcon />
             </li>
-            <div className="w-[170px] right-[800px] group-hover:opacity-100 group-hover:-right-16 p-2 z-[1000] left-3 translate-y-[-187px] rounded-md absolute bg-[#0f0f0f] border border-[#282828]  ">
+            <div className="w-[170px] right-[800px] group-hover:opacity-100 group-hover:-right-16 p-2 z-[1000] left-3 translate-y-[-187px] rounded-md absolute bg-[#242424] border border-[#282828]">
               <ul>
-                <li className="mb-2 hover:bg-[#242424] pr-2 py-[8px] text-[11px] md:text-[12px] flex justify-start transition-all rounded-md">
+                <li className="mb-2 hover:bg-[#101010] pr-2 py-[8px] text-[11px] md:text-[12px] flex justify-start transition-all rounded-md">
                   <Link
                     href={"#"}
                     className="flex justify-center items-center gap-1"
@@ -87,7 +87,7 @@ export const Footer = ({ footerMenueItems }: { footerMenueItems: any[] }) => {
                     <p>آپارات</p>
                   </Link>
                 </li>
-                <li className="mb-2 hover:bg-[#242424] pr-2 py-[8px] text-[11px] md:text-[12px]  flex justify-starttransition-all rounded-md">
+                <li className="mb-2 hover:bg-[#101010] pr-2 py-[8px] text-[11px] md:text-[12px]  flex justify-starttransition-all rounded-md">
                   <Link
                     href={"#"}
                     className="flex justify-center items-center gap-1"
@@ -96,7 +96,7 @@ export const Footer = ({ footerMenueItems }: { footerMenueItems: any[] }) => {
                     <p>تلگرام</p>
                   </Link>
                 </li>
-                <li className="mb-2 flex justify-start pr-2 hover:bg-[#242424] py-[8px] text-[11px] md:text-[12px] transition-all rounded-md">
+                <li className="mb-2 flex justify-start pr-2 hover:bg-[#101010] py-[8px] text-[11px] md:text-[12px] transition-all rounded-md">
                   <Link
                     href={"#"}
                     className="flex justify-center items-center gap-1"
@@ -105,7 +105,7 @@ export const Footer = ({ footerMenueItems }: { footerMenueItems: any[] }) => {
                     <p>توییتر</p>
                   </Link>
                 </li>
-                <li className="mb-2 hover:bg-[#242424] pr-2 flex justify-start text-[11px] md:text-[12px] py-[8px] transition-all rounded-md">
+                <li className="mb-2 hover:bg-[#101010] pr-2 flex justify-start text-[11px] md:text-[12px] py-[8px] transition-all rounded-md">
                   <Link
                     href={"#"}
                     className="flex justify-center items-center gap-1"

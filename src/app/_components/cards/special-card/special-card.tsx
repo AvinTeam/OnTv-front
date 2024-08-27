@@ -7,15 +7,15 @@ import { ViewIcon } from "../../icons";
 
 export const SpecialCard: React.FC<SpecialCardProps> = ({ data }) => {
 
-  const { seen, description, program} = data
+  const { seen, description, program, poster, title} = data
   return (
     <>
       <div className="w-full h-full flex flex-col gap-2">
         <Link href={`/show-on/${data?.id}`} className="group w-full h-[85%]  relative">
           <div className=" w-full h-full group">
             <Image
-              src={program?.poster[0]?.url}
-              alt={program?.title || "image"}
+              src={poster?.[0]?.url}
+              alt={title || "image"}
               width={0}
               style={{ objectFit: "cover" }}
               height={0}
@@ -38,7 +38,7 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({ data }) => {
               <div>
                 {program?.tags.map((tag: any) => tag.name).join(" - ")}
               </div>
-              <p>{program?.title}</p>
+              <p>{title}</p>
             </div>
           </div>
           <div

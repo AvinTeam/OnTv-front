@@ -214,7 +214,7 @@ export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
               </Link>
             </li>
             {headerMenueItems?.map((item) => (
-              <li key={item?.id} className="group">
+              <li key={item?.id} className="group relative">
                 <Link
                   href={`${
                     item?.url
@@ -232,10 +232,10 @@ export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
                 </Link>
                 {item.children && item.children.length > 0 && (
                   <>
-                    <div className="w-[170px] translate-y-[-300px] group-hover:translate-y-[0px] group-hover:opacity-100 group-hover:right-40 md:group-hover:right-80 p-2 z-[1000] rounded-md absolute bg-[#0f0f0f] border border-[#282828]  ">
+                    <div className="w-[170px] max-h-0 overflow-hidden opacity-0 invisible group-hover:max-h-[500px] group-hover:opacity-100 group-hover:visible transition-[opacity,max-height] duration-300 ease-in-out absolute top-7 right-0 p-2 rounded-md bg-[#242424] border border-[#282828]">
                       <ul>
                         {item.children?.map((item: any) => (
-                          <li key={item?.id} className="mb-2 cursor-pointer hover:bg-[#242424] pr-2 py-[8px] text-[10px] text-nowrap md:text-[12px] flex justify-start transition-all rounded-md">
+                          <li key={item?.id} className="mb-2 cursor-pointer hover:bg-[#101010] pr-2 py-[8px] text-[10px] text-nowrap md:text-[12px] flex justify-start transition-all rounded-md">
                             <Link
                               href={`${
                                 item?.url
