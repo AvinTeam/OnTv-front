@@ -141,7 +141,7 @@ const Live = ({ data }: { data: LivesType[] }) => {
                 </p>
               </div>
               <p className="text-[9px] md:text-[14px] text-primary-content">
-                در حال پخش / به سمت خدا / مجری نجم الدین شریعتی / ساعت 22 تا 24
+                {/* در حال پخش / به سمت خدا / مجری نجم الدین شریعتی / ساعت 22 تا 24 */}
               </p>
             </div>
 
@@ -168,7 +168,7 @@ const Live = ({ data }: { data: LivesType[] }) => {
                 height={0}
                 alt="logo"
                 style={{ objectFit: "contain" }}
-                src={logo2}
+                src={logo}
                 className="w-6 h-8 md:w-20 md:h-12"
               />
               <p className="font-bold text-[8px] md:text-[14px] text-primary-content">
@@ -176,7 +176,7 @@ const Live = ({ data }: { data: LivesType[] }) => {
               </p>
             </div>
             <p className="text-[6px] md:text-[10px] text-primary-content">
-              در حال پخش / به سمت خدا / مجری نجم الدین شریعتی / ساعت 22 تا 24
+              {/* در حال پخش / به سمت خدا / مجری نجم الدین شریعتی / ساعت 22 تا 24 */}
             </p>
           </div>
           <Link
@@ -201,7 +201,7 @@ const Live = ({ data }: { data: LivesType[] }) => {
                 style={{ objectFit: "contain" }}
                 height={0}
                 alt="logo"
-                src={logo3}
+                src={logo}
                 className="w-6 h-6 md:w-14 md:h-12"
               />
               <p className="font-bold text-[8px] md:text-[14px] text-primary-content">
@@ -209,7 +209,7 @@ const Live = ({ data }: { data: LivesType[] }) => {
               </p>
             </div>
             <p className="text-[6px] md:text-[10px] text-primary-content">
-              در حال پخش / به سمت خدا / مجری نجم الدین شریعتی / ساعت 22 تا 24
+              {/* در حال پخش / به سمت خدا / مجری نجم الدین شریعتی / ساعت 22 تا 24 */}
             </p>
           </div>
           <Link
