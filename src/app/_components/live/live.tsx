@@ -145,12 +145,12 @@ const Live = ({ data }: { data: LivesType[] }) => {
               </p>
             </div>
 
-            <Link
+            {/* <Link
               href={"/show-on"}
               className="flex text-[7px] md:text-sm pointer-events-auto justify-center text-nowrap items-center text-primary-content hover:bg-box-slider-bg-text cursor-pointer ml-2 md:ml-4 border bottom-3 px-1 md:px-4 py-1 md:py-2 rounded-sm md:rounded-md "
             >
               جدول پخش
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
@@ -179,12 +179,12 @@ const Live = ({ data }: { data: LivesType[] }) => {
               {/* در حال پخش / به سمت خدا / مجری نجم الدین شریعتی / ساعت 22 تا 24 */}
             </p>
           </div>
-          <Link
+          {/* <Link
             href={"/show-on"}
             className="flex text-[7px] md:text-sm pointer-events-auto justify-center text-nowrap items-center text-primary-content hover:bg-box-slider-bg-text cursor-pointer ml-2 md:ml-4 border mb-6 md:mb-0  px-1 md:px-4 py-1 md:py-2 rounded-sm md:rounded-md "
           >
             جدول پخش
-          </Link>
+          </Link> */}
         </div>
       </div>
       <div className="relative group col-span-2 xl:col-span-1">
@@ -212,12 +212,12 @@ const Live = ({ data }: { data: LivesType[] }) => {
               {/* در حال پخش / به سمت خدا / مجری نجم الدین شریعتی / ساعت 22 تا 24 */}
             </p>
           </div>
-          <Link
+          {/* <Link
             href={"/show-on"}
             className="flex text-[7px] md:text-sm pointer-events-auto justify-center text-nowrap items-center text-primary-content hover:bg-box-slider-bg-text cursor-pointer ml-2 md:ml-4 border mb-6 md:mb-0 px-1 md:px-4 py-1 md:py-2 rounded-sm md:rounded-md "
           >
             جدول پخش
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>
