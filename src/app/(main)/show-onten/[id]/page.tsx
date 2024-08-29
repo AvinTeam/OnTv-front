@@ -6,14 +6,21 @@ import { gatAllProgram, getAllEpisode } from "./_api/get-all-episode";
 import Episode from "./components/episode";
 import RateAndFavorite from "./components/RateAndFavorite/RateAndFavorite";
 import CommentBox from "../../_components/commet-box/CommentBox";
+import { notFound, useRouter } from "next/navigation";
 
 export default async function ShowOnten({
   params,
 }: {
   params: { id: string };
 }) {
+
   const initialData = await getAllEpisode({ id: "29", page: 1 });
+  if (!initialData) {
+    notFound();  // هدایت به صفحه‌ی not-found
+  }
   const allData = await gatAllProgram(params.id.split(".")[0]);
+  if (!allData) {
+    notFound(); }
   return (
     <div className="overflow-hidden">
       <div

@@ -2,7 +2,6 @@
 import React from "react"
 const Box  = (data: any) => {
  const { name, family, position } = data?.data
-console.log(data)
   return (
     <div className="flex gap-4 w-full">
       <div className="h-12 w-12 md:w-16 md:h-16 bg-white rounded-[50%]"></div>
