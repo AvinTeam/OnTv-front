@@ -15,5 +15,7 @@ export interface Comment {
   dislikes_count: number;
   likes_count: number;
   id: number;
+  isDisLikedBy: boolean;
+  isLikedBy: boolean;
   children: any[];
 }

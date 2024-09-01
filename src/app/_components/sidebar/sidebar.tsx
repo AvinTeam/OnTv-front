@@ -16,7 +16,7 @@ const Sidebar: React.FC = () => {
     const userData = localStorage.getItem("user_name");
     const parsedData = userData ? JSON.parse(userData) : null;
     if (parsedData) {
-      setUrl(parsedData.avatar);
+      setUrl(parsedData?.avatar[0]?.thumbnail?.url);
       setMobile(parsedData.mobile);
     }
   }, []);

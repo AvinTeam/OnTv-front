@@ -78,7 +78,7 @@ function RateAndFavorite({ programId }: { programId: string }) {
       {isError && <Toast message={""} type="error" statusCode={status} />}
       <Modal open={open} onClose={() => setOpen(false)}>
         <>
-          <div className="mt-2">لطفا ابتدا در سایت ثبت نام کنید</div>
+          <div className="mt-2 w-[300px] text-center">لطفا ابتدا در سایت ثبت نام کنید</div>
           <Button
             className=" mt-4 bg-primary py-2 text-white"
             onClick={() => router.push("/signin")}

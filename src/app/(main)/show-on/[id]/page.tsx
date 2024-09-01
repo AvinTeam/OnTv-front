@@ -1,82 +1,30 @@
 import Image from "next/image";
 import Live from "./_components/live";
-import dataDec1 from "../../../../../public/images/Mask Group 29.png";
-import dataDec2 from "../../../../../public/images/Mask Group 30.png";
-import dataDec3 from "../../../../../public/images/Mask Group 31.png";
-import dataDec4 from "../../../../../public/images/Mask Group 33.png";
 import { Slider } from "@/app/_components/slider/slider";
-import { SpecialCard } from "@/app/_components/cards/special-card";
 import { NewestCard } from "@/app/_components/cards/newest-card";
-import { gatPublicShow, getAllEpisode } from "./_api/get-all-data";
+import { gatPublicShow, getAllEpisode, storeHistory } from "./_api/get-all-data";
 import { SliderTitle } from "@/app/_components/slider-title";
-import { calculateTimeAgo } from "@/utils/functions";
+import { calculateTimeAgo, truncate } from "@/utils/functions";
 import { Episode } from "@/types/types/episode-data-showOn.interface";
 import DownloadBox from "./_components/DownloadBox";
 import Link from "next/link";
 import Share from "./_components/Share";
 import CommentBox from "../../_components/commet-box/CommentBox";
-const dataDec: any[] = [
-  {
-    path: "#",
-    poster: dataDec1,
-    alt: "test",
-    title: "خبر های روز",
-    description: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
-  },
-  {
-    path: "#",
-    poster: dataDec2,
-    alt: "test",
-    title: "خبر های روز",
-    description: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
-  },
-  {
-    path: "#",
-    poster: dataDec3,
-    alt: "test",
-    title: "خبر های روز",
-    description: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
-  },
-  {
-    path: "#",
-    poster: dataDec4,
-    alt: "test",
-    title: "خبر های روز",
-    description: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
-  },
-  {
-    path: "#",
-    poster: dataDec4,
-    alt: "test",
-    title: "خبر های روز",
-    description: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
-  },
-  {
-    path: "#",
-    poster: dataDec4,
-    alt: "test",
-    title: "خبر های روز",
-    description: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
-  },
-  {
-    path: "#",
-    poster: dataDec4,
-    alt: "test",
-    title: "خبر های روز",
-    description: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
-  },
-  {
-    path: "#",
-    poster: dataDec4,
-    alt: "test",
-    title: "خبر های روز",
-    description: "مراسم ویژه تشییع پیکر مطهر شهیدان خدمت در مصلی تهران و قم",
-  },
-];
+import { notFound } from "next/navigation";
+import StoreHistory from "./_components/StoreHistory";
+
 export default async function ShowOn({ params }: { params: { id: string } }) {
   const publicShow: Episode = await gatPublicShow(params.id.split(".")[0]);
+  if(!publicShow){
+    return notFound()
+  }
   const episodes = await getAllEpisode(publicShow?.Episode?.program?.id);
+  if(!episodes){
+    return notFound()
+  }
+  
   return (
+   <>
     <main>
       <div className="">
         <div className="">
@@ -145,7 +93,7 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
                   </div>
                 </div>
               </div>
-              <div className="lg:w-[90%] mx-auto">
+              {/* <div className="lg:w-[90%] mx-auto">
                 <div className="w-screen md:w-full container px-3 md:px-0 overflow-auto pt-8 lg:pt-8 pb-4 mb-4">
                   <SliderTitle title="بخش های منتخب" link="#" />
                   <div className="h-[230px] md:h-[150px] lg:h-[160px] 2xl:h-[200px] w-full">
@@ -157,13 +105,13 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
                     />
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div className="w-screen lg:hidden md:w-full container px-3 md:px-0 overflow-auto pt-2 pb-10 mb-9">
                 <SliderTitle title="جدیدترین ها" link="#" />
                 <div className="h-[270px] md:h-[270px] lg:h-[160px] 2xl:h-[200px] w-full">
                   <Slider
                     Component={NewestCard}
-                    data={dataDec}
+                    data={episodes?.Episodes?.data}
                     smCount={1.5}
                     mdCount={2.5}
                     displayCount={5}
@@ -200,7 +148,7 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
                       <div className="pb-[9px] md:pb-0 flex justify-center items-center flex-col w-full h-[40%] md:h-[30%]">
                         <div className=" flex flex-col md:mt-4 md:flex md:flex-row justify-start md:justify-between md:items-center gap-1 w-full mt-4">
                           <div className="mb-1 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-1 md:flex md:justify-center text-[10px] md:rounded-[20px]">
-                            {item?.title}
+                            {truncate(item?.title, 30)}
                           </div>
                           <div className="md:bg-box-slider-bg-text text-nowrap text-box-slider-text-l md:py-1 md:px-2 text-[9px] md:mr-auto md:rounded-[20px]">
                             <span> {calculateTimeAgo(item?.created_at)}</span>
@@ -223,5 +171,7 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
         </div>
       </div>
     </main>
+    <StoreHistory id={`${publicShow?.Episode?.program?.id}`} />
+   </>
   );
 }

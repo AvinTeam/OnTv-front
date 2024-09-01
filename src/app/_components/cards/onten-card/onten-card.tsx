@@ -26,7 +26,7 @@ export const OntenCard: React.FC<OntenCardProps> = ({ data }) => {
     <>
       <div className="w-full h-full group flex flex-col gap-5 relative overflow-visible">
         <Link
-          href={`show-onten/${id}`}
+          href={`/show-onten/${id}`}
           className="group w-full h-[80%] relative overflow-visible"
         >
           <div className="relative group w-full h-full flex justify-center items-center">

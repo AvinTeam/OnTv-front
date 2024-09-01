@@ -1,9 +1,8 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-// import axios from "../../../../core/axios";
-import axios  from "axios"
-import {
+import axios from "../../../../core/axios";
+ import {
   convertGregorianToJalaliFullTim,
   convertJalaliToGregorian,
   show_toast,
@@ -51,8 +50,6 @@ export default function EditProfile() {
     const file = event.target.files?.[0];
     setImgFile(file);
     if (file) {
-      const reader = new FileReader();
-
       setSelectedImage(file);
     }
   };
@@ -66,7 +63,7 @@ export default function EditProfile() {
     formData.append('gender', gender == "خانم" ? '1' : gender == "آقا" ? '2' : '0');
     formData.append('avatar', selectedImage as any);
     axios
-      .post(`admin/profile/${userId}`, formData, {
+      .post(`profile/${userId}`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then(({ data }) => {
@@ -83,7 +80,7 @@ export default function EditProfile() {
   const years = Array.from({ length: 100 }, (_, i) => 1403 - i);
 
   const getUserInfo = () => {
-    axios.get(`admin/profile/${userId}`).then(({ data }) => {
+    axios.get(`profile/${userId}`).then(({ data }) => {
       setLoadingData(false)
       setUserData(data.user);
       setName(data.user.name);

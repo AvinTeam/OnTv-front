@@ -69,7 +69,7 @@ export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
     const userData = localStorage.getItem("user_name");
     const parsedData = userData ? JSON.parse(userData) : null;
     axios
-      .get(`admin/profile/${parsedData?.id}`)
+      .get(`profile/${parsedData?.id}`)
       .then(({ data }) => {
         localStorage.setItem("user_name", JSON.stringify(data.user));
         setAvatar(
@@ -91,12 +91,12 @@ export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
         backdropFilter: bgColor === bg_color_first ? "none" : "blur(40px)",
       }}
     >
-      <div className="container mx-auto block md:grid h-full overflow-visible md:grid-cols-[auto_1fr] justify-between items-center gap-1">
+      <div className="container mx-auto block lg:grid h-full overflow-visible lg:grid-cols-[auto_1fr] justify-between items-center gap-1">
         {/* ================= mobole menue =============== */}
-        <div className="flex ml-0 mr-0 md:mr-4 h-full gap-4 md:gap-0 justify-between  w-full md:md:w-20 py-2.5 md:justify-center items-center">
+        <div className="flex ml-0 mr-0 lg:mr-4 h-full gap-4 lg:gap-0 justify-between w-full lg:w-20 py-2.5 lg:justify-center items-center">
           <div className="flex justify-start items-center gap-3">
             <div
-              className="md:hidden mr-4"
+              className="lg:hidden mr-4"
               onClick={() => setShowMobileMenu(true)}
             >
               <HamburgerIcon />
@@ -106,19 +106,19 @@ export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
                 alt="OnTVLogo"
                 width={0}
                 style={{ objectFit: "contain" }}
-                className="w-[45px] md:w-12 h-[45px] md:h-12"
+                className="w-[45px] lg:w-12 h-[45px] lg:h-12"
                 height={0}
                 src={"/images/android-chrome-192x192.png"}
               />
             </Link>
             <div
-              className="w-full h-full md:hidden"
+              className="w-full h-full lg:hidden"
               onClick={() => setIsSearchActive(true)}
             >
               <SearchIcon width={"24px"} height={"24px"} />
             </div>
           </div>
-          <div className="group block md:hidden ml-4">
+          <div className="group block lg:hidden ml-4">
             {isLoggedIn ? (
               <>
                 <UserProfile mobile={username} avatar={avatar} setIsLoggedIn={setIsLoggedIn} />
@@ -139,7 +139,7 @@ export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
               <div className="flex flex-col justify-start items-start gap-3">
                 <div className="flex justify-start gap-6 items-center">
                   <div
-                    className="md:hidden mr-4 bg-base-70 flex rounded-md justify-center items-center  p-1 mt-3"
+                    className="lg:hidden mr-4 bg-base-70 flex rounded-md justify-center items-center  p-1 mt-3"
                     onClick={() => setShowMobileMenu(false)}
                   >
                     <CloseIcon />
@@ -155,7 +155,7 @@ export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
                     />
                   </div>
                   <div
-                    className="w-full h-full mt-3 md:hidden"
+                    className="w-full h-full mt-3 lg:hidden"
                     onClick={() => setIsSearchActive(true)}
                   >
                     <SearchIcon width={"24px"} height={"24px"} />
@@ -202,7 +202,7 @@ export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
             </div>
           </div>
         )}
-        <nav className="hidden md:flex justify-between items-center ml-auto w-full">
+        <nav className="hidden lg:flex justify-between items-center ml-auto w-full">
           <ul className="flex justify-between gap-1 md:gap-4 text-primary-content">
             <li className="mr-0 md:mr-4 flex justify-center items-center">
               <Link

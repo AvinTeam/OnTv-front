@@ -40,14 +40,14 @@ export const menuItems: MenuItem[] = [
     text: "سوابق خرید",
     icon: BuyHistoryIcon,
   },
+  // {
+  //   href: "/user/edit-profile",
+  //   text: "ادامه تماشا",
+  //   icon: WatchingIcon,
+  // },
   {
     href: "/user/edit-profile",
-    text: "ادامه تماشا",
-    icon: WatchingIcon,
-  },
-  {
-    href: "/user/edit-profile",
-    text: "تغییر کلمه عبور",
+    text: "تغییر شماره موبایل",
     icon: EditPasswordIcon,
   },
 ];

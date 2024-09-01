@@ -75,3 +75,9 @@ export function convertToJalali(dateString: string): string {
 
   return `${jd} ${months[jm - 1]} ${jy}`;
 }
+export function truncate(text: string, maxLength: number) {
+   if (text.length > maxLength) {
+    return text.substring(0, maxLength) + "...";
+  }
+  return text;
+}

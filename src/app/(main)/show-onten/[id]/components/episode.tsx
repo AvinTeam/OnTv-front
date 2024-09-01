@@ -57,12 +57,7 @@ function Episode({ data, itemId }: { data: any; itemId: string }) {
           {episode?.Episodes?.data?.map((item: any, idx: any) => (
             <React.Fragment key={item?.id}>
               <NewestCard
-                alt="test"
-                path={`/show-on/${item?.id}`}
-                poster={item?.poster?.[0]?.url}
-                description={item?.description}
-                title={item?.title}
-                seen={item?.seen}
+                 data={item}
               />
             </React.Fragment>
           ))}
