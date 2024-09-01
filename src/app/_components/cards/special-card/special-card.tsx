@@ -46,7 +46,7 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({ data }) => {
                 <ViewIcon />
                 {seen}
               </div>
-              <p>{truncate(title ?? "")}</p>
+              <p>{truncate(description ?? "")}</p>
               <div>{program?.tags.map((tag: any) => tag.name).join(" - ")}</div>
             </div>
           </div>
@@ -58,7 +58,7 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({ data }) => {
           ></div>
         </Link>
         <div className="w-full h-[15%] text-white text-[10px] font-light md:text-[11px] xl:text-[13px]">
-          <p>{truncate(description ?? "")}</p>
+          <p>{title}</p>
         </div>
       </div>
     </>

@@ -69,8 +69,8 @@ export const OntenCard: React.FC<OntenCardProps> = ({ data }) => {
                 <ViewIcon />
                 {seen}
               </div>
-              <p>{truncate(title)}</p>
               <div>{tags.map((tag: any) => tag.name).join("-")}</div>
+              <p>{truncate(description)}</p>
             </div>
           </div>
           <div
@@ -81,7 +81,7 @@ export const OntenCard: React.FC<OntenCardProps> = ({ data }) => {
           ></div>
         </Link>
         <div className="w-full group text-white text-[10px] font-light md:text-[11px] xl:text-[13px]">
-          <p>{truncate(description)}</p>
+          <p>{title}</p>
         </div>
       </div>
     </>
