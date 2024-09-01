@@ -6,12 +6,23 @@ import Link from "next/link";
 import { ViewIcon } from "../../icons";
 
 export const SpecialCard: React.FC<SpecialCardProps> = ({ data }) => {
+  const { seen, description, program, poster, title } = data;
 
-  const { seen, description, program, poster, title} = data
+  function truncate(text: string) {
+    const maxLength = 25;
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + "...";
+    }
+    return text;
+  }
+
   return (
     <>
       <div className="w-full h-full flex flex-col gap-2">
-        <Link href={`/show-on/${data?.id}`} className="group w-full h-[85%]  relative">
+        <Link
+          href={`/show-on/${data?.id}`}
+          className="group w-full h-[85%]  relative"
+        >
           <div className=" w-full h-full group">
             <Image
               src={poster?.[0]?.url}
@@ -35,10 +46,8 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({ data }) => {
                 <ViewIcon />
                 {seen}
               </div>
-              <div>
-                {program?.tags.map((tag: any) => tag.name).join(" - ")}
-              </div>
-              <p>{title}</p>
+              <p>{truncate(title ?? "")}</p>
+              <div>{program?.tags.map((tag: any) => tag.name).join(" - ")}</div>
             </div>
           </div>
           <div
@@ -49,7 +58,7 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({ data }) => {
           ></div>
         </Link>
         <div className="w-full h-[15%] text-white text-[10px] font-light md:text-[11px] xl:text-[13px]">
-          <p>{description}</p>
+          <p>{truncate(description ?? "")}</p>
         </div>
       </div>
     </>

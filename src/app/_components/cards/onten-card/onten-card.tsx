@@ -14,6 +14,14 @@ export const OntenCard: React.FC<OntenCardProps> = ({ data }) => {
 
   const { title, poster, description, tags, seen, id } = actualProgram;
 
+  function truncate(text: string) {
+    const maxLength = 25;
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + "...";
+    }
+    return text;
+  }
+
   return (
     <>
       <div className="w-full h-full group flex flex-col gap-5 relative overflow-visible">
@@ -61,8 +69,8 @@ export const OntenCard: React.FC<OntenCardProps> = ({ data }) => {
                 <ViewIcon />
                 {seen}
               </div>
+              <p>{truncate(title)}</p>
               <div>{tags.map((tag: any) => tag.name).join("-")}</div>
-              <p>{title}</p>
             </div>
           </div>
           <div
@@ -73,7 +81,7 @@ export const OntenCard: React.FC<OntenCardProps> = ({ data }) => {
           ></div>
         </Link>
         <div className="w-full group text-white text-[10px] font-light md:text-[11px] xl:text-[13px]">
-          <p>{description}</p>
+          <p>{truncate(description)}</p>
         </div>
       </div>
     </>
