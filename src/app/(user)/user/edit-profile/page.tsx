@@ -100,9 +100,6 @@ export default function EditProfile() {
   };
 
   useLayoutEffect(() => {
-    axios.get("homepage").then(({data})=>{
-      console.log(data)
-    })
     setLoadingData(true)
     const userData = localStorage.getItem("user_name");
     const parsedData = userData ? JSON.parse(userData) : null;

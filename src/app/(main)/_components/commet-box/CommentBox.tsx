@@ -26,8 +26,7 @@ function CommentBox({ id, type }: { id: string; type: "episode" | "program" }) {
   const [status, setStatus] = useState();
   const [replyTo, setReplyTo] = useState<string | null>(null);
   const [loadingComment, setLoadingComment] = useState<boolean>(false);
-  const inputRef = useRef<HTMLTextAreaElement>(null);
-
+  const targetRef = useRef<any>(null);
   const loadMore = () => {
     if (!hasMore || loading) return;
     setLoading(true);
@@ -69,8 +68,8 @@ function CommentBox({ id, type }: { id: string; type: "episode" | "program" }) {
         show_toast({ text: data?.message, type: "success" });
         setLoadingComment(false);
         setComment("");
-        setComment_id(null)
-        setReplyTo(null)
+        setComment_id(null);
+        setReplyTo(null);
       })
       .catch((error) => {
         setIsError(true);
@@ -84,12 +83,8 @@ function CommentBox({ id, type }: { id: string; type: "episode" | "program" }) {
     scrollToInput();
   };
   const scrollToInput = () => {
-    if (inputRef.current) {
-      const offset = 100;
-      const top =
-        inputRef.current.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: "smooth" });
-      inputRef.current.focus();
+    if (targetRef.current) {
+      targetRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -105,7 +100,7 @@ function CommentBox({ id, type }: { id: string; type: "episode" | "program" }) {
         );
       });
   }, [id, type]);
-  const renderComments = (comments: Comment[], depth=0) => {
+  const renderComments = (comments: Comment[], depth = 0) => {
     return comments.map((item: Comment) => (
       <CommentItem
         key={item?.id}
@@ -125,13 +120,14 @@ function CommentBox({ id, type }: { id: string; type: "episode" | "program" }) {
             برای ثبت کامنت باید ابتدا در سایت ثبت نام کنید
           </div>
           <Button
-            className=" mt-4 bg-primary py-2 text-white"
+            className="mt-4 bg-primary py-2 text-white"
             onClick={() => router.push("/signin")}
           >
             ثبت نام{" "}
           </Button>
         </>
       </Modal>
+      <div id="top" className="pt-9" ref={targetRef}></div>
       <div className="flex flex-col justify-start items-start gap-0 w-full pr-2 border-b-[1px] border-b-[#333]">
         {isSuccess && (
           <Toast message="نظر شما با موفقیت ثبت شد" type="success" />
@@ -150,16 +146,20 @@ function CommentBox({ id, type }: { id: string; type: "episode" | "program" }) {
               <div className="absolute right-12 top-1 text-sm mb-2">
                 در پاسخ به {replyTo} :
               </div>
-              <div className="absolute left-5 top-0 text-sm mb-2 cursor-pointer" onClick={()=>{
-                setComment_id(null)
-                setReplyTo(null)
-                setComment("")
-              }}>انصراف</div>
+              <div
+                className="absolute left-5 top-0 text-sm mb-2 cursor-pointer"
+                onClick={() => {
+                  setComment_id(null);
+                  setReplyTo(null);
+                  setComment("");
+                }}
+              >
+                انصراف
+              </div>
             </>
           )}
           <div className="relative w-full peer rounded-md overflow-auto ">
             <textarea
-              ref={inputRef}
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               className="w-full text-sm pt-2 pr-2 pb-4 rounded-md peer font-light h-[40px] flex justify-center items-center focus:outline-none focus:bg-white focus:text-[#424242] overflow-hidden bg-[#424242] text-[#fff]"

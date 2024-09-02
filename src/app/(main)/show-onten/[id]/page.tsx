@@ -80,7 +80,12 @@ export default async function ShowOnten({
 
       {/* ================= casts ================== */}
 
-      <div className="lg:h-auto md:pb-10 to-90% bg-gradient-to-r from-[#341173] to-[#221D1F] mb-16">
+      <div
+        style={{
+          background: `linear-gradient(to right,${allData?.Program?.color} , #221D1F)`,
+        }}
+        className="lg:h-auto md:pb-10 to-90% mb-16"
+      >
         <div className="container flex flex-col justify-between gap-6 overflow-hidden">
           <h5 className="my-6 text-white mr-6">عوامل برنامه</h5>
           {/* mobile & tablet view  */}

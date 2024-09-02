@@ -3,7 +3,11 @@
 @import "tailwindcss/utilities";
 
 @import "../tailwind/components/components.css";
+:root {scroll-behavior: smooth;}
+body{
+  scroll-behavior: smooth;
 
+}
 html {
   font-family: var(--font-iransans);
   scrollbar-width: thin;

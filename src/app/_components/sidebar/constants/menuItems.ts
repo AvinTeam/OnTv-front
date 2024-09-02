@@ -46,7 +46,7 @@ export const menuItems: MenuItem[] = [
   //   icon: WatchingIcon,
   // },
   {
-    href: "/user/edit-profile",
+    href: "/user/edit-mobile",
     text: "تغییر شماره موبایل",
     icon: EditPasswordIcon,
   },
