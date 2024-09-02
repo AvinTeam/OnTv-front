@@ -1,9 +1,11 @@
 "use client";
 import {
   AccountIcon,
+  HistoryIcon,
   BuySubscriptionIcon,
   ProfileIcon,
   ProfileManagementIcon,
+  EditPasswordIcon,
 } from "@/app/_components/icons";
 import LogoutIcon from "@/app/_components/icons/Logout";
 import SavedIcon from "@/app/_components/icons/Saved";
@@ -41,7 +43,7 @@ const UserProfile = ({ mobile, avatar, setIsLoggedIn }: { mobile: string; avatar
     <div className="relative">
       <div
         ref={imageRef}
-        className="w-10  h-10 rounded-full overflow-hidden flex justify-center items-center bg-[gray] cursor-pointer "
+        className="w-10 h-10 rounded-full overflow-hidden flex justify-center items-center bg-[gray] cursor-pointer "
         onClick={() => setIsShowMenu((prev) => !prev)}
       >
         <Image
@@ -98,6 +100,22 @@ const UserProfile = ({ mobile, avatar, setIsLoggedIn }: { mobile: string; avatar
           >
             <SavedIcon />
             <span className="text-sm">نشان شده ها</span>
+          </Link>
+          <Link
+          onClick={()=>setIsShowMenu(false)}
+            href={"/user/history"}
+            className="flex lg:hidden hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
+          >
+            <HistoryIcon />
+            <span className="text-sm">تاریخچه تماشا</span>
+          </Link>
+          <Link
+          onClick={()=>setIsShowMenu(false)}
+            href={"/user/edit-mobile"}
+            className="flex lg:hidden hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
+          >
+            <EditPasswordIcon />
+            <span className="text-sm">تغییر شماره موبایل</span>
           </Link>
           <Link
           onClick={()=>setIsShowMenu(false)}
