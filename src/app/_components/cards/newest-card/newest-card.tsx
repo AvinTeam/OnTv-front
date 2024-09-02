@@ -35,7 +35,7 @@ export const NewestCard: React.FC<NewestCardProps> = ({ data }) => {
               <span>{` ${data?.seen} نمایش`}</span>
             </div>
           </div>
-          <div className=" w-full mt-1 mb-auto md:mt-0 text-justify text-[12px] md:text-[14px] max-w-[100%] md:min-w-[100%]">
+          <div className="break-words w-full mt-1 mb-auto md:mt-0 text-justify text-[12px] md:text-[14px] max-w-[100%] md:min-w-[100%]">
             <h3 className="mb-1 text-right text-ellipsis dark:text-description-text md:text-clip overflow-hidden whitespace-nowrap md:text-wrap md:ml-auto ">
               {data?.description}
             </h3>

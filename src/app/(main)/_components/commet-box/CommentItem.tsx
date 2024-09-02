@@ -6,9 +6,10 @@ import { convertToJalali } from "@/utils/functions";
 
 interface CommentItemProps {
   item: Comment;
-  renderComments: (comments: Comment[]) => JSX.Element[];
+  renderComments: (comments: Comment[], depth: number) => JSX.Element[];
   setComment_id: (id: number | null) => void;
   handleReply: (name: string) => void;
+  depth: number;  
 }
 
 function CommentItem({
@@ -16,15 +17,23 @@ function CommentItem({
   renderComments,
   setComment_id,
   handleReply,
+  depth,
 }: CommentItemProps) {
   return (
     <div
       key={item?.id}
-      className={`relative flex flex-col gap-2 justify-center items-start w-full h-auto ${ !item.children.length && `border-b`} pb-5 border-base-50 m-0 p-0`
-          }    >
+      className={`relative flex flex-col gap-2 justify-center items-start w-full h-auto ${
+        !depth && `border-b`
+      } pb-2 border-base-50 m-0 p-0`}
+    >
       <div className="flex gap-2 justify-center items-start w-full h-auto">
         <div className="-mr-2 rounded-full flex justify-start items-center p-0">
-          <div className="text-white h-8 w-8 flex justify-center items-center p-0">
+          <div
+            className="text-white h-8 w-8 flex justify-center items-center p-0"
+            style={{
+              marginRight: `${depth * 15 }px`,
+            }}
+          >
             <Image
               src={item?.creator?.avatar?.[0]?.url}
               alt="alt"
@@ -34,7 +43,7 @@ function CommentItem({
             />
           </div>
         </div>
-        <div className="p-0 m-0 w-[100%] h-full">
+        <div className="p-0 m-0 w-[100%] h-full break-words">
           <div className="flex gap-2 justify-start items-center p-0 m-0">
             <p className="text-xs -mt-1 text-white">{item?.creator?.name}</p>
             <p className="text-xs">{convertToJalali(item?.created_at)}</p>
@@ -60,7 +69,7 @@ function CommentItem({
       <div className="w-full h-full float-left">
         {item?.children && item.children.length > 0 && (
           <div className="[&>*]:mt-6 w-full h-full">
-            {renderComments(item.children)}
+            {renderComments(item.children, depth + 1)}
           </div>
         )}
       </div>

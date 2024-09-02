@@ -8,6 +8,7 @@ html {
   font-family: var(--font-iransans);
   scrollbar-width: thin;
   scrollbar-color: #292929 transparent;
+  scroll-behavior: smooth;
 }
 
 :lang(en) {

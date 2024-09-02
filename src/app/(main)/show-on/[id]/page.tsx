@@ -107,7 +107,7 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
                 </div>
               </div> */}
               <div className="w-screen lg:hidden md:w-full container px-3 md:px-0 overflow-auto pt-2 pb-10 mb-9">
-                <SliderTitle title="جدیدترین ها" link="#" />
+                <SliderTitle title="سایر قسمت ها" link={`/show-onten/${publicShow?.Episode?.program?.id}`} />
                 <div className="h-[270px] md:h-[270px] lg:h-[160px] 2xl:h-[200px] w-full">
                   <Slider
                     Component={NewestCard}
@@ -156,7 +156,7 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
                             <span> {`${item?.seen} نمایش`}</span>
                           </div>
                         </div>
-                        <div className=" mt-1 md:mt-2 text-justify text-[12px] md:text-[14px] max-w-[100%] md:min-w-[100%]">
+                        <div className="break-words mt-1 md:mt-2 text-justify text-[12px] md:text-[14px] max-w-[100%] md:min-w-[100%]">
                           <h3 className="mb-1 font-light text-ellipsis dark:text-description-text md:text-clip overflow-hidden whitespace-nowrap md:text-wrap md:ml-auto ">
                             {item?.description}
                           </h3>

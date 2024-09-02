@@ -22,7 +22,7 @@ function RateAndFavorite({ programId }: { programId: string }) {
 
   const handelAddFavorite = () => {
     setStatus(null);
-    if (isLoggedIn()) {
+    if (!isLoggedIn()) {
       setOpen(true);
       return;
     }
@@ -41,21 +41,20 @@ function RateAndFavorite({ programId }: { programId: string }) {
   };
   const isLoggedIn = () => {
     const token = localStorage.getItem("user_token");
-    return !token;
+    return !!token;
   };
   const handleStarClick = (rating: number) => {
     setStatus(null);
-    if (isLoggedIn()) {
+    if (!isLoggedIn()) {
       setOpen(true);
       return;
     }
-    setUserRating(rating);
-    axios
+     axios
       .post(`program/storeScore/${programId}`, { score: rating })
       .then(() => {
         setRefreshData((prev) => !prev);
       })
-      .then((error: any) => {
+      .catch((error: any) => {
         setStatus(error?.response?.status);
         setIsError(true);
       });

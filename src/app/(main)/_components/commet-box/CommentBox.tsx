@@ -69,6 +69,8 @@ function CommentBox({ id, type }: { id: string; type: "episode" | "program" }) {
         show_toast({ text: data?.message, type: "success" });
         setLoadingComment(false);
         setComment("");
+        setComment_id(null)
+        setReplyTo(null)
       })
       .catch((error) => {
         setIsError(true);
@@ -103,7 +105,7 @@ function CommentBox({ id, type }: { id: string; type: "episode" | "program" }) {
         );
       });
   }, [id, type]);
-  const renderComments = (comments: Comment[]) => {
+  const renderComments = (comments: Comment[], depth=0) => {
     return comments.map((item: Comment) => (
       <CommentItem
         key={item?.id}
@@ -111,6 +113,7 @@ function CommentBox({ id, type }: { id: string; type: "episode" | "program" }) {
         renderComments={renderComments}
         setComment_id={setComment_id}
         handleReply={handleReply}
+        depth={depth}
       />
     ));
   };
@@ -143,9 +146,16 @@ function CommentBox({ id, type }: { id: string; type: "episode" | "program" }) {
           </figure>
 
           {replyTo && (
-            <div className="absolute right-12 top-1 text-sm text-gray-500 mb-2">
-              در پاسخ به {replyTo} :
-            </div>
+            <>
+              <div className="absolute right-12 top-1 text-sm mb-2">
+                در پاسخ به {replyTo} :
+              </div>
+              <div className="absolute left-5 top-0 text-sm mb-2 cursor-pointer" onClick={()=>{
+                setComment_id(null)
+                setReplyTo(null)
+                setComment("")
+              }}>انصراف</div>
+            </>
           )}
           <div className="relative w-full peer rounded-md overflow-auto ">
             <textarea
