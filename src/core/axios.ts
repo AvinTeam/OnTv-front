@@ -9,12 +9,12 @@ axios.defaults.headers.common["Accept"] = "application/json";
 
 axios.interceptors.request.use(
   function (request) {
-    const token = window.localStorage.getItem("user_token");
+    const token = window.localStorage.getItem("onTv_user_token");
     if (token) {
       request.headers.Authorization = `Bearer ${token}`;
     }
 
-     return request;
+    return request;
   },
   function (error) {
     return Promise.reject(error);
@@ -23,10 +23,10 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
   function (response) {
-     return response;
+    return response;
   },
   function (error) {
-     if (error?.response?.status === 503) {
+    if (error?.response?.status === 503) {
       // store.dispatch({ type: "SET_UNAVAILABLE", data: true });
     }
     const messages = GetMessagesError(error);

@@ -1,14 +1,15 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import axios from "../../../../core/axios";
- import {
+import {
   convertGregorianToJalaliFullTim,
   convertJalaliToGregorian,
   show_toast,
 } from "@/utils/functions";
 import { Button } from "@/app/_components/button";
 import LoadingSpinner from "@/app/_components/loading/loading";
+import { useUserStore } from "@/stores/user.store";
 const genderOptions = ["ترجیح میدهم اعلام نکنم", "خانم", "آقا"];
 const days = Array.from({ length: 31 }, (_, i) => i + 1);
 const months = [
@@ -27,9 +28,10 @@ const months = [
 ];
 
 export default function EditProfile() {
+  const addUser = useUserStore((store) => store.addUser);
+  const user = useUserStore((store) => store.user);
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const [userId, setUserId] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [loadingِData, setLoadingData] = useState<boolean>(false);
   const [userData, setUserData] = useState<any>(null);
@@ -38,8 +40,7 @@ export default function EditProfile() {
   const [day, setDay] = useState<number | null>(null);
   const [month, setMonth] = useState<number | null>(null);
   const [year, setYear] = useState<number | null>(null);
-  const [iimgFile, setImgFile] = useState<any>(null);
-
+ 
   const handleDivClick = () => {
     if (fileInputRef.current) {
       fileInputRef.current.click();
@@ -48,66 +49,72 @@ export default function EditProfile() {
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-    setImgFile(file);
-    if (file) {
+     if (file) {
       setSelectedImage(file);
     }
   };
   const handelSubmit = () => {
     setLoading(true);
     const formData = new FormData();
-    console.log({ selectedImage })
+    console.log({ selectedImage });
 
-    formData.append('birthday', convertJalaliToGregorian(`${year}/${month}/${day}`));
-    formData.append('name', name ?? "");
-    formData.append('gender', gender == "خانم" ? '1' : gender == "آقا" ? '2' : '0');
-    formData.append('avatar', selectedImage as any);
+    formData.append(
+      "birthday",
+      convertJalaliToGregorian(`${year}/${month}/${day}`)
+    );
+    formData.append("name", name ?? "");
+    formData.append(
+      "gender",
+      gender == "خانم" ? "1" : gender == "آقا" ? "2" : "0"
+    );
+    formData.append("avatar", selectedImage as any);
     axios
-      .post(`profile/${userId}`, formData, {
+      .post(`profile/${user?.id}`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then(({ data }) => {
         setLoading(false);
+        addUser(data.user);
 
-        localStorage.setItem("user_name", JSON.stringify(data.user));
+        localStorage.setItem("onTv_user_data", JSON.stringify(data.user));
 
         show_toast({ text: data?.message, type: "success" });
-      }).catch(() => {
-        setLoading(false)
       })
+      .catch(() => {
+        setLoading(false);
+      });
   };
 
   const years = Array.from({ length: 100 }, (_, i) => 1403 - i);
 
   const getUserInfo = () => {
-    axios.get(`profile/${userId}`).then(({ data }) => {
-      setLoadingData(false)
-      setUserData(data.user);
-      setName(data.user.name);
+    axios
+      .get(`profile/${user?.id}`)
+      .then(({ data }) => {
+        setLoadingData(false);
+        setUserData(data.user);
+        setName(data.user.name);
 
-      setGender(genderOptions[data.user.gender]);
-      if (data.user.birthday) {
-        const [year, month, day] = convertGregorianToJalaliFullTim(
-          data.user.birthday
-        ).split("/");
-        setDay(+day);
-        setMonth(+month);
-        setYear(+year);
-      }
-    }).catch(() => {
-      setLoadingData(false)
-    })
+        setGender(genderOptions[data.user.gender]);
+        if (data.user.birthday) {
+          const [year, month, day] = convertGregorianToJalaliFullTim(
+            data.user.birthday
+          ).split("/");
+          setDay(+day);
+          setMonth(+month);
+          setYear(+year);
+        }
+      })
+      .catch(() => {
+        setLoadingData(false);
+      });
   };
 
   useLayoutEffect(() => {
-    setLoadingData(true)
-    const userData = localStorage.getItem("user_name");
-    const parsedData = userData ? JSON.parse(userData) : null;
-
-    setUserId(parsedData?.id);
-    if (!userId) return;
+    setLoadingData(true);
+    if(!user) return;
     getUserInfo();
-  }, [userId]);
+  }, [user]);
   if (loadingِData) {
     return <LoadingSpinner message="در حال دریافت اطلاعات..." />;
   }
@@ -124,13 +131,10 @@ export default function EditProfile() {
               <Image
                 src={
                   selectedImage
-                    ? URL.createObjectURL(selectedImage)
-                    : userData?.avatar[0]?.thumbnail?.url
-                      ? userData?.avatar[0]?.thumbnail?.url
-                      : userData?.avatar
-                        ? userData?.avatar
-                        : "/images/avatar/avatar.jpg"
-
+                    ? URL.createObjectURL(selectedImage) || null
+                    : user?.avatar[0]?.url
+                    ? user?.avatar[0]?.url
+                    : "/images/avatar/avatar.jpg"
                 }
                 alt="Selected Profile"
                 className="rounded-full object-cover w-full h-full"

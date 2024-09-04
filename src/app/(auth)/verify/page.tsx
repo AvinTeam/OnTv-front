@@ -7,8 +7,10 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowIcon, EyesIcon, ViewIcon } from "@/app/_components/icons";
 import { Button } from "@/app/_components/button";
 import { show_toast } from "@/utils/functions";
+import { useUserStore } from "@/stores/user.store";
 
 export default function Verify() {
+  const addUser = useUserStore(store=> store.addUser)
   const searchParams = useSearchParams();
   const router = useRouter();
   const [timeLeft, setTimeLeft] = useState(120);
@@ -48,8 +50,10 @@ export default function Verify() {
           show_toast({ text: data?.message, type: "warning" });
         }
         setIsLoading(false);
-        localStorage.setItem("user_token", data.data.token);
-        localStorage.setItem("user_name", JSON.stringify(data.data.user));
+        localStorage.setItem("onTv_user_token", data.data.token);
+
+        localStorage.setItem("onTv_user_data", JSON.stringify(data.data.user));
+        addUser(data.data.user)
 
         router.push("/");
       })

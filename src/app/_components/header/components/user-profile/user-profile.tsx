@@ -10,12 +10,20 @@ import {
 import LogoutIcon from "@/app/_components/icons/Logout";
 import SavedIcon from "@/app/_components/icons/Saved";
 import SettingIcon from "@/app/_components/icons/Setting";
+import { useUserStore } from "@/stores/user.store";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
-const UserProfile = ({ mobile, avatar, setIsLoggedIn }: { mobile: string; avatar: any; setIsLoggedIn: (item: boolean)=> void }) => {
+const UserProfile = ({
+  setIsLoggedIn,
+}: {
+  setIsLoggedIn: (item: boolean) => void;
+}) => {
+  const user = useUserStore((store) => store.user);
+  const Logout = useUserStore((store) => store.logout);
+
   const router = useRouter();
   const [isShowMenu, setIsShowMenu] = useState(false);
   const imageRef = useRef<HTMLDivElement>(null);
@@ -47,7 +55,7 @@ const UserProfile = ({ mobile, avatar, setIsLoggedIn }: { mobile: string; avatar
         onClick={() => setIsShowMenu((prev) => !prev)}
       >
         <Image
-          src={avatar ?? "/images/avatar/avatar.jpg"}
+          src={user?.avatar?.[0]?.url ?? "/images/avatar/avatar.jpg"}
           className="object-cover w-full h-full"
           width={0}
           height={0}
@@ -63,7 +71,7 @@ const UserProfile = ({ mobile, avatar, setIsLoggedIn }: { mobile: string; avatar
       >
         <div className="group-hover:flex overflow-hidden [&>*]:transition-all flex-col ">
           <div className="flex flex-col gap-3 mt-3 text-center text-sm">
-            {mobile}
+            {user?.mobile}
           </div>
           <div className="w-full text-xs h-8 flex py-4 mt-2 justify-center bg-[#434444] text-primary rounded-md  items-center">
             اشتراک رایگان ایرانسلی
@@ -86,7 +94,7 @@ const UserProfile = ({ mobile, avatar, setIsLoggedIn }: { mobile: string; avatar
           <hr />
 
           <Link
-          onClick={()=>setIsShowMenu(false)}
+            onClick={() => setIsShowMenu(false)}
             href={"/user/edit-profile"}
             className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-4 mr-2 pb-2 justify-start items-center"
           >
@@ -94,7 +102,7 @@ const UserProfile = ({ mobile, avatar, setIsLoggedIn }: { mobile: string; avatar
             <span className="text-sm">خرید اشتراک</span>
           </Link>
           <Link
-          onClick={()=>setIsShowMenu(false)}
+            onClick={() => setIsShowMenu(false)}
             href={"/user/bookmarks"}
             className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
           >
@@ -102,7 +110,7 @@ const UserProfile = ({ mobile, avatar, setIsLoggedIn }: { mobile: string; avatar
             <span className="text-sm">نشان شده ها</span>
           </Link>
           <Link
-          onClick={()=>setIsShowMenu(false)}
+            onClick={() => setIsShowMenu(false)}
             href={"/user/history"}
             className="flex lg:hidden hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
           >
@@ -110,7 +118,7 @@ const UserProfile = ({ mobile, avatar, setIsLoggedIn }: { mobile: string; avatar
             <span className="text-sm">تاریخچه تماشا</span>
           </Link>
           <Link
-          onClick={()=>setIsShowMenu(false)}
+            onClick={() => setIsShowMenu(false)}
             href={"/user/edit-mobile"}
             className="flex lg:hidden hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
           >
@@ -118,7 +126,7 @@ const UserProfile = ({ mobile, avatar, setIsLoggedIn }: { mobile: string; avatar
             <span className="text-sm">تغییر شماره موبایل</span>
           </Link>
           <Link
-          onClick={()=>setIsShowMenu(false)}
+            onClick={() => setIsShowMenu(false)}
             href={"/user/edit-profile"}
             className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
           >
@@ -127,7 +135,7 @@ const UserProfile = ({ mobile, avatar, setIsLoggedIn }: { mobile: string; avatar
           </Link>
           <Link
             href={"/user/edit-profile"}
-            onClick={()=>setIsShowMenu(false)}
+            onClick={() => setIsShowMenu(false)}
             className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
           >
             <AccountIcon />
@@ -135,11 +143,10 @@ const UserProfile = ({ mobile, avatar, setIsLoggedIn }: { mobile: string; avatar
           </Link>
           <div
             onClick={() => {
-              localStorage.removeItem("user_token");
-              localStorage.removeItem("user_name");
+              Logout();
               router.push("/");
-              setIsShowMenu(false)
-              setIsLoggedIn(false)
+              setIsShowMenu(false);
+              setIsLoggedIn(false);
             }}
             className="flex gap-2 mt-3 hover:bg-[#434444] py-2 rounded-md px-3 cursor-pointer mr-2 justify-start items-center"
           >

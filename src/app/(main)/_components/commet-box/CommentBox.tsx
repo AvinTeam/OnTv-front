@@ -10,20 +10,19 @@ import { Button } from "@/app/_components/button";
 import Modal from "@/app/_components/modal/modal";
 import { useRouter } from "next/navigation";
 import CommentItem from "./CommentItem";
+import { useUserStore } from "@/stores/user.store";
 
 function CommentBox({ id, type }: { id: string; type: "episode" | "program" }) {
+  const user = useUserStore((store) => store.user);
   const router = useRouter();
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
-  const [isError, setIsError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
   const [comment, setComment] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [hasMore, setHasMore] = useState<boolean>(true);
   const [comments, setComments] = useState<Comment[]>([]);
-  const [errorMessage, setErrorMessage] = useState<string>("");
   const [comment_id, setComment_id] = useState<number | null>();
-  const [status, setStatus] = useState();
   const [replyTo, setReplyTo] = useState<string | null>(null);
   const [loadingComment, setLoadingComment] = useState<boolean>(false);
   const targetRef = useRef<any>(null);
@@ -45,13 +44,9 @@ function CommentBox({ id, type }: { id: string; type: "episode" | "program" }) {
       });
   };
 
-  const isLoggedIn = () => {
-    const token = localStorage.getItem("user_token");
-    return !token;
-  };
   const handleSubmit = () => {
     setLoadingComment(true);
-    if (isLoggedIn()) {
+    if (!user) {
       setOpen(true);
       return;
     }
@@ -60,22 +55,14 @@ function CommentBox({ id, type }: { id: string; type: "episode" | "program" }) {
       ...(comment_id ? { parent_id: comment_id } : {}),
     };
     setIsSuccess(false);
-    setIsError(false);
     axios
       .post(`${API_URL}${type}/storeComment/${id}`, params)
-      .then(({ data }) => {
+      .then(() => {
         setIsSuccess(true);
-        show_toast({ text: data?.message, type: "success" });
         setLoadingComment(false);
         setComment("");
         setComment_id(null);
         setReplyTo(null);
-      })
-      .catch((error) => {
-        setIsError(true);
-        setLoadingComment(false);
-        setStatus(error?.response?.status);
-        setErrorMessage(error?.response?.data?.message);
       });
   };
   const handleReply = (name: string) => {
@@ -132,9 +119,7 @@ function CommentBox({ id, type }: { id: string; type: "episode" | "program" }) {
         {isSuccess && (
           <Toast message="نظر شما با موفقیت ثبت شد" type="success" />
         )}
-        {isError && (
-          <Toast message={errorMessage} type="error" statusCode={status} />
-        )}
+
         <h3 className="text-md text-white pb-0">دیدگاه بینندگان</h3>
         <div className="relative h-[80px] px-2 md:h-[100px] flex items-center justify-start gap-2 rounded-md w-full">
           <figure className="bg-[#f4511e] h-8 w-8  rounded-full flex justify-center items-center">

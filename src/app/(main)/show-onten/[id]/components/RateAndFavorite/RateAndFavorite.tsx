@@ -3,26 +3,24 @@ import { Button } from "@/app/_components/button";
 import BadgeIcon from "@/app/_components/icons/Badge";
 import StarIcon from "@/app/_components/icons/Star";
 import Modal from "@/app/_components/modal/modal";
-import Toast from "@/app/_components/Tost/Tost";
 import { API_URL } from "@/configs/global";
 import axios from "@/core/axios";
+import { useUserStore } from "@/stores/user.store";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 function RateAndFavorite({ programId }: { programId: string }) {
+  const user = useUserStore((store) => store?.user);
   const router = useRouter();
   const [refreshData, setRefreshData] = useState<boolean>(false);
   const [allData, setAllData] = useState<any>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [status, setStatus] = useState<any>();
-  const [isError, setIsError] = useState<boolean>(false);
   const [isAdded, setIsAdded] = useState<boolean>(false);
   const [userRating, setUserRating] = useState<number | null>(null);
   const [open, setOpen] = useState<boolean>(false);
 
   const handelAddFavorite = () => {
-    setStatus(null);
-    if (!isLoggedIn()) {
+    if (!user) {
       setOpen(true);
       return;
     }
@@ -32,31 +30,18 @@ function RateAndFavorite({ programId }: { programId: string }) {
       .then(() => {
         setIsLoading(false);
         setIsAdded(isAdded ? false : true);
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        setStatus(error?.response?.status);
-        setIsError(true);
       });
   };
-  const isLoggedIn = () => {
-    const token = localStorage.getItem("user_token");
-    return !!token;
-  };
+
   const handleStarClick = (rating: number) => {
-    setStatus(null);
-    if (!isLoggedIn()) {
+    if (!user) {
       setOpen(true);
       return;
     }
-     axios
+    axios
       .post(`program/storeScore/${programId}`, { score: rating })
       .then(() => {
         setRefreshData((prev) => !prev);
-      })
-      .catch((error: any) => {
-        setStatus(error?.response?.status);
-        setIsError(true);
       });
   };
 
@@ -74,10 +59,11 @@ function RateAndFavorite({ programId }: { programId: string }) {
 
   return (
     <>
-      {isError && <Toast message={""} type="error" statusCode={status} />}
       <Modal open={open} onClose={() => setOpen(false)}>
         <>
-          <div className="mt-2 w-[300px] text-center">لطفا ابتدا در سایت ثبت نام کنید</div>
+          <div className="mt-2 w-[300px] text-center">
+            لطفا ابتدا در سایت ثبت نام کنید
+          </div>
           <Button
             className=" mt-4 bg-primary py-2 text-white"
             onClick={() => router.push("/signin")}

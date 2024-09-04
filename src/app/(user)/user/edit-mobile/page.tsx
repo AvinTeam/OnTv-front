@@ -1,10 +1,13 @@
 "use client";
-import React, { useLayoutEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "@/core/axios";
 import { Button } from "@/app/_components/button";
 import { show_toast } from "@/utils/functions";
+import { useUserStore } from "@/stores/user.store";
 export default function EditMobile() {
-  const [userId, setUserId] = useState<string | null>(null);
+  const user = useUserStore((store) => store.user);
+  const addUser = useUserStore((store) => store.addUser);
+
   const [mobile, setMobile] = useState<string | null>(null);
   const [verifyCode, setVerifyCode] = useState<string | null>(null);
   const [isSuccessMobile, setIsSuccessMobile] = useState<boolean>(false);
@@ -17,7 +20,9 @@ export default function EditMobile() {
         ? { mobile: mobile }
         : { input: mobile, code: verifyCode }),
     };
-    const url = isSuccessMobile ? `profile/${userId}/change/verify` : `profile/${userId}/change`
+    const url = isSuccessMobile
+      ? `profile/${user?.id}/change/verify`
+      : `profile/${user?.id}/change`;
     axios
       .post(url, params)
       .then(({ data }) => {
@@ -25,6 +30,8 @@ export default function EditMobile() {
         if (data?.success) setIsSuccessMobile(true);
         setLoading(false);
         if (isSuccessMobile) {
+          console.log(data)
+          addUser(data?.user)
           setMobile(null);
           setVerifyCode(null);
         }
@@ -33,14 +40,6 @@ export default function EditMobile() {
         setLoading(false);
       });
   };
-
-  useLayoutEffect(() => {
-    const userData = localStorage.getItem("user_name");
-    const parsedData = userData ? JSON.parse(userData) : null;
-
-    setUserId(parsedData?.id);
-    if (!userId) return;
-  }, [userId]);
 
   return (
     <div className=" h-full p-4 flex flex-col gap-3 justify-center items-center w-screen md:w-full overflow-hidden ">

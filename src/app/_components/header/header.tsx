@@ -12,8 +12,6 @@ import {
   HomeIcon,
   SearchIcon,
 } from "../icons";
-import axios from "../../../core/axios";
-
 const bg_color_first: string =
   "linear-gradient(180deg,hsla(0,0%,5%,.4),hsla(0,0%,5%,.4) .41%,hsla(0,0%,5%,.399) .9%,hsla(0,0%,5%,.396) 1.64%,hsla(0,0%,5%,.391) 2.84%,hsla(0,0%,5%,.383) 4.68%,hsla(0,0%,5%,.372) 7.35%,hsla(0,0%,5%,.356) 11.04%,hsla(0,0%,5%,.336) 15.94%,hsla(0,0%,5%,.31) 22.23%,hsla(0,0%,5%,.278) 30.12%,hsla(0,0%,5%,.238) 39.78%,hsla(0,0%,5%,.192) 51.41%,hsla(0,0%,5%,.137) 65.2%,hsla(0,0%,5%,.073) 81.33%,hsla(0,0%,5%,0))";
 const bg_color_second: string = "hsla(0,0%,5%,.75)";
@@ -23,9 +21,7 @@ export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState("");
-  const [avatar, setAvatar] = useState<string>("");
-
+ 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -43,45 +39,18 @@ export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
   }, []);
 
   useLayoutEffect(() => {
-    const token = localStorage.getItem("user_token");
-    const userData = localStorage.getItem("user_name");
+    const token = localStorage.getItem("onTv_user_token");
+    const userData = localStorage.getItem("onTv_user_data");
     const parsedData = userData ? JSON.parse(userData) : null;
 
     if (token && parsedData) {
-      setAvatar(
-        parsedData?.avatar?.[0]?.thumbnail?.url
-          ? parsedData.avatar[0].thumbnail.url
-          : parsedData.avatar
-          ? parsedData.avatar
-          : "/images/avatar/avatar.jpg"
-      );
-      setIsLoggedIn(true);
-      setUsername(parsedData.mobile);
-      getUserInfo();
-    } else {
+       setIsLoggedIn(true);
+     } else {
       if (window.location.pathname.startsWith("/user")) {
         router.push("/");
       }
     }
   }, [router]);
-
-  const getUserInfo = () => {
-    const userData = localStorage.getItem("user_name");
-    const parsedData = userData ? JSON.parse(userData) : null;
-    axios
-      .get(`profile/${parsedData?.id}`)
-      .then(({ data }) => {
-        localStorage.setItem("user_name", JSON.stringify(data.user));
-        setAvatar(
-          parsedData?.avatar[0]?.thumbnail?.url
-            ? parsedData?.avatar[0]?.thumbnail?.url
-            : parsedData?.avatar
-            ? parsedData?.avatar
-            : "/images/avatar/avatar.jpg"
-        );
-      })
-      .catch(() => {});
-  };
 
   return (
     <header
@@ -121,7 +90,7 @@ export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
           <div className="group block lg:hidden ml-4">
             {isLoggedIn ? (
               <>
-                <UserProfile mobile={username} avatar={avatar} setIsLoggedIn={setIsLoggedIn} />
+                <UserProfile setIsLoggedIn={setIsLoggedIn} />
               </>
             ) : (
               <Link
@@ -284,7 +253,7 @@ export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
           <div className="group">
             {isLoggedIn ? (
               <>
-                <UserProfile mobile={username} avatar={avatar} setIsLoggedIn={setIsLoggedIn}/>
+                <UserProfile setIsLoggedIn={setIsLoggedIn}/>
               </>
             ) : (
               <Link

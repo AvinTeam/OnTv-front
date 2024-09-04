@@ -7,8 +7,10 @@ import { Comment } from "./comment.type";
 import Modal from "@/app/_components/modal/modal";
 import { Button } from "@/app/_components/button";
 import { useRouter } from "next/navigation";
+import { useUserStore } from "@/stores/user.store";
 
 function LikeAndDisLike({ item }: { item: Comment }) {
+  const user = useUserStore((store) => store.user);
   const router = useRouter();
   const [likeStatus, setLikeStatus] = useState(0); // 0: not voted, 1: liked, -1: disliked
   const [likesCount, setLikesCount] = useState(item.likes_count);
@@ -16,18 +18,13 @@ function LikeAndDisLike({ item }: { item: Comment }) {
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [open, setOpen] = useState<boolean>(false);
-  const [status, setStatus] = useState(0);
-  const isLoggedIn = () => {
-    const token = localStorage.getItem("user_token");
-    return !!token;
-  };
+
   const handleVote = (id: number, vote: number) => {
-    if (!isLoggedIn()) {
+    if (!user) {
       setOpen(true);
       return;
     }
     setErrorMessage("");
-    setStatus(0);
     axios
       .post(`${API_URL}comment/likes`, { comment_id: id, vote: vote })
       .then(({ data }) => {
@@ -55,13 +52,7 @@ function LikeAndDisLike({ item }: { item: Comment }) {
         } else {
           setIsError(true);
           setErrorMessage(data.message);
-          setStatus(400);
         }
-      })
-      .catch((error) => {
-        setIsError(true);
-        console.log(error.response);
-        setErrorMessage(error.response?.data?.message);
       });
   };
 

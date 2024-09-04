@@ -1,14 +1,13 @@
 "use client";
 import React, { useEffect } from "react";
 import { storeHistory } from "../_api/get-all-data";
+import { useUserStore } from "@/stores/user.store";
 
 function StoreHistory({ id }: { id: string }) {
-  const isLoggedIn = () => {
-    const token = localStorage.getItem("user_token");
-    return !!token;
-  };
+  const user = useUserStore((store) => store.user);
+
   useEffect(() => {
-    if (!isLoggedIn()) return;
+    if (!user) return;
     storeHistory(id);
   }, [id]);
   return <></>;
