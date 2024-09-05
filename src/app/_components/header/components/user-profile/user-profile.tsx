@@ -69,14 +69,14 @@ const UserProfile = ({
           isShowMenu ? "flex" : "hidden"
         } mt-3 w-64 h-[480px] -left-3 p-2 z-[1000] rounded-md absolute bg-base-70 shadow-xl`}
       >
-        <div className="group-hover:flex overflow-hidden [&>*]:transition-all flex-col ">
+        <div className="group-hover:flex [&>*]:text-[#e4e4e4] overflow-hidden [&>*]:transition-all flex-col ">
           <div className="flex flex-col gap-3 mt-3 text-center text-sm">
             {user?.mobile}
           </div>
-          <div className="w-full text-xs h-8 flex py-4 mt-2 justify-center bg-[#434444] text-primary rounded-md  items-center">
+          <div style={{color: "#3899a0"}} className="w-full text-xs h-8 flex py-4 mt-2 justify-center bg-[#434444] rounded-md  items-center">
             اشتراک رایگان ایرانسلی
           </div>
-          <p className="text-[11px] mt-4 mb-4">
+          <p className="text-[11px] mt-4 mb-4 text-center">
             در حال حاضر حساب کاربری شما بصورت رایگان فعال شده است
           </p>
           <hr />

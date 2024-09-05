@@ -14,8 +14,8 @@ export default async function AllProgram({
   });
   return (
     <div className="bg-[black]">
-      <div className="container mb-6 mt-5 flex flex-col shadow-xl p-4 w-screen overflow-auto ">
-        <p>{(slug === 'all' ? tag : slug).replaceAll('-', ' ')}</p>
+      <div className="container mb-10 mt-5 flex flex-col shadow-xl p-4 w-screen overflow-auto ">
+        <p className="text-primary">{(slug === 'all' ? tag : slug).replaceAll('-', ' ')}</p>
         <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-8 gap-2 md:gap-1.5 lg:gap-4 w-full h-full mt-4">
           {(programs?.programs?.data ?? []).length == 0
 

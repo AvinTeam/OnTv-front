@@ -28,7 +28,7 @@ function Bookmarks() {
   }
   return (
     <div className="w-full h-full flex flex-col justify-start items-start py-14 px-5 md:px-16">
-      <div className="bg-[#292929] w-full h-20 rounded-lg flex justify-center items-center text-white">
+      <div className="bg-[#292929] w-full h-20 rounded-lg flex justify-center items-center text-[#3899a0]">
         لیست نشان شده ها
       </div>
       <div className="w-full h-full ">

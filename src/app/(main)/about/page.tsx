@@ -44,7 +44,7 @@ export default function About() {
                 </div>
                 <div className="w-full gap-3 mt-2 px-1 md:px-3 h-full flex flex-col justify-center items-center">
                   <div className="w-full flex justify-between">
-                    <p className="text-[0.8rem] md:text-[0.9rem]">
+                    <p className="text-[0.8rem] md:text-[0.9rem] text-[#e3e3e3]">
                       پیشنهادات و انتقادات
                     </p>
                     <p className="text-[0.8rem] md:text-[0.9rem] text-[#e3e3e3] font-light">
@@ -52,7 +52,7 @@ export default function About() {
                     </p>
                   </div>
                   <div className="w-full flex justify-between">
-                    <p className="text-[0.8rem] md:text-[0.9rem]">
+                    <p className="text-[0.8rem] md:text-[0.9rem] text-[#e3e3e3]">
                       {" "}
                       پشتیبانی سایت{" "}
                     </p>
@@ -61,7 +61,7 @@ export default function About() {
                     </p>
                   </div>
                   <div className="w-full flex justify-between">
-                    <p className="text-[0.8rem] md:text-[0.9rem]">
+                    <p className="text-[0.8rem] md:text-[0.9rem] text-[#e3e3e3]">
                       {" "}
                       پیگیری پرداخت‌ها{" "}
                     </p>
@@ -76,7 +76,7 @@ export default function About() {
                   <div className="w-12 mb-4 h-12 flex justify-center items-center rounded-full bg-[#3a3a3a]">
                     <PhoneIcon width={22} height={22} fill="gray" />
                   </div>
-                  <p className="text-[#e3e3e3] cursor-pointer hovexr:text-primary transition-all">
+                  <p className="text-[#e3e3e3] cursor-pointer hover:text-primary transition-all">
                     021-74524
                   </p>
                 </div>

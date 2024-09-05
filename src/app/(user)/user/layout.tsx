@@ -16,15 +16,15 @@ export default async function UserLayout({
   const headerMenueItems = await gatAllMenu("header");
 
   return (
-    <>
-      <Header headerMenueItems={headerMenueItems?.menus} />
-      <div className="flex bg-[#000] min-h-screen">
+    <div className="w-full min-h-screen">
+       <Header headerMenueItems={headerMenueItems?.menus} />
+       <div className="container h-full flex">
         <Sidebar />
-        <main className="flex justify-center items-center flex-1 ">
+        <main className="flex w-full h-auto justify-center items-center ">
           {children}
         </main>
         <ToastContainer />
       </div>
-    </>
+    </div>
   );
 }

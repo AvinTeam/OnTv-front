@@ -15,7 +15,7 @@ const Sidebar: React.FC = () => {
   const router = useRouter();
 
   return (
-    <aside className="hidden lg:block bg-base-70 w-72 mt-4 rounded-lg mr-7 h-[605px] p-4 self-stretch">
+    <aside className="hidden lg:block bg-[#242323] w-72 mt-4 rounded-lg mr-7 h-auto p-4 self-stretch">
       <div className="flex flex-col gap-4 h-[80%] select-none">
         <ul className="flex flex-col gap-4 text-sm justify-center items-center">
           <div className="w-14 overflow-hidden h-14 bg-[gray] flex justify-center items-center rounded-full">
@@ -31,7 +31,7 @@ const Sidebar: React.FC = () => {
               <ProfileIcon width={"60px"} height={"60px"} />
             )}
           </div>
-          <p className="text-sm text-[#6d6d6d]">{user?.mobile}</p>
+          <p className="text-sm text-[#3899a0]">{user?.mobile}</p>
           <hr className="w-full border-[#4b4a4a]" />
           {menuItems.map((item: any) => (
             <li
@@ -40,7 +40,7 @@ const Sidebar: React.FC = () => {
             >
               <Link
                 href={item.href}
-                className="h-full flex w-full items-center p-3 hover:bg-[#434444] rounded-md gap-2"
+                className="h-full flex text-[#e4e4e4] w-full items-center p-3 hover:bg-[#434444] rounded-md gap-2"
               >
                 <item.icon width={16} height={16} />
                 {item.text}
@@ -55,7 +55,7 @@ const Sidebar: React.FC = () => {
               Logout();
               router.push("/");
             }}
-            className="h-full flex w-full text-xs items-center p-3 hover:bg-[#434444] rounded-md gap-2"
+            className="h-full text-[#e4e4e4] flex w-full text-xs items-center p-3 hover:bg-[#434444] rounded-md gap-2"
           >
             <LogoutIcon />
             <p> خروج از حساب کاربری</p>{" "}
