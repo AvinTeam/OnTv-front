@@ -24,6 +24,9 @@ import EmptyBookmarkIcon from "./EmptyBookmark";
 import ErrorStatusIcon from "./ErrorStataus";
 import SuccessStatusIcon from "./SuccessStatus";
 import SendIcon from "./Send";
+import HelpIcon from "./Help";
+import SmsIcon from "./Sms";
+import PhoneIcon from "./Phone";
 export {
   AparatIcon,
   ArrowTopIcon,
@@ -51,4 +54,7 @@ export {
   ErrorStatusIcon,
   SuccessStatusIcon,
   SendIcon,
+  HelpIcon,
+  SmsIcon,
+  PhoneIcon
 };
