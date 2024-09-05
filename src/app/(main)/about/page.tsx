@@ -12,9 +12,9 @@ import enamadD from "../../../../public/images/samandehi.png";
 export default function About() {
   return (
     <>
-      <div className="bg-[black] flex justify-between mb-14 flex-col">
-        <div className="w-full lg:h-[130vh] xl:h-[127vh] bg-[#3a3a3a] pt-8 pb-10 flex justify-center items-center">
-          <div className="max-w-[770px] h-full">
+      <div className="bg-[black] justify-start mb-14 ">
+        <div className=" bg-[#3a3a3a] pt-8 pb-10 flex justify-center items-center">
+          <div className="w-full lg:max-w-[767px] h-full">
             <div className="flex justify-center items-center flex-col px-1">
               <p className="text-[#e3e3e3] mt-3 text-[0.8rem] md:text-[1rem]">
                 پاسخ سوال خود را پیدا نکرده‌اید؟
@@ -106,12 +106,12 @@ export default function About() {
                 </div>
               </div>
             </div>
-            <div className="w-[96%] md:w-full mx-auto flex flex-col md:flex-row justify-between p-4 mt-4 items-center bg-[#282828] rounded-[4px]">
+            <div className="w-[96%] lg:w-full mx-auto flex flex-col md:flex-row justify-between p-4 mt-4 items-center bg-[#282828] rounded-[4px]">
               <div className="flex flex-col justify-center items-center md:justify-start md:items-start gap-4">
                 <p className="font-bold text-[#e3e3e3]">
                   درخواست اشتراک سازمانی ON
                 </p>
-                <p className="text-[#e3e3e3] font-light mb-4 md:mb-0">
+                <p className="text-[#e3e3e3] text-center font-light mb-4 md:mb-0">
                   کارکنان، مشتریان و شرکای تجاریتون رو سوپرایز کنید!
                 </p>
               </div>
@@ -123,7 +123,7 @@ export default function About() {
             </div>
           </div>
         </div>
-        <div className="w-full h-[160px] flex flex-col justify-around items-center content-center py-6 bg-[#606060]">
+        <div className=" h-[160px] flex flex-col justify-around items-center content-center py-6 bg-[#606060]">
           <p className="text-white -mt-2 text-xs font-light">
             دیگر سرویس‌های صباایده (شرکت فناوران ایده پرداز صبا)
           </p>
