@@ -13,7 +13,7 @@ export default function About() {
   return (
     <>
       <div className="bg-[black] flex justify-between mb-14 flex-col">
-        <div className="w-full lg:h-[130vh] xl:h-[125vh] bg-[#3a3a3a] pt-8 pb-10 flex justify-center items-center">
+        <div className="w-full lg:h-[130vh] xl:h-[127vh] bg-[#3a3a3a] pt-8 pb-10 flex justify-center items-center">
           <div className="max-w-[770px] h-full">
             <div className="flex justify-center items-center flex-col px-1">
               <p className="text-[#e3e3e3] mt-3 text-[0.8rem] md:text-[1rem]">
@@ -24,32 +24,31 @@ export default function About() {
               </p>
               <div className="bg-primary w-[60%] md:w-[40%] gap-1.5 h-[36px] flex justify-center items-center mt-4 rounded-3xl text-xs text-[#151515]">
                 <HelpIcon width={15} height={15} />
-                <p>راهنمای آنلاین آن</p>
+                <p>راهنمای آنلاین ON</p>
               </div>
               <p className="mt-8 text-[#e3e3e3] text-[1rem]">تماس با ما</p>
               <p className="mt-3 text-center text-[#e3e3e3] text-[0.9rem] md:text-[1.1rem]">
-                با ارسال ایمیل به بخش مورد نظر خود می‌توانید با فیلیمو در تماس
-                باشید
+                با ارسال ایمیل به بخش مورد نظر خود می‌توانید با ON در تماس باشید
               </p>
             </div>
-            <div className="w-full flex flex-col lg:flex-row mt-3 [&>*]:flex [&>*]:flex-col [&>*]:items-center [&>*]:justify-center [&>*]:bg-[#282828] [&>*]:py-3 [&>*]:px-3 gap-4 [&>*]:rounded-[4px]">
+            <div className="w-full flex flex-col lg:flex-row mt-3 [&>*]:flex [&>*]:flex-col [&>*]:items-center [&>*]:justify-center [&>*]:bg-[#282828] [&>*]:py-3 [&>*]:px-3 gap-2 md:gap-4 [&>*]:rounded-[4px]">
               <div className="w-[96%] lg:w-[55%] mx-auto">
                 <div className="flex w-full flex-col justify-center items-center">
                   <div className="w-12 mb-3 h-12 flex justify-center items-center rounded-full bg-[#3a3a3a]">
                     <SmsIcon width={22} height={22} fill="gray" />
                   </div>
                   <p className="text-[12px] text-center mt-1 text-[#a1a1a1]">
-                    با ارسال ایمیل به بخش مورد نظر خود می‌توانید با فیلیمو در
-                    تماس باشید.
+                    با ارسال ایمیل به بخش مورد نظر خود می‌توانید با ON در تماس
+                    باشید.
                   </p>
                 </div>
-                <div className="w-full gap-3 mt-2 px-3 h-full flex flex-col justify-center items-center">
+                <div className="w-full gap-3 mt-2 px-1 md:px-3 h-full flex flex-col justify-center items-center">
                   <div className="w-full flex justify-between">
                     <p className="text-[0.8rem] md:text-[0.9rem]">
                       پیشنهادات و انتقادات
                     </p>
                     <p className="text-[0.8rem] md:text-[0.9rem] text-[#e3e3e3] font-light">
-                      info [at] filimo [dot] com
+                      info [at] ON [dot] com
                     </p>
                   </div>
                   <div className="w-full flex justify-between">
@@ -58,7 +57,7 @@ export default function About() {
                       پشتیبانی سایت{" "}
                     </p>
                     <p className="text-[0.8rem] md:text-[0.9rem] text-[#e3e3e3] font-light">
-                      support [at] filimo [dot] com
+                      support [at] ON [dot] com
                     </p>
                   </div>
                   <div className="w-full flex justify-between">
@@ -67,7 +66,7 @@ export default function About() {
                       پیگیری پرداخت‌ها{" "}
                     </p>
                     <p className="text-[0.8rem] md:text-[0.9rem] text-[#e3e3e3] font-light">
-                      info [at] filimo [dot] com
+                      info [at] ON [dot] com
                     </p>
                   </div>
                 </div>
@@ -107,10 +106,10 @@ export default function About() {
                 </div>
               </div>
             </div>
-            <div className="w-[96%] mx-auto flex flex-col md:flex-row justify-between p-4 mt-4 items-center bg-[#282828] rounded-[4px]">
-              <div className="flex flex-col justify-center items-center gap-4">
+            <div className="w-[96%] md:w-full mx-auto flex flex-col md:flex-row justify-between p-4 mt-4 items-center bg-[#282828] rounded-[4px]">
+              <div className="flex flex-col justify-center items-center md:justify-start md:items-start gap-4">
                 <p className="font-bold text-[#e3e3e3]">
-                  درخواست اشتراک سازمانی آن
+                  درخواست اشتراک سازمانی ON
                 </p>
                 <p className="text-[#e3e3e3] font-light mb-4 md:mb-0">
                   کارکنان، مشتریان و شرکای تجاریتون رو سوپرایز کنید!
