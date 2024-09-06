@@ -1,5 +1,16 @@
-import React from "react";
+"use client"
+import axios from "@/core/axios";
+import React, { useEffect, useState } from "react";
 function page() {
+  const [invoices, setInvoices] = useState<any[]>();
+  const getPeyments = () => {
+    axios(`user/getUserInvoices`).then(({ data }) => {
+      console.log(data);
+    });
+  };
+  useEffect(() => {
+    getPeyments();
+  }, []);
   return (
     <div className="w-full h-full pt-6 px-1 [&>*]:text-[#959595]">
       <div

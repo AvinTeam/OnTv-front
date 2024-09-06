@@ -16,7 +16,7 @@ export interface MenuItem {
 
 export const menuItems: MenuItem[] = [
   {
-    href: "/user/history",
+    href: "/user/packages",
     text: "خرید اشتراک",
     icon: BuySubscriptionIcon,
   },

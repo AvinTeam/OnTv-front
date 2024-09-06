@@ -95,7 +95,7 @@ const UserProfile = ({
 
           <Link
             onClick={() => setIsShowMenu(false)}
-            href={"/user/edit-profile"}
+            href={"/user/packages"}
             className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-4 mr-2 pb-2 justify-start items-center"
           >
             <BuySubscriptionIcon />
