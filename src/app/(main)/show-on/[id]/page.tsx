@@ -36,7 +36,7 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
               <div className="flex flex-col lg:col-span-9 ">
                 <div
                   style={{
-                    background: `linear-gradient(to left,${publicShow?.Episode?.program?.color} , #221D1F)`,
+                    background: `linear-gradient(to left,${publicShow?.Episode?.program?.color} -60%, #00000000 100%)`,
                   }}
                   className="flex flex-col gap-3 lg:gap-0 pb-4 md:pb-10 lg:pb-0 bg-gradient-to-l to-100%"
                 >
