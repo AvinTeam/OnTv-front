@@ -125,7 +125,7 @@ export default function About() {
         </div>
         <div className=" h-[160px] flex flex-col justify-around items-center content-center py-6 bg-[#606060]">
           <p className="text-white -mt-2 text-xs font-light">
-            دیگر سرویس‌های صباایده (شرکت فناوران ایده پرداز صبا)
+            نشان های دریافت شده آن
           </p>
           <div className="flex gap-2 -mt-4 justify-center items-center">
             <div>
