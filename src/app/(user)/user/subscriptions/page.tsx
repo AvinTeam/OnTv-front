@@ -1,7 +1,20 @@
 "use client";
 import axios from "@/core/axios";
 import React, { useEffect, useState } from "react";
-
+const getSubscriptionDuration = (days: number) => {
+  if (days <= 31) return "1 ماهه";
+  if (days <= 62) return "2 ماهه";
+  if (days <= 93) return "3 ماهه";
+  if (days <= 124) return "4 ماهه";
+  if (days <= 155) return "5 ماهه";
+  if (days <= 186) return "6 ماهه";
+  if (days <= 217) return "7 ماهه";
+  if (days <= 248) return "8 ماهه";
+  if (days <= 279) return "9 ماهه";
+  if (days <= 310) return "10 ماهه";
+  if (days <= 341) return "11 ماهه";
+  return "12 ماهه یا بیشتر";
+};
 function Subscriptions() {
   const [invoices, setInvoices] = useState<any[]>();
   const getPeyments = () => {
@@ -9,21 +22,6 @@ function Subscriptions() {
       setInvoices(data?.invoices?.data);
     });
   };
-  const getSubscriptionDuration = (days: number) => {
-    if (days <= 31) return "1 ماهه";
-    if (days <= 62) return "2 ماهه";
-    if (days <= 93) return "3 ماهه";
-    if (days <= 124) return "4 ماهه";
-    if (days <= 155) return "5 ماهه";
-    if (days <= 186) return "6 ماهه";
-    if (days <= 217) return "7 ماهه";
-    if (days <= 248) return "8 ماهه";
-    if (days <= 279) return "9 ماهه";
-    if (days <= 310) return "10 ماهه";
-    if (days <= 341) return "11 ماهه";
-    return "12 ماهه یا بیشتر";
-  };
-  
   useEffect(() => {
     getPeyments();
   }, []);
@@ -122,7 +120,11 @@ function Subscriptions() {
                   style={{ borderLeft: "2px solid #282828" }}
                 >
                   <span className="font-bold text-green-600">
-                    {item?.status}
+                    {item?.status == "failed"
+                      ? "پرداخت ناموفق"
+                        ? item?.status == "success"
+                        : "پرداخت موفق"
+                      : " درانتظار عملیات"}
                   </span>
                 </div>
                 <div

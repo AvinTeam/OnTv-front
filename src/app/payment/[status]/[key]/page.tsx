@@ -1,20 +1,18 @@
+"use client";
 import axios from "@/core/axios";
 import { CloseIcon } from "@/app/_components/icons";
 import Link from "next/link";
-const getPeymentDetails = (key: string) => {
-  axios(`user/getUserInvoices?tracking_code=${key}`).then(
-    ({data}) => {
-       return data
-    }
-  );
-};
-async function Payment({
-  params,
-}: {
-  params: { status: string; key: string };
-}) {
-  const paymentData: any = await getPeymentDetails(params?.key?.split(".")?.[0]);
+import { useEffect, useState } from "react";
 
+function Payment({ params }: { params: { status: string; key: string } }) {
+  const [paymentData, setPaymentData] = useState<any>();
+  useEffect(() => {
+    axios(`user/getUserInvoices?tracking_code=${params?.key?.split(".")?.[0]}`).then(
+      ({ data }) => {
+        setPaymentData(data?.invoices?.data?.[0]);
+      }
+    );
+  }, [params]);
   return (
     <div className="bg-[#2e2840] w-full min-h-screen text-white flex justify-center items-center">
       {params?.status == "success" ? (
@@ -29,11 +27,13 @@ async function Payment({
             <h2 className="font-semibold ">پرداخت شما با موفقیت انجام شد</h2>
             <div className="flex justify-between mt-8 [&>*]:text-sm [&>*]:text-[#818181]">
               <p> نوع خرید: </p>
-              <p className="font-light">   {`اشتراک ${paymentData?.data?.decription || "--"}`} </p>
+              <p className="font-light">
+                {paymentData?.description}
+              </p>
             </div>
             <div className="flex justify-between mt-3 [&>*]:text-sm [&>*]:text-[#818181]">
               <p> مبلغ خرید : </p>
-              <p className="font-light">{paymentData?.data?.price || "--"}</p>
+              <p className="font-light">{paymentData?.price || "--"}</p>
             </div>
             <div className="flex justify-between mt-3 [&>*]:text-sm [&>*]:text-[#818181]">
               <p> کد رهگیری : </p>

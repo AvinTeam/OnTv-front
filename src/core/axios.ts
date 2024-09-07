@@ -2,6 +2,7 @@ import axios from "axios";
 import { GetMessagesError } from "./ErrorHandlerHttpCode";
 import { API_URL } from "@/configs/global";
 import { show_toast } from "@/utils/functions";
+import { useUserStore } from "@/stores/user.store";
 
 axios.defaults.baseURL = API_URL;
 axios.defaults.headers.common["Content-Type"] = "application/json";
@@ -26,8 +27,10 @@ axios.interceptors.response.use(
     return response;
   },
   function (error) {
-    if (error?.response?.status === 503) {
-      // store.dispatch({ type: "SET_UNAVAILABLE", data: true });
+    const { logout } = useUserStore.getState();
+    if (error?.response?.status === 401) {
+      logout();
+      location.href = "/"
     }
     const messages = GetMessagesError(error);
     if (messages?.length) {
