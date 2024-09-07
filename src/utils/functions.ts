@@ -81,3 +81,6 @@ export function truncate(text: string, maxLength: number) {
   }
   return text;
 }
+export function toLocaleNumber(number: string | number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+}

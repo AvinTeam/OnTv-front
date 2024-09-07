@@ -16,7 +16,7 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, title, children }) => {
       ></div>
       <div className="bg-[#212226] p-6 rounded-lg z-10 shadow-lg">
         <div className="flex justify-between pb-3  items-center">
-          <p className="text-sm">{title}</p>
+          <p className="text-sm text-[#B3BAC4]">{title}</p>
           <button onClick={onClose} className="text-white rounded">
             <CloseIcon fill="#6f7285" />
           </button>

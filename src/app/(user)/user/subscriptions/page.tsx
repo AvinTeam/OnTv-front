@@ -1,13 +1,29 @@
-"use client"
+"use client";
 import axios from "@/core/axios";
 import React, { useEffect, useState } from "react";
-function page() {
+
+function Subscriptions() {
   const [invoices, setInvoices] = useState<any[]>();
   const getPeyments = () => {
     axios(`user/getUserInvoices`).then(({ data }) => {
-      console.log(data);
+      setInvoices(data?.invoices?.data);
     });
   };
+  const getSubscriptionDuration = (days: number) => {
+    if (days <= 31) return "1 ماهه";
+    if (days <= 62) return "2 ماهه";
+    if (days <= 93) return "3 ماهه";
+    if (days <= 124) return "4 ماهه";
+    if (days <= 155) return "5 ماهه";
+    if (days <= 186) return "6 ماهه";
+    if (days <= 217) return "7 ماهه";
+    if (days <= 248) return "8 ماهه";
+    if (days <= 279) return "9 ماهه";
+    if (days <= 310) return "10 ماهه";
+    if (days <= 341) return "11 ماهه";
+    return "12 ماهه یا بیشتر";
+  };
+  
   useEffect(() => {
     getPeyments();
   }, []);
@@ -69,125 +85,77 @@ function page() {
             </div>
           </div>
 
-         
-          <div
-            className="grid grid-cols-8 gap-4 "
-            style={{ borderTop: "2px solid #282828" }}
-          >
-            <div
-              className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
-              style={{ borderLeft: "2px solid #282828" }}
-            >
-              <span className="text-gray-500 font-light">بسته اشتراکی</span>
-              <span className="font-bold">اشتراک 1 ماهه</span>
-            </div>
-            <div
-              className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
-              style={{ borderLeft: "2px solid #282828" }}
-            >
-              <span className="font-bold">۱۴۰۳/۶/۱۰</span>
-            </div>
-            <div
-              className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
-              style={{ borderLeft: "2px solid #282828" }}
-            >
-              <span className="font-bold">1,815,000</span>
-            </div>
-            <div
-              className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
-              style={{ borderLeft: "2px solid #282828" }}
-            >
-              <span className="font-bold text-green-600">فعال</span>
-            </div>
-            <div
-              className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
-              style={{ borderLeft: "2px solid #282828" }}
-            >
-              <span className="font-bold">۱۴۰۳/۷/۱۰</span>
-            </div>
-            <div
-              className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
-              style={{ borderLeft: "2px solid #282828" }}
-            >
-              <span className="font-bold">۱۴۰۳/۸/۱۱</span>
-            </div>
-            <div
-              className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
-              style={{ borderLeft: "2px solid #282828" }}
-            >
-              <span className="text-gray-500">---</span>
-              <span className="font-bold">---</span>
-            </div>
-            <div
-              className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
-              style={{ borderLeft: "2px solid #282828" }}
-            >
-              <span className="font-bold">---</span>
-            </div>
-          </div>
-         
-          <div
-            className="grid grid-cols-8 gap-4 "
-            style={{ borderTop: "2px solid #282828" }}
-          >
-            <div
-              className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
-              style={{ borderLeft: "2px solid #282828" }}
-            >
-              <span className="text-gray-500 font-light">بسته اشتراکی</span>
-              <span className="font-bold">اشتراک 1 ماهه</span>
-            </div>
-            <div
-              className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
-              style={{ borderLeft: "2px solid #282828" }}
-            >
-              <span className="font-bold">۱۴۰۳/۶/۱۰</span>
-            </div>
-            <div
-              className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
-              style={{ borderLeft: "2px solid #282828" }}
-            >
-              <span className="font-bold">1,815,000</span>
-            </div>
-            <div
-              className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
-              style={{ borderLeft: "2px solid #282828" }}
-            >
-              <span className="font-bold text-green-600">فعال</span>
-            </div>
-            <div
-              className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
-              style={{ borderLeft: "2px solid #282828" }}
-            >
-              <span className="font-bold">۱۴۰۳/۷/۱۰</span>
-            </div>
-            <div
-              className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
-              style={{ borderLeft: "2px solid #282828" }}
-            >
-              <span className="font-bold">۱۴۰۳/۸/۱۱</span>
-            </div>
-            <div
-              className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
-              style={{ borderLeft: "2px solid #282828" }}
-            >
-              <span className="text-gray-500">---</span>
-              <span className="font-bold">---</span>
-            </div>
-            <div
-              className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
-              style={{ borderLeft: "2px solid #282828" }}
-            >
-              <span className="font-bold">---</span>
-            </div>
-          </div>
-   
-           
-          
+          {invoices?.length &&
+            invoices?.map((item) => (
+              <div
+                key={item?.id}
+                className="grid grid-cols-8 gap-4 "
+                style={{ borderTop: "2px solid #282828" }}
+              >
+                <div
+                  className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
+                  style={{ borderLeft: "2px solid #282828" }}
+                >
+                  <span className="text-gray-500 font-light">بسته اشتراکی</span>
+                  <span className="font-bold">{` اشتراک ${getSubscriptionDuration(
+                    item?.period
+                  )}`}</span>
+                </div>
+                <div
+                  className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
+                  style={{ borderLeft: "2px solid #282828" }}
+                >
+                  <span className="font-bold">---</span>
+                </div>
+                <div
+                  className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
+                  style={{ borderLeft: "2px solid #282828" }}
+                >
+                  <span className="font-bold">
+                    {item?.price
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  </span>
+                </div>
+                <div
+                  className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
+                  style={{ borderLeft: "2px solid #282828" }}
+                >
+                  <span className="font-bold text-green-600">
+                    {item?.status}
+                  </span>
+                </div>
+                <div
+                  className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
+                  style={{ borderLeft: "2px solid #282828" }}
+                >
+                  <span className="font-bold">---</span>
+                </div>
+                <div
+                  className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
+                  style={{ borderLeft: "2px solid #282828" }}
+                >
+                  <span className="font-bold">---</span>
+                </div>
+                <div
+                  className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
+                  style={{ borderLeft: "2px solid #282828" }}
+                >
+                  <span className="text-gray-500">---</span>
+                  <span className="font-bold">---</span>
+                </div>
+                <div
+                  className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
+                  style={{ borderLeft: "2px solid #282828" }}
+                >
+                  <span className="font-bold">---</span>
+                </div>
+              </div>
+            ))}
         </div>
       </div>
     </div>
   );
 }
 
-export default page;
+export default Subscriptions;

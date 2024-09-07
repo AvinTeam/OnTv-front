@@ -6,11 +6,13 @@ import {
   ProfileIcon,
   ProfileManagementIcon,
   EditPasswordIcon,
+  ArrowIcon,
 } from "@/app/_components/icons";
 import LogoutIcon from "@/app/_components/icons/Logout";
 import SavedIcon from "@/app/_components/icons/Saved";
 import SettingIcon from "@/app/_components/icons/Setting";
 import { useUserStore } from "@/stores/user.store";
+import axios from "@/core/axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -22,13 +24,17 @@ const UserProfile = ({
   setIsLoggedIn: (item: boolean) => void;
 }) => {
   const user = useUserStore((store) => store.user);
+  const addUser = useUserStore((store) => store.addUser);
   const Logout = useUserStore((store) => store.logout);
-
   const router = useRouter();
   const [isShowMenu, setIsShowMenu] = useState(false);
   const imageRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
-
+  const getUserInfo = () => {
+    axios.get(`profile/${user?.id}`).then(({ data }) => {
+      addUser(data?.user);
+    });
+  };
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -46,6 +52,10 @@ const UserProfile = ({
       document.body.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+  useEffect(() => {
+    if (!user?.id) return;
+    getUserInfo();
+  }, [user?.id]);
 
   return (
     <div className="relative">
@@ -69,21 +79,40 @@ const UserProfile = ({
           isShowMenu ? "flex" : "hidden"
         } mt-3 w-64 h-[480px] -left-3 p-2 z-[1000] rounded-md absolute bg-base-70 shadow-xl`}
       >
-        <div className="group-hover:flex [&>*]:text-[#e4e4e4] overflow-hidden [&>*]:transition-all flex-col ">
-          <div className="flex flex-col gap-3 mt-3 text-center text-sm">
+        <div className="group-hover:flex w-full [&>*]:text-[#e4e4e4] overflow-hidden [&>*]:transition-all flex-col ">
+          <div className="flex w-full flex-col gap-3 mt-3 text-center text-sm">
             {user?.mobile}
           </div>
-          <div style={{color: "#3899a0"}} className="w-full text-xs h-8 flex py-4 mt-2 justify-center bg-[#434444] rounded-md  items-center">
-            اشتراک رایگان ایرانسلی
-          </div>
-          <p className="text-[11px] mt-4 mb-4 text-center">
-            در حال حاضر حساب کاربری شما بصورت رایگان فعال شده است
-          </p>
-          <hr />
+             <Link
+              href={"/user/packages"}
+              style={{ color: "#3899a0" }}
+              className="w-full mb-4 text-xs h-8 flex py-4 mt-2 justify-center border my-1 rounded-md items-center"
+            >
+              {user?.subscribe ? (
+                "تمدید اشتراک"
+              ) : (
+                <span className="flex gap-2 justify-center items-center">
+                  <p> خرید اشتراک</p>
+
+                  <ArrowIcon
+                    className="rotate-180"
+                    width={10}
+                    height={10}
+                    fill="#3899a0"
+                  />
+                </span>
+              )}
+            </Link>
+            <p className="text-[11px] mb-4 text-center">
+              {user?.subscribe
+                ? `${user?.subscribe} روز از اشتراک شما باقی مانده است`
+                : " در حال حاضر حساب کاربری شما بصورت رایگان فعال شده است"}
+            </p>
+           <hr />
 
           <Link
             href={"/user/edit-profile"}
-            className="flex mb-3 hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
+            className="flex mb-1.5 hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-1.5 mr-2 pb-2 justify-start items-center"
           >
             <ProfileIcon />
             <span className="text-sm">خودم</span>
