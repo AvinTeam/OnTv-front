@@ -17,14 +17,20 @@ function Packages() {
   const [id, setId] = useState<number | null>(null);
   const [planId, setPlanId] = useState<number | null>(null);
   const [open, setOpen] = useState<boolean>(false);
-
+  const openInNewTab = (url: string) => {
+    const a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.click();
+  };
   const user = useUserStore((store) => store.user);
   const handlePayment = () => {
     setLoadingData(true);
     axios
       .post(`plan/buyPlan/${id}`, { plan_id: planId })
       .then(({ data }) => {
-        window.open(data?.url);
+        openInNewTab(data?.url)
         setLoadingData(false);
       })
       .catch(() => setLoadingData(false));

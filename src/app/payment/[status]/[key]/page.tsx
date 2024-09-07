@@ -33,7 +33,7 @@ function Payment({ params }: { params: { status: string; key: string } }) {
             </div>
             <div className="flex justify-between mt-3 [&>*]:text-sm [&>*]:text-[#818181]">
               <p> مبلغ خرید : </p>
-              <p className="font-light">{paymentData?.price || "--"}</p>
+              <p className="font-light">{paymentData?.price_after_discount || "--"}</p>
             </div>
             <div className="flex justify-between mt-3 [&>*]:text-sm [&>*]:text-[#818181]">
               <p> کد رهگیری : </p>
@@ -41,7 +41,7 @@ function Payment({ params }: { params: { status: string; key: string } }) {
             </div>
             <div className="flex justify-between mt-3 [&>*]:text-sm [&>*]:text-[#818181]">
               <p> جزئیات پرداخت : </p>
-              <p>---</p>
+              <p>پرداخت موفق</p>
             </div>
           </div>
 
