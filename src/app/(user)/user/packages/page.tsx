@@ -133,7 +133,7 @@ function Packages() {
                 <div className="w-full  mt-1 flex justify-between">
                   <p className="text-[#c9c9c9] mr-6 text-sm">{item?.title}</p>
                   <p className="text-[#e9e9e9] text-xs bg-[#d42b50] py-1.5 px-3 rounded-md">
-                    {` تخفیف ${(item?.priceAfterDiscount / item.price) * 100}%`}
+                    {` تخفیف ${100 - ((item?.priceAfterDiscount / item.price) * 100)}%`}
                   </p>
                 </div>
                 <div className="w-full mb-1 flex justify-between items-end">
