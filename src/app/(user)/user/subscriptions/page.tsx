@@ -144,8 +144,8 @@ function Subscriptions() {
                   className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
                   style={{ borderLeft: "2px solid #282828" }}
                 >
-                  <span className="text-gray-500">---</span>
-                  <span className="font-bold">---</span>
+                  <span className="text-gray-500">{item?.gateway?.name ?? "---"}</span>
+                  <span className="font-bold">{item?.tracking_code ?? "---"}</span>
                 </div>
                 <div
                   className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
