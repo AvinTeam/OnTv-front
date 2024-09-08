@@ -13,7 +13,7 @@ export default async function ShowOnten({
 }: {
   params: { id: string };
 }) {
-  const initialData = await getAllEpisode({ id: "29", page: 1 });
+  const initialData = await getAllEpisode({ id: params.id.split(".")[0], page: 1 });
   if (!initialData) {
     notFound();
   }

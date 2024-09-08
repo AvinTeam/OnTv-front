@@ -65,6 +65,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-[#000]">
         <QueryProvider>{children}</QueryProvider>
+        <div id="modal-root"></div>
       </body>
     </html>
   );

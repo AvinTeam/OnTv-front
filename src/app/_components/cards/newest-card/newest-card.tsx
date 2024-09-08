@@ -1,25 +1,71 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NewestCardProps } from "./newest-card.types";
 import Image from "next/image";
-import Link from "next/link";
 import { truncate } from "@/utils/functions";
+import { useUserStore } from "@/stores/user.store";
+import { useRouter } from "next/navigation";
+import Modal from "../../modal/modal";
+import { Button } from "../../button";
 
 export const NewestCard: React.FC<NewestCardProps> = ({ data }) => {
+  const user = useUserStore((store) => store.user);
+  const router = useRouter();
+  const [open, setOpen] = useState<boolean>(false);
+  const [modalMessage, setModalMessage] = useState<string>("");
+  const handleCardClick = () => {
+    if(data?.program?.free_episodes >= data?.index){
+      router.push(`/show-on/${data?.id}`);
+      return
+    }
+    if (!user?.id && data?.program?.is_paid) {
+      setModalMessage("لطفا ابتدا در سایت ثبت نام کنید");
+      setOpen(true);
+    } else if (data?.program?.is_paid && !user?.subscribe) {
+      setModalMessage("برای مشاهده این محتوا باید اشتراک تهیه کنید");
+      setOpen(true);
+    } else {
+      router.push(`/show-on/${data?.id}`);
+    }
+  };
+
   return (
     <>
-      <Link
-        href={`/show-on/${data?.id}`}
+      <Modal open={open} onClose={() => setOpen(false)}>
+        <>
+          <div className="mt-2 mb-2 text-center w-[360px] text-[#e6e6e6]">
+            {modalMessage}
+          </div>
+          {!user?.id && (
+            <Button
+              className="mt-4 bg-primary py-2 text-white"
+              onClick={() => router.push("/signin")}
+            >
+              ثبت نام{" "}
+            </Button>
+          )}
+          {user?.id && !user?.subscribe && data?.program?.is_paid && (
+            <Button
+              className="mt-4 bg-primary py-2 text-white"
+              onClick={() => router.push("/user/packages")}
+            >
+              تهیه اشتراک{" "}
+            </Button>
+          )}
+        </>
+      </Modal>
+      <div
+        onClick={handleCardClick}
         key={data?.alt}
-        className="w-screen md:w-auto md:col-span-6 lg:col-span-3 overflow-auto mb-5 px-9 md:px-0"
+        className="w-screen relative md:w-auto cursor-pointer md:col-span-6 lg:col-span-3 overflow-auto mb-5 px-9 md:px-0"
       >
-        <div className="rounded-md overflow-auto h-[60%]">
+        <div className="rounded-md overflow-auto">
           <Image
             src={data?.poster?.[0]?.url}
             width={0}
             height={0}
             alt={data?.alt}
-            className="w-full h-full object-cover"
+            className="w-full max-h-[160px] object-cover"
           />
         </div>
         <div className="pb-[3px] h-[40%] flex justify-center items-center flex-col w-full">
@@ -41,7 +87,32 @@ export const NewestCard: React.FC<NewestCardProps> = ({ data }) => {
             </h3>
           </div>
         </div>
-      </Link>
+        {data?.program?.free_episodes >= data?.index ? (
+          <div
+            className="absolute top-0 overflow-hidden right-0 bg-primary px-3 py-1 z-50 text-white text-xs"
+            style={{
+              borderBottomLeftRadius: "10px",
+              borderTopRightRadius: "6px",
+              borderTopLeftRadius: "3px",
+              borderBottomRightRadius: "3px",
+            }}
+          >
+            رایگان
+          </div>
+        ) : !data?.program?.is_paid ? (
+          <div
+            className="absolute top-0 overflow-hidden right-0 bg-primary px-3 py-1 z-50 text-white text-xs"
+            style={{
+              borderBottomLeftRadius: "10px",
+              borderTopRightRadius: "6px",
+              borderTopLeftRadius: "3px",
+              borderBottomRightRadius: "3px",
+            }}
+          >
+            رایگان
+          </div>
+        ) : null}
+      </div>
     </>
   );
 };

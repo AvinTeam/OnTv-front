@@ -1,6 +1,9 @@
 "use client"
-import React from "react"
+import React, { useEffect } from "react"
 const Box  = (data: any) => {
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  })
  const { name, family, position } = data?.data
   return (
     <div className="flex gap-4 w-full">

@@ -1,4 +1,5 @@
 "use client";
+import LoadingSpinner from "@/app/_components/loading/loading";
 import axios from "@/core/axios";
 import { convertToJalali } from "@/utils/functions";
 import React, { useEffect, useState } from "react";
@@ -18,14 +19,21 @@ const getSubscriptionDuration = (days: number) => {
 };
 function Subscriptions() {
   const [invoices, setInvoices] = useState<any[]>();
+  const [loadingِData, setLoadingData] = useState<boolean>(false);
+
   const getPeyments = () => {
+    setLoadingData(true)
     axios(`user/getUserInvoices`).then(({ data }) => {
       setInvoices(data?.invoices?.data);
+      setLoadingData(false)
     });
   };
   useEffect(() => {
     getPeyments();
   }, []);
+  if (loadingِData) {
+    return <LoadingSpinner message="در حال دریافت اطلاعات..." />;
+  }
   return (
     <div className="w-full h-full pt-6 px-1 [&>*]:text-[#959595]">
       <div
@@ -84,7 +92,7 @@ function Subscriptions() {
             </div>
           </div>
 
-          {invoices?.length &&
+          {invoices?.length ?
             invoices?.map((item) => (
               <div
                 key={item?.id}
@@ -154,8 +162,9 @@ function Subscriptions() {
                   <span className="font-bold">---</span>
                 </div>
               </div>
-            ))}
+            )) : <></>}
         </div>
+       {!invoices?.length && <p className="p-9">شما تاکنون هیچ خریدی انجام نداده‌اید.</p>}
       </div>
     </div>
   );

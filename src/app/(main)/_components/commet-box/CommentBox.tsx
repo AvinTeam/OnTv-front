@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { show_toast } from "@/utils/functions";
 import axios from "@/core/axios";
 import Toast from "@/app/_components/Tost/Tost";
 import { ArrowTopIcon, LoadingIcon, SendIcon } from "@/app/_components/icons";
@@ -103,7 +102,7 @@ function CommentBox({ id, type }: { id: string; type: "episode" | "program" }) {
     <>
       <Modal open={open} onClose={() => setOpen(false)}>
         <>
-          <div className="mt-2">
+          <div className="mt-2 text-[#e6e6e6]">
             برای ثبت کامنت باید ابتدا در سایت ثبت نام کنید
           </div>
           <Button

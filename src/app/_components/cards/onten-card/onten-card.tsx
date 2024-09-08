@@ -12,7 +12,7 @@ export const OntenCard: React.FC<OntenCardProps> = ({ data }) => {
 
   const actualProgram: Program = isIProps(data) ? data.program : data;
 
-  const { title, poster, description, tags, seen, id } = actualProgram;
+  const { title, poster, description, tags, seen, id, is_paid } = actualProgram;
 
   function truncate(text: string) {
     const maxLength = 25;
@@ -55,6 +55,17 @@ export const OntenCard: React.FC<OntenCardProps> = ({ data }) => {
                 className="rounded-md overflow-auto"
               />
             </div>
+            {!is_paid && <div
+              className="absolute top-[15px] overflow-hidden right-0 bg-primary px-3 py-1 z-50 text-white text-xs"
+              style={{
+                borderBottomLeftRadius: "10px",
+                borderTopRightRadius: "6px",
+                borderTopLeftRadius: "3px",
+                borderBottomRightRadius: "3px"
+              }}
+            >
+              رایگان
+            </div>}
           </div>
           <div className="text-[11px] p-1 opacity-0 group-hover:opacity-100 flex absolute top-0 right-0 font-light z-50 -bottom-2 left-0 hover:transition hover:duration-[0.3s] ease-in-out items-end text-white">
             <div className="flex flex-col gap-1">

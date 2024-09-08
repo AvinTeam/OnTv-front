@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getAllEpisode } from "../_api/get-all-episode";
 import { NewestCard } from "@/app/_components/cards/newest-card";
 
-function Episode({ data, itemId }: { data: any; itemId: string }) {
+function Episode({ data, itemId}: { data: any; itemId: string }) {
   const [page, setPage] = useState<number>(1);
 
   const { data: episode, isLoading } = useQuery({
@@ -12,6 +12,7 @@ function Episode({ data, itemId }: { data: any; itemId: string }) {
     queryFn: () => getAllEpisode({ id: itemId, page }),
     initialData: data,
   });
+  console.log(episode?.Episodes?.data)
 
   const totalPages = episode?.Episodes?.meta?.last_page || 1;
 
@@ -54,10 +55,10 @@ function Episode({ data, itemId }: { data: any; itemId: string }) {
             isLoading ? "opacity-50" : ""
           }`}
         >
-          {episode?.Episodes?.data?.map((item: any, idx: any) => (
+          {episode?.Episodes?.data?.map((item: any, index: any) => (
             <React.Fragment key={item?.id}>
               <NewestCard
-                 data={item}
+                 data={{...item, index: index + 1}}
               />
             </React.Fragment>
           ))}

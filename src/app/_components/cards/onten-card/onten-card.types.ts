@@ -12,6 +12,8 @@ export interface Program {
   service: any;
   seen: number;
   averageOfScore: number | null;
+  is_paid: boolean,
+  free_episodes: number,
 }
 
 export type IProps = {

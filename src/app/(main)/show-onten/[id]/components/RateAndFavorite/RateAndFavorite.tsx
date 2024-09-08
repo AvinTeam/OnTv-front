@@ -61,7 +61,7 @@ function RateAndFavorite({ programId }: { programId: string }) {
     <>
       <Modal open={open} onClose={() => setOpen(false)}>
         <>
-          <div className="mt-2 w-[300px] text-center">
+          <div className="mt-2 w-[300px] text-center  text-[#e6e6e6]">
             لطفا ابتدا در سایت ثبت نام کنید
           </div>
           <Button

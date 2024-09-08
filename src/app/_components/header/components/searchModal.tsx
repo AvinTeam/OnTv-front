@@ -132,10 +132,10 @@ const SearchModal = ({
                       />
                     </div>
                     <p className="pt-4 text-xs lg:text-lg text-base-content-bg">
-                      تاریخچه جستجو
+                      لیست جستجو
                     </p>
                     <p className="pt-4 text-base-content text-xs lg:text-[1rem] font-light">
-                      در این لیست فیلم هایی که جستجو میکنید ذخیره میشود
+                      در این لیست فیلم هایی که جستجو میکنید نمایش داده میشود
                     </p>
                   </>
                 )}
