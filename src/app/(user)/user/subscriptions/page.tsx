@@ -1,5 +1,6 @@
 "use client";
 import axios from "@/core/axios";
+import { convertToJalali } from "@/utils/functions";
 import React, { useEffect, useState } from "react";
 const getSubscriptionDuration = (days: number) => {
   if (days <= 31) return "1 ماهه";
@@ -103,14 +104,14 @@ function Subscriptions() {
                   className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
                   style={{ borderLeft: "2px solid #282828" }}
                 >
-                  <span className="font-bold">---</span>
+                  <span className="font-bold">{convertToJalali(item?.created_at)}</span>
                 </div>
                 <div
                   className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
                   style={{ borderLeft: "2px solid #282828" }}
                 >
                   <span className="font-bold">
-                    {item?.price
+                    {item?.price_after_discount
                       .toString()
                       .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                   </span>
