@@ -123,9 +123,9 @@ function Subscriptions() {
                   <span className="font-bold text-green-600">
                     {item?.status == "failed"
                       ? "پرداخت ناموفق"
-                        ? item?.status == "success"
-                        : "پرداخت موفق"
-                      : " درانتظار عملیات"}
+                      : item?.status == "success"
+                        ? "پرداخت موفق"
+                        : " درانتظار عملیات"}
                   </span>
                 </div>
                 <div
