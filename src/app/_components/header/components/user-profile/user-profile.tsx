@@ -7,6 +7,7 @@ import {
   ProfileManagementIcon,
   EditPasswordIcon,
   ArrowIcon,
+  BuyHistoryIcon,
 } from "@/app/_components/icons";
 import LogoutIcon from "@/app/_components/icons/Logout";
 import SavedIcon from "@/app/_components/icons/Saved";
@@ -77,38 +78,38 @@ const UserProfile = ({
         ref={menuRef}
         className={`${
           isShowMenu ? "flex" : "hidden"
-        } mt-3 w-64 h-[480px] -left-3 p-2 z-[1000] rounded-md absolute bg-base-70 shadow-xl`}
+        } mt-3 w-64 h-[530px] lg:h-[460px] -left-3 p-2 z-[1000] rounded-md absolute bg-base-70 shadow-xl`}
       >
         <div className="group-hover:flex w-full [&>*]:text-[#e4e4e4] overflow-hidden [&>*]:transition-all flex-col ">
           <div className="flex w-full flex-col gap-3 mt-3 text-center text-sm">
             {user?.mobile}
           </div>
-             <Link
-              href={"/user/packages"}
-              style={{ color: "#3899a0" }}
-              className="w-full mb-4 text-xs h-8 flex py-4 mt-2 justify-center border my-1 rounded-md items-center"
-            >
-              {user?.subscribe ? (
-                "تمدید اشتراک"
-              ) : (
-                <span className="flex gap-2 justify-center items-center">
-                  <p> خرید اشتراک</p>
+          <Link
+            href={"/user/packages"}
+            style={{ color: "#3899a0" }}
+            className="w-full mb-4 text-xs h-8 flex py-4 mt-2 justify-center border my-1 rounded-md items-center"
+          >
+            {user?.subscribe ? (
+              "تمدید اشتراک"
+            ) : (
+              <span className="flex gap-2 justify-center items-center">
+                <p> خرید اشتراک</p>
 
-                  <ArrowIcon
-                    className="rotate-180"
-                    width={10}
-                    height={10}
-                    fill="#3899a0"
-                  />
-                </span>
-              )}
-            </Link>
-            <p className="text-[11px] mb-4 text-center">
-              {user?.subscribe
-                ? `${user?.subscribe} روز از اشتراک شما باقی مانده است`
-                : " در حال حاضر حساب کاربری شما بصورت رایگان فعال شده است"}
-            </p>
-           <hr />
+                <ArrowIcon
+                  className="rotate-180"
+                  width={10}
+                  height={10}
+                  fill="#3899a0"
+                />
+              </span>
+            )}
+          </Link>
+          <p className="text-[11px] mb-4 text-center">
+            {user?.subscribe
+              ? `${user?.subscribe} روز از اشتراک شما باقی مانده است`
+              : "شما در حال حاضر اشتراکی ندارید"}
+          </p>
+          <hr />
 
           <Link
             href={"/user/edit-profile"}
@@ -122,54 +123,65 @@ const UserProfile = ({
           </Link>
           <hr />
 
-          <Link
-            onClick={() => setIsShowMenu(false)}
-            href={"/user/packages"}
-            className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-4 mr-2 pb-2 justify-start items-center"
-          >
-            <BuySubscriptionIcon />
-            <span className="text-sm">خرید اشتراک</span>
-          </Link>
-          <Link
-            onClick={() => setIsShowMenu(false)}
-            href={"/user/bookmarks"}
-            className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
-          >
-            <SavedIcon />
-            <span className="text-sm">نشان شده ها</span>
-          </Link>
-          <Link
-            onClick={() => setIsShowMenu(false)}
-            href={"/user/history"}
-            className="flex lg:hidden hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
-          >
-            <HistoryIcon />
-            <span className="text-sm">تاریخچه تماشا</span>
-          </Link>
-          <Link
-            onClick={() => setIsShowMenu(false)}
-            href={"/user/edit-mobile"}
-            className="flex lg:hidden hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
-          >
-            <EditPasswordIcon />
-            <span className="text-sm">تغییر شماره موبایل</span>
-          </Link>
-          <Link
-            onClick={() => setIsShowMenu(false)}
-            href={"/user/edit-profile"}
-            className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
-          >
-            <ProfileManagementIcon />
-            <span className="text-sm">مدیریت پروفایل ها</span>
-          </Link>
-          <Link
-            href={"/user/edit-profile"}
-            onClick={() => setIsShowMenu(false)}
-            className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
-          >
-            <AccountIcon />
-            <span className="text-sm">حساب کاربری</span>
-          </Link>
+          <div className="w-[320px] pb-5 lg:pb-0 overflow-y-auto">
+            <Link
+              onClick={() => setIsShowMenu(false)}
+              href={"/user/packages"}
+              className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-4 mr-2 pb-2 justify-start items-center"
+            >
+              <BuySubscriptionIcon />
+              <span className="text-sm">خرید اشتراک</span>
+            </Link>
+            <Link
+              onClick={() => setIsShowMenu(false)}
+              href={"/user/subscriptions"}
+              className="flex lg:hidden hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-4 mr-2 pb-2 justify-start items-center"
+            >
+              <BuyHistoryIcon />
+              <span className="text-sm">سوابق خرید</span>
+            </Link>
+            <Link
+              onClick={() => setIsShowMenu(false)}
+              href={"/user/bookmarks"}
+              className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
+            >
+              <SavedIcon />
+              <span className="text-sm">نشان شده ها</span>
+            </Link>
+            <Link
+              onClick={() => setIsShowMenu(false)}
+              href={"/user/history"}
+              className="flex lg:hidden hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
+            >
+              <HistoryIcon />
+              <span className="text-sm">تاریخچه تماشا</span>
+            </Link>
+            <Link
+              onClick={() => setIsShowMenu(false)}
+              href={"/user/edit-mobile"}
+              className="flex lg:hidden hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
+            >
+              <EditPasswordIcon />
+              <span className="text-sm">تغییر شماره موبایل</span>
+            </Link>
+            <Link
+              onClick={() => setIsShowMenu(false)}
+              href={"/user/edit-profile"}
+              className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
+            >
+              <ProfileManagementIcon />
+              <span className="text-sm">مدیریت پروفایل ها</span>
+            </Link>
+            <Link
+              href={"/user/edit-profile"}
+              onClick={() => setIsShowMenu(false)}
+              className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
+            >
+              <AccountIcon />
+              <span className="text-sm">حساب کاربری</span>
+            </Link>
+          </div>
+          <hr className="lg:hidden" />
           <div
             onClick={() => {
               Logout();

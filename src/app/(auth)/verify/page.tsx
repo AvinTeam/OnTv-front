@@ -102,7 +102,7 @@ export default function Verify() {
           <ArrowIcon width={10} height={10} fill="#fff" />
           <div className="text-md text-white">بازگشت</div>
         </Link>
-        <p className="text-center text-white -mt-8">
+        <p className="text-center text-xs md:text-sm text-white -mt-8">
           رمز عبور خود را وارد کنید
         </p>
         <div className="flex flex-col gap-4">

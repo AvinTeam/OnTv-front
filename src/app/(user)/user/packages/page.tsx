@@ -58,7 +58,7 @@ function Packages() {
         onClose={() => setOpen(false)}
         title="روش پرداخت را انتخاب نمایید:"
       >
-        <div className="w-[400px] text-[#B3BAC4] overflow-scroll">
+        <div className="w-[350px] md:w-[400px] text-[#B3BAC4] overflow-scroll">
           <p className="text-sm mt-2">پرداخت آنلاین</p>
           {paymentGateways?.map((item) => {
             if (item?.is_active) {
@@ -99,8 +99,8 @@ function Packages() {
       </Modal>
       <div className="mt-8 h-full p-4 flex flex-col gap-3  w-screen md:w-full overflow-hidden ">
         <div className="flex justify-between w-full">
-          <p className="text-primary">خرید اشتراک آن</p>
-          <p className="text-primary">برای شماره موبایل: {user?.mobile}</p>
+          <p className="text-primary text-[12px] md:text-sm">خرید اشتراک آن</p>
+          <p className="text-primary text-[12px] md:text-sm">برای شماره موبایل: {user?.mobile}</p>
         </div>
         <div className="text-center h-[2px] select-none bg-[#242323] md:min-w-[500px] overflow-hidden shadow-2xl flex justify-center items-center rounded-md"></div>
         <div className="mt-6 flex flex-col-reverse items-center gap-6 justify-center ">
@@ -111,10 +111,10 @@ function Packages() {
                 setOpen(true);
               }}
               key={item?.id}
-              className="relative hover:border duration-[0.3s] ease-in-out cursor-pointer hover:border-[#1c5053] transition w-[600px] h-[100px] flex rounded-lg"
+              className="relative w-full md:w-[600px] mx-auto h-[90px] md:h-[100px] flex  hover:border duration-[0.3s] ease-in-out cursor-pointer hover:border-[#1c5053] transition rounded-lg"
             >
               <div
-                className="flex justify-center items-center rounded-lg w-[23%] border-r-2 p-2 bg-[#242323] shadow-2xl"
+                className="hidden md:flex justify-center items-center rounded-lg w-[23%] border-r-2 p-2 bg-[#242323] shadow-2xl"
                 style={{
                   borderLeft: "2px dashed #010101",
                   borderRight: `2px solid ${item?.color}`,
@@ -129,9 +129,11 @@ function Packages() {
                   alt={item?.title}
                 />
               </div>
-              <div className="flex flex-col justify-between w-[77%] rounded-lg items-center p-2 bg-[#242323]">
+              <div  style={{
+                   borderColor: `${item?.color}`,
+                }} className="flex border-r-2 md:border-r-0 flex-col justify-between w-full md:w-[77%] rounded-lg items-center p-2 bg-[#242323]">
                 <div className="w-full  mt-1 flex justify-between">
-                  <p className="text-[#c9c9c9] mr-6 text-sm">{item?.title}</p>
+                  <p className="text-[#c9c9c9] md:mr-6 text-sm">{item?.title}</p>
                   <p className="text-[#e9e9e9] text-xs bg-[#d42b50] py-1.5 px-3 rounded-md">
                     {` تخفیف ${100 - ((item?.priceAfterDiscount / item.price) * 100)}%`}
                   </p>
@@ -139,28 +141,28 @@ function Packages() {
                 <div className="w-full mb-1 flex justify-between items-end">
                   <div className="flex gap-1">
                     <div className="relative">
-                      <span className=" text-md mr-6 text-[#63676b] before:content-[''] before:absolute before:h-[1px] before:w-[80%] before:bg-current before:top-3 before:-rotate-12 before:right-4">
+                      <span className="text-xs md:text-sm md:mr-6 text-[#63676b] before:content-[''] before:absolute before:h-[1px] before:w-[80%] before:bg-current before:top-3 before:-rotate-12 before:right-4">
                         {toLocaleNumber(item?.price)}
                       </span>
                     </div>
-                    <p className="text-[#919396] text-sm mr-3">{`${toLocaleNumber(
+                    <p className="text-[#919396] text-xs md:text-sm mr-3">{`${toLocaleNumber(
                       item?.priceAfterDiscount.toString()?.split(".")?.[0]
                     )} تومان`}</p>
-                    <p className="text-[#0a0a0a] text-xs rounded-md py-1 px-2 bg-[#6ebec4] mr-3">{` ماهانه ${toLocaleNumber(
+                    <p className="text-[#0a0a0a] text-[11px] md:text-xs rounded-md py-1 px-1 md:px-2 bg-[#6ebec4] mr-3">{` ماهانه ${toLocaleNumber(
                       (item?.priceAfterDiscount / (item?.period / 30))
                         .toString()
                         ?.split(".")?.[0]
                         .slice(0, 6)
                     )} تومان`}</p>
                   </div>
-                  <span className="text-xs flex gap-1 items-center text-primary ">
+                  <span className="text-[10px] md:text-xs flex gap-1 items-center text-primary ">
                     <p>انتخاب و خرید </p>
                     <ArrowIcon fill="#3899a0" className="rotate-180" />
                   </span>
                 </div>
               </div>
-              <div className="absolute w-7 h-12 right-[123px] -top-9 bg-[#000] rounded-full"></div>
-              <div className="absolute w-7 h-12 right-[123px] -bottom-9 bg-[#000] rounded-full"></div>
+              <div className="hidden md:absolute w-7 h-12 right-[123px] -top-9 bg-[#000] rounded-full"></div>
+              <div className="hidden md:absolute w-7 h-12 right-[123px] -bottom-9 bg-[#000] rounded-full"></div>
             </div>
           ))}
         </div>
