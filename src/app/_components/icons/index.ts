@@ -27,6 +27,8 @@ import SendIcon from "./Send";
 import HelpIcon from "./Help";
 import SmsIcon from "./Sms";
 import PhoneIcon from "./Phone";
+import FreeIcon from "./Free";
+import LockIcon from "./Lock";
 export {
   AparatIcon,
   ArrowTopIcon,
@@ -56,5 +58,7 @@ export {
   SendIcon,
   HelpIcon,
   SmsIcon,
-  PhoneIcon
+  PhoneIcon,
+  FreeIcon,
+  LockIcon
 };

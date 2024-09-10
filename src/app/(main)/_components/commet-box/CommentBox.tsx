@@ -127,11 +127,11 @@ function CommentBox({ id, type }: { id: string; type: "episode" | "program" }) {
 
           {replyTo && (
             <>
-              <div className="absolute right-12 top-1 text-sm mb-2">
+              <div className="absolute right-12 text-white top-1 text-sm mb-2">
                 در پاسخ به {replyTo} :
               </div>
               <div
-                className="absolute left-5 top-0 text-sm mb-2 cursor-pointer"
+                className="absolute text-white left-5 top-0 text-sm mb-2 cursor-pointer"
                 onClick={() => {
                   setComment_id(null);
                   setReplyTo(null);

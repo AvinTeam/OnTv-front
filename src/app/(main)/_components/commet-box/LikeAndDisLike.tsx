@@ -98,25 +98,25 @@ function LikeAndDisLike({ item }: { item: Comment }) {
         <div className="absolute -mt-1 flex gap-2 top-1 left-0 transition-all">
           {/* Dislike Icon */}
           <span
-            className={`flex gap-2 rotate-180 scale-x-[-1]`}
+            className={`flex text-[#8b8a8a] gap-2 rotate-180 scale-x-[-1]`}
             onClick={() => handleDislike(item?.id)}
           >
             <p className="rotate-180 scale-x-[-1]">{dislikesCount}</p>
             <LikeIcon
               width={18}
-              fill={`${likeStatus === -1 ? "red" : "#fff"}`}
+              fill={`${likeStatus === -1 ? "red" : "#8b8a8a"}`}
               height={18}
               className="transform cursor-pointer hover:scale-125 transition-transform duration-200"
             />
           </span>
           {/* Like Icon */}
           <span
-            className={`flex cursor-pointer flex-row-reverse gap-2`}
+            className={`flex cursor-pointer text-[#8b8a8a] flex-row-reverse gap-2`}
             onClick={() => handleLike(item?.id)}
           >
             <LikeIcon
               width={18}
-              fill={`${likeStatus === 1 ? "green" : "#fff"}`}
+              fill={`${likeStatus === 1 ? "green" : "#8b8a8a"}`}
               height={18}
               className="transform cursor-pointer hover:scale-125 transition-transform duration-200"
             />

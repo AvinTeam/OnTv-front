@@ -84,3 +84,8 @@ export function truncate(text: string, maxLength: number) {
 export function toLocaleNumber(number: string | number) {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 }
+export function convertSecondToMinute(seconds: number) {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+}

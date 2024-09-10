@@ -14,5 +14,13 @@ export type NewestCardProps = {
       is_paid: boolean;
       free_episodes: number;
     };
+    video:{
+      duration: number;
+      hls_playlist: string;
+      mp4_videos: any[];
+      status: string;
+      thumbnail_url: string;
+      video_url: string
+    }
   };
 };

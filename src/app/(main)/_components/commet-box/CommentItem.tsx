@@ -59,7 +59,7 @@ function CommentItem({
         <LikeAndDisLike item={item} />
         <Link href={"#top"}
         
-          className="text-xs border px-[10px] transition-all hover:border-[#fff] hover:text-white py-[2px] rounded-md cursor-pointer"
+          className="text-xs border text-[#8b8a8a] px-[10px] transition-all hover:border-[#fff] hover:text-white py-[2px] rounded-md cursor-pointer"
           onClick={(e) => {
             e.preventDefault();
             setComment_id(item?.id);
