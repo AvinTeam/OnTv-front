@@ -37,7 +37,7 @@ function Subscriptions() {
   return (
     <div className="w-full h-full pt-6 px-1 [&>*]:text-[#959595]">
       <div
-        className="w-screen lg:w-[750px] xl:w-[1050px] 2xl:w-auto 2xl:overflow-hidden h-[500px] fixed overflow-scroll"
+        className="w-screen lg:w-[750px] xl:w-[1050px] 2xl:w-auto 2xl:overflow-x-hidden h-[500px] fixed overflow-scroll"
         style={{ scrollbarWidth: "auto", scrollbarColor: "auto" }}
       >
         <div className="border  rounded-lg border-[#282828] w-[1300px]">
