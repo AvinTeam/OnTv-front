@@ -58,7 +58,7 @@ export const NewestCard: React.FC<NewestCardProps> = ({ data }) => {
       <div
         onClick={handleCardClick}
         key={data?.alt}
-        className="w-full h-full rounded-lg shadow-lg overflow-hidden"
+        className="w-full h-full rounded-lg shadow-lg overflow-hidden cursor-pointer"
       >
         <div className="h-[160px] w-full overflow-hidden">
           <div className="relative rounded-md w-full h-full overflow-hidden">

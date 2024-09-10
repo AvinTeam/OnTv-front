@@ -76,16 +76,19 @@ export function convertToJalali(dateString: string): string {
   return `${jd} ${months[jm - 1]} ${jy}`;
 }
 export function truncate(text: string, maxLength: number) {
-   if (text.length > maxLength) {
+  if (text.length > maxLength) {
     return text.substring(0, maxLength) + "...";
   }
   return text;
 }
 export function toLocaleNumber(number: string | number) {
-  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 export function convertSecondToMinute(seconds: number) {
+  if (seconds == null) {
+    return "0:0";
+  }
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
-  return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+  return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
 }
