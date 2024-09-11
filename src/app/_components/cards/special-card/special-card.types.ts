@@ -14,6 +14,7 @@ interface Program {
   title: string;
   description: string;
   color: string;
+  is_paid: boolean;
   status: "published";
   poster: any[];
   banner: any[];

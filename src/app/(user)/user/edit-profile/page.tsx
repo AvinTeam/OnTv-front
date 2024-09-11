@@ -10,6 +10,7 @@ import {
 import { Button } from "@/app/_components/button";
 import LoadingSpinner from "@/app/_components/loading/loading";
 import { useUserStore } from "@/stores/user.store";
+import Link from "next/link";
 const genderOptions = ["ترجیح میدهم اعلام نکنم", "خانم", "آقا"];
 const days = Array.from({ length: 31 }, (_, i) => i + 1);
 const months = [
@@ -56,7 +57,6 @@ export default function EditProfile() {
   const handelSubmit = () => {
     setLoading(true);
     const formData = new FormData();
-    console.log({ selectedImage });
 
     formData.append(
       "birthday",
@@ -229,9 +229,9 @@ export default function EditProfile() {
             >
               {loading ? "درحال درخواست" : "تایید"}
             </Button>
-            <Button className="bg-[#424242] w-full h-full py-2 text-white">
+            <Link href={"/"} className="bg-[#424242] w-full h-full py-2 text-white">
               بازگشت
-            </Button>
+            </Link>
           </div>
         </div>
       </div>

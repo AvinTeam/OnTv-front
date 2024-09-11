@@ -44,26 +44,28 @@ export const Footer = ({ footerMenueItems }: { footerMenueItems: any[] }) => {
               </li>
             ))}
             {footerMenueItems?.length > 2 && (
-              <li className="hover:bg-[#242424] mt-1 group flex md:hidden gap-1 justify-center items-center py-[4px] px-2 transition-all rounded-md">
+              <li className="relative hover:bg-[#242424] mt-1 group flex md:hidden gap-1 justify-center items-center py-[4px] px-2 transition-all rounded-md">
                 <p className="text-nowrap text-[10px] ">سایر لینک ها</p>
                 <ArrowTopIcon />
-                <div className="w-[170px] -left-[400px] group-hover:opacity-100 group-hover:right-[150px] p-2 z-[1000] translate-y-[-90px] rounded-md absolute bg-[#0f0f0f] border border-[#282828]  ">
+                <div className="w-[170px] hidden p-2 z-[1000] group-hover:block rounded-md absolute bottom-10 bg-[#0f0f0f] border border-[#282828]  ">
                   <ul>
                     {footerMenueItems?.slice(2)?.map((item) => (
-                      <li
-                        key={item?.id}
-                        className="mb-2 flex justify-start pr-2 hover:bg-[#242424] py-[8px] text-[11px] md:text-[12px] transition-all rounded-md"
-                      >
-                        <Link
-                          href={`${
-                            item?.url
-                              ? item?.url
-                              : `/all-program/${item?.service?.slug}/tag/all`
-                          }`}
+                      <>
+                        <li
+                          key={item?.id}
+                          className="mb-2 flex justify-start pr-2 hover:bg-[#242424] py-[8px] text-[11px] md:text-[12px] transition-all rounded-md"
                         >
-                          <p> {item?.name}</p>
-                        </Link>
-                      </li>
+                          <Link
+                            href={`${
+                              item?.url
+                                ? item?.url
+                                : `/all-program/${item?.service?.slug}/tag/all`
+                            }`}
+                          >
+                            <p> {item?.name}</p>
+                          </Link>
+                        </li>
+                      </>
                     ))}
                   </ul>
                 </div>

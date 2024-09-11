@@ -29,6 +29,7 @@ import SmsIcon from "./Sms";
 import PhoneIcon from "./Phone";
 import FreeIcon from "./Free";
 import LockIcon from "./Lock";
+import BadgeFillIcon from "./BadgeFill";
 export {
   AparatIcon,
   ArrowTopIcon,
@@ -60,5 +61,6 @@ export {
   SmsIcon,
   PhoneIcon,
   FreeIcon,
-  LockIcon
+  LockIcon,
+  BadgeFillIcon
 };

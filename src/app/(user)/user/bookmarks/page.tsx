@@ -38,7 +38,7 @@ function Bookmarks() {
               <div key={item?.id} className="h-[290px] 2xl:h-[490px] relative">
                 <OntenCard data={{ ...item }} />
                 <div
-                  className="absolute top-5 cursor-pointer left-2 z-50"
+                  className="absolute top-5 cursor-pointer right-2 z-50"
                   onClick={() => handelDeleteFavorite(item?.id)}
                 >
                   <CloseIcon />

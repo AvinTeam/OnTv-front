@@ -29,7 +29,6 @@ const SearchModal = ({
 
   useEffect(() => {
     axios.get(`${API_URL}service/publicIndex`).then(({ data }) => {
-      console.log(data);
       setServiceList(data?.services);
     });
   }, []);

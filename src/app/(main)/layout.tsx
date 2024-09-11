@@ -21,7 +21,7 @@ export default async function HomeLayout({
   const headerMenueItems = await gatAllMenu("header");
   const footerMenueItems = await gatAllMenu("footer");
   return (
-    <div className="w-full w-full min-h-screen">
+    <div className="w-full min-h-screen">
       <Header headerMenueItems={headerMenueItems?.menus} />
       {children}
       <Footer footerMenueItems={footerMenueItems?.menus} />

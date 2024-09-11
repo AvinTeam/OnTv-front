@@ -12,7 +12,6 @@ function Episode({ data, itemId}: { data: any; itemId: string }) {
     queryFn: () => getAllEpisode({ id: itemId, page }),
     initialData: data,
   });
-  console.log(episode?.Episodes?.data)
 
   const totalPages = episode?.Episodes?.meta?.last_page || 1;
 

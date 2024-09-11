@@ -30,8 +30,8 @@ export default function EditMobile() {
         if (data?.success) setIsSuccessMobile(true);
         setLoading(false);
         if (isSuccessMobile) {
-          console.log(data)
-          addUser(data?.user)
+          addUser(data?.user);
+          setIsSuccessMobile(false)
           setMobile(null);
           setVerifyCode(null);
         }

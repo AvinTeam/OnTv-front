@@ -17,7 +17,6 @@ export const SliderProgram: React.FC<SliderProps> = ({ data }: SliderProps) => {
   const sliderRef = useRef<SwiperRef>(null);
 
   const handlePrev = () => {
-    console.log(sliderRef.current?.swiper);
     if (!sliderRef.current) return;
 
     sliderRef.current?.swiper.slidePrev();

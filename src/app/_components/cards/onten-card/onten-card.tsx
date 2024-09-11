@@ -3,7 +3,7 @@ import React from "react";
 import { IProps, OntenCardProps, Program } from "./onten-card.types";
 import Image from "next/image";
 import Link from "next/link";
-import { FreeIcon, ViewIcon } from "../../icons";
+import { ViewIcon } from "../../icons";
 import { useUserStore } from "@/stores/user.store";
 
 export const OntenCard: React.FC<OntenCardProps> = ({ data }) => {
@@ -57,11 +57,11 @@ export const OntenCard: React.FC<OntenCardProps> = ({ data }) => {
                 className="rounded-md overflow-auto"
               />
             </div>
-            {is_paid && !isSubscribe && (
+            {is_paid && !isSubscribe ? (
               <div className="flex gap-1 justify-center top-[20px] items-center absolute rounded-[25px] overflow-hidden left-1 bg-[#d82d44] px-2 py-[2px] z-50 text-[#fff] text-xs">
                  <p className="text-[10px]">اشتراکی</p>
               </div>
-            )}
+            ) : null}
           </div>
           <div className="text-[11px] p-1 opacity-0 group-hover:opacity-100 flex absolute top-0 right-0 font-light z-50 -bottom-2 left-0 hover:transition hover:duration-[0.3s] ease-in-out items-end text-white">
             <div className="flex flex-col gap-1">

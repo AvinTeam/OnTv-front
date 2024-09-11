@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { NewestCardProps } from "./newest-card.types";
 import Image from "next/image";
 import { convertSecondToMinute, truncate } from "@/utils/functions";
@@ -81,7 +81,7 @@ export const NewestCard: React.FC<NewestCardProps> = ({ data }) => {
               </div>
             ) : null}
             {data?.program?.is_paid &&
-              data?.program?.free_episodes < data?.index && (
+              data?.program?.free_episodes < data?.index && !user?.subscribe && (
                 <div
                   className="absolute top-0 left-0 w-full h-full flex justify-center items-center"
                   style={{

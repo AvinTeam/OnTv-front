@@ -4,16 +4,20 @@ import Box from "./components/box";
 import { Fragment } from "react";
 import { gatAllProgram, getAllEpisode } from "./_api/get-all-episode";
 import Episode from "./components/episode";
-import RateAndFavorite from "./components/RateAndFavorite/RateAndFavorite";
+import Rate from "./components/Rate/Rate";
 import CommentBox from "../../_components/commet-box/CommentBox";
 import { notFound } from "next/navigation";
+import Favorite from "./components/Favorite/Favorite";
 
 export default async function ShowOnten({
   params,
 }: {
   params: { id: string };
 }) {
-  const initialData = await getAllEpisode({ id: params.id.split(".")[0], page: 1 });
+  const initialData = await getAllEpisode({
+    id: params.id.split(".")[0],
+    page: 1,
+  });
   if (!initialData) {
     notFound();
   }
@@ -46,10 +50,11 @@ export default async function ShowOnten({
             />
           </div>
           <div className="flex flex-col gap-3 lg:items-start items-center justify-center">
-            <h2 className="text-white text-2xl lg:mt-24">
-              {allData?.Program?.title}
+            <h2 className="text-white flex gap-5 justify-center items-center lg:text-2xl lg:mt-24">
+              <p>{allData?.Program?.title}</p>
+               <Favorite programId={params.id.split(".")[0]} />
             </h2>
-            <p className="text-sm w-[300px] text-[#B3BAC4] mt-3 font-light">
+            <p className="text-sm text-center md:text-right w-[300px] text-[#B3BAC4] mt-3 font-light">
               {allData?.Program?.description}
             </p>
             <div className="flex gap-2">
@@ -64,7 +69,7 @@ export default async function ShowOnten({
                 </div>
               )}
             </div>
-            <RateAndFavorite programId={params.id.split(".")[0]} />
+            <Rate programId={params.id.split(".")[0]} />
           </div>
         </div>
       </div>
