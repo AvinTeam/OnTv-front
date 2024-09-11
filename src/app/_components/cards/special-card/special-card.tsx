@@ -1,19 +1,14 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { SpecialCardProps } from "./special-card.types";
 import Image from "next/image";
-import Link from "next/link";
-import { FreeIcon, LockIcon, ViewIcon } from "../../icons";
+import { ViewIcon } from "../../icons";
 import { useUserStore } from "@/stores/user.store";
-import Modal from "../../modal/modal";
-import { Button } from "../../button";
 import { useRouter } from "next/navigation";
 
 export const SpecialCard: React.FC<SpecialCardProps> = ({ data }) => {
   const router = useRouter();
   const user = useUserStore((store) => store.user);
-  const [open, setOpen] = useState<boolean>(false);
-  const [modalMessage, setModalMessage] = useState<string>("");
   const { seen, description, program, poster, title } = data;
 
   function truncate(text: string) {
@@ -24,44 +19,18 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({ data }) => {
     return text;
   }
   const handleCardClick = () => {
-    if (!user?.id && program?.is_paid) {
-      setModalMessage("لطفا ابتدا در سایت ثبت نام کنید");
-      setOpen(true);
-    } else if (program?.is_paid && !user?.subscribe) {
-      setModalMessage("برای مشاهده این محتوا باید اشتراک تهیه کنید");
-      setOpen(true);
-    } else {
+    if (user?.subscribe) {
       router.push(`/show-on/${data?.id}`);
+    } else {
+      router.push(`/show-onten/${program?.id}`);
     }
   };
   return (
     <>
-      <Modal open={open} onClose={() => setOpen(false)}>
-        <>
-          <div
-            className="mt-2 mb-2 text-center w-[360px] text-[#e6e6e6]"
-          >
-            {modalMessage}
-          </div>
-          {!user?.id && (
-            <Button
-              className="mt-4 bg-primary py-2 text-white"
-              onClick={() => router.push("/signin")}
-            >
-              ثبت نام{" "}
-            </Button>
-          )}
-          {user?.id && !user?.subscribe && program?.is_paid && (
-            <Button
-              className="mt-4 bg-primary py-2 text-white"
-              onClick={() => router.push("/user/packages")}
-            >
-              تهیه اشتراک{" "}
-            </Button>
-          )}
-        </>
-      </Modal>
-      <div onClick={handleCardClick} className="w-full cursor-pointer h-full flex flex-col gap-2">
+      <div
+        onClick={handleCardClick}
+        className="w-full cursor-pointer h-full flex flex-col gap-2"
+      >
         <div className="group w-full h-[85%]  relative">
           <div className="relative w-full h-full group">
             <Image
@@ -72,25 +41,11 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({ data }) => {
               height={0}
               className="w-full h-full rounded-md overflow-auto"
             />
-            {program?.is_paid && !user?.subscribe && (
-              <div
-                className="absolute top-0 left-0 w-full h-full flex justify-center items-center"
-                style={{
-                  background: "rgba(0, 0, 0, 0.4)",
-                  backdropFilter: "blur(5px)",
-                }}
-              >
-                <span
-                  className="w-12 h-12 rounded-full flex justify-center items-center bg-base-50"
-                  style={{
-                    background: "rgba(0, 0, 0, 0.4)",
-                    backdropFilter: "blur(14px)",
-                  }}
-                >
-                  <LockIcon width={20} height={20} />
-                </span>
+            {program?.is_paid && !user?.subscribe ? (
+              <div className="flex gap-1 justify-center top-[7px] items-center absolute rounded-[25px] overflow-hidden left-1 bg-[#d82d44] px-2 py-[2px] z-50 text-[#fff] text-xs">
+                <p className="text-[10px]">اشتراکی</p>
               </div>
-            )}
+            ) : null}
           </div>
           <div className=" text-[11px] p-1 opacity-0 group-hover:opacity-[1] flex absolute top-0 right-0 font-light z-30 bottom-1 left-0 hover:transition hover:duration-[0.3s] ease-in-out  items-end text-white">
             <div className="flex flex-col gap-1">
