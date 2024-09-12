@@ -1,86 +1,11 @@
 import React from "react";
 import "../globals.css";
-import Live from "../_components/live/live";
-import { API_URL } from "@/configs/global";
-import BannerTwo from "../_components/banners/banner-two/banner-two";
-import BannerFour from "../_components/banners/banner-four/banner-four";
-import Tag from "./_components/Tag";
-import Program from "./_components/Program";
-import BannerFull from "../_components/banners/banner-full/banner-full";
-type HomepageConfigItem = {
-  id: number;
-  title: string;
-  type: keyof RenderComponents;
-  order: number;
-  links: any[];
-  tags: any[];
-  program: any[];
-};
-type RenderComponents = {
-  tag: typeof Tag;
-  program: typeof Program;
-  link1: typeof BannerFull;
-  link2: typeof BannerTwo;
-  link4: typeof BannerFour;
-};
-
-async function gatAllData() {
-  const res = await fetch(`${API_URL}homepage`, {
-    cache: "no-cache",
-  });
-  if (res.ok) return res.json();
-}
+import MainContent from "./_components/MainContent/MainContent";
 
 export default async function HomePage() {
-  const allData = await gatAllData();
-
-  const renderComponents: RenderComponents = {
-    tag: Tag,
-    program: Program,
-    link1: BannerFull,
-    link2: BannerTwo,
-    link4: BannerFour,
-  };
-
   return (
     <main className="flex flex-col w-full overflow-x-scroll overflow-y-hidden bg-[#000000]">
-      <div className="container mt-4 mb-4 px-2 xl:px-0 overflow-x-auto">
-        {/* <Live data={lives?.lives?.data} /> */}
-        <Live
-          data={[
-            {
-              url: "https://ontv.arvanlive.ir/hls/on1/on1.m3u8",
-              slug: "",
-              order: 0,
-              title: "",
-              user: "",
-            },
-            {
-              url: "https://ontv.arvanlive.ir/hls/on2/on2.m3u8",
-              slug: "",
-              order: 0,
-              title: "",
-              user: "",
-            },
-            {
-              url: "https://ontv.arvanlive.ir/hls/on3/on3.m3u8",
-              slug: "",
-              order: 0,
-              title: "",
-              user: "",
-            },
-          ]}
-        />
-      </div>
-
-      {allData?.homepage_configs?.data?.map((item: HomepageConfigItem) => {
-        const Component = renderComponents[item.type];
-        return (
-          <React.Fragment key={item.id}>
-            <Component data={item} />
-          </React.Fragment>
-        );
-      })}
+      <MainContent />
 
       {/* <div className="py-6 md:py-10 bg-[#4A4A4A] px-2 md:px-6 h-[600px] md:h-[880px] lg:h-[880px] xl:h-[540px] overflow-x-auto overflow-y-hidden ">
         <div className="container">
