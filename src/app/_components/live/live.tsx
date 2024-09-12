@@ -4,7 +4,10 @@ import videojs from "video.js";
 import "video.js/dist/video-js.css";
 import VideoJS from "@/app/_components/video";
 import Image from "next/image";
+import Link from "next/link";
 import logo from "../../../../public/images/android-chrome-192x192.png";
+import logo2 from "../../../../public/images/logo/Group 949.png";
+import logo3 from "../../../../public/images/logo/Group 951.png";
 import { Live as LivesType } from "@/types/lives/live.interface";
 const Live = ({ data }: { data: LivesType[] }) => {
   const playerRef = React.useRef(null);
@@ -17,7 +20,7 @@ const Live = ({ data }: { data: LivesType[] }) => {
     muted: true,
     sources: [
       {
-        src: data?.length > 0 ? data[0]?.url : "",
+        src: data?.length > 0 ? data[0]?.url : '',
         type: "application/x-mpegURL",
       },
     ],
@@ -45,7 +48,7 @@ const Live = ({ data }: { data: LivesType[] }) => {
     muted: true,
     sources: [
       {
-        src: data?.length > 1 ? data[1]?.url : "",
+        src: data?.length > 1 ? data[1]?.url : '',
         type: "application/x-mpegURL",
       },
     ],
@@ -73,7 +76,7 @@ const Live = ({ data }: { data: LivesType[] }) => {
     muted: true,
     sources: [
       {
-        src: data?.length > 2 ? data[2]?.url : "",
+        src: data?.length > 2 ? data[2]?.url : '',
         type: "application/x-mpegURL",
       },
     ],
@@ -105,9 +108,9 @@ const Live = ({ data }: { data: LivesType[] }) => {
       videojs.log("player will dispose");
     });
 
-    player.on("ended", function () {
+    player.on('ended', function () {
       videojs.log("player video is done!");
-      player.play();
+      player.play()
     });
   };
 
