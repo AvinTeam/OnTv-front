@@ -125,13 +125,13 @@ export default function About() {
         </div>
         <div className=" h-[160px] flex flex-col justify-around items-center content-center py-6 bg-[#606060]">
           <p className="text-white -mt-2 text-xs font-light">
-            نشان های دریافت شده آن
+            نشان های دریافت شده آن - تصاویر زیر تزئینی می باشد :
           </p>
           <div className="flex gap-2 -mt-4 justify-center items-center">
             <div>
               <Link
                 href={
-                  "https://trustseal.enamad.ir/?id=20008&Code=3esN0ssIHUU2WbETYCs"
+                  ""
                 }
               >
                 <Image src={enamad} width={70} height={70} alt="enamad" />
@@ -140,7 +140,7 @@ export default function About() {
             <div className="mt-3">
               <Link
                 href={
-                  "https://trustseal.enamad.ir/?id=20008&Code=3esN0ssIHUU2WbETYCs"
+                  ""
                 }
               >
                 <Image src={enamadD} width={70} height={70} alt="enamad" />

@@ -73,7 +73,7 @@ export default async function HomePage() {
         />
       </div>
 
-      {allData?.homepage_configs?.map((item: HomepageConfigItem) => {
+      {allData?.homepage_configs?.data?.map((item: HomepageConfigItem) => {
         const Component = renderComponents[item.type];
         return (
           <React.Fragment key={item.id}>
