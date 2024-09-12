@@ -54,7 +54,7 @@ export default async function ShowOnten({
               <p>{allData?.Program?.title}</p>
                <Favorite programId={params.id.split(".")[0]} />
             </h2>
-            <p className="text-sm text-center md:text-right w-[300px] text-[#B3BAC4] mt-3 font-light">
+            <p className="text-sm text-center lg:text-right w-[300px] text-[#B3BAC4] mt-3 font-light">
               {allData?.Program?.description}
             </p>
             <div className="flex gap-2">
