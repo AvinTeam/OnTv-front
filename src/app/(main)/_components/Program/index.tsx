@@ -13,6 +13,7 @@ function Program({ data }: any) {
           data={data?.program?.[0]?.episodes}
           displayCount={5}
           isShowIcon
+          path="show-on"
         />
       </div>
     </div>

@@ -8,4 +8,5 @@ export type SliderProps = {
   smCount?: number;
   mdCount?: number;
   lgCount?: number;
+  path?: string
 };

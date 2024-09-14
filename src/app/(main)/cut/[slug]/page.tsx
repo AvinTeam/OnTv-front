@@ -1,26 +1,20 @@
 import Image from "next/image";
-import Live from "./_components/live";
-import { Slider } from "@/app/_components/slider/slider";
-import { NewestCard } from "@/app/_components/cards/newest-card";
-import {
-  gatPublicShow,
-  getAllCut,
-  getAllEpisode,
-  storeHistory,
-} from "./_api/get-all-data";
 import { SliderTitle } from "@/app/_components/slider-title";
 import { calculateTimeAgo, truncate } from "@/utils/functions";
 import { Episode } from "@/types/types/episode-data-showOn.interface";
-import DownloadBox from "./_components/DownloadBox";
 import Link from "next/link";
-import Share from "./_components/Share";
 import CommentBox from "../../_components/commet-box/CommentBox";
 import { notFound } from "next/navigation";
-import StoreHistory from "./_components/StoreHistory";
 import { SpecialCard } from "@/app/_components/cards/special-card";
+import Live from "./components/Live";
+import { gatPublicShow, getAllCut, getAllEpisode } from "../_api/get-all-data";
+import { Slider } from "@/app/_components/slider/slider";
+import { NewestCard } from "@/app/_components/cards/newest-card";
+import DownloadBox from "../../show-on/[id]/_components/DownloadBox";
+import Share from "../../show-on/[id]/_components/Share";
 
-export default async function ShowOn({ params }: { params: { id: string } }) {
-  const publicShow: Episode = await gatPublicShow(params.id.split(".")[0]);
+export default async function ShowOn({ params }: { params: { slug: string } }) {
+  const publicShow: Episode = await gatPublicShow(params.slug.split(".")[0]);
   if (!publicShow) {
     return notFound();
   }
@@ -29,7 +23,7 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
     return notFound();
   }
   const cuts = await getAllCut();
-  if (!episodes) {
+  if (!cuts) {
     return notFound();
   }
   return (
@@ -139,7 +133,7 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
                 </div>
                 {/* ================== comments =================== */}
                 <div className="w-full h-full mb-10 mt-20">
-                  <CommentBox id={params.id.split(".")[0]} type="episode" />
+                  <CommentBox id={params.slug.split(".")[0]} type="episode" />
                 </div>
               </div>
 
@@ -189,7 +183,6 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
           </div>
         </div>
       </main>
-      <StoreHistory id={`${publicShow?.Episode?.program?.id}`} />
     </>
   );
 }

@@ -18,7 +18,7 @@ export const Footer = ({ footerMenueItems }: { footerMenueItems: any[] }) => {
             <li className="hover:bg-[#242424] in py-[4px] px-2 transition-all rounded-md">
               <Link
                 className="flex justify-center md:mt-auto items-center gap-1 md:-mr-2 text-nowrap text-[10px]"
-                href={"#"}
+                href={"/"}
               >
                 <TvIcon />
                 <p>آنلاین</p>

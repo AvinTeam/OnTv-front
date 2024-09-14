@@ -34,5 +34,6 @@ export type SpecialCardProps = {
   seen?: number;
   status?: "published";
   poster?: any[];
- }
+ },
+ path?: string
 };

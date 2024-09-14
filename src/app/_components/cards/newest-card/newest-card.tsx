@@ -9,12 +9,16 @@ import Modal from "../../modal/modal";
 import { Button } from "../../button";
 import { FreeIcon, LockIcon } from "../../icons";
 
-export const NewestCard: React.FC<NewestCardProps> = ({ data }) => {
+export const NewestCard: React.FC<NewestCardProps> = ({ data, path }) => {
   const user = useUserStore((store) => store.user);
   const router = useRouter();
   const [open, setOpen] = useState<boolean>(false);
   const [modalMessage, setModalMessage] = useState<string>("");
   const handleCardClick = () => {
+    if(path == "cut"){
+      router.push(`/cut/${data?.id}`);
+      return;
+    }
     if (data?.program?.free_episodes >= data?.index) {
       router.push(`/show-on/${data?.id}`);
       return;

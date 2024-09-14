@@ -6,7 +6,7 @@ import { ViewIcon } from "../../icons";
 import { useUserStore } from "@/stores/user.store";
 import { useRouter } from "next/navigation";
 
-export const SpecialCard: React.FC<SpecialCardProps> = ({ data }) => {
+export const SpecialCard: React.FC<SpecialCardProps> = ({ data, path }) => {
   const router = useRouter();
   const user = useUserStore((store) => store.user);
   const { seen, description, program, poster, title } = data;
@@ -19,12 +19,17 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({ data }) => {
     return text;
   }
   const handleCardClick = () => {
+    if (path == "cut") {
+      router.push(`/${path}/${data?.id}`);
+      return;
+    }
     if (user?.subscribe) {
-      router.push(`/show-on/${data?.id}`);
+      router.push(`/${path}/${data?.id}`);
     } else {
       router.push(`/show-onten/${program?.id}`);
     }
   };
+
   return (
     <>
       <div
@@ -50,15 +55,15 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({ data }) => {
           <div className=" text-[11px] p-1 opacity-0 group-hover:opacity-[1] flex absolute top-0 right-0 font-light z-30 bottom-1 left-0 hover:transition hover:duration-[0.3s] ease-in-out  items-end text-white">
             <div className="flex flex-col gap-1">
               <div
-                className="h-[20px] w-[70px] rounded-[500px] flex justify-around items-center font-bold"
+                className="h-[20px] w-[63px] rounded-[500px] flex justify-around items-center font-bold"
                 style={{
                   backdropFilter: "blur(20px)",
                   backgroundColor: "hsla(0, 0%, 5%, .25)",
                   boxShadow: "inset 0 0 0 1px transparent",
                 }}
               >
-                <ViewIcon />
-                {seen}
+                <ViewIcon width={17} height={17} />
+                <p className="font-light">{seen}</p>
               </div>
               <div>{program?.tags.map((tag: any) => tag.name).join(" - ")}</div>
               <p>{truncate(description ?? "")}</p>

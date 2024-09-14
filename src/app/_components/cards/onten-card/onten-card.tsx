@@ -66,15 +66,15 @@ export const OntenCard: React.FC<OntenCardProps> = ({ data }) => {
           <div className="text-[11px] p-1 opacity-0 group-hover:opacity-100 flex absolute top-0 right-0 font-light z-50 -bottom-2 left-0 hover:transition hover:duration-[0.3s] ease-in-out items-end text-white">
             <div className="flex flex-col gap-1">
               <div
-                className="h-[20px] w-[70px] rounded-[500px] flex justify-around items-center font-bold"
+                className="h-[20px] w-[63px] rounded-[500px] flex justify-around items-center font-bold"
                 style={{
                   backdropFilter: "blur(20px)",
                   backgroundColor: "hsla(0, 0%, 5%, .25)",
                   boxShadow: "inset 0 0 0 1px transparent",
                 }}
               >
-                <ViewIcon />
-                {seen}
+                 <ViewIcon width={17} height={17} />
+                 <p className="font-light">{seen}</p>
               </div>
               <div>{tags.map((tag: any) => tag.name).join("-")}</div>
               <p>{truncate(description)}</p>

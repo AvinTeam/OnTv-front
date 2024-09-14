@@ -23,4 +23,5 @@ export type NewestCardProps = {
       video_url: string
     }
   };
+  path?:string
 };

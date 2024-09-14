@@ -58,8 +58,20 @@ export const calculateTimeAgo = (dateItem: string) => {
   const diffInSeconds = now.diff(date, "seconds");
   const diffInMinutes = now.diff(date, "minutes");
   const diffInHours = now.diff(date, "hours");
+  const diffInDays = now.diff(date, "days");
+  const diffInWeeks = Math.floor(diffInDays / 7);
+  const diffInMonths = now.diff(date, "months");
+  const diffInYears = now.diff(date, "years");
 
-  if (diffInHours > 0) {
+  if (diffInYears > 0) {
+    return `${diffInYears} سال قبل`;
+  } else if (diffInMonths > 0) {
+    return `${diffInMonths} ماه قبل`;
+  } else if (diffInWeeks > 0) {
+    return `${diffInWeeks} هفته قبل`;
+  } else if (diffInDays > 0) {
+    return `${diffInDays} روز قبل`;
+  } else if (diffInHours > 0) {
     return `${diffInHours} ساعت قبل`;
   } else if (diffInMinutes > 0) {
     return `${diffInMinutes} دقیقه قبل`;

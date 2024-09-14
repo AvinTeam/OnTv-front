@@ -8,7 +8,6 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { SliderProps } from "./slider.types";
 import Image from "next/image";
-import { Skeleton } from "../skeleton";
 
 export const Slider: React.FC<SliderProps> = ({
   data,
@@ -18,6 +17,7 @@ export const Slider: React.FC<SliderProps> = ({
   smCount,
   mdCount,
   lgCount,
+  path
 }: SliderProps) => {
   const [isDisablePrev, setIsDisablePrev] = useState<boolean>(true);
   const [isDisableNext, setIsDisableNext] = useState<boolean>(false);
@@ -79,7 +79,7 @@ export const Slider: React.FC<SliderProps> = ({
       >
         {data?.map((item: any) => (
           <SwiperSlide key={item.id}>
-            <Component data={item} />
+            <Component data={item} path={path} />
           </SwiperSlide>
         ))}
         {isShowIcon && (
