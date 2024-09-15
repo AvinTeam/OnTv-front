@@ -7,19 +7,23 @@ import CommentBox from "../../_components/commet-box/CommentBox";
 import { notFound } from "next/navigation";
 import { SpecialCard } from "@/app/_components/cards/special-card";
 import Live from "./components/Live";
-import { gatPublicShow, getAllCut, getAllEpisode, getCutPublicShow } from "../_api/get-all-data";
+import {
+  gatPublicShow,
+  getAllCut,
+  getAllEpisode,
+  getCutPublicShow,
+} from "../_api/get-all-data";
 import { Slider } from "@/app/_components/slider/slider";
 import { NewestCard } from "@/app/_components/cards/newest-card";
 import DownloadBox from "../../show-on/[slug]/_components/DownloadBox";
 import Share from "../../show-on/[slug]/_components/Share";
 
 export default async function ShowOn({ params }: { params: { slug: string } }) {
-
   const cut = await getCutPublicShow(params.slug.split(".")[0]);
   if (!cut) {
     return notFound();
   }
-
+  console.log(cut);
   const cuts = await getAllCut(cut.Cut.episode.slug);
   if (!cut) {
     return notFound();
@@ -47,7 +51,11 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                 >
                   <div className="lg:w-[90%] lg:mx-auto">
                     <div className="sm:mt-2 px-4 md:px-0 container mx-auto ">
-                      <Live url={cut?.Cut?.video?.hls_playlist} />
+                      <Live
+                        url={cut?.Cut?.video?.hls_playlist}
+                        thumbnail_url={cut?.Cut?.video?.thumbnail_url}
+                        accessible={cut?.Cut?.accessible}
+                      />
                     </div>
                     <div className="mt-4 container lg:mb-4 text-white rounded-[12px] py-1 md:py-6 lg:py-2 xl:py-2 px-4 md:px-0 h-[180px] md:h-[150px] lg:h-[170px] xl:h-[170px] 2xl:h-auto">
                       <div className="flex flex-col justify-between">
@@ -87,33 +95,23 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                           <div className="flex flex-col md:flex-row items-end gap-1 justify-center md:items-center">
                             <span className="md:hidden text-[10px] mt-2 text-nowrap mr-2 text-box-slider-text-l">
                               <span>
-                                {calculateTimeAgo(
-                                  cut?.Cut?.created_at
-                                )}
+                                {calculateTimeAgo(cut?.Cut?.created_at)}
                               </span>
                               <span> | </span>
-                              <span>
-                                {`${cut?.Cut?.seen || "0"} نمایش`}
-                              </span>
+                              <span>{`${cut?.Cut?.seen || "0"} نمایش`}</span>
                             </span>
                             <div className="flex mt-1 gap-2 justify-center items-center">
                               <DownloadBox
-                                videoLinks={
-                                  cut?.Cut?.video?.mp4_videos ?? []
-                                }
+                                videoLinks={cut?.Cut?.video?.mp4_videos ?? []}
                               />
                               <Share />
                             </div>
                             <div className="hidden md:block md:bg-box-slider-bg-text text-nowrap h-7 text-box-slider-text-l md:py-1.5 md:px-6 md:text-[11px] md:mr-auto md:rounded-[20px]">
                               <span>
-                                {calculateTimeAgo(
-                                  cut?.Cut?.created_at
-                                )}
+                                {calculateTimeAgo(cut?.Cut?.created_at)}
                               </span>
                               <span> | </span>
-                              <span>
-                                {`${cut?.Cut?.seen || "0"} نمایش`}
-                              </span>
+                              <span>{`${cut?.Cut?.seen || "0"} نمایش`}</span>
                             </div>
                           </div>
                         </div>
@@ -121,10 +119,13 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                     </div>
                   </div>
                 </div>
-                {cuts?.Cuts?.data?.length > 0 &&
+                {cuts?.Cuts?.data?.length > 0 && (
                   <div className="lg:w-[90%] lg:mx-auto">
                     <div className="w-screen md:w-full container px-3 md:px-0 overflow-auto mt-16 lg:pt-8 pb-4 mb-4">
-                      <SliderTitle title="بخش های منتخب" link={`/cut/all-cut/${cut?.Cut?.episode?.slug}`} />
+                      <SliderTitle
+                        title="بخش های منتخب"
+                        link={`/cut/all-cut/${cut?.Cut?.episode?.slug}`}
+                      />
                       <div className="h-[170px] md:h-[130px] lg:h-[160px] 2xl:h-[200px] w-full">
                         <Slider
                           Component={SpecialCard}
@@ -136,7 +137,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                       </div>
                     </div>
                   </div>
-                }
+                )}
                 <div className="w-screen lg:hidden md:w-full container px-3 md:px-0 overflow-auto pt-2 pb-10 mb-9">
                   <SliderTitle
                     title="سایر قسمت ها"

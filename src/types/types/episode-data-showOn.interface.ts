@@ -14,6 +14,7 @@ interface Program {
   poster: Array<any>;
   banner: Array<any>;
   slug:string;
+  is_paid: number;
   tags: Array<string>;
   casts: Array<any>;
   service: any;
@@ -27,6 +28,7 @@ export interface Episode {
     id: number;
     title: string;
     description: string;
+    accessible: boolean;
     slug: string;
     seen: number;
     poster: Array<any>;

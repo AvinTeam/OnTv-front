@@ -11,9 +11,9 @@ export const ToastContainer = () => {
       closeOnClick
       rtl={true}
       pauseOnFocusLoss
+      theme="dark"
       draggable
       pauseOnHover
-      theme="colored"
-    />
+     />
   );
 };

@@ -2,11 +2,7 @@ import Image from "next/image";
 import Live from "./_components/live";
 import { Slider } from "@/app/_components/slider/slider";
 import { NewestCard } from "@/app/_components/cards/newest-card";
-import {
-  gatPublicShow,
-  getAllCut,
-  getAllEpisode,
-} from "./_api/get-all-data";
+import { gatPublicShow, getAllCut, getAllEpisode } from "./_api/get-all-data";
 import { SliderTitle } from "@/app/_components/slider-title";
 import { calculateTimeAgo, truncate } from "@/utils/functions";
 import { Episode } from "@/types/types/episode-data-showOn.interface";
@@ -46,7 +42,15 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                 >
                   <div className="lg:w-[90%] lg:mx-auto">
                     <div className="sm:mt-2 px-4 md:px-0 container mx-auto ">
-                      <Live url={publicShow?.Episode?.video?.hls_playlist} />
+                      <Live
+                        url={publicShow?.Episode?.video?.hls_playlist}
+                        thumbnail_url={
+                          publicShow?.Episode?.video?.thumbnail_url
+                        }
+                        accessible={
+                          publicShow?.Episode.accessible
+                        }
+                      />
                     </div>
                     <div className="mt-4 container lg:mb-4 text-white rounded-[12px] py-1 md:py-6 lg:py-2 xl:py-2 px-4 md:px-0 h-[180px] md:h-[150px] lg:h-[170px] xl:h-[170px] 2xl:h-auto">
                       <div className="flex flex-col justify-between">
@@ -157,7 +161,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                 </div>
                 {/* ================== comments =================== */}
                 <div className="w-full h-full mb-10 mt-20">
-                  <CommentBox id={params.slug.split(".")[0]} type="episode" />
+                  <CommentBox id={publicShow?.Episode?.id} type="episode" />
                 </div>
               </div>
 

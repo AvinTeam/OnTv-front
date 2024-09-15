@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import CommentItem from "./CommentItem";
 import { useUserStore } from "@/stores/user.store";
 
-function CommentBox({ id, type }: { id: string; type: "episode" | "program" }) {
+function CommentBox({ id, type }: { id: number; type: "episode" | "program" }) {
   const user = useUserStore((store) => store.user);
   const router = useRouter();
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
