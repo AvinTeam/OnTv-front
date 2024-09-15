@@ -13,6 +13,7 @@ interface Program {
   color: string;
   poster: Array<any>;
   banner: Array<any>;
+  slug:string;
   tags: Array<string>;
   casts: Array<any>;
   service: any;
@@ -26,6 +27,7 @@ export interface Episode {
     id: number;
     title: string;
     description: string;
+    slug: string;
     seen: number;
     poster: Array<any>;
     video: Video;

@@ -6,11 +6,13 @@ export type NewestCardProps = {
     index: number,
     title: string;
     seen: number;
+    slug: string;
     id: number;
     path: string;
     poster: any[];
     program: {
       id: number;
+      slug: string;
       is_paid: boolean;
       free_episodes: number;
     };

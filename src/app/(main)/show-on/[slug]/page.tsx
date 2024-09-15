@@ -6,7 +6,6 @@ import {
   gatPublicShow,
   getAllCut,
   getAllEpisode,
-  storeHistory,
 } from "./_api/get-all-data";
 import { SliderTitle } from "@/app/_components/slider-title";
 import { calculateTimeAgo, truncate } from "@/utils/functions";
@@ -19,8 +18,8 @@ import { notFound } from "next/navigation";
 import StoreHistory from "./_components/StoreHistory";
 import { SpecialCard } from "@/app/_components/cards/special-card";
 
-export default async function ShowOn({ params }: { params: { id: string } }) {
-  const publicShow: Episode = await gatPublicShow(params.id.split(".")[0]);
+export default async function ShowOn({ params }: { params: { slug: string } }) {
+  const publicShow: Episode = await gatPublicShow(params.slug.split(".")[0]);
   if (!publicShow) {
     return notFound();
   }
@@ -45,7 +44,7 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
                   }}
                   className="flex flex-col gap-3 lg:gap-0 pb-4 md:pb-10 lg:pb-0 bg-gradient-to-l to-100%"
                 >
-                  <div className="lg:w-[90%] mx-auto">
+                  <div className="lg:w-[90%] lg:mx-auto">
                     <div className="sm:mt-2 px-4 md:px-0 container mx-auto ">
                       <Live url={publicShow?.Episode?.video?.hls_playlist} />
                     </div>
@@ -74,15 +73,29 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
                             </div>
                             <div>
                               <h5 className="text-xs lg:text-lg font-light text-nowrap">
-                                {publicShow?.Episode?.program?.title}
+                                <span>
+                                  {" "}
+                                  {publicShow?.Episode?.program?.title}{" "}
+                                </span>
                               </h5>
                               <p className="text-[#B3BAC4] text-[10px] mt-1 lg:text-xs font-light text-nowrap">
                                 {publicShow?.Episode?.program?.description}
                               </p>
                             </div>
                           </div>
-                          <div className="flex sm:flex-col md:flex-row flex-col-reverse items-end gap-1 justify-center md:items-center">
-                            <div className="flex gap-2">
+                          <div className="flex flex-col md:flex-row items-end gap-1 justify-center md:items-center">
+                            <span className="md:hidden text-[10px] mt-2 text-nowrap mr-2 text-box-slider-text-l">
+                              <span>
+                                {calculateTimeAgo(
+                                  publicShow?.Episode?.created_at
+                                )}
+                              </span>
+                              <span> | </span>
+                              <span>
+                                {`${publicShow?.Episode?.seen || "0"} نمایش`}
+                              </span>
+                            </span>
+                            <div className="flex mt-1 gap-2 justify-center items-center">
                               <DownloadBox
                                 videoLinks={
                                   publicShow?.Episode?.video?.mp4_videos ?? []
@@ -90,7 +103,7 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
                               />
                               <Share />
                             </div>
-                            <div className="md:bg-box-slider-bg-text text-nowrap h-7 text-box-slider-text-l md:py-1.5 md:px-6 text-[11px] md:mr-auto md:rounded-[20px]">
+                            <div className="hidden md:block md:bg-box-slider-bg-text text-nowrap h-7 text-box-slider-text-l md:py-1.5 md:px-6 text-[10px] md:text-[11px] md:mr-auto md:rounded-[20px]">
                               <span>
                                 {calculateTimeAgo(
                                   publicShow?.Episode?.created_at
@@ -107,10 +120,13 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
                     </div>
                   </div>
                 </div>
-                {cuts?.Cuts?.data?.length > 0 &&
-                  <div className="lg:w-[90%] mx-auto">
+                {cuts?.Cuts?.data?.length > 0 && (
+                  <div className="lg:w-[90%] lg:mx-auto">
                     <div className="w-screen md:w-full container px-3 md:px-0 overflow-auto mt-16 lg:pt-8 pb-4 mb-4">
-                      <SliderTitle title="بخش های منتخب" link={`/cut/all-cut/${publicShow?.Episode?.id}`} />
+                      <SliderTitle
+                        title="بخش های منتخب"
+                        link={`/cut/all-cut/${publicShow?.Episode?.id}`}
+                      />
                       <div className="h-[170px] md:h-[130px] lg:h-[160px] 2xl:h-[200px] w-full">
                         <Slider
                           Component={SpecialCard}
@@ -122,7 +138,7 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
                       </div>
                     </div>
                   </div>
-                }
+                )}
                 <div className="w-screen lg:hidden md:w-full container px-3 md:px-0 overflow-auto pt-2 pb-10 mb-9">
                   <SliderTitle
                     title="سایر قسمت ها"
@@ -141,7 +157,7 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
                 </div>
                 {/* ================== comments =================== */}
                 <div className="w-full h-full mb-10 mt-20">
-                  <CommentBox id={params.id.split(".")[0]} type="episode" />
+                  <CommentBox id={params.slug.split(".")[0]} type="episode" />
                 </div>
               </div>
 

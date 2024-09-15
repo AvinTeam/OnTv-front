@@ -5,6 +5,7 @@ export interface Program {
   description: string;
   color: string;
   status: any;
+  slug: string;
   poster: any[];
   banner: any[];
   tags: any[];

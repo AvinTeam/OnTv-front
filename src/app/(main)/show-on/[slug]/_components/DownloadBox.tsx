@@ -37,14 +37,21 @@ function DownloadBox({ videoLinks }: { videoLinks: string[] }) {
   return (
     <div className="relative">
       <div
-        className="flex gap-1 text-[#B3BAC4] text-sm cursor-pointer"
+        className="hidden md:flex gap-1 text-[#B3BAC4] text-sm cursor-pointer"
         onClick={toggleBox}
       >
         <span>
-          <DownloadIcon />
+          <DownloadIcon width={20} height={20}  fill="#B3BAC4" />
         </span>
         <p className="text-[10px] font-light lg:text-sm text-nowrap">دانلود</p>
       </div>
+      <DownloadIcon
+        className="md:hidden cursor-pointer"
+        onClick={toggleBox}
+        width={22}
+        height={22}
+        fill="#fff"
+      />
 
       {isOpen && videoLinks?.length ? (
         <div

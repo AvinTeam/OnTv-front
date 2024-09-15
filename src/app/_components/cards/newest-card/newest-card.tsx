@@ -16,11 +16,11 @@ export const NewestCard: React.FC<NewestCardProps> = ({ data, path }) => {
   const [modalMessage, setModalMessage] = useState<string>("");
   const handleCardClick = () => {
     if(path == "cut"){
-      router.push(`/cut/${data?.id}`);
+      router.push(`/cut/${data?.slug}`);
       return;
     }
     if (data?.program?.free_episodes >= data?.index) {
-      router.push(`/show-on/${data?.id}`);
+      router.push(`/show-on/${data?.slug}`);
       return;
     }
     if (!user?.id && data?.program?.is_paid) {
@@ -30,7 +30,7 @@ export const NewestCard: React.FC<NewestCardProps> = ({ data, path }) => {
       setModalMessage("برای مشاهده این محتوا باید اشتراک تهیه کنید");
       setOpen(true);
     } else {
-      router.push(`/show-on/${data?.id}`);
+      router.push(`/show-on/${data?.slug}`);
     }
   };
 

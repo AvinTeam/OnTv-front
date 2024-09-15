@@ -109,9 +109,9 @@ const UserProfile = ({
               ? `${user?.subscribe} روز از اشتراک شما باقی مانده است`
               : "شما در حال حاضر اشتراکی ندارید"}
           </p>
-          <hr />
+           <hr className="border-[gray]" />
 
-          <Link
+         {/* <Link
             href={"/user/edit-profile"}
             className="flex mb-1.5 hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-1.5 mr-2 pb-2 justify-start items-center"
           >
@@ -121,7 +121,7 @@ const UserProfile = ({
               <SettingIcon />
             </div>
           </Link>
-          <hr />
+          <hr /> */}
 
           <div className="w-[320px] pb-5 lg:pb-0 overflow-y-auto">
             <Link
@@ -151,7 +151,7 @@ const UserProfile = ({
             <Link
               onClick={() => setIsShowMenu(false)}
               href={"/user/history"}
-              className="flex lg:hidden hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
+              className="flex hover:bg-[#434444] py-2 rounded-md px-3 gap-2 mt-3 mr-2 pb-2 justify-start items-center"
             >
               <HistoryIcon />
               <span className="text-sm">تاریخچه تماشا</span>

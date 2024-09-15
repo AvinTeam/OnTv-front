@@ -14,6 +14,7 @@ interface Program {
   title: string;
   description: string;
   color: string;
+  slug: string;
   is_paid: boolean;
   status: "published";
   poster: any[];
@@ -27,6 +28,7 @@ interface Program {
 export type SpecialCardProps = {
  data:{
   id?: number;
+  slug: string;
   creator?: Creator;
   program?: Program;
   title?: string;

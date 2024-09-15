@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { SpecialCardProps } from "./special-card.types";
 import Image from "next/image";
 import { ViewIcon } from "../../icons";
@@ -20,15 +20,18 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({ data, path }) => {
   }
   const handleCardClick = () => {
     if (path == "cut") {
-      router.push(`/${path}/${data?.id}`);
+      router.push(`/${path}/${data?.slug}`);
       return;
     }
     if (user?.subscribe) {
-      router.push(`/${path}/${data?.id}`);
+      router.push(`/${path}/${data?.slug}`);
     } else {
-      router.push(`/show-onten/${program?.id}`);
+      router.push(`/show-onten/${program?.slug}`);
     }
   };
+  useEffect(()=>{
+    console.log(data)
+  },[])
 
   return (
     <>

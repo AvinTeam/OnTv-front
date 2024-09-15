@@ -14,7 +14,7 @@ export const OntenCard: React.FC<OntenCardProps> = ({ data }) => {
 
   const actualProgram: Program = isIProps(data) ? data.program : data;
 
-  const { title, poster, description, tags, seen, id, is_paid } = actualProgram;
+  const { title, poster, description, tags, seen, id, slug, is_paid } = actualProgram;
 
   function truncate(text: string) {
     const maxLength = 25;
@@ -28,7 +28,7 @@ export const OntenCard: React.FC<OntenCardProps> = ({ data }) => {
     <>
       <div className="w-full h-full group flex flex-col gap-5 relative overflow-visible">
         <Link
-          href={`/show-onten/${id}`}
+          href={`/show-onten/${slug}`}
           className="group w-full h-[80%] relative overflow-visible"
         >
           <div className="relative group w-full h-full flex justify-center items-center">

@@ -29,13 +29,14 @@ function Share() {
   return (
     <>
       <div className="flex md:ml-2 lg:ml-4 gap-1 text-[#B3BAC4] text-sm cursor-pointer">
-        <ShareIcon />
+        <ShareIcon fill="#B3BAC4" className="hidden md:block" />
         <p
-          className="text-[10px] font-light lg:text-sm text-nowrap"
+          className="hidden md:block text-[10px] font-light lg:text-sm text-nowrap"
           onClick={() => setOpen(true)}
         >
           اشتراک گزاری
         </p>
+        <ShareIcon width={22} className="md:hidden" onClick={() => setOpen(true)} />
       </div>
       <Modal
         open={open}

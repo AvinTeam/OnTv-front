@@ -10,8 +10,8 @@ import Live from "./components/Live";
 import { gatPublicShow, getAllCut, getAllEpisode, getCutPublicShow } from "../_api/get-all-data";
 import { Slider } from "@/app/_components/slider/slider";
 import { NewestCard } from "@/app/_components/cards/newest-card";
-import DownloadBox from "../../show-on/[id]/_components/DownloadBox";
-import Share from "../../show-on/[id]/_components/Share";
+import DownloadBox from "../../show-on/[slug]/_components/DownloadBox";
+import Share from "../../show-on/[slug]/_components/Share";
 
 export default async function ShowOn({ params }: { params: { slug: string } }) {
 
@@ -24,7 +24,6 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
   if (!cut) {
     return notFound();
   }
-  console.log({ cut: cut.Cut.episode.program.id })
   const publicShow: Episode = await gatPublicShow(cut.Cut.episode.id);
   if (!publicShow) {
     return notFound();
@@ -46,7 +45,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                   }}
                   className="flex flex-col gap-3 lg:gap-0 pb-4 md:pb-10 lg:pb-0 bg-gradient-to-l to-100%"
                 >
-                  <div className="lg:w-[90%] mx-auto">
+                  <div className="lg:w-[90%] lg:mx-auto">
                     <div className="sm:mt-2 px-4 md:px-0 container mx-auto ">
                       <Live url={cut?.Cut?.video?.hls_playlist} />
                     </div>
@@ -75,15 +74,29 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                             </div>
                             <div>
                               <h5 className="text-xs lg:text-lg font-light text-nowrap">
-                                {cut?.Cut?.episode?.program?.title}
+                                <span>
+                                  {" "}
+                                  {cut?.Cut?.episode?.program?.title}{" "}
+                                </span>
                               </h5>
                               <p className="text-[#B3BAC4] text-[10px] mt-1 lg:text-xs font-light text-nowrap">
                                 {cut?.Cut?.episode?.program?.description}
                               </p>
                             </div>
                           </div>
-                          <div className="flex sm:flex-col md:flex-row flex-col-reverse items-end gap-1 justify-center md:items-center">
-                            <div className="flex gap-2">
+                          <div className="flex flex-col md:flex-row items-end gap-1 justify-center md:items-center">
+                            <span className="md:hidden text-[10px] mt-2 text-nowrap mr-2 text-box-slider-text-l">
+                              <span>
+                                {calculateTimeAgo(
+                                  cut?.Cut?.created_at
+                                )}
+                              </span>
+                              <span> | </span>
+                              <span>
+                                {`${cut?.Cut?.seen || "0"} نمایش`}
+                              </span>
+                            </span>
+                            <div className="flex mt-1 gap-2 justify-center items-center">
                               <DownloadBox
                                 videoLinks={
                                   cut?.Cut?.video?.mp4_videos ?? []
@@ -91,7 +104,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                               />
                               <Share />
                             </div>
-                            <div className="md:bg-box-slider-bg-text text-nowrap h-7 text-box-slider-text-l md:py-1.5 md:px-6 text-[11px] md:mr-auto md:rounded-[20px]">
+                            <div className="hidden md:block md:bg-box-slider-bg-text text-nowrap h-7 text-box-slider-text-l md:py-1.5 md:px-6 md:text-[11px] md:mr-auto md:rounded-[20px]">
                               <span>
                                 {calculateTimeAgo(
                                   cut?.Cut?.created_at
@@ -109,7 +122,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                   </div>
                 </div>
                 {cuts?.Cuts?.data?.length > 0 &&
-                  <div className="lg:w-[90%] mx-auto">
+                  <div className="lg:w-[90%] lg:mx-auto">
                     <div className="w-screen md:w-full container px-3 md:px-0 overflow-auto mt-16 lg:pt-8 pb-4 mb-4">
                       <SliderTitle title="بخش های منتخب" link={`/cut/all-cut/${cut?.Cut?.episode?.id}`} />
                       <div className="h-[170px] md:h-[130px] lg:h-[160px] 2xl:h-[200px] w-full">
@@ -147,7 +160,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
               </div>
 
               <div className="hidden lg:block col-span-10 lg:col-span-3 rounded-[12px] overflow-auto p-2 md:h-[500px] lg:h-[1100px] xl:h-[1500px]">
-                <div className="lg:ml-[10%] mx-auto">
+                <div className="lg:ml-[10%] lg:mx-auto">
                   <p className="mb-2 text-base-content-slider">سایر قسمت ها</p>
                   <div className="mt-4">
                     {episodes?.Episodes?.data?.map((item: any) => (

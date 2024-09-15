@@ -12,17 +12,17 @@ import Favorite from "./components/Favorite/Favorite";
 export default async function ShowOnten({
   params,
 }: {
-  params: { id: string };
+  params: { slug: string };
 }) {
+  const allData = await gatAllProgram(params.slug.split(".")[0]);
+  if (!allData) {
+    notFound();
+  }
   const initialData = await getAllEpisode({
-    id: params.id.split(".")[0],
+    id: allData?.Program?.id,
     page: 1,
   });
   if (!initialData) {
-    notFound();
-  }
-  const allData = await gatAllProgram(params.id.split(".")[0]);
-  if (!allData) {
     notFound();
   }
   return (
@@ -52,7 +52,7 @@ export default async function ShowOnten({
           <div className="flex flex-col gap-3 lg:items-start items-center justify-center">
             <h2 className="text-white flex gap-5 justify-center items-center lg:text-2xl lg:mt-24">
               <p>{allData?.Program?.title}</p>
-               <Favorite programId={params.id.split(".")[0]} />
+               <Favorite programId={allData?.Program?.id} />
             </h2>
             <p className="text-sm text-center lg:text-right w-[300px] text-[#B3BAC4] mt-3 font-light">
               {allData?.Program?.description}
@@ -69,7 +69,7 @@ export default async function ShowOnten({
                 </div>
               )}
             </div>
-            <Rate programId={params.id.split(".")[0]} />
+            <Rate programId={allData?.Program?.id} />
           </div>
         </div>
       </div>
@@ -80,7 +80,7 @@ export default async function ShowOnten({
         </div>
       </div>
       <div className=" #221D1F">
-        <Episode data={initialData} itemId={params.id.split(".")[0]} />
+        <Episode data={initialData} itemId={allData?.Program?.id} />
       </div>
 
       {/* ================= casts ================== */}
@@ -157,7 +157,7 @@ export default async function ShowOnten({
       </div>
       {/* ================== comments =================== */}
       <div className="container w-full h-full mb-32">
-        <CommentBox id={params.id.split(".")[0]} type="program" />
+        <CommentBox id={allData?.Program?.id} type="program" />
       </div>
     </div>
   );
