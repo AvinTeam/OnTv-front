@@ -7,23 +7,30 @@ import CommentBox from "../../_components/commet-box/CommentBox";
 import { notFound } from "next/navigation";
 import { SpecialCard } from "@/app/_components/cards/special-card";
 import Live from "./components/Live";
-import { gatPublicShow, getAllCut, getAllEpisode } from "../_api/get-all-data";
+import { gatPublicShow, getAllCut, getAllEpisode, getCutPublicShow } from "../_api/get-all-data";
 import { Slider } from "@/app/_components/slider/slider";
 import { NewestCard } from "@/app/_components/cards/newest-card";
 import DownloadBox from "../../show-on/[id]/_components/DownloadBox";
 import Share from "../../show-on/[id]/_components/Share";
 
 export default async function ShowOn({ params }: { params: { slug: string } }) {
-  const publicShow: Episode = await gatPublicShow(params.slug.split(".")[0]);
+
+  const cut = await getCutPublicShow(params.slug.split(".")[0]);
+  if (!cut) {
+    return notFound();
+  }
+
+  const cuts = await getAllCut(cut.Cut.episode.id);
+  if (!cut) {
+    return notFound();
+  }
+  console.log({ cut: cut.Cut.episode.program.id })
+  const publicShow: Episode = await gatPublicShow(cut.Cut.episode.id);
   if (!publicShow) {
     return notFound();
   }
-  const episodes = await getAllEpisode(publicShow?.Episode?.program?.id);
+  const episodes = await getAllEpisode(cut.Cut.episode?.program.id);
   if (!episodes) {
-    return notFound();
-  }
-  const cuts = await getAllCut();
-  if (!cuts) {
     return notFound();
   }
   return (
@@ -35,21 +42,21 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
               <div className="flex flex-col lg:col-span-9 ">
                 <div
                   style={{
-                    background: `linear-gradient(to left,${publicShow?.Episode?.program?.color} -60%, #00000000 100%)`,
+                    background: `linear-gradient(to left,${cut?.Cut?.episode?.program?.color} -60%, #00000000 100%)`,
                   }}
                   className="flex flex-col gap-3 lg:gap-0 pb-4 md:pb-10 lg:pb-0 bg-gradient-to-l to-100%"
                 >
                   <div className="lg:w-[90%] mx-auto">
                     <div className="sm:mt-2 px-4 md:px-0 container mx-auto ">
-                      <Live url={publicShow?.Episode?.video?.hls_playlist} />
+                      <Live url={cut?.Cut?.video?.hls_playlist} />
                     </div>
                     <div className="mt-4 container lg:mb-4 text-white rounded-[12px] py-1 md:py-6 lg:py-2 xl:py-2 px-4 md:px-0 h-[180px] md:h-[150px] lg:h-[170px] xl:h-[170px] 2xl:h-auto">
                       <div className="flex flex-col justify-between">
                         <h1 className="text-link-footer-title text-[11px] md:text-sm lg:text-xl">
-                          {publicShow?.Episode?.title}
+                          {cut?.Cut?.title}
                         </h1>
                         <p className="text-[#606770] text-xs md:text-sm mt-3">
-                          {publicShow?.Episode?.description}
+                          {cut?.Cut?.description}
                         </p>
                       </div>
                       <div className="mt-6">
@@ -58,7 +65,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                             <div className="w-12 h-12 bg-white rounded-full">
                               <Image
                                 src={
-                                  publicShow?.Episode?.program?.poster?.[0]?.url
+                                  cut?.Cut?.episode?.program?.poster?.[0]?.url
                                 }
                                 width={0}
                                 height={0}
@@ -68,10 +75,10 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                             </div>
                             <div>
                               <h5 className="text-xs lg:text-lg font-light text-nowrap">
-                                {publicShow?.Episode?.program?.title}
+                                {cut?.Cut?.episode?.program?.title}
                               </h5>
                               <p className="text-[#B3BAC4] text-[10px] mt-1 lg:text-xs font-light text-nowrap">
-                                {publicShow?.Episode?.program?.description}
+                                {cut?.Cut?.episode?.program?.description}
                               </p>
                             </div>
                           </div>
@@ -79,7 +86,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                             <div className="flex gap-2">
                               <DownloadBox
                                 videoLinks={
-                                  publicShow?.Episode?.video?.mp4_videos ?? []
+                                  cut?.Cut?.video?.mp4_videos ?? []
                                 }
                               />
                               <Share />
@@ -87,12 +94,12 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                             <div className="md:bg-box-slider-bg-text text-nowrap h-7 text-box-slider-text-l md:py-1.5 md:px-6 text-[11px] md:mr-auto md:rounded-[20px]">
                               <span>
                                 {calculateTimeAgo(
-                                  publicShow?.Episode?.created_at
+                                  cut?.Cut?.created_at
                                 )}
                               </span>
                               <span> | </span>
                               <span>
-                                {`${publicShow?.Episode?.seen || "0"} نمایش`}
+                                {`${cut?.Cut?.seen || "0"} نمایش`}
                               </span>
                             </div>
                           </div>
@@ -101,24 +108,26 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                     </div>
                   </div>
                 </div>
-                <div className="lg:w-[90%] mx-auto">
-                  <div className="w-screen md:w-full container px-3 md:px-0 overflow-auto mt-16 lg:pt-8 pb-4 mb-4">
-                    <SliderTitle title="بخش های منتخب" link="/cut/all-cut" />
-                    <div className="h-[170px] md:h-[130px] lg:h-[160px] 2xl:h-[200px] w-full">
-                      <Slider
-                        Component={SpecialCard}
-                        data={cuts.Cuts?.data}
-                        displayCount={4}
-                        isShowIcon
-                        path="cut"
-                      />
+                {cuts?.Cuts?.data?.length > 0 &&
+                  <div className="lg:w-[90%] mx-auto">
+                    <div className="w-screen md:w-full container px-3 md:px-0 overflow-auto mt-16 lg:pt-8 pb-4 mb-4">
+                      <SliderTitle title="بخش های منتخب" link={`/cut/all-cut/${cut?.Cut?.episode?.id}`} />
+                      <div className="h-[170px] md:h-[130px] lg:h-[160px] 2xl:h-[200px] w-full">
+                        <Slider
+                          Component={SpecialCard}
+                          data={cuts.Cuts?.data}
+                          displayCount={4}
+                          isShowIcon
+                          path="cut"
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
+                }
                 <div className="w-screen lg:hidden md:w-full container px-3 md:px-0 overflow-auto pt-2 pb-10 mb-9">
                   <SliderTitle
                     title="سایر قسمت ها"
-                    link={`/show-onten/${publicShow?.Episode?.program?.id}`}
+                    link={`/show-onten/${cut?.Cut?.episode?.program?.id}`}
                   />
                   <div className="h-[270px] md:h-[270px] lg:h-[160px] 2xl:h-[200px] w-full">
                     <Slider
@@ -133,7 +142,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                 </div>
                 {/* ================== comments =================== */}
                 <div className="w-full h-full mb-10 mt-20">
-                  <CommentBox id={params.slug.split(".")[0]} type="episode" />
+                  <CommentBox id={cut?.Cut?.episode?.id} type="episode" />
                 </div>
               </div>
 

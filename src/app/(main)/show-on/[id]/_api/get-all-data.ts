@@ -11,8 +11,8 @@ export async function getAllEpisode(id: number) {
     return null;
   }
 }
-export async function getAllCut() {
-  const res = await fetch(`${API_URL}cut/publicIndex`, {
+export async function getAllCut(episode_id: number) {
+  const res = await fetch(`${API_URL}cut/publicIndex?episode_id=${episode_id}`, {
     cache: "no-cache",
   });
   if (res.ok) {

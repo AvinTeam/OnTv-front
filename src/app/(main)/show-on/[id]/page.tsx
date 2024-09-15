@@ -28,7 +28,7 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
   if (!episodes) {
     return notFound();
   }
-  const cuts = await getAllCut();
+  const cuts = await getAllCut(publicShow?.Episode?.id);
   if (!episodes) {
     return notFound();
   }
@@ -107,20 +107,22 @@ export default async function ShowOn({ params }: { params: { id: string } }) {
                     </div>
                   </div>
                 </div>
-                <div className="lg:w-[90%] mx-auto">
-                  <div className="w-screen md:w-full container px-3 md:px-0 overflow-auto mt-16 lg:pt-8 pb-4 mb-4">
-                    <SliderTitle title="بخش های منتخب" link="/cut/all-cut" />
-                    <div className="h-[170px] md:h-[130px] lg:h-[160px] 2xl:h-[200px] w-full">
-                      <Slider
-                        Component={SpecialCard}
-                        data={cuts.Cuts?.data}
-                        displayCount={4}
-                        isShowIcon
-                        path="cut"
-                      />
+                {cuts?.Cuts?.data?.length > 0 &&
+                  <div className="lg:w-[90%] mx-auto">
+                    <div className="w-screen md:w-full container px-3 md:px-0 overflow-auto mt-16 lg:pt-8 pb-4 mb-4">
+                      <SliderTitle title="بخش های منتخب" link={`/cut/all-cut/${publicShow?.Episode?.id}`} />
+                      <div className="h-[170px] md:h-[130px] lg:h-[160px] 2xl:h-[200px] w-full">
+                        <Slider
+                          Component={SpecialCard}
+                          data={cuts.Cuts?.data}
+                          displayCount={4}
+                          isShowIcon
+                          path="cut"
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
+                }
                 <div className="w-screen lg:hidden md:w-full container px-3 md:px-0 overflow-auto pt-2 pb-10 mb-9">
                   <SliderTitle
                     title="سایر قسمت ها"
