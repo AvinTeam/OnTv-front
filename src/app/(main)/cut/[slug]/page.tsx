@@ -20,15 +20,15 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
     return notFound();
   }
 
-  const cuts = await getAllCut(cut.Cut.episode.id);
+  const cuts = await getAllCut(cut.Cut.episode.slug);
   if (!cut) {
     return notFound();
   }
-  const publicShow: Episode = await gatPublicShow(cut.Cut.episode.id);
+  const publicShow: Episode = await gatPublicShow(cut.Cut.episode.slug);
   if (!publicShow) {
     return notFound();
   }
-  const episodes = await getAllEpisode(cut.Cut.episode?.program.id);
+  const episodes = await getAllEpisode(cut.Cut.episode?.program.slug);
   if (!episodes) {
     return notFound();
   }
@@ -124,7 +124,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                 {cuts?.Cuts?.data?.length > 0 &&
                   <div className="lg:w-[90%] lg:mx-auto">
                     <div className="w-screen md:w-full container px-3 md:px-0 overflow-auto mt-16 lg:pt-8 pb-4 mb-4">
-                      <SliderTitle title="بخش های منتخب" link={`/cut/all-cut/${cut?.Cut?.episode?.id}`} />
+                      <SliderTitle title="بخش های منتخب" link={`/cut/all-cut/${cut?.Cut?.episode?.slug}`} />
                       <div className="h-[170px] md:h-[130px] lg:h-[160px] 2xl:h-[200px] w-full">
                         <Slider
                           Component={SpecialCard}
@@ -140,7 +140,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                 <div className="w-screen lg:hidden md:w-full container px-3 md:px-0 overflow-auto pt-2 pb-10 mb-9">
                   <SliderTitle
                     title="سایر قسمت ها"
-                    link={`/show-onten/${cut?.Cut?.episode?.program?.id}`}
+                    link={`/show-onten/${cut?.Cut?.episode?.program?.slug}`}
                   />
                   <div className="h-[270px] md:h-[270px] lg:h-[160px] 2xl:h-[200px] w-full">
                     <Slider

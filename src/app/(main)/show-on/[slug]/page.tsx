@@ -23,11 +23,11 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
   if (!publicShow) {
     return notFound();
   }
-  const episodes = await getAllEpisode(publicShow?.Episode?.program?.id);
+  const episodes = await getAllEpisode(publicShow?.Episode?.program?.slug);
   if (!episodes) {
     return notFound();
   }
-  const cuts = await getAllCut(publicShow?.Episode?.id);
+  const cuts = await getAllCut(publicShow?.Episode?.slug);
   if (!episodes) {
     return notFound();
   }
@@ -125,7 +125,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                     <div className="w-screen md:w-full container px-3 md:px-0 overflow-auto mt-16 lg:pt-8 pb-4 mb-4">
                       <SliderTitle
                         title="بخش های منتخب"
-                        link={`/cut/all-cut/${publicShow?.Episode?.id}`}
+                        link={`/cut/all-cut/${publicShow?.Episode?.slug}`}
                       />
                       <div className="h-[170px] md:h-[130px] lg:h-[160px] 2xl:h-[200px] w-full">
                         <Slider
@@ -142,7 +142,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                 <div className="w-screen lg:hidden md:w-full container px-3 md:px-0 overflow-auto pt-2 pb-10 mb-9">
                   <SliderTitle
                     title="سایر قسمت ها"
-                    link={`/show-onten/${publicShow?.Episode?.program?.id}`}
+                    link={`/show-onten/${publicShow?.Episode?.program?.slug}`}
                   />
                   <div className="h-[270px] md:h-[270px] lg:h-[160px] 2xl:h-[200px] w-full">
                     <Slider
@@ -168,7 +168,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                     {episodes?.Episodes?.data?.map((item: any) => (
                       <Link
                         href={"/show-on"}
-                        as={`/show-on/${item?.id}`}
+                        as={`/show-on/${item?.slug}`}
                         key={item.id}
                         className="rounded-md mb-2 overflow-auto"
                       >

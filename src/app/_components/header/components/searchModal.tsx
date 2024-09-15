@@ -77,7 +77,7 @@ const SearchModal = ({
                     <div className="w-full h-screen overflow-scroll ">
                       {data?.map((item, idx) => (
                         <Link
-                          href={`/show-onten/${item?.id}`}
+                          href={`/show-onten/${item?.slug}`}
                           onClick={handleClose}
                           key={idx}
                           className="flex gap-4 mt-3 items-center justify-start hover:bg-base-70 rounded-md p-3"

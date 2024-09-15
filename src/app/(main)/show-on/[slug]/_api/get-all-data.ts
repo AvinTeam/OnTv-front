@@ -1,8 +1,8 @@
 import { API_URL } from "@/configs/global";
 import axios from "@/core/axios";
 
-export async function getAllEpisode(id: number) {
-  const res = await fetch(`${API_URL}episode/publicIndex?program_id=${id}`, {
+export async function getAllEpisode(id: string) {
+  const res = await fetch(`${API_URL}episode/publicIndex?program[slug]=${id}`, {
     cache: "no-cache",
   });
   if (res.ok) {
@@ -11,8 +11,8 @@ export async function getAllEpisode(id: number) {
     return null;
   }
 }
-export async function getAllCut(episode_id: number) {
-  const res = await fetch(`${API_URL}cut/publicIndex?episode_id=${episode_id}`, {
+export async function getAllCut(episode_id: string) {
+  const res = await fetch(`${API_URL}cut/publicIndex?episode[slug]=${episode_id}`, {
     cache: "no-cache",
   });
   if (res.ok) {

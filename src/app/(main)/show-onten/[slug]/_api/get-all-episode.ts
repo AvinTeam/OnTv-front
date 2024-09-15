@@ -8,7 +8,7 @@ export async function getAllEpisode({
   page: number;
 }) {
   const res = await fetch(
-    `${API_URL}episode/publicIndex?program_id=${id}&page=${page}`,
+    `${API_URL}episode/publicIndex?program[slug]=${id}&page=${page}`,
     {
       cache: "no-cache",
     }

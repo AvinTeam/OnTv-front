@@ -12,7 +12,7 @@ export async function getCutPublicShow(id: any) {
 }
 
 export async function getAllCut(episode_id: number) {
-  const res = await fetch(`${API_URL}cut/publicIndex?episode_id=${episode_id}`, {
+  const res = await fetch(`${API_URL}cut/publicIndex?episode[slug]=${episode_id}`, {
     cache: "no-cache",
   });
   if (res.ok) {
@@ -22,7 +22,7 @@ export async function getAllCut(episode_id: number) {
   }
 }
 export async function getAllEpisode(id: number) {
-  const res = await fetch(`${API_URL}episode/publicIndex?program_id=${id}`, {
+  const res = await fetch(`${API_URL}episode/publicIndex?program[slug]=${id}`, {
     cache: "no-cache",
   });
   if (res.ok) {

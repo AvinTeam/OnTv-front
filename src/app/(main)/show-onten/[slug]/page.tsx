@@ -19,7 +19,7 @@ export default async function ShowOnten({
     notFound();
   }
   const initialData = await getAllEpisode({
-    id: allData?.Program?.id,
+    id: allData?.Program?.slug,
     page: 1,
   });
   if (!initialData) {
@@ -80,7 +80,7 @@ export default async function ShowOnten({
         </div>
       </div>
       <div className=" #221D1F">
-        <Episode data={initialData} itemId={allData?.Program?.id} />
+        <Episode data={initialData} itemId={allData?.Program?.slug} />
       </div>
 
       {/* ================= casts ================== */}

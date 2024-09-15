@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { NewestCard } from "@/app/_components/cards/newest-card";
 import { API_URL } from "@/configs/global";
 async function getAllCut(episode_id: any, page: number = 1,) {
-  const res = await fetch(`${API_URL}cut/publicIndex?episode_id=${episode_id}&page=${page}`, {
+  const res = await fetch(`${API_URL}cut/publicIndex?episode[slug]=${episode_id}&page=${page}`, {
     cache: "no-cache",
   });
   if (res.ok) {
@@ -20,7 +20,6 @@ function CutItems({ params }: { params: { episode: string } }) {
     queryKey: ["cut", page],
     queryFn: () => getAllCut(params.episode.split(".")[0], page),
   });
-  console.log(cut);
 
   const totalPages = cut?.Cuts?.meta?.last_page || 1;
 
