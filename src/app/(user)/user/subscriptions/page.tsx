@@ -129,9 +129,9 @@ function Subscriptions() {
                   style={{ borderLeft: "2px solid #282828" }}
                 >
                   <span className="font-bold text-green-600">
-                    {item?.status == "failed"
+                    {item?.status == "FAILED"
                       ? "پرداخت ناموفق"
-                      : item?.status == "success"
+                      : item?.status == "SUCCESS"
                         ? "پرداخت موفق"
                         : " درانتظار عملیات"}
                   </span>

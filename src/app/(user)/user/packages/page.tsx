@@ -30,7 +30,7 @@ function Packages() {
     axios
       .post(`plan/buyPlan/${id}`, { plan_id: planId })
       .then(({ data }) => {
-        openInNewTab(data?.url)
+        openInNewTab(data?.response?.url)
         setLoadingData(false);
       })
       .catch(() => setLoadingData(false));
