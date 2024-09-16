@@ -10,12 +10,14 @@ import Modal from "@/app/_components/modal/modal";
 import { useRouter } from "next/navigation";
 import CommentItem from "./CommentItem";
 import { useUserStore } from "@/stores/user.store";
+import { Skeleton } from "@/app/_components/skeleton";
+import Loading from "./Loading";
 
 function CommentBox({ id, type }: { id: number; type: "episode" | "program" }) {
   const user = useUserStore((store) => store.user);
   const router = useRouter();
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [open, setOpen] = useState<boolean>(false);
   const [comment, setComment] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -54,15 +56,13 @@ function CommentBox({ id, type }: { id: number; type: "episode" | "program" }) {
       ...(comment_id ? { parent_id: comment_id } : {}),
     };
     setIsSuccess(false);
-    axios
-      .post(`${API_URL}${type}/storeComment/${id}`, params)
-      .then(() => {
-        setIsSuccess(true);
-        setLoadingComment(false);
-        setComment("");
-        setComment_id(null);
-        setReplyTo(null);
-      });
+    axios.post(`${API_URL}${type}/storeComment/${id}`, params).then(() => {
+      setIsSuccess(true);
+      setLoadingComment(false);
+      setComment("");
+      setComment_id(null);
+      setReplyTo(null);
+    });
   };
   const handleReply = (name: string) => {
     setReplyTo(name);
@@ -73,9 +73,7 @@ function CommentBox({ id, type }: { id: number; type: "episode" | "program" }) {
       targetRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
-
   useEffect(() => {
-    setLoading(true);
     axios
       .get(`${API_URL}${type}/${id}/comments?page=${currentPage}`)
       .then(({ data }) => {
@@ -119,7 +117,9 @@ function CommentBox({ id, type }: { id: number; type: "episode" | "program" }) {
           <Toast message="نظر شما با موفقیت ثبت شد" type="success" />
         )}
 
-        <h3 className="text-sm lg:text-[1rem] text-white mb-4 pb-0">دیدگاه بینندگان</h3>
+        <h3 className="text-sm lg:text-[1rem] text-white mb-4 pb-0">
+          دیدگاه بینندگان
+        </h3>
         <div className="relative h-[80px] px-2 md:h-[100px] flex items-center justify-start gap-2 rounded-md w-full">
           <figure className="bg-[#f4511e] h-8 w-8  rounded-full flex justify-center items-center">
             <div className="text-white">�</div>
@@ -162,40 +162,53 @@ function CommentBox({ id, type }: { id: number; type: "episode" | "program" }) {
           </div>
         </div>
       </div>
+
       <div className="mt-6 break-words flex flex-col justify-start gap-10 items-start w-full h-full px-4">
         {renderComments(comments)}
-        <div className="w-full flex justify-center items-center">
-          {hasMore && (
-            <Button
-              onClick={loadMore}
-              style={{ width: "180px", height: "40px" }}
-              className={`text-white text-center bg-primary cursor-pointer mb-4 rounded-md ${
-                !loading ? "pointer-events-auto" : "pointer-events-none"
-              }`}
-            >
-              <div className="flex gap-2 justify-center items-center">
-                <p>مشاهده بیشتر</p>
-                <span>
-                  {loading ? (
-                    <LoadingIcon
-                      fill="#fff"
-                      className="animate-spin "
-                      width={28}
-                      height={28}
-                    />
-                  ) : (
-                    <ArrowTopIcon
-                      fill="#fff"
-                      className="rotate-180"
-                      width={28}
-                      height={28}
-                    />
-                  )}
-                </span>
-              </div>
-            </Button>
-          )}
-        </div>
+        {loading && currentPage == 1 ? (
+          <>
+            <Loading />
+            <Loading />
+            <Loading />
+            <Loading />
+            <Loading />
+            <Loading />
+            <Loading />
+          </>
+        ) : (
+          <div className="w-full flex justify-center items-center">
+            {hasMore && (
+              <Button
+                onClick={loadMore}
+                style={{ width: "180px", height: "40px" }}
+                className={`text-white text-center bg-primary cursor-pointer mb-4 rounded-md ${
+                  !loading ? "pointer-events-auto" : "pointer-events-none"
+                }`}
+              >
+                <div className="flex gap-2 justify-center items-center">
+                  <p>مشاهده بیشتر</p>
+                  <span>
+                    {loading ? (
+                      <LoadingIcon
+                        fill="#fff"
+                        className="animate-spin "
+                        width={28}
+                        height={28}
+                      />
+                    ) : (
+                      <ArrowTopIcon
+                        fill="#fff"
+                        className="rotate-180"
+                        width={28}
+                        height={28}
+                      />
+                    )}
+                  </span>
+                </div>
+              </Button>
+            )}
+          </div>
+        )}
       </div>
     </>
   );
