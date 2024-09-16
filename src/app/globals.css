@@ -48,7 +48,7 @@ html {
 .Toastify__toast-body {
   font-family: var(--font-iransans);
   color: #fff;
-  font-size: 16px;
+  font-size: 13px;
   padding-left: 20px;
   line-height: 20px;
   padding: 0px;
@@ -57,8 +57,8 @@ html {
   margin-left: 25px !important;
 }
 .Toastify__toast--error {
-  width: 250px;
+  /* width: 250px; */
 }
 .Toastify__toast--success {
-  width: 250px;
+  /* width: 250px; */
 }
