@@ -119,7 +119,7 @@ function CommentBox({ id, type }: { id: number; type: "episode" | "program" }) {
           <Toast message="نظر شما با موفقیت ثبت شد" type="success" />
         )}
 
-        <h3 className="text-md text-white pb-0">دیدگاه بینندگان</h3>
+        <h3 className="text-sm lg:text-[1rem] text-white mb-4 pb-0">دیدگاه بینندگان</h3>
         <div className="relative h-[80px] px-2 md:h-[100px] flex items-center justify-start gap-2 rounded-md w-full">
           <figure className="bg-[#f4511e] h-8 w-8  rounded-full flex justify-center items-center">
             <div className="text-white">�</div>
@@ -127,11 +127,11 @@ function CommentBox({ id, type }: { id: number; type: "episode" | "program" }) {
 
           {replyTo && (
             <>
-              <div className="absolute right-12 text-white top-1 text-sm mb-2">
+              <div className="absolute right-12 text-white -top-2 text-xs lg:text-sm">
                 در پاسخ به {replyTo} :
               </div>
               <div
-                className="absolute text-white left-5 top-0 text-sm mb-2 cursor-pointer"
+                className="absolute text-white left-5 -top-2 text-xs lg:text-smcursor-pointer"
                 onClick={() => {
                   setComment_id(null);
                   setReplyTo(null);

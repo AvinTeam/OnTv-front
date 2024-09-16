@@ -82,7 +82,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                                   {publicShow?.Episode?.program?.title}{" "}
                                 </span>
                               </h5>
-                              <p className="text-[#B3BAC4] text-[10px] mt-1 lg:text-xs font-light text-nowrap">
+                              <p className="text-[#B3BAC4] text-[10px] mt-1 lg:text-xs font-light">
                                 {publicShow?.Episode?.program?.description}
                               </p>
                             </div>
@@ -143,7 +143,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                     </div>
                   </div>
                 )}
-                <div className="w-screen lg:hidden md:w-full container px-3 md:px-0 overflow-auto pt-2 pb-10 mb-9">
+                <div className="w-screen lg:hidden md:w-full container px-3 md:px-0 overflow-auto pt-2 lg:pb-10 lg:mb-9">
                   <SliderTitle
                     title="سایر قسمت ها"
                     link={`/show-onten/${publicShow?.Episode?.program?.slug}`}

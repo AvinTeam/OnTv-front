@@ -30,9 +30,20 @@ function CommentItem({
       <div className="flex gap-2 justify-center items-start w-full h-auto">
         <div className="-mr-2 rounded-full flex justify-start items-center p-0">
           <div
-            className="text-white h-8 w-8 flex justify-center items-center p-0"
+            className="flex lg:hidden text-white h-8 w-8 justify-center items-center mr-2"
+          >
+            <Image
+              src={item?.creator?.avatar?.[0]?.url}
+              alt="alt"
+              width={0}
+              height={0}
+              className="w-full h-full overflow-hidden rounded-full object-cover"
+            />
+          </div>
+          <div
+            className="hidden lg:flex text-white h-8 w-8 justify-center items-center p-0"
             style={{
-              marginRight: `${depth * 15 }px`,
+              marginRight: `${depth * 8 }px`,
             }}
           >
             <Image

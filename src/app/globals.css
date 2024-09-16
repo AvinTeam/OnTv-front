@@ -3,11 +3,12 @@
 @import "tailwindcss/utilities";
 
 @import "../tailwind/components/components.css";
-:root {scroll-behavior: smooth;}
-body{
+:root {
+  scroll-behavior: smooth;
+}
+body {
   scroll-behavior: smooth;
   color: #fff;
-
 }
 html {
   font-family: var(--font-iransans);
@@ -42,4 +43,22 @@ html {
 * {
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+.Toastify__toast-body {
+  font-family: var(--font-iransans);
+  color: #fff;
+  font-size: 16px;
+  padding-left: 20px;
+  line-height: 20px;
+  padding: 0px;
+  padding-top: 25px;
+  font-weight: 400;
+  margin-left: 25px !important;
+}
+.Toastify__toast--error {
+  width: 250px;
+}
+.Toastify__toast--success {
+  width: 250px;
 }
