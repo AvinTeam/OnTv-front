@@ -39,7 +39,9 @@ function Favorite({ programId }: { programId: string }) {
   useEffect(() => {
     gatAllProgram(programId);
   }, [programId]);
-
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  }, [])
   return (
     <>
       <Modal open={open} onClose={() => setOpen(false)}>

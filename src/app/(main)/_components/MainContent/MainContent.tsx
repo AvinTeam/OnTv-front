@@ -1,6 +1,6 @@
 "use client";
 import { API_URL } from "@/configs/global";
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import Tag from "../Tag";
 import Program from "../Program";
 import BannerFull from "@/app/_components/banners/banner-full/banner-full";
@@ -10,6 +10,7 @@ import axios from "axios";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import Live from "@/app/_components/live/live";
+import Loading from "./Loading";
 
 type HomepageConfigItem = {
   id: number;
@@ -68,22 +69,7 @@ function MainContent() {
   }, [inView, fetchNextPage, hasNextPage]);
   if (isLoading) {
     return (
-      <div className="w-full container h-screen bg-gray-200 p-4">
-        <div className="grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 gap-4 h-[55vh] 2xl:h-[70vh] ">
-          <div className="lg:col-span-2 row-span-3 lg:row-span-2 lg:h-full bg-base-50 animate-pulse rounded-lg"></div>
-          <div className="bg-base-50 h-auto animate-pulse rounded-lg"></div>
-          <div className="bg-base-50 h-auto animate-pulse rounded-lg"></div>
-        </div>
-
-        <div className="grid grid-cols-5 gap-4 h-24 lg:h-32 mt-3">
-          {[...Array(5)].map((_, index) => (
-            <div
-              key={index}
-              className="bg-base-50 animate-pulse rounded-lg"
-            ></div>
-          ))}
-        </div>
-      </div>
+     <Loading />
     );
   }
   return (
@@ -132,17 +118,30 @@ function MainContent() {
       ))}
 
       {(isFetchingNextPage || hasNextPage) && (
-        <div
-          ref={ref}
-          className="grid mb-12 grid-cols-5 gap-4 h-24 lg:h-32 mt-3"
-        >
-          {[...Array(5)].map((_, index) => (
-            <div
-              key={index}
-              className="bg-base-50 animate-pulse rounded-lg"
-            ></div>
-          ))}
-        </div>
+        <>
+          <div
+            ref={ref}
+            className="md:hidden grid mb-12 grid-cols-3 gap-4 h-32 lg:h-40 mt-16"
+          >
+            {[...Array(3)].map((_, index) => (
+              <div
+                key={index}
+                className="bg-base-50 animate-pulse rounded-lg"
+              ></div>
+            ))}
+          </div>
+          <div
+            ref={ref}
+            className="hidden md:grid mb-12 grid-cols-6 gap-4 h-32 lg:h-40 mt-16"
+          >
+            {[...Array(6)].map((_, index) => (
+              <div
+                key={index}
+                className="bg-base-50 animate-pulse rounded-lg"
+              ></div>
+            ))}
+          </div>
+        </>
       )}
     </>
   );
