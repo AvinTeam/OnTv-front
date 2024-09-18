@@ -46,7 +46,7 @@ export function convertJalaliToGregorian(jalaliDate: string) {
 }
 
 export function convertGregorianToJalaliFullTim(gregorianDate: string) {
-  return moment(gregorianDate, "YYYY-MM-DD HH:mm:ss")
+   return moment(gregorianDate, "YYYY-MM-DD HH:mm:ss")
     .locale("fa")
     .format("YYYY/MM/DD");
 }
@@ -79,7 +79,16 @@ export const calculateTimeAgo = (dateItem: string) => {
     return `${diffInSeconds} ثانیه قبل`;
   }
 };
-
+export function getAllDate(i: any) {
+  try {
+    if (i) {
+      let m = i?.substring(0, i?.length - 8);
+      return moment(m, "YYYY/MM/DD").locale("fa").format("YYYY/MM/DD");
+    }
+  } catch (e) {
+    return "ثبت نشده";
+  }
+}
 export function convertToJalali(dateString: string): string {
   const date = moment(dateString);
   const jalaliDate = date.format("jYYYY/jM/jD");

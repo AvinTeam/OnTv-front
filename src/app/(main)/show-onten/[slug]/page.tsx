@@ -52,7 +52,7 @@ export default async function ShowOnten({
           <div className="flex flex-col gap-3 lg:items-start items-center justify-center">
             <h2 className="text-white flex gap-5 justify-center items-center lg:text-2xl lg:mt-24">
               <p>{allData?.Program?.title}</p>
-               <Favorite programId={allData?.Program?.id} />
+              <Favorite programId={allData?.Program?.id} />
             </h2>
             <p className="text-sm text-center lg:text-right w-[300px] text-[#B3BAC4] mt-3 font-light">
               {allData?.Program?.description}
@@ -94,11 +94,11 @@ export default async function ShowOnten({
         <div className="container flex flex-col justify-between gap-6 overflow-hidden">
           <h5 className="my-6 text-white mr-6">عوامل برنامه</h5>
           {/* mobile & tablet view  */}
-          <div className="lg:hidden w-full overflow-hidden">
+          <div className="lg:hidden w-full overflow-hidden mx-2">
             <div className="h-[120px] md:h-[130px] w-full overflow-hidden">
               <Slider
                 Component={Box}
-                data={[...allData?.Program?.casts]}
+                data={allData?.Program?.casts}
                 isShowIcon={false}
                 mdCount={2.5}
                 displayCount={5}
@@ -107,51 +107,19 @@ export default async function ShowOnten({
           </div>
           {/* mobile & tablet view  */}
           <div className="hidden lg:grid grid-cols-9 w-full h-auto justify-center items-center mr-6">
-            <div className="col-span-3 flex flex-col gap-8">
-              {allData?.Program?.casts
-                ?.slice(0, 3)
-                .map((item: any, idx: any) => (
-                  <Fragment key={idx}>
-                    <Box
-                      data={{
-                        position: item.position,
-                        name: item?.name,
-                        family: item?.family,
-                      }}
-                    />
-                  </Fragment>
-                ))}
-            </div>
-            <div className="col-span-3 flex flex-col gap-8">
-              {allData?.Program?.casts
-                ?.slice(0, 3)
-                .map((item: any, idx: any) => (
-                  <Fragment key={idx}>
-                    <Box
-                      data={{
-                        position: item.position,
-                        name: item?.name,
-                        family: item?.family,
-                      }}
-                    />
-                  </Fragment>
-                ))}
-            </div>
-            <div className="col-span-3 flex flex-col gap-8">
-              {allData?.Program?.casts
-                ?.slice(0, 3)
-                .map((item: any, idx: any) => (
-                  <Fragment key={idx}>
-                    <Box
-                      data={{
-                        position: item.position,
-                        name: item?.name,
-                        family: item?.family,
-                      }}
-                    />
-                  </Fragment>
-                ))}
-            </div>
+            {allData?.Program?.casts.map((item: any, idx: any) => (
+              <Fragment key={idx}>
+                <div className="col-span-3 flex mb-8 flex-col gap-8">
+                  <Box
+                    data={{
+                      position: item.position,
+                      name: item?.name,
+                      family: item?.family,
+                    }}
+                  />
+                </div>
+              </Fragment>
+            ))}
           </div>
         </div>
       </div>

@@ -122,7 +122,7 @@ function Packages() {
               >
                 <Image
                   src={
-                    item?.period <= 31 ? sub1 : item?.period <= 90 ? sub3 : sub6
+                    item?.image?.[0]?.url
                   }
                   width={80}
                   height={80}
