@@ -199,7 +199,7 @@ function Subscriptions() {
                 <></>
               )}
             </div>
-            <div className="flex justify-center lg:justify-start 2xl:justify-center mt-4 gap-2">
+            <div className="flex justify-start mt-4 gap-2">
               <button
                 onClick={handlePrevPage}
                 disabled={page === 1}
