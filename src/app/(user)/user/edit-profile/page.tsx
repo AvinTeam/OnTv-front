@@ -67,6 +67,7 @@ export default function EditProfile() {
       "gender",
       gender == "خانم" ? "1" : gender == "آقا" ? "2" : "0"
     );
+    if(selectedImage)
     formData.append("avatar", selectedImage as any);
     axios
       .post(`profile/${user?.id}`, formData, {
