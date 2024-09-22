@@ -135,7 +135,7 @@ function Packages() {
                 <div className="w-full  mt-1 flex justify-between">
                   <p className="text-[#c9c9c9] md:mr-6 text-sm">{item?.title}</p>
                   <p className="text-[#e9e9e9] text-xs bg-[#d42b50] py-1.5 px-3 rounded-md">
-                    {` تخفیف ${100 - ((item?.priceAfterDiscount / item.price) * 100)}%`}
+                    {` تخفیف ${item?.totalDiscountRate}%`}
                   </p>
                 </div>
                 <div className="w-full mb-1 flex justify-between items-end">
@@ -146,10 +146,10 @@ function Packages() {
                       </span>
                     </div>
                     <p className="text-[#919396] text-xs md:text-sm mr-3">{`${toLocaleNumber(
-                      item?.priceAfterDiscount.toString()?.split(".")?.[0]
+                      item?.totalAmount.toString()?.split(".")?.[0]
                     )} تومان`}</p>
                     <p className="text-[#0a0a0a] text-[11px] md:text-xs rounded-md py-1 px-1 md:px-2 bg-[#6ebec4] mr-3">{` ماهانه ${toLocaleNumber(
-                      (item?.priceAfterDiscount / (item?.period / 30))
+                      (item?.totalAmount / (item?.period / 30))
                         .toString()
                         ?.split(".")?.[0]
                         .slice(0, 6)
