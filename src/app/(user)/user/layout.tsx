@@ -17,13 +17,22 @@ export default async function UserLayout({
 
   return (
     <div className="w-full min-h-screen">
-       <Header headerMenueItems={headerMenueItems?.menus} />
+      <Header headerMenueItems={headerMenueItems?.menus} />
+      {/* <Header headerMenueItems={headerMenueItems?.menus} />
        <div className="container h-full flex">
         <Sidebar />
         <main className="flex w-full h-auto justify-center items-center ">
           {children}
         </main>
         <ToastContainer />
+      </div> */}
+      <div className="container flex overflow-y-scroll">
+        <div className="bg-[#242323] rounded-2xl fixed hidden lg:block h-auto pb-5 mt-3 2xl:mt-6 w-[230px]">
+          <Sidebar />
+        </div>
+        <div className="w-full pr-0 lg:pr-60 overflow-y-scroll">
+        {children}
+        </div>
       </div>
     </div>
   );

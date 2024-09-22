@@ -119,9 +119,9 @@ export default function EditProfile() {
     return <LoadingSpinner message="در حال دریافت اطلاعات..." />;
   }
   return (
-    <div className=" h-full p-4 flex flex-col gap-3 justify-center items-center w-screen md:w-full overflow-hidden ">
+    <div className=" h-full p-4 flex flex-col gap-3 justify-center items-center w-screen md:w-full ">
       <h2 className="text-white mt-6 text-xl md:text-2xl">ویرایش پروفایل</h2>
-      <div className="text-center select-none bg-[#242323] h-auto min-w-[320px] md:min-w-[500px] overflow-hidden shadow-2xl flex justify-center items-center p-4 rounded-md">
+      <div className="text-center select-none bg-[#242323] h-auto min-w-[320px] md:min-w-[500px] shadow-2xl flex justify-center items-center p-4 rounded-md">
         <div className="h-full w-full flex flex-col gap-2 p-3 md:p-8">
           <div className="w-full flex flex-col gap-2 text-white justify-center items-center select-none">
             <div

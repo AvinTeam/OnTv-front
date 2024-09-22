@@ -97,13 +97,13 @@ function Packages() {
           </div>
         </div>
       </Modal>
-      <div className="mt-8 h-full p-4 flex flex-col gap-3  w-screen md:w-full overflow-hidden ">
+      <div className="mt-8 h-full p-4 flex flex-col gap-3 w-screen md:w-full mb-12">
         <div className="flex justify-between w-full">
           <p className="text-primary text-[12px] md:text-sm">خرید اشتراک آن</p>
           <p className="text-primary text-[12px] md:text-sm">برای شماره موبایل: {user?.mobile}</p>
         </div>
         <div className="text-center h-[2px] select-none bg-[#242323] md:min-w-[500px] overflow-hidden shadow-2xl flex justify-center items-center rounded-md"></div>
-        <div className="mt-6 flex flex-col-reverse items-center gap-6 justify-center ">
+        <div className="mt-6 flex flex-col-reverse items-center gap-6 justify-center pb-12">
           {plans?.map((item) => (
             <div
               onClick={() => {

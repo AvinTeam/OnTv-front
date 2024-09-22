@@ -43,20 +43,20 @@ function Subscriptions() {
   };
 
   const getPeyments = (page = 1) => {
-    return axios.get(`user/getUserInvoices?status=SUCCESS&page=${page}`).then(({ data }) => data);
+    return axios.get(`user/getUserInvoices?page=${page}`).then(({ data }) => data);//status=SUCCESS&
   };
 
   if (isLoading) {
     return <LoadingSpinner message="در حال دریافت اطلاعات..." />;
   }
   return (
-    <div className="w-full h-full pt-6 px-1 [&>*]:text-[#959595]">
+    <div className="w-full h-full pt-6 px-1 2xl:overflow-x-hidden [&>*]:text-[#959595]">
         
         {!invoices?.invoices?.data?.length ? (
           <p className="p-9">شما تاکنون هیچ خریدی انجام نداده‌اید.</p>
         ) : (
           <div
-            className="w-screen lg:w-[750px] xl:w-[1050px] 2xl:w-auto 2xl:overflow-x-hidden h-[500px] 2xl:h-[800px] fixed overflow-scroll"
+            className="w-screen overflow-scroll"
             style={{ scrollbarWidth: "auto", scrollbarColor: "auto" }}
           >
           <>

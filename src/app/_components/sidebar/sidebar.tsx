@@ -15,10 +15,9 @@ const Sidebar: React.FC = () => {
   const router = useRouter();
 
   return (
-    <aside className="hidden lg:block bg-[#242323] w-72 mt-4 rounded-lg mr-7 h-auto p-4 self-stretch">
-      <div className="flex flex-col gap-4 h-[80%] select-none">
+       <div className="flex flex-col gap-4 h-[80%] select-none">
         <ul className="flex flex-col gap-4 text-sm justify-center items-center">
-          <div className="w-14 overflow-hidden h-14 bg-[gray] flex justify-center items-center rounded-full">
+          <div className="w-14 overflow-hidden mt-2 h-14 bg-[gray] flex justify-center items-center rounded-full">
             {user?.avatar?.[0]?.url ? (
               <Image
                 src={user?.avatar?.[0]?.url}
@@ -62,8 +61,7 @@ const Sidebar: React.FC = () => {
           </button>
         </li>
       </div>
-    </aside>
-  );
+   );
 };
 
 export default Sidebar;
