@@ -22,7 +22,7 @@ export default async function UserLayout({
         <div className="bg-[#242323] rounded-2xl fixed hidden lg:block h-auto pb-5 mt-3 2xl:mt-6 w-[230px]">
           <Sidebar />
         </div>
-        <div className="w-full pr-0 lg:pr-60 overflow-y-scroll">
+        <div className="w-full pr-0 lg:pr-60 overflow-y-hidden">
         {children}
         </div>
         <ToastContainer />
