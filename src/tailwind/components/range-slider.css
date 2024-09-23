@@ -1,0 +1,59 @@
+.bar {
+  height: 5px !important;
+  box-shadow: none;
+ }
+.multi-range-slider .bar .bar-left {
+  border-radius: 10px 0px 0px 10px;
+  padding: 0px;
+  box-shadow: inset 0px 0px 5px rgba(255, 255, 255, 0.08) !important;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.multi-range-slider .bar .bar-right {
+  border-radius: 10px 0px 0px 10px;
+  padding: 0px;
+  box-shadow: inset 0px 0px 5px rgba(255, 255, 255, 0.08) !important;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+.multi-range-slider .thumb .thumb-left {
+  background-color: rgb(245, 184, 63);
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  padding: 0;
+}
+.multi-range-slider .thumb .thumb-right {
+  background-color: rgb(245, 184, 63);
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+.bar .bar-inner-right {
+  background-color: rgb(245, 184, 63);
+  box-shadow: none !important;
+  border: none;
+}
+.bar .bar-inner-left {
+  background-color: rgb(245, 184, 63);
+  box-shadow: none !important;
+  border: none;
+}
+.multi-range-slider > .bar > .thumb > .caption > .min-caption {
+  background-color: transparent;
+  color: #e8e8e8;
+}
+.multi-range-slider > .bar > .thumb > .caption > .max-caption {
+  background-color: transparent;
+  color: #e8e8e8;
+}
+
+.thumb::before{
+  content: "";
+  background-color: inherit;
+  position: absolute;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08) !important;
+  width: 16px !important;
+  height: 16px !important;
+  margin: -5px -8px;
+  border: none !important;
+}

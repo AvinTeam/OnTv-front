@@ -11,6 +11,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import Live from "@/app/_components/live/live";
 import Loading from "./Loading";
+import Filter from "../filter";
 
 type HomepageConfigItem = {
   id: number;
@@ -102,6 +103,7 @@ function MainContent() {
           ]}
         />
       </div>
+       <Filter />
       {data?.pages?.map((currentPage, idx) => (
         <React.Fragment key={idx}>
           {currentPage?.data?.homepage_configs?.data?.map(

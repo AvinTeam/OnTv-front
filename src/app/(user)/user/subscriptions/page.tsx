@@ -43,24 +43,23 @@ function Subscriptions() {
   };
 
   const getPeyments = (page = 1) => {
-    return axios.get(`user/getUserInvoices?status=SUCCESS&page=${page}`).then(({ data }) => data);//status=SUCCESS&
+    return axios.get(`user/getUserInvoices?page=${page}`).then(({ data }) => data);//status=SUCCESS&
   };
 
   if (isLoading) {
     return <LoadingSpinner message="در حال دریافت اطلاعات..." />;
   }
   return (
-    <div className="w-full h-full pt-6 px-1 2xl:overflow-x-hidden [&>*]:text-[#959595]">
+    <div className="w-full h-full pt-6 px-1 overflow-y-hidden [&>*]:text-[#959595]">
 
       {!invoices?.invoices?.data?.length ? (
         <p className="p-9">شما تاکنون هیچ خریدی انجام نداده‌اید.</p>
       ) : (
         <div
-          className="w-screen overflow-scroll"
-          style={{ scrollbarWidth: "auto", scrollbarColor: "auto" }}
-        >
+          className="overflow-y-hidden"
+         >
           <>
-            <div className="border  rounded-lg border-[#282828] w-[1300px] 2xl:w-[1400px]">
+            <div className="border rounded-lg border-[#282828] w-[1300px] 2xl:w-[1400px]">
               <div className="grid grid-cols-8 gap-4 overflow-hidden bg-[#1e1e1e] rounded-tr-lg rounded-t-lg ">
                 <div
                   className="text-center w-[165px] h-[58px] flex justify-center items-center font-bold"
@@ -199,7 +198,10 @@ function Subscriptions() {
                 <></>
               )}
             </div>
-            <div className="flex justify-start mt-4 gap-2">
+          </>
+        </div>
+      )}
+            <div className="flex justify-center mt-4 gap-2">
               <button
                 onClick={handlePrevPage}
                 disabled={page === 1}
@@ -229,9 +231,6 @@ function Subscriptions() {
                 صفحه بعد
               </button>
             </div>
-          </>
-        </div>
-      )}
     </div>
   );
 }
