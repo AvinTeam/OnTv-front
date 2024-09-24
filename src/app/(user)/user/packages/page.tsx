@@ -10,6 +10,7 @@ import axios from "@/core/axios";
 import LoadingSpinner from "@/app/_components/loading/loading";
 import { toLocaleNumber } from "@/utils/functions";
 import Modal from "@/app/_components/modal/modal";
+import DiscountCode from "./components/DiscountCode";
 function Packages() {
   const [paymentGateways, setPaymentGateways] = useState<any[]>([]);
   const [plans, setPlans] = useState<any[]>([]);
@@ -18,10 +19,10 @@ function Packages() {
   const [planId, setPlanId] = useState<number | null>(null);
   const [open, setOpen] = useState<boolean>(false);
   const openInNewTab = (url: string) => {
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
     a.click();
   };
   const user = useUserStore((store) => store.user);
@@ -30,7 +31,7 @@ function Packages() {
     axios
       .post(`plan/buyPlan/${id}`, { plan_id: planId })
       .then(({ data }) => {
-        openInNewTab(data?.response?.url)
+        openInNewTab(data?.response?.url);
         setLoadingData(false);
       })
       .catch(() => setLoadingData(false));
@@ -100,10 +101,12 @@ function Packages() {
       <div className="mt-8 h-full p-4 flex flex-col gap-3 w-screen md:w-full mb-12">
         <div className="flex justify-between w-full">
           <p className="text-primary text-[12px] md:text-sm">خرید اشتراک آن</p>
-          <p className="text-primary text-[12px] md:text-sm">برای شماره موبایل: {user?.mobile}</p>
+          <p className="text-primary text-[12px] md:text-sm">
+            برای شماره موبایل: {user?.mobile}
+          </p>
         </div>
         <div className="text-center h-[2px] select-none bg-[#242323] md:min-w-[500px] overflow-hidden shadow-2xl flex justify-center items-center rounded-md"></div>
-        <div className="mt-6 flex flex-col-reverse items-center gap-6 justify-center pb-12">
+        <div className="mt-6 flex flex-col-reverse items-center gap-6 justify-center pb-10">
           {plans?.map((item) => (
             <div
               onClick={() => {
@@ -121,19 +124,22 @@ function Packages() {
                 }}
               >
                 <Image
-                  src={
-                    item?.image?.[0]?.url
-                  }
+                  src={item?.image?.[0]?.url}
                   width={80}
                   height={80}
                   alt={item?.title}
                 />
               </div>
-              <div  style={{
-                   borderColor: `${item?.color}`,
-                }} className="flex border-r-2 md:border-r-0 flex-col justify-between w-full md:w-[77%] rounded-lg items-center p-2 bg-[#242323]">
+              <div
+                style={{
+                  borderColor: `${item?.color}`,
+                }}
+                className="flex border-r-2 md:border-r-0 flex-col justify-between w-full md:w-[77%] rounded-lg items-center p-2 bg-[#242323]"
+              >
                 <div className="w-full  mt-1 flex justify-between">
-                  <p className="text-[#c9c9c9] md:mr-6 text-sm">{item?.title}</p>
+                  <p className="text-[#c9c9c9] md:mr-6 text-sm">
+                    {item?.title}
+                  </p>
                   <p className="text-[#e9e9e9] text-xs bg-[#d42b50] py-1.5 px-3 rounded-md">
                     {` تخفیف ${item?.totalDiscountRate}%`}
                   </p>
@@ -165,6 +171,28 @@ function Packages() {
               <div className="hidden md:absolute w-7 h-12 right-[123px] -bottom-9 bg-[#000] rounded-full"></div>
             </div>
           ))}
+        </div>
+        <div className="flex justify-center items-center gap-3">
+          <span>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.34301 2.34301C-0.781003 5.46702 -0.781003 10.533 2.34301 13.657C5.46702 16.781 10.533 16.781 13.657 13.657C16.781 10.533 16.781 5.46702 13.657 2.34301C10.533 -0.781003 5.46702 -0.781003 2.34301 2.34301ZM8.32084 3.3562C8.99631 3.3562 9.53668 3.91346 9.53668 4.58892C9.53668 5.26438 8.97942 5.82164 8.32084 5.82164C7.64538 5.82164 7.08813 5.26438 7.08813 4.57203C7.08813 3.89657 7.64538 3.3562 8.32084 3.3562ZM10.0602 11.6137C10.0264 11.715 9.95884 11.8332 9.89129 11.9008C9.45224 12.3567 8.91187 12.6269 8.27018 12.6269C7.96623 12.6269 7.67916 12.6269 7.3752 12.5763C6.88549 12.5087 6.26069 11.9008 6.34512 11.2591C6.41267 10.8201 6.48021 10.381 6.54776 9.94195C6.68285 9.18206 6.81794 8.40528 6.95303 7.64538C6.95303 7.59472 6.96992 7.54406 6.96992 7.4934C6.96992 7.17256 6.8686 7.05435 6.54776 7.02058C6.41267 7.00369 6.27757 6.98681 6.14248 6.95303C5.9905 6.90237 5.90607 6.76728 5.92296 6.64908C5.93984 6.51398 6.02427 6.42955 6.19314 6.39578C6.27757 6.37889 6.37889 6.37889 6.48021 6.37889C6.85172 6.37889 7.22322 6.37889 7.61161 6.37889C8.01689 6.37889 8.40528 6.37889 8.81055 6.37889C9.09763 6.37889 9.26649 6.51398 9.26649 6.80106C9.26649 7.03747 9.23272 7.27388 9.18206 7.51029C9.03008 8.38839 8.86121 9.2496 8.70924 10.1277C8.65858 10.4148 8.59103 10.7018 8.55726 10.9889C8.54037 11.124 8.55726 11.276 8.59103 11.4111C8.64169 11.5968 8.77678 11.6982 8.96253 11.6813C9.11451 11.6644 9.26649 11.6137 9.41847 11.5462C9.53668 11.4955 9.638 11.4111 9.7562 11.3773C9.95884 11.3098 10.1108 11.428 10.0602 11.6137Z"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </span>
+          <p className="ont-light text-xs md:text-sm lg:text-[1rem]">
+            به تمامی مبالغ 10% مالیات بر ارزش افزوده اضافه شده است.
+          </p>
+        </div>
+        <div className="mt-4 bg-[#242323] w-full md:w-[600px] mx-auto h-[90px] md:h-[100px] flex cursor-pointer transition rounded-lg">
+          <DiscountCode />
         </div>
       </div>
     </>

@@ -30,6 +30,7 @@ import PhoneIcon from "./Phone";
 import FreeIcon from "./Free";
 import LockIcon from "./Lock";
 import BadgeFillIcon from "./BadgeFill";
+import DiscountIcon from "./Discount";
 export {
   AparatIcon,
   ArrowTopIcon,
@@ -62,5 +63,6 @@ export {
   PhoneIcon,
   FreeIcon,
   LockIcon,
-  BadgeFillIcon
+  BadgeFillIcon,
+  DiscountIcon
 };

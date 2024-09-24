@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Slider } from "../../slider/slider";
 import { CloseIcon } from "../../icons";
@@ -58,7 +58,7 @@ const SearchModal = ({
   return createPortal(
     <div className="fixed bg-[black] w-full h-full z-[1000] left-0 bottom-0 top-0 right-0 flex items-center justify-around">
       <div className="mx-auto flex items-start select-none justify-center w-full h-full mt-48 p-4 text-white relative">
-        <div className="flex relative ">
+        <div className="flex relative">
           <div className="h-[400px]">
             <input
               type="text"
@@ -117,7 +117,7 @@ const SearchModal = ({
                         Component={({ data }) => {
                           return (
                             <Link
-                              href={`/all-program/${data?.slug}/tag/all`}
+                              href={`/search-result-list/${data?.slug}/tag/all`}
                               onClick={handleClose}
                               className="border cursor-pointer text-sm font-light rounded-md text-[#b3b3b3] py-1.5 flex justify-center items-center hover:border-[gray] border-base-25"
                             >
