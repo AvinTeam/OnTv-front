@@ -10,7 +10,6 @@ import Modal from "@/app/_components/modal/modal";
 import { useRouter } from "next/navigation";
 import CommentItem from "./CommentItem";
 import { useUserStore } from "@/stores/user.store";
-import { Skeleton } from "@/app/_components/skeleton";
 import Loading from "./Loading";
 
 function CommentBox({ id, type }: { id: number; type: "episode" | "program" }) {
