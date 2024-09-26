@@ -1,10 +1,21 @@
-"use client"
+"use client";
 import { Button } from "@/app/_components/button";
 import { DiscountIcon } from "@/app/_components/icons";
 import React, { useState } from "react";
 
-function DiscountCode() {
-    const [value , setValue] = useState()
+function DiscountCode({
+  onApplyDiscount,
+}: {
+  onApplyDiscount: (code: string) => void;
+}) {
+  const [value, setValue] = useState("");
+
+  const handleConfirm = () => {
+    if (value) {
+      onApplyDiscount(value);
+      setValue("");
+    }
+  };
   return (
     <div className="w-full flex flex-col lg:flex-row justify-between items-center select-none">
       <div className="flex justify-center items-center gap-2 mr-2">
@@ -17,12 +28,13 @@ function DiscountCode() {
         <input
           type="text"
           value={value}
-          onChange={(e: any)=> setValue(e.target.value)}
+          onChange={(e: any) => setValue(e.target.value)}
           placeholder="کد تخفیف خود را وارد کنید"
           style={{ border: "1px solid rgba(255,255,255,.12)" }}
           className="text-ellipsis w-full cursor-pointer whitespace-nowrap rounded-[0.8rem] p-[0.5rem] outline-none transition-all relative bg-[rgba(0,0,0,0)] text-sm text-[#e8e8e8]"
         />{" "}
         <Button
+          onClick={handleConfirm}
           className="w-full ml-2 lg:mt-0 lg:w-[150px] rounded-lg p-2 text-sm font-bold"
           style={{
             color: value ? "#000" : "rgba(12,12,12,.5)",

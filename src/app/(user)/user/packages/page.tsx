@@ -1,9 +1,6 @@
 "use client";
 import { useUserStore } from "@/stores/user.store";
 import React, { useEffect, useState } from "react";
-import sub1 from "../../../../../public/images/sub1-big-size.png";
-import sub3 from "../../../../../public/images/sub3-big-size.png";
-import sub6 from "../../../../../public/images/sub6-big-size.png";
 import Image from "next/image";
 import { ArrowIcon } from "@/app/_components/icons";
 import axios from "@/core/axios";
@@ -14,7 +11,23 @@ import DiscountCode from "./components/DiscountCode";
 function Packages() {
   const [paymentGateways, setPaymentGateways] = useState<any[]>([]);
   const [plans, setPlans] = useState<any[]>([]);
+
   const [loadingِData, setLoadingData] = useState<boolean>(false);
+  const [discount, setDiscount] = useState<{
+    type: "amount" | "percent" | "";
+    amount: number;
+  }>({
+    type: "",
+    amount: 0,
+  });
+  const [discountMessage, setDiscountMessage] = useState<{
+    ok: boolean;
+    text: string;
+  }>({
+    ok: false,
+    text: "",
+  });
+
   const [id, setId] = useState<number | null>(null);
   const [planId, setPlanId] = useState<number | null>(null);
   const [open, setOpen] = useState<boolean>(false);
@@ -36,10 +49,123 @@ function Packages() {
       })
       .catch(() => setLoadingData(false));
   };
+  const applyDiscount = (discountCode: string) => {
+    setLoadingData(true);
+    axios
+      .post(`discount/validate`, { code: discountCode, plan_id: 1 })
+      .then(({ data }) => {
+        setLoadingData(false);
+        setDiscountMessage({
+          ok: true,
+          text: `کد تخفیف  ${discountCode} با موفقیت اعمال شد. اکنون نوع اشتراک مورد نظر خود را انتخاب کنید.`,
+        });
+        const discountableId = data?.discount?.discountable_id;
+        if (data?.discount?.type == "amount") {
+          setDiscount({
+            type: "amount",
+            amount: data?.discount?.amount,
+          });
+          if (discountableId) {
+            setPlans((prevPlans) =>
+              prevPlans.map((plan: any) => {
+                if (plan.id == discountableId) {
+                  return {
+                    ...plan,
+                    originalPrice: plan.priceAfterDiscount || plan.price,
+                    priceAfterDiscount:
+                      plan.priceAfterDiscount - data?.discount?.amount,
+                  };
+                }
+                const { originalPrice, ...restPlan } = plan;
+                return restPlan;
+              })
+            );
+          } else {
+            setPlans((prevPlans) =>
+              prevPlans.map((plan) => ({
+                ...plan,
+                originalPrice: plan.priceAfterDiscount,
+                priceAfterDiscount:
+                  plan.priceAfterDiscount - data?.discount?.amount,
+              }))
+            );
+          }
+        } else {
+          setDiscount({
+            type: "percent",
+            amount: data?.discount?.amount,
+          });
+          if (discountableId) {
+            setPlans((prevPlans) =>
+              prevPlans.map((plan) => {
+                if (plan.id == discountableId) {
+                  return {
+                    ...plan,
+                    originalPrice: plan.priceAfterDiscount || plan.price,
+                    priceAfterDiscount:
+                      plan.priceAfterDiscount -
+                      (plan.priceAfterDiscount * data?.discount?.amount) / 100,
+                  };
+                }
+                const { originalPrice, ...restPlan } = plan;
+                return restPlan;
+              })
+            );
+          } else {
+            setPlans((prevPlans) =>
+              prevPlans.map((plan) => ({
+                ...plan,
+                originalPrice: plan.priceAfterDiscount,
+                priceAfterDiscount:
+                  plan.priceAfterDiscount -
+                  (plan.priceAfterDiscount * data?.discount?.amount) / 100,
+              }))
+            );
+          }
+        }
+        console.log(data);
+      })
+      .catch(() => {
+        setLoadingData(false);
+        setDiscountMessage({
+          ok: false,
+          text: `کد تخفیف معتبر نیست.`,
+        });
+      });
+
+    window.scrollTo(0, 0);
+  };
+  const cancelDiscount = () => {
+    if (!discountMessage.ok) {
+      setDiscountMessage({
+        ok: true,
+        text: "",
+      });
+      return;
+    }
+    setDiscountMessage({
+      ok: true,
+      text: "",
+    });
+
+    setPlans((prevPlans) =>
+      prevPlans.map((plan) => ({
+        ...plan,
+        priceAfterDiscount: plan.originalPrice ?  plan.originalPrice : plan?.priceAfterDiscount,
+      }))
+    );
+
+    setDiscount({
+      type: "",
+      amount: 0,
+    });
+  };
   useEffect(() => {
     setLoadingData(true);
     axios
-      .get(`plan/publicIndex`)
+      .get(
+        `plan/publicIndex?f_params[orderBy][field]=period&f_params[orderBy][type]=asc`
+      )
       .then(({ data }) => {
         setPaymentGateways(data?.payment_gateways);
         setPlans(data?.plans?.data);
@@ -106,7 +232,20 @@ function Packages() {
           </p>
         </div>
         <div className="text-center h-[2px] select-none bg-[#242323] md:min-w-[500px] overflow-hidden shadow-2xl flex justify-center items-center rounded-md"></div>
-        <div className="mt-6 flex flex-col-reverse items-center gap-6 justify-center pb-10">
+        {discountMessage.text && (
+          <div className="mt-4 bg-[#242323] items-center justify-around w-full md:w-[600px] border border-primary mx-auto h-[90px] md:h-[80px] flex cursor-pointer transition rounded-lg">
+            <div className="text-primary leading-7 text-xs md:text-sm w-[65%]">
+              {discountMessage.text}
+            </div>
+            <button
+              onClick={cancelDiscount}
+              className="text-xs md:text-sm text-[#f16363]"
+            >
+              {discountMessage.ok ? " لغو تخفیف" : "حذف"}
+            </button>
+          </div>
+        )}
+        <div className="mt-6 flex flex-col items-center gap-6 justify-center pb-10">
           {plans?.map((item) => (
             <div
               onClick={() => {
@@ -114,7 +253,7 @@ function Packages() {
                 setOpen(true);
               }}
               key={item?.id}
-              className="relative w-full md:w-[600px] mx-auto h-[90px] md:h-[100px] flex  hover:border duration-[0.3s] ease-in-out cursor-pointer hover:border-[#1c5053] transition rounded-lg"
+              className="relative w-full md:w-[600px] mx-auto h-[90px] md:h-[100px] flex border border-[#040404] duration-[0.3s] ease-in-out cursor-pointer hover:border-[#1c5053] transition rounded-lg"
             >
               <div
                 className="hidden md:flex justify-center items-center rounded-lg w-[23%] border-r-2 p-2 bg-[#242323] shadow-2xl"
@@ -136,39 +275,57 @@ function Packages() {
                 }}
                 className="flex border-r-2 md:border-r-0 flex-col justify-between w-full md:w-[77%] rounded-lg items-center p-2 bg-[#242323]"
               >
-                <div className="w-full  mt-1 flex justify-between">
+                <span className="w-full mt-1 flex justify-between">
                   <p className="text-[#c9c9c9] md:mr-6 text-sm">
                     {item?.title}
                   </p>
-                  <p className="text-[#e9e9e9] text-xs bg-[#d42b50] py-1.5 px-3 rounded-md">
-                    {` تخفیف ${item?.totalDiscountRate}%`}
-                  </p>
-                </div>
+                  <span className="flex gap-1">
+                    {discount.amount &&
+                    discount.amount < item?.priceAfterDiscount &&
+                    item?.originalPrice ? (
+                      <p className="text-[11px] font-bold text-[#cacaca]  bg-[#04745b] py-1.5 px-3 rounded-md">
+                        {` تخفیف نقدی ${Number(discount.amount)} ${
+                          discount.type == "amount" ? "تومان" : "%"
+                        }`}
+                      </p>
+                    ) : null}
+                    <p className="text-[#e9e9e9] text-xs bg-[#d42b50] py-1.5 px-3 rounded-md">
+                      {` تخفیف ${Number(item?.discount)}%`}
+                    </p>
+                  </span>
+                </span>
+
                 <div className="w-full mb-1 flex justify-between items-end">
-                  <div className="flex gap-1">
-                    <div className="relative">
-                      <span className="text-xs md:text-sm md:mr-6 text-[#63676b] before:content-[''] before:absolute before:h-[1px] before:w-[80%] before:bg-current before:top-3 before:-rotate-12 before:right-4">
-                        {toLocaleNumber(item?.price)}
-                      </span>
+                  {discount.amount > item?.priceAfterDiscount ? (
+                    <p className="md:mr-5 bg-primary text-base-70 py-1 px-3 rounded-md text-sm">
+                      اشتراک رایگان
+                    </p>
+                  ) : (
+                    <div className="flex gap-1">
+                      <div className="relative">
+                        <span className="text-xs md:text-sm md:mr-6 text-[#63676b] before:content-[''] before:absolute before:h-[1px] before:w-[80%] before:bg-current before:top-3 before:-rotate-12 before:right-4">
+                          {toLocaleNumber(item?.price)}
+                        </span>
+                      </div>
+                      <p className="text-[#919396] text-xs md:text-sm mr-3">{`${toLocaleNumber(
+                        item?.priceAfterDiscount.toString()?.split(".")?.[0]
+                      )} تومان`}</p>
+                      <p className="text-[#0a0a0a] text-[11px] md:text-xs rounded-md py-1 px-1 md:px-2 bg-[#6ebec4] mr-3">{` ماهانه ${toLocaleNumber(
+                        (item?.priceAfterDiscount / (item?.period / 30))
+                          .toString()
+                          ?.split(".")?.[0]
+                          .slice(0, 6)
+                      )} تومان`}</p>
                     </div>
-                    <p className="text-[#919396] text-xs md:text-sm mr-3">{`${toLocaleNumber(
-                      item?.totalAmount.toString()?.split(".")?.[0]
-                    )} تومان`}</p>
-                    <p className="text-[#0a0a0a] text-[11px] md:text-xs rounded-md py-1 px-1 md:px-2 bg-[#6ebec4] mr-3">{` ماهانه ${toLocaleNumber(
-                      (item?.totalAmount / (item?.period / 30))
-                        .toString()
-                        ?.split(".")?.[0]
-                        .slice(0, 6)
-                    )} تومان`}</p>
-                  </div>
+                  )}
                   <span className="text-[10px] md:text-xs flex gap-1 items-center text-primary ">
                     <p>انتخاب و خرید </p>
                     <ArrowIcon fill="#3899a0" className="rotate-180" />
                   </span>
                 </div>
               </div>
-              <div className="hidden md:absolute w-7 h-12 right-[123px] -top-9 bg-[#000] rounded-full"></div>
-              <div className="hidden md:absolute w-7 h-12 right-[123px] -bottom-9 bg-[#000] rounded-full"></div>
+              <div className="hidden lg:block md:absolute w-7 h-12 right-[123px] -top-9 bg-[#000] rounded-full"></div>
+              <div className="hidden lg:block md:absolute w-7 h-12 right-[123px] -bottom-9 bg-[#000] rounded-full"></div>
             </div>
           ))}
         </div>
@@ -188,11 +345,11 @@ function Packages() {
             </svg>
           </span>
           <p className="ont-light text-xs md:text-sm lg:text-[1rem]">
-            به تمامی مبالغ 10% مالیات بر ارزش افزوده اضافه شده است.
+            به تمامی مبالغ 10% مالیات بر ارزش افزوده اضافه خواهد شد.
           </p>
         </div>
         <div className="mt-4 bg-[#242323] w-full md:w-[600px] mx-auto h-[90px] md:h-[100px] flex cursor-pointer transition rounded-lg">
-          <DiscountCode />
+          <DiscountCode onApplyDiscount={applyDiscount} />
         </div>
       </div>
     </>
