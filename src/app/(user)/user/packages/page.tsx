@@ -8,6 +8,7 @@ import LoadingSpinner from "@/app/_components/loading/loading";
 import { toLocaleNumber } from "@/utils/functions";
 import Modal from "@/app/_components/modal/modal";
 import DiscountCode from "./components/DiscountCode";
+
 function Packages() {
   const [paymentGateways, setPaymentGateways] = useState<any[]>([]);
   const [plans, setPlans] = useState<any[]>([]);
@@ -16,17 +17,18 @@ function Packages() {
   const [discount, setDiscount] = useState<{
     type: "amount" | "percent" | "";
     amount: number;
+    code: string;
+    discountable_type: any;
+    discountable_id: any;
   }>({
     type: "",
+    code: "",
     amount: 0,
+    discountable_type: '',
+    discountable_id: null
   });
-  const [discountMessage, setDiscountMessage] = useState<{
-    ok: boolean;
-    text: string;
-  }>({
-    ok: false,
-    text: "",
-  });
+
+  const [discountCode, setDiscountCode] = useState('');
 
   const [id, setId] = useState<number | null>(null);
   const [planId, setPlanId] = useState<number | null>(null);
@@ -42,116 +44,81 @@ function Packages() {
   const handlePayment = () => {
     setLoadingData(true);
     axios
-      .post(`plan/buyPlan/${id}`, { plan_id: planId })
+      .post(`plan/buyPlan/${id}`, {
+        plan_id: planId,
+        ...addDiscountToPayment(planId)
+      })
       .then(({ data }) => {
         openInNewTab(data?.response?.url);
         setLoadingData(false);
       })
       .catch(() => setLoadingData(false));
   };
-  const applyDiscount = (discountCode: string) => {
+
+  const addDiscountToPayment = (plan_id: any) => {
+    let result = {}
+    if (discountCode !== '') {
+      if (!discount.discountable_type || plan_id == discount.discountable_id)
+        result = { discountCode: discountCode }
+    }
+    console.log({ discountCode, discount })
+    return result
+  }
+
+  const applyDiscount = (code: string) => {
     setLoadingData(true);
     axios
-      .post(`discount/validate`, { code: discountCode, plan_id: 1 })
+      .post(`discount/validate`, { code, plan_id: 1 })
       .then(({ data }) => {
         setLoadingData(false);
-        setDiscountMessage({
-          ok: true,
-          text: `کد تخفیف  ${discountCode} با موفقیت اعمال شد. اکنون نوع اشتراک مورد نظر خود را انتخاب کنید.`,
-        });
+        setDiscountCode(code);
         const discountableId = data?.discount?.discountable_id;
-        if (data?.discount?.type == "amount") {
-          setDiscount({
-            type: "amount",
-            amount: data?.discount?.amount,
-          });
-          if (discountableId) {
-            setPlans((prevPlans) =>
-              prevPlans.map((plan: any) => {
-                if (plan.id == discountableId) {
-                  return {
-                    ...plan,
-                    originalPrice: plan.priceAfterDiscount || plan.price,
-                    priceAfterDiscount:
-                      plan.priceAfterDiscount - data?.discount?.amount,
-                  };
-                }
-                const { originalPrice, ...restPlan } = plan;
-                return restPlan;
-              })
-            );
-          } else {
-            setPlans((prevPlans) =>
-              prevPlans.map((plan) => ({
-                ...plan,
-                originalPrice: plan.priceAfterDiscount,
-                priceAfterDiscount:
-                  plan.priceAfterDiscount - data?.discount?.amount,
-              }))
-            );
-          }
+
+        setDiscount(data?.discount);
+        if (discountableId) {
+          setPlans((prevPlans) =>
+            prevPlans.map((plan: any) => {
+              if (plan.id == discountableId) {
+                return {
+                  ...plan,
+                  originalPrice: plan.priceAfterDiscount || plan.price,
+                  priceAfterDiscount: plan.priceAfterDiscount - discountCalc(data?.discount, plan.priceAfterDiscount),
+                };
+              }
+              const { originalPrice, ...restPlan } = plan;
+              return restPlan;
+            })
+          );
         } else {
-          setDiscount({
-            type: "percent",
-            amount: data?.discount?.amount,
-          });
-          if (discountableId) {
-            setPlans((prevPlans) =>
-              prevPlans.map((plan) => {
-                if (plan.id == discountableId) {
-                  return {
-                    ...plan,
-                    originalPrice: plan.priceAfterDiscount || plan.price,
-                    priceAfterDiscount:
-                      plan.priceAfterDiscount -
-                      (plan.priceAfterDiscount * data?.discount?.amount) / 100,
-                  };
-                }
-                const { originalPrice, ...restPlan } = plan;
-                return restPlan;
-              })
-            );
-          } else {
-            setPlans((prevPlans) =>
-              prevPlans.map((plan) => ({
-                ...plan,
-                originalPrice: plan.priceAfterDiscount,
-                priceAfterDiscount:
-                  plan.priceAfterDiscount -
-                  (plan.priceAfterDiscount * data?.discount?.amount) / 100,
-              }))
-            );
-          }
+          setPlans((prevPlans) =>
+            prevPlans.map((plan) => ({
+              ...plan,
+              originalPrice: plan.priceAfterDiscount,
+              priceAfterDiscount: plan.priceAfterDiscount - discountCalc(data?.discount, plan.priceAfterDiscount),
+            }))
+          );
         }
+
         console.log(data);
       })
       .catch(() => {
         setLoadingData(false);
-        setDiscountMessage({
-          ok: false,
-          text: `کد تخفیف معتبر نیست.`,
-        });
+        setDiscountCode('');
       });
 
     window.scrollTo(0, 0);
   };
   const cancelDiscount = () => {
-    if (!discountMessage.ok) {
-      setDiscountMessage({
-        ok: true,
-        text: "",
-      });
+    if (!discountCode) {
+      setDiscountCode('');
       return;
     }
-    setDiscountMessage({
-      ok: true,
-      text: "",
-    });
+    setDiscountCode('');
 
     setPlans((prevPlans) =>
       prevPlans.map((plan) => ({
         ...plan,
-        priceAfterDiscount: plan.originalPrice ?  plan.originalPrice : plan?.priceAfterDiscount,
+        priceAfterDiscount: plan.originalPrice ? plan.originalPrice : plan?.priceAfterDiscount,
       }))
     );
 
@@ -173,6 +140,19 @@ function Packages() {
       })
       .catch(() => setLoadingData(false));
   }, []);
+
+
+  const discountCalc = (discount: any, price: number) => {
+    let discountAmount = 0;
+    if (discount.type == "amount") {
+      discountAmount = discount.amount
+    } else {
+      discountAmount = price * discount.amount / 100;
+    }
+
+    return price <= discountAmount ? price : discountAmount
+  }
+
   if (loadingِData) {
     return (
       <LoadingSpinner message="در حال انجام عملیات هستیم لطفا منتظر بمانید  ..." />
@@ -232,20 +212,20 @@ function Packages() {
           </p>
         </div>
         <div className="text-center h-[2px] select-none bg-[#242323] md:min-w-[500px] overflow-hidden shadow-2xl flex justify-center items-center rounded-md"></div>
-        {discountMessage.text && (
+        {discountCode && (
           <div className="mt-4 bg-[#242323] items-center justify-around w-full md:w-[600px] border border-primary mx-auto h-[90px] md:h-[80px] flex cursor-pointer transition rounded-lg">
             <div className="text-primary leading-7 text-xs md:text-sm w-[65%]">
-              {discountMessage.text}
+              {`کد تخفیف  ${discountCode} با موفقیت اعمال شد. اکنون نوع اشتراک مورد نظر خود را انتخاب کنید.`}
             </div>
             <button
               onClick={cancelDiscount}
               className="text-xs md:text-sm text-[#f16363]"
             >
-              {discountMessage.ok ? " لغو تخفیف" : "حذف"}
+              لغو تخفیف
             </button>
           </div>
         )}
-        <div className="mt-6 flex flex-col items-center gap-6 justify-center pb-10">
+        <div className="mt-6 flex flex-col items-center gap-6 justify-center pb-5">
           {plans?.map((item) => (
             <div
               onClick={() => {
@@ -281,12 +261,9 @@ function Packages() {
                   </p>
                   <span className="flex gap-1">
                     {discount.amount &&
-                    discount.amount < item?.priceAfterDiscount &&
-                    item?.originalPrice ? (
+                      item?.originalPrice ? (
                       <p className="text-[11px] font-bold text-[#cacaca]  bg-[#04745b] py-1.5 px-3 rounded-md">
-                        {` تخفیف نقدی ${Number(discount.amount)} ${
-                          discount.type == "amount" ? "تومان" : "%"
-                        }`}
+                        {` تخفیف نقدی ${discountCalc(discount, item.originalPrice)} تومان`}
                       </p>
                     ) : null}
                     <p className="text-[#e9e9e9] text-xs bg-[#d42b50] py-1.5 px-3 rounded-md">
@@ -295,8 +272,10 @@ function Packages() {
                   </span>
                 </span>
 
+
+
                 <div className="w-full mb-1 flex justify-between items-end">
-                  {discount.amount > item?.priceAfterDiscount ? (
+                  {item?.priceAfterDiscount == 0 ? (
                     <p className="md:mr-5 bg-primary text-base-70 py-1 px-3 rounded-md text-sm">
                       اشتراک رایگان
                     </p>
@@ -310,12 +289,17 @@ function Packages() {
                       <p className="text-[#919396] text-xs md:text-sm mr-3">{`${toLocaleNumber(
                         item?.priceAfterDiscount.toString()?.split(".")?.[0]
                       )} تومان`}</p>
-                      <p className="text-[#0a0a0a] text-[11px] md:text-xs rounded-md py-1 px-1 md:px-2 bg-[#6ebec4] mr-3">{` ماهانه ${toLocaleNumber(
-                        (item?.priceAfterDiscount / (item?.period / 30))
-                          .toString()
-                          ?.split(".")?.[0]
-                          .slice(0, 6)
-                      )} تومان`}</p>
+                      {item?.priceAfterDiscount.toString()?.split(".")?.[0] !== (item?.priceAfterDiscount / (item?.period / 30))
+                        .toString()
+                        ?.split(".")?.[0]
+                        .slice(0, 6) &&
+                        <p className="text-[#0a0a0a] text-[11px] md:text-xs rounded-md py-1 px-1 md:px-2 bg-[#6ebec4] mr-3">{` ماهانه ${toLocaleNumber(
+                          (item?.priceAfterDiscount / (item?.period / 30))
+                            .toString()
+                            ?.split(".")?.[0]
+                            .slice(0, 6)
+                        )} تومان`}</p>
+                      }
                     </div>
                   )}
                   <span className="text-[10px] md:text-xs flex gap-1 items-center text-primary ">
@@ -348,9 +332,9 @@ function Packages() {
             به تمامی مبالغ 10% مالیات بر ارزش افزوده اضافه خواهد شد.
           </p>
         </div>
-        <div className="mt-4 bg-[#242323] w-full md:w-[600px] mx-auto h-[90px] md:h-[100px] flex cursor-pointer transition rounded-lg">
+        {!discountCode && <div className="mt-4 bg-[#242323] w-full md:w-[600px] mx-auto h-[90px] md:h-[100px] flex transition rounded-lg">
           <DiscountCode onApplyDiscount={applyDiscount} />
-        </div>
+        </div>}
       </div>
     </>
   );

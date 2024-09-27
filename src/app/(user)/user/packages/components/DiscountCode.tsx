@@ -31,7 +31,7 @@ function DiscountCode({
           onChange={(e: any) => setValue(e.target.value)}
           placeholder="کد تخفیف خود را وارد کنید"
           style={{ border: "1px solid rgba(255,255,255,.12)" }}
-          className="text-ellipsis w-full cursor-pointer whitespace-nowrap rounded-[0.8rem] p-[0.5rem] outline-none transition-all relative bg-[rgba(0,0,0,0)] text-sm text-[#e8e8e8]"
+          className="text-ellipsis w-full whitespace-nowrap rounded-[0.8rem] p-[0.5rem] outline-none transition-all relative bg-[rgba(0,0,0,0)] text-sm text-[#e8e8e8]"
         />{" "}
         <Button
           onClick={handleConfirm}
