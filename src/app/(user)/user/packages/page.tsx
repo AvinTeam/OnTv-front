@@ -125,6 +125,9 @@ function Packages() {
     setDiscount({
       type: "",
       amount: 0,
+      discountable_id: null,
+      discountable_type: null,
+      code: ''
     });
   };
   useEffect(() => {
