@@ -190,7 +190,7 @@ function Subscriptions() {
                       className="text-center w-[165px] h-[58px] flex flex-col justify-center items-center font-bold"
                       style={{ borderLeft: "2px solid #282828" }}
                     >
-                      <span className="font-bold">---</span>
+                      <span className="font-bold"> {item.discount?.map((discount: any) => discount.code).join(', ') || "---"}</span>
                     </div>
                   </div>
                 ))

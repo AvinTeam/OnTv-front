@@ -44,7 +44,10 @@ export function convertJalaliToGregorian(jalaliDate: string) {
     .locale("en")
     .format("YYYY-MM-DD");
 }
-
+export function isPersianNumber(numString: string) {
+  const persianDigits = /[۰-۹]/;
+  return persianDigits.test(numString);
+}
 export function convertGregorianToJalaliFullTim(gregorianDate: string) {
    return moment(gregorianDate, "YYYY-MM-DD HH:mm:ss")
     .locale("fa")
@@ -113,3 +116,10 @@ export function convertSecondToMinute(seconds: number) {
   const remainingSeconds = seconds % 60;
   return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
 }
+export function openInNewTab(url: string){
+  const a = document.createElement("a");
+  a.href = url;
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+  a.click();
+};

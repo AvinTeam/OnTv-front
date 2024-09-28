@@ -33,13 +33,7 @@ function Packages() {
   const [id, setId] = useState<number | null>(null);
   const [planId, setPlanId] = useState<number | null>(null);
   const [open, setOpen] = useState<boolean>(false);
-  const openInNewTab = (url: string) => {
-    const a = document.createElement("a");
-    a.href = url;
-    a.target = "_blank";
-    a.rel = "noopener noreferrer";
-    a.click();
-  };
+
   const user = useUserStore((store) => store.user);
   const handlePayment = () => {
     setLoadingData(true);
@@ -49,7 +43,7 @@ function Packages() {
         ...addDiscountToPayment(planId)
       })
       .then(({ data }) => {
-        openInNewTab(data?.response?.url);
+        window.location.href = data?.response?.url
         setLoadingData(false);
       })
       .catch(() => setLoadingData(false));
@@ -99,8 +93,7 @@ function Packages() {
           );
         }
 
-        console.log(data);
-      })
+       })
       .catch(() => {
         setLoadingData(false);
         setDiscountCode('');

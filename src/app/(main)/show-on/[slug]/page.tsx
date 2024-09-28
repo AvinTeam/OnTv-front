@@ -41,7 +41,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                   className="flex flex-col gap-3 lg:gap-0 pb-4 md:pb-10 lg:pb-0 bg-gradient-to-l to-100%"
                 >
                   <div className="lg:w-[90%] lg:mx-auto">
-                    <div className="sm:mt-2 px-4 md:px-0 container mx-auto ">
+                    <div className="mt-2 px-4 md:px-0 container mx-auto ">
                       <Live
                         url={publicShow?.Episode?.video?.hls_playlist}
                         thumbnail_url={

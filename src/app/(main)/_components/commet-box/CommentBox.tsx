@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import CommentItem from "./CommentItem";
 import { useUserStore } from "@/stores/user.store";
 import Loading from "./Loading";
+import Image from "next/image";
 
 function CommentBox({ id, type }: { id: number; type: "episode" | "program" }) {
   const user = useUserStore((store) => store.user);
@@ -120,9 +121,9 @@ function CommentBox({ id, type }: { id: number; type: "episode" | "program" }) {
           دیدگاه بینندگان
         </h3>
         <div className="relative h-[80px] px-2 md:h-[100px] flex items-center justify-start gap-2 rounded-md w-full">
-          <figure className="bg-[#f4511e] h-8 w-8  rounded-full flex justify-center items-center">
-            <div className="text-white">�</div>
-          </figure>
+          <div className="h-8 w-8 rounded-full flex justify-center items-center">
+          <Image src={user?.avatar?.[0]?.url ?? "/images/android-chrome-192x192.png"} width={0} height={0} className="w-full h-full rounded-full" alt="profile" />
+          </div>
 
           {replyTo && (
             <>

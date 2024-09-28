@@ -5,24 +5,20 @@ import React, { useState, useEffect, useRef, useReducer } from "react";
 import MultiRangeSlider from "@/app/_components/multi-range-slider/MultiRangeSlider";
 import axios from "@/core/axios";
 import Dropdown from "@/app/_components/dropdown/dropdown";
-interface IInitialState {
-  title: string;
-  tag: string;
-  service: any;
-  date: string;
-}
-const initialState: IInitialState = {
+import { FilterState } from "@/types/types/filter.interface";
+
+const initialState: FilterState = {
   title: "",
   tag: "",
   service: null,
   date: "",
 };
 
-function Filter({ service }: { service: string | null }) {
+function Filter({ service, onFilter }: { service: string | null; onFilter:(data: any)=> void }) {
   const [isOpenDate, setIsOpenDate] = useState<boolean>(false);
   const [serviceList, setServiceList] = useState<any[]>([]);
   const [fieldItems, fieldItemsDispatch] = useReducer(
-    (prev: Partial<IInitialState>, next: Partial<IInitialState>) => ({
+    (prev: Partial<FilterState>, next: Partial<FilterState>) => ({
       ...prev,
       ...next,
     }),
@@ -55,8 +51,7 @@ function Filter({ service }: { service: string | null }) {
     };
   }, []);
   useEffect(() => {
-    console.log(serviceList);
-    const result: any = serviceList.filter((item) => item.slug == service);
+     const result: any = serviceList.filter((item) => item.slug == service);
     fieldItemsDispatch({ service: result?.[0] || null });
   }, [serviceList, service]);
   return (
@@ -137,6 +132,7 @@ function Filter({ service }: { service: string | null }) {
       </div>
       <Button
         className="w-full mt-2 lg:mt-0 lg:w-[150px] rounded-lg p-2 text-sm font-bold"
+        onClick={()=> onFilter(fieldItems)}
         style={{
           color: "rgba(12,12,12,.5)",
           background:

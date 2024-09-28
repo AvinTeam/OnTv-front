@@ -89,20 +89,24 @@ export default async function ShowOnten({
         style={{
           background: `linear-gradient(to right,${allData?.Program?.color} , #221D1F)`,
         }}
-        className="lg:h-auto md:pb-10 to-90% mb-16"
+        className="lg:h-auto to-90% "
       >
-        <div className="container flex flex-col justify-between gap-6 overflow-hidden">
-          <h5 className="my-6 text-white mr-6">عوامل برنامه</h5>
+        <div className="container px-1 flex lg:pb-16 flex-col justify-between gap-6">
+          <h5 className="my-6 text-white mr-3 text-sm lg:text-lg">عوامل برنامه</h5>
           {/* mobile & tablet view  */}
-          <div className="lg:hidden w-full overflow-hidden mx-2">
-            <div className="h-[120px] md:h-[130px] w-full overflow-hidden">
-              <Slider
-                Component={Box}
-                data={allData?.Program?.casts}
-                isShowIcon={false}
-                mdCount={2.5}
-                displayCount={5}
-              />
+          <div className="h-[120px] lg:hidden w-full overflow-scroll">
+            <div className="flex gap-8 pr-3 pl-4">
+              {allData?.Program?.casts.map((item: any, idx: any) => (
+                <Fragment key={idx}>
+                  <Box
+                    data={{
+                      position: item.position,
+                      name: item?.name,
+                      family: item?.family,
+                    }}
+                  />
+                </Fragment>
+              ))}
             </div>
           </div>
           {/* mobile & tablet view  */}
