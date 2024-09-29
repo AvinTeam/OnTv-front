@@ -1,5 +1,5 @@
 import Image from "next/image"
-import img_src from "../../../../../public/images/logo/empty-list-dark.webp"
+import img_src from "../../../../../public/images/empty-list-dark.webp"
  
 function Nodata() {
   return (
