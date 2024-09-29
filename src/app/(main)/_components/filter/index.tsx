@@ -6,6 +6,7 @@ import MultiRangeSlider from "@/app/_components/multi-range-slider/MultiRangeSli
 import axios from "@/core/axios";
 import Dropdown from "@/app/_components/dropdown/dropdown";
 import { FilterState } from "@/types/types/filter.interface";
+import useComponentVisible from "@/hocks/useComponentVisible";
 
 const initialState: FilterState = {
   title: "",
@@ -14,8 +15,8 @@ const initialState: FilterState = {
   date: "",
 };
 
-function Filter({ service, onFilter }: { service: string | null; onFilter:(data: any)=> void }) {
-  const [isOpenDate, setIsOpenDate] = useState<boolean>(false);
+function Filter({ service, onFilter }: { service: string | null; onFilter: (data: any) => void }) {
+  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
   const [serviceList, setServiceList] = useState<any[]>([]);
   const [fieldItems, fieldItemsDispatch] = useReducer(
     (prev: Partial<FilterState>, next: Partial<FilterState>) => ({
@@ -35,7 +36,7 @@ function Filter({ service, onFilter }: { service: string | null; onFilter:(data:
     ) {
     }
     if (dateRef.current && !dateRef.current.contains(event.target as Node)) {
-      setIsOpenDate(false);
+      setIsComponentVisible(false);
     }
   };
   const getAllService = () => {
@@ -51,7 +52,7 @@ function Filter({ service, onFilter }: { service: string | null; onFilter:(data:
     };
   }, []);
   useEffect(() => {
-     const result: any = serviceList.filter((item) => item.slug == service);
+    const result: any = serviceList.filter((item) => item.slug == service);
     fieldItemsDispatch({ service: result?.[0] || null });
   }, [serviceList, service]);
   return (
@@ -99,7 +100,7 @@ function Filter({ service, onFilter }: { service: string | null; onFilter:(data:
           <input
             type="text"
             value={fieldItems.date}
-            onClick={() => setIsOpenDate((prev) => !prev)}
+            onClick={() => setIsComponentVisible(!isComponentVisible)}
             placeholder="سال تولید :"
             readOnly
             style={{ border: "1px solid rgba(255,255,255,.12)" }}
@@ -108,38 +109,37 @@ function Filter({ service, onFilter }: { service: string | null; onFilter:(data:
           <ArrowTopIcon
             width={19}
             height={19}
-            className={`${!isOpenDate && "rotate-180"} absolute top-2.5 left-2`}
+            className={`${!isComponentVisible && "rotate-180"} absolute top-2.5 left-2`}
           />
-          {isOpenDate && (
-            <div className="absolute top-12 left-0 inset-1 bg-[#1e1e1e] rounded-lg border p-2 border-[#272727] w-full md:w-[500px] lg:w-[370px] h-36 z-[100]">
-              <MultiRangeSlider
-                onchange={(date) => {
-                  if (!date?.minValue || !date?.maxValue) {
-                    fieldItemsDispatch({
-                      date: ``,
-                    });
-                    setIsOpenDate(false);
-                    return;
-                  }
+
+          <div ref={ref} className={`absolute ${!isComponentVisible ? 'hidden' : ''} top-12 left-0 inset-1 bg-[#1e1e1e] rounded-lg border p-2 border-[#272727] w-full md:w-[500px] lg:w-[370px] h-36 z-[100]`}>
+            <MultiRangeSlider
+              onchange={(date) => {
+                if (!date?.minValue || !date?.maxValue) {
                   fieldItemsDispatch({
-                    date: `سال ${date.minValue} تا ${date.maxValue}`,
+                    date: ``,
                   });
-                }}
-              />
-            </div>
-          )}
+                  setIsComponentVisible(false);
+                  return;
+                }
+                fieldItemsDispatch({
+                  date: `سال ${date.minValue} تا ${date.maxValue}`,
+                });
+              }}
+            />
+          </div>
         </div>
       </div>
       <Button
         className="w-full mt-2 lg:mt-0 lg:w-[150px] rounded-lg p-2 text-sm font-bold"
-        onClick={()=> onFilter(fieldItems)}
+        onClick={() => onFilter(fieldItems)}
         style={{
           color: "rgba(12,12,12,.5)",
           background:
             fieldItems.date ||
-            fieldItems.service ||
-            fieldItems.tag ||
-            fieldItems.title
+              fieldItems.service ||
+              fieldItems.tag ||
+              fieldItems.title
               ? "#fff"
               : "rgba(255,255,255,.25)",
           boxShadow: "inset 0 0 0 1px rgba(0,0,0,0)",
