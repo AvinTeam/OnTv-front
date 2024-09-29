@@ -8,23 +8,17 @@ const RangeSliderComponent = ({
 }: {
   onchange: (item: any) => void;
 }) => {
-  const [minValue, setMinValue] = useState(1914);
-  const [maxValue, setMaxValue] = useState(2024);
-  const [isJalali, setIsJalali] = useState(false);
+  const [minValue, setMinValue] = useState(1292);
+  const [maxValue, setMaxValue] = useState(moment().jYear());
+  const [isJalali, setIsJalali] = useState(true);
   const min = 1914;
-  const max = 2024;
+  const max = moment().add('year', 1).year();
 
   const convertToJalali = (year: number) => {
     return moment(`${year}`, "YYYY").locale("fa").format("jYYYY");
   };
 
-  const handleInput = ({
-    minValue,
-    maxValue,
-  }: {
-    minValue: number;
-    maxValue: number;
-  }) => {
+  const handleInput = () => {
     setMinValue(minValue);
     setMaxValue(maxValue);
   };
@@ -32,12 +26,12 @@ const RangeSliderComponent = ({
   const setJalaliCalendar = () => {
     setIsJalali(true);
     setMinValue(1292);
-    setMaxValue(1402);
+    setMaxValue(moment().jYear());
   };
 
   const setGregorianCalendar = () => {
     setMinValue(1914);
-    setMaxValue(2024);
+    setMaxValue(moment().year());
     setIsJalali(false);
   };
   return (
