@@ -3,16 +3,19 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
 import { AUTH_URL } from "@/configs/global";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { ArrowIcon, EyesIcon, ViewIcon } from "@/app/_components/icons";
 import { Button } from "@/app/_components/button";
 import { show_toast } from "@/utils/functions";
 import { useUserStore } from "@/stores/user.store";
 
-export default function Verify() {
+export default function Verify({
+  searchParams
+}: {
+ searchParams: {[key: string]: string | string[] | undefined}
+}) {
   const addUser = useUserStore(store=> store.addUser)
-  const searchParams = useSearchParams();
-  const router = useRouter();
+   const router = useRouter();
   const [timeLeft, setTimeLeft] = useState(120);
   const [isLoding, setIsLoading] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -20,10 +23,9 @@ export default function Verify() {
   const [isPasswordType, setIsPasswordType] = useState(false);
 
   const handleResendCode = () => {
-    if (searchParams) console.log(searchParams.get("mobile"));
-    axios
+     axios
       .post(`${AUTH_URL}mobile/auth/send_otp`, {
-        mobile: searchParams.get("mobile"),
+        mobile: searchParams['mobile'] as string,
         code: inputValue,
       })
       .then(({ data }) => {
@@ -40,7 +42,7 @@ export default function Verify() {
     setIsLoading(true);
     axios
       .post(`${AUTH_URL}mobile/auth/verify_mobile`, {
-        mobile: searchParams.get("mobile"),
+        mobile: searchParams['mobile'] as string,
         code: inputValue,
       })
       .then(({ data }) => {

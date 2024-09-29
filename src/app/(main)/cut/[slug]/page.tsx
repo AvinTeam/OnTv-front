@@ -1,12 +1,11 @@
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { SliderTitle } from "@/app/_components/slider-title";
 import { calculateTimeAgo, truncate } from "@/utils/functions";
 import { Episode } from "@/types/types/episode-data-showOn.interface";
 import Link from "next/link";
-import CommentBox from "../../_components/commet-box/CommentBox";
 import { notFound } from "next/navigation";
 import { SpecialCard } from "@/app/_components/cards/special-card";
-import Live from "./components/Live";
 import {
   gatPublicShow,
   getAllCut,
@@ -17,6 +16,10 @@ import { Slider } from "@/app/_components/slider/slider";
 import { NewestCard } from "@/app/_components/cards/newest-card";
 import DownloadBox from "../../show-on/[slug]/_components/DownloadBox";
 import Share from "../../show-on/[slug]/_components/Share";
+const Live = dynamic(() => import("./components/Live"));
+const CommentBox = dynamic(
+  () => import("../../_components/commet-box/CommentBox")
+);
 
 export default async function ShowOn({ params }: { params: { slug: string } }) {
   const cut = await getCutPublicShow(params.slug.split(".")[0]);

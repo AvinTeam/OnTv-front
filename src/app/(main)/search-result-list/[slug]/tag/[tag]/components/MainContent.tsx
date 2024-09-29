@@ -2,10 +2,11 @@
 import React, { useEffect, useState } from "react";
 import { OntenCard } from "@/app/_components/cards/onten-card";
 import { getAllProgram } from "../_api/get-all-data";
-import Filter from "@/app/(main)/_components/filter";
-import { FilterState } from "@/types/types/filter.interface";
+ import { FilterState } from "@/types/types/filter.interface";
 import moment from "jalali-moment";
+const Filter = dynamic(() => import("@/app/(main)/_components/filter"));
 import Loading from "./Loading";
+import dynamic from "next/dynamic";
 
 function MainContent({ slug, tag }: { slug: string; tag: string }) {
   const [programs, setPrograms] = useState<any[]>([]);

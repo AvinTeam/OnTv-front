@@ -1,18 +1,21 @@
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import Live from "./_components/live";
 import { Slider } from "@/app/_components/slider/slider";
 import { NewestCard } from "@/app/_components/cards/newest-card";
 import { gatPublicShow, getAllCut, getAllEpisode } from "./_api/get-all-data";
 import { SliderTitle } from "@/app/_components/slider-title";
 import { calculateTimeAgo, truncate } from "@/utils/functions";
 import { Episode } from "@/types/types/episode-data-showOn.interface";
-import DownloadBox from "./_components/DownloadBox";
 import Link from "next/link";
-import Share from "./_components/Share";
-import CommentBox from "../../_components/commet-box/CommentBox";
 import { notFound } from "next/navigation";
 import StoreHistory from "./_components/StoreHistory";
 import { SpecialCard } from "@/app/_components/cards/special-card";
+const CommentBox = dynamic(
+  () => import("../../_components/commet-box/CommentBox")
+);
+const Live = dynamic(() => import("./_components/live"));
+const DownloadBox = dynamic(() => import("./_components/DownloadBox"));
+const Share = dynamic(() => import("./_components/Share"));
 
 export default async function ShowOn({ params }: { params: { slug: string } }) {
   const publicShow: Episode = await gatPublicShow(params.slug.split(".")[0]);
@@ -47,9 +50,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                         thumbnail_url={
                           publicShow?.Episode?.video?.thumbnail_url
                         }
-                        accessible={
-                          publicShow?.Episode.accessible
-                        }
+                        accessible={publicShow?.Episode.accessible}
                       />
                     </div>
                     <div className="mt-4 container lg:mb-4 text-white rounded-[12px] py-1 md:py-6 lg:py-2 xl:py-2 px-4 md:px-0 h-[180px] md:h-[150px] lg:h-[170px] xl:h-[170px] 2xl:h-auto">

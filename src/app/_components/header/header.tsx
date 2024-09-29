@@ -1,10 +1,9 @@
 "use client";
 import { useState, useEffect, useLayoutEffect } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import SearchModal from "./components/searchModal";
 import { useRouter } from "next/navigation";
-import UserProfile from "./components/user-profile/user-profile";
 import {
   ArrowTopIcon,
   CloseIcon,
@@ -12,16 +11,24 @@ import {
   HomeIcon,
   SearchIcon,
 } from "../icons";
+const UserProfile = dynamic(
+  () => import("./components/user-profile/user-profile")
+);
+const SearchModal = dynamic(() => import("./components/searchModal"));
+
+
 const bg_color_first: string =
   "linear-gradient(180deg,hsla(0,0%,5%,.4),hsla(0,0%,5%,.4) .41%,hsla(0,0%,5%,.399) .9%,hsla(0,0%,5%,.396) 1.64%,hsla(0,0%,5%,.391) 2.84%,hsla(0,0%,5%,.383) 4.68%,hsla(0,0%,5%,.372) 7.35%,hsla(0,0%,5%,.356) 11.04%,hsla(0,0%,5%,.336) 15.94%,hsla(0,0%,5%,.31) 22.23%,hsla(0,0%,5%,.278) 30.12%,hsla(0,0%,5%,.238) 39.78%,hsla(0,0%,5%,.192) 51.41%,hsla(0,0%,5%,.137) 65.2%,hsla(0,0%,5%,.073) 81.33%,hsla(0,0%,5%,0))";
 const bg_color_second: string = "hsla(0,0%,5%,.75)";
+
+
 export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
   const router = useRouter();
   const [bgColor, setBgColor] = useState(bg_color_first);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
- 
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -44,8 +51,8 @@ export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
     const parsedData = userData ? JSON.parse(userData) : null;
 
     if (token && parsedData) {
-       setIsLoggedIn(true);
-     } else {
+      setIsLoggedIn(true);
+    } else {
       if (window.location.pathname.startsWith("/user")) {
         router.push("/");
       }
@@ -73,11 +80,11 @@ export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
             <Link href={"/"} className="w-full h-full">
               <Image
                 alt="OnTVLogo"
-                width={0}
+                width={45}
                 style={{ objectFit: "contain" }}
-                className="w-[45px] lg:w-12 h-[45px] lg:h-12"
-                height={0}
+                height={45}
                 src={"/images/android-chrome-192x192.png"}
+                priority={true}
               />
             </Link>
             <div
@@ -116,10 +123,10 @@ export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
                   <div className="w-full h-full">
                     <Image
                       alt="OnTVLogo"
-                      width={0}
+                      width={55}
                       style={{ objectFit: "contain" }}
-                      className="w-[60px] md:w-12 h-[60px] md:h-12 mt-2"
-                      height={0}
+                      className="mt-2"
+                      height={55}
                       src={"/images/android-chrome-192x192.png"}
                     />
                   </div>
@@ -204,7 +211,10 @@ export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
                     <div className="w-[170px] max-h-0 overflow-hidden opacity-0 invisible group-hover:max-h-[500px] group-hover:opacity-100 group-hover:visible transition-[opacity,max-height] duration-300 ease-in-out absolute top-7 right-0 p-2 rounded-md bg-[#242424] border border-[#282828]">
                       <ul>
                         {item.children?.map((item: any) => (
-                          <li key={item?.id} className="mb-2 cursor-pointer hover:bg-[#101010] pr-2 py-[8px] text-[10px] text-nowrap md:text-[12px] flex justify-start transition-all rounded-md">
+                          <li
+                            key={item?.id}
+                            className="mb-2 cursor-pointer hover:bg-[#101010] pr-2 py-[8px] text-[10px] text-nowrap md:text-[12px] flex justify-start transition-all rounded-md"
+                          >
                             <Link
                               href={`${
                                 item?.url
@@ -253,7 +263,7 @@ export const Header = ({ headerMenueItems }: { headerMenueItems: any[] }) => {
           <div className="group">
             {isLoggedIn ? (
               <>
-                <UserProfile setIsLoggedIn={setIsLoggedIn}/>
+                <UserProfile setIsLoggedIn={setIsLoggedIn} />
               </>
             ) : (
               <Link

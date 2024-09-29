@@ -1,4 +1,5 @@
 "use client";
+import dynamic from "next/dynamic";
 import { API_URL } from "@/configs/global";
 import React, { useEffect } from "react";
 import Tag from "../Tag";
@@ -9,8 +10,8 @@ import BannerFour from "@/app/_components/banners/banner-four/banner-four";
 import axios from "axios";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
-import Live from "@/app/_components/live/live";
 import Loading from "./Loading";
+const Live = dynamic(() => import("@/app/_components/live/live"));
 
 type HomepageConfigItem = {
   id: number;

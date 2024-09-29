@@ -48,10 +48,10 @@ export const Footer = ({ footerMenueItems }: { footerMenueItems: any[] }) => {
                 <p className="text-nowrap text-[10px] ">سایر لینک ها</p>
                 <ArrowTopIcon />
                 <div className="w-[170px] hidden p-2 z-[1000] group-hover:block rounded-md absolute bottom-10 bg-[#0f0f0f] border border-[#282828]  ">
-                  <ul>
+                  <div>
                     {footerMenueItems?.slice(2)?.map((item) => (
                       <>
-                        <li
+                        <div
                           key={item?.id}
                           className="mb-2 flex justify-start pr-2 hover:bg-[#242424] py-[8px] text-[11px] md:text-[12px] transition-all rounded-md"
                         >
@@ -64,22 +64,22 @@ export const Footer = ({ footerMenueItems }: { footerMenueItems: any[] }) => {
                           >
                             <p> {item?.name}</p>
                           </Link>
-                        </li>
+                        </div>
                       </>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               </li>
             )}
           </ul>
-          <ul className="flex group relative overflow-visible [&>*]:text-[10px] [&>*]:text-[#e8e8e8] [&>*]:cursor-pointer [&>*]:font-light [&>*]">
-            <li className="hover:bg-[#242424] py-[4px] flex justify-center items-center content-center gap-1 -ml-2 px-2 transition-all rounded-md">
+          <div className="flex group relative overflow-visible [&>*]:text-[10px] [&>*]:text-[#e8e8e8] [&>*]:cursor-pointer [&>*]:font-light [&>*]">
+            <div className="hover:bg-[#242424] py-[4px] flex justify-center items-center content-center gap-1 -ml-2 px-2 transition-all rounded-md">
               <p className="text-nowrap text-[10px] ">شبکه های اجتماعی</p>
               <ArrowTopIcon />
-            </li>
+            </div>
             <div className="w-[170px] right-[800px] group-hover:opacity-100 group-hover:-right-16 p-2 z-[1000] left-3 translate-y-[-187px] rounded-md absolute bg-[#242424] border border-[#282828]">
-              <ul>
-                <li className="mb-2 hover:bg-[#101010] pr-2 py-[8px] text-[11px] md:text-[12px] flex justify-start transition-all rounded-md">
+              <div>
+                <div className="mb-2 hover:bg-[#101010] pr-2 py-[8px] text-[11px] md:text-[12px] flex justify-start transition-all rounded-md">
                   <Link
                     href={"#"}
                     className="flex justify-center items-center gap-1"
@@ -88,8 +88,8 @@ export const Footer = ({ footerMenueItems }: { footerMenueItems: any[] }) => {
 
                     <p>آپارات</p>
                   </Link>
-                </li>
-                <li className="mb-2 hover:bg-[#101010] pr-2 py-[8px] text-[11px] md:text-[12px]  flex justify-starttransition-all rounded-md">
+                </div>
+                <div className="mb-2 hover:bg-[#101010] pr-2 py-[8px] text-[11px] md:text-[12px]  flex justify-starttransition-all rounded-md">
                   <Link
                     href={"#"}
                     className="flex justify-center items-center gap-1"
@@ -97,8 +97,8 @@ export const Footer = ({ footerMenueItems }: { footerMenueItems: any[] }) => {
                     <TelegramIcon />
                     <p>تلگرام</p>
                   </Link>
-                </li>
-                <li className="mb-2 flex justify-start pr-2 hover:bg-[#101010] py-[8px] text-[11px] md:text-[12px] transition-all rounded-md">
+                </div>
+                <div className="mb-2 flex justify-start pr-2 hover:bg-[#101010] py-[8px] text-[11px] md:text-[12px] transition-all rounded-md">
                   <Link
                     href={"#"}
                     className="flex justify-center items-center gap-1"
@@ -106,8 +106,8 @@ export const Footer = ({ footerMenueItems }: { footerMenueItems: any[] }) => {
                     <TwitterIcon />
                     <p>توییتر</p>
                   </Link>
-                </li>
-                <li className="mb-2 hover:bg-[#101010] pr-2 flex justify-start text-[11px] md:text-[12px] py-[8px] transition-all rounded-md">
+                </div>
+                <div className="mb-2 hover:bg-[#101010] pr-2 flex justify-start text-[11px] md:text-[12px] py-[8px] transition-all rounded-md">
                   <Link
                     href={"#"}
                     className="flex justify-center items-center gap-1"
@@ -115,10 +115,10 @@ export const Footer = ({ footerMenueItems }: { footerMenueItems: any[] }) => {
                     <InstagramIcon />
                     <p>اینستاگرام</p>
                   </Link>
-                </li>
-              </ul>
+                </div>
+              </div>
             </div>
-          </ul>
+          </div>
         </div>
       </div>
     </footer>

@@ -22,19 +22,24 @@ const nextConfig = {
       },
     ];
   },
-  webpack(config,{ dev, isServer }) {
+  webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
-      issuer: /\.[jt]sx?$/,
       use: ['@svgr/webpack'],
-    });
-    if (!dev) {
-      config.devtool = false;
-    }
+    })
 
-    return config;
+    return config
   },
-
+  experimental: {
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
+  },
 };
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
