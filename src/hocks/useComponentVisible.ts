@@ -10,7 +10,7 @@ export default function useComponentVisible(initialIsVisible: boolean) {
         }
     };
 
-    const handleClickOutside = (event: Event) => {
+    const handleClickOutside = (event: MouseEvent) => {
         if (ref.current && !ref.current.contains(event.target as Node)) {
             setIsComponentVisible(false);
         }
@@ -18,12 +18,12 @@ export default function useComponentVisible(initialIsVisible: boolean) {
 
     useEffect(() => {
         document.addEventListener('keydown', handleHideDropdown, true);
-        document.addEventListener('click', handleClickOutside, true);
+        document.addEventListener('mousedown', handleClickOutside, true);
         return () => {
             document.removeEventListener('keydown', handleHideDropdown, true);
-            document.removeEventListener('click', handleClickOutside, true);
+            document.removeEventListener('mousedown', handleClickOutside, true);
         };
-    });
+    }, []);
 
     return { ref, isComponentVisible, setIsComponentVisible };
 }

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import MultiRangeSlider from "multi-range-slider-react";
 import moment from "jalali-moment";
 
@@ -10,30 +10,35 @@ const RangeSliderComponent = ({
 }) => {
   const [minValue, setMinValue] = useState(1292);
   const [maxValue, setMaxValue] = useState(moment().jYear());
+  const [minValueLabel, setMinValueLabel] = useState(1292);
+  const [maxValueLabel, setMaxValueLabel] = useState(moment().jYear());
   const [isJalali, setIsJalali] = useState(true);
-  const min = 1914;
-  const max = moment().add('year', 1).year();
-
-  const convertToJalali = (year: number) => {
-    return moment(`${year}`, "YYYY").locale("fa").format("jYYYY");
-  };
-
-  const handleInput = () => {
-    setMinValue(minValue);
-    setMaxValue(maxValue);
-  };
 
   const setJalaliCalendar = () => {
     setIsJalali(true);
-    setMinValue(1292);
-    setMaxValue(moment().jYear());
+    setMinValueLabel(1292);
+    setMaxValueLabel(moment().jYear());
   };
-
+  const handleChange = useCallback(
+    (e: any) => {
+      setMinValue(e.minValue);
+      setMaxValue(e.maxValue);
+    },
+    [minValue, maxValue, onchange, isJalali]
+  );
   const setGregorianCalendar = () => {
-    setMinValue(1914);
-    setMaxValue(moment().year());
+    setMinValueLabel(1914);
+    setMaxValueLabel(moment().year());
     setIsJalali(false);
   };
+  useEffect(() => {
+     if (minValue == minValueLabel && maxValue == maxValueLabel) {
+      onchange({ minValue: null, maxValue: null });
+      return;
+    }
+    onchange({ minValue: minValue, maxValue: maxValue });
+  }, [minValue, maxValue]);
+
   return (
     <div className="p-1 flex flex-col items-center w-full">
       <div className="flex flex-row-reverse justify-between w-full">
@@ -67,8 +72,8 @@ const RangeSliderComponent = ({
       </div>
 
       <MultiRangeSlider
-        min={isJalali ? convertToJalali(min) : min}
-        max={isJalali ? convertToJalali(max) : max}
+        min={minValueLabel}
+        max={maxValueLabel}
         step={1}
         ruler={false}
         label={false}
@@ -76,19 +81,8 @@ const RangeSliderComponent = ({
         thumbLeftColor="rgb(245, 184, 63)"
         thumbRightColor="rgb(245, 184, 63)"
         minValue={minValue}
-        onChange={(e) => {
-          if (
-            (e.minValue == min && e.maxValue == max) ||
-            (e.minValue == +convertToJalali(min) &&
-              e.maxValue == +convertToJalali(max))
-          ) {
-            onchange({ minValue: null, maxValue: null });
-            return;
-          }
-          onchange({ minValue: e.minValue, maxValue: e.maxValue });
-        }}
+        onChange={handleChange}
         maxValue={maxValue}
-        onInput={handleInput}
         style={{
           direction: "ltr",
           width: "100%",
@@ -98,8 +92,8 @@ const RangeSliderComponent = ({
       />
 
       <div className="flex justify-between w-full max-w-lg text-sm">
-        <span>{isJalali ? convertToJalali(max) : max}</span>
-        <span>{isJalali ? convertToJalali(min) : min}</span>
+        <span>{maxValueLabel}</span>
+        <span>{minValueLabel}</span>
       </div>
     </div>
   );

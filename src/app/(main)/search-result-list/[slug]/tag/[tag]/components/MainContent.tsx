@@ -1,16 +1,25 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { OntenCard } from "@/app/_components/cards/onten-card";
-import { getAllProgram } from "../_api/get-all-data";
- import { FilterState } from "@/types/types/filter.interface";
+import { FilterState } from "@/types/types/filter.interface";
 import moment from "jalali-moment";
-const Filter = dynamic(() => import("@/app/(main)/_components/filter"));
-import Loading from "./Loading";
 import dynamic from "next/dynamic";
+import Loading from "./Loading";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { useInView } from "react-intersection-observer";
+import axios from "axios";
+import { API_URL } from "@/configs/global";
+
+const Filter = dynamic(() => import("@/app/(main)/_components/filter"));
+
+export async function getAllProgram(params: any, page: number) {
+  return axios.get(`${API_URL}program/publicIndex?page=${page || 1}&`, { params });
+}
 
 function MainContent({ slug, tag }: { slug: string; tag: string }) {
-  const [programs, setPrograms] = useState<any[]>([]);
-  const [loading, setLoading] = useState<boolean>();
+  const [filterParams, setFilterParams] = useState<FilterState | null>(null);
+  const { ref, inView } = useInView(); 
+
   function convertJalaliToGregorian(date: string) {
     const year = parseInt(date.split("/")[0], 10);
 
@@ -20,47 +29,80 @@ function MainContent({ slug, tag }: { slug: string; tag: string }) {
 
     return date;
   }
-  async function getAllData(params: FilterState | null = null) {
-    setLoading(true);
-    const yearFrom = params?.date?.split(" ")?.[1] || "";
-    const yearTo = params?.date?.split(" ")?.[3] || "";
 
-    const data = await getAllProgram({
-      slug: slug == "all" ? "" : slug,
-      tag: params?.tag ? params.tag : tag == "all" ? "" : tag,
-      title: params?.title || null,
-      service: params?.service?.id,
-      produce_date_from: yearFrom
-        ? convertJalaliToGregorian(`${yearFrom}/1/1`)
-        : "",
-      produce_date_to: yearTo
-        ? convertJalaliToGregorian(`${yearTo}/12/29`)
-        : "",
-    });
-
-    setLoading(false);
-
-    setPrograms(data?.programs?.data);
-  }
-  const handleFilter = (data: FilterState) => {
-    getAllData(data);
-  };
+  const {
+    data,
+    fetchNextPage,
+    isFetching,
+    refetch,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading,
+  } = useInfiniteQuery({
+    queryKey: ["programs", filterParams],
+    queryFn: ({ pageParam }) => {
+      console.log(pageParam)
+      console.log(filterParams)
+      const yearFrom = filterParams?.date?.split(" ")?.[1] || "";
+      const yearTo = filterParams?.date?.split(" ")?.[3] || "";
+      const params: any = {
+        ...(slug && { "service[slug][]": filterParams?.service.slug ? filterParams?.service.slug : slug }),
+        // ...(tag && { "customFilter[tag_name_like][]": tag }),
+        ...(filterParams?.title ? { "title[like]": filterParams.title } : {}),
+        ...(filterParams?.service.id ? { "service_id": filterParams.service.id } : {}),
+        ...(yearFrom
+          ? {
+              "customFilter[date][from]": convertJalaliToGregorian(
+                `${yearFrom}/1/1`
+              ),
+            }
+          : {}),
+        ...(yearTo
+          ? {
+              "customFilter[date][to]": convertJalaliToGregorian(
+                `${yearTo}/12/29`
+              ),
+            }
+          : {}),
+      };
+      return getAllProgram(params, pageParam);
+    },
+    getNextPageParam: (lastPage) => {
+       return lastPage?.data?.programs?.meta?.current_page < lastPage?.data?.programs?.meta?.last_page
+        ? lastPage?.data?.programs?.meta?.current_page + 1
+        : null;
+    },
+    initialPageParam: 1,
+  });
+ 
   useEffect(() => {
-    getAllData();
-  }, []);
-  if (loading) {
+    if (inView && hasNextPage) {
+      fetchNextPage();
+    }
+  }, [inView, fetchNextPage, hasNextPage]);
+
+  const handleFilter = (data: FilterState) => {
+    console.log(data)
+    setFilterParams((prev) => {
+       if (JSON.stringify(prev) !== JSON.stringify(data)) {
+        return data;
+      }
+      return prev;
+    });
+  };
+
+  if (isLoading) {
     return <Loading />;
   }
+
   return (
     <div className="container min-h-[400px] mb-10 mt-5 flex flex-col shadow-xl p-4 w-screen overflow-auto ">
       <Filter service={slug} onFilter={handleFilter} />
       <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-8 gap-2 md:gap-1.5 lg:gap-4 w-full h-full mt-6">
-        {(programs ?? []).length == 0 ? (
-          <div>نتیجه ای یافت نشد</div>
-        ) : (
-          programs.map((item: any, idx: any) => (
+        {data?.pages?.map((page, pageIndex) =>
+          page.data.programs?.data?.map((item: any, idx: any) => (
             <div
-              key={`program-id-${idx}`}
+              key={`program-id-${pageIndex}-${idx}`}
               className="w-full h-[280px] 2xl:h-[360px]"
             >
               <OntenCard data={item} />
@@ -68,8 +110,34 @@ function MainContent({ slug, tag }: { slug: string; tag: string }) {
           ))
         )}
       </div>
+      {(isFetchingNextPage || hasNextPage) && (
+        <>
+          <div
+            ref={ref}
+            className="md:hidden grid mb-12 grid-cols-3 gap-4 h-32 lg:h-40 mt-16"
+          >
+            {[...Array(3)].map((_, index) => (
+              <div
+                key={index}
+                className="bg-base-50 animate-pulse rounded-lg"
+              ></div>
+            ))}
+          </div>
+          <div
+            ref={ref}
+            className="hidden md:grid mb-12 grid-cols-6 gap-4 h-32 lg:h-40 mt-16"
+          >
+            {[...Array(6)].map((_, index) => (
+              <div
+                key={index}
+                className="bg-base-50 animate-pulse rounded-lg"
+              ></div>
+            ))}
+          </div>
+        </>
+      )}  
     </div>
   );
 }
 
-export default MainContent;
+export default React.memo(MainContent);

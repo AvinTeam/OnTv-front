@@ -15,8 +15,15 @@ const initialState: FilterState = {
   date: "",
 };
 
-function Filter({ service, onFilter }: { service: string | null; onFilter: (data: any) => void }) {
-  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
+function Filter({
+  service,
+  onFilter,
+}: {
+  service: string | null;
+  onFilter: (data: any) => void;
+}) {
+  const { ref, isComponentVisible, setIsComponentVisible } =
+    useComponentVisible(false);
   const [serviceList, setServiceList] = useState<any[]>([]);
   const [fieldItems, fieldItemsDispatch] = useReducer(
     (prev: Partial<FilterState>, next: Partial<FilterState>) => ({
@@ -100,7 +107,10 @@ function Filter({ service, onFilter }: { service: string | null; onFilter: (data
           <input
             type="text"
             value={fieldItems.date}
-            onClick={() => setIsComponentVisible(!isComponentVisible)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsComponentVisible(!isComponentVisible);
+            }}
             placeholder="سال تولید :"
             readOnly
             style={{ border: "1px solid rgba(255,255,255,.12)" }}
@@ -109,17 +119,25 @@ function Filter({ service, onFilter }: { service: string | null; onFilter: (data
           <ArrowTopIcon
             width={19}
             height={19}
-            className={`${!isComponentVisible && "rotate-180"} absolute top-2.5 left-2`}
+            className={`${
+              !isComponentVisible && "rotate-180"
+            } absolute top-2.5 left-2`}
           />
 
-          <div ref={ref} className={`absolute ${!isComponentVisible ? 'hidden' : ''} top-12 left-0 inset-1 bg-[#1e1e1e] rounded-lg border p-2 border-[#272727] w-full md:w-[500px] lg:w-[370px] h-36 z-[100]`}>
+          <div
+            ref={ref}
+            style={{
+              display: isComponentVisible ? "block" : "none",
+              pointerEvents: isComponentVisible ? "auto" : "none",
+            }}
+            className={`absolute top-12 left-0 inset-1 bg-[#1e1e1e] rounded-lg border p-2 border-[#272727] w-full md:w-[500px] lg:w-[370px] h-36 z-[100]`}
+          >
             <MultiRangeSlider
               onchange={(date) => {
                 if (!date?.minValue || !date?.maxValue) {
                   fieldItemsDispatch({
                     date: ``,
                   });
-                  setIsComponentVisible(false);
                   return;
                 }
                 fieldItemsDispatch({
@@ -137,9 +155,9 @@ function Filter({ service, onFilter }: { service: string | null; onFilter: (data
           color: "rgba(12,12,12,.5)",
           background:
             fieldItems.date ||
-              fieldItems.service ||
-              fieldItems.tag ||
-              fieldItems.title
+            fieldItems.service ||
+            fieldItems.tag ||
+            fieldItems.title
               ? "#fff"
               : "rgba(255,255,255,.25)",
           boxShadow: "inset 0 0 0 1px rgba(0,0,0,0)",
@@ -151,4 +169,4 @@ function Filter({ service, onFilter }: { service: string | null; onFilter: (data
   );
 }
 
-export default Filter;
+export default React.memo(Filter);
