@@ -44,7 +44,7 @@ const Live = ({
     muted: true,
     sources: [
       {
-        src: "https://nehzatmedia.arvanvod.ir/R7qEPk4Xey/ENL9QJ0rlQ/h_,144_200,240_400,360_800,480_1500,k.mp4.list/master.m3u8",
+        src: "https://ontv.arvanvod.ir/m7J3Z9ExpM/wmvB2JBEDN/h_,144_200,240_400,360_800,480_1500,k.mp4.list/master.m3u8",
         type: "application/x-mpegURL",
       },
     ],
