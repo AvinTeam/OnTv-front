@@ -61,7 +61,8 @@ function Filter({
   useEffect(() => {
     const result: any = serviceList.filter((item) => item.slug == service);
     fieldItemsDispatch({ service: result?.[0] || null });
-  }, [serviceList, service]);
+  }, [service]);
+
   return (
     <div
       className="container w-[90%] lg:w-full z-[100] flex flex-col lg:flex-row select-none justify-between items-center p-[1.5rem] lg:p-[0.9rem] rounded-[1rem]"
@@ -97,9 +98,11 @@ function Filter({
             displayKey="name"
             showAllOption
             label="گروه اصلی :"
-            value={fieldItems.service}
+            value={
+              fieldItems.service || serviceList.filter((item) => item.slug == service)?.[0]
+             }
             onSelect={(item) => {
-              fieldItemsDispatch({ service: item });
+              fieldItemsDispatch({ service: item || "all" });
             }}
           />
         </div>
@@ -155,8 +158,8 @@ function Filter({
           color: "rgba(12,12,12,.5)",
           background:
             fieldItems.date ||
-            fieldItems.service ||
             fieldItems.tag ||
+            fieldItems.service ||
             fieldItems.title
               ? "#fff"
               : "rgba(255,255,255,.25)",

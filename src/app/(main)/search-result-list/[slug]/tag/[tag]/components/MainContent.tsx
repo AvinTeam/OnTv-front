@@ -13,12 +13,14 @@ import { API_URL } from "@/configs/global";
 const Filter = dynamic(() => import("@/app/(main)/_components/filter"));
 
 export async function getAllProgram(params: any, page: number) {
-  return axios.get(`${API_URL}program/publicIndex?page=${page || 1}&`, { params });
+  return axios.get(`${API_URL}program/publicIndex?page=${page || 1}`, {
+    params,
+  });
 }
 
 function MainContent({ slug, tag }: { slug: string; tag: string }) {
   const [filterParams, setFilterParams] = useState<FilterState | null>(null);
-  const { ref, inView } = useInView(); 
+  const { ref, inView } = useInView();
 
   function convertJalaliToGregorian(date: string) {
     const year = parseInt(date.split("/")[0], 10);
@@ -41,15 +43,24 @@ function MainContent({ slug, tag }: { slug: string; tag: string }) {
   } = useInfiniteQuery({
     queryKey: ["programs", filterParams],
     queryFn: ({ pageParam }) => {
-      console.log(pageParam)
-      console.log(filterParams)
       const yearFrom = filterParams?.date?.split(" ")?.[1] || "";
       const yearTo = filterParams?.date?.split(" ")?.[3] || "";
       const params: any = {
-        ...(slug && { "service[slug][]": filterParams?.service.slug ? filterParams?.service.slug : slug }),
-        // ...(tag && { "customFilter[tag_name_like][]": tag }),
+        ...(filterParams?.service
+          ? {}
+          : {
+              "service[slug][]": filterParams?.service == "all" ? null : slug,
+            }),
+        ...(filterParams?.tag && {
+          "customFilter[tag_name_like][]": filterParams?.tag,
+        }),
         ...(filterParams?.title ? { "title[like]": filterParams.title } : {}),
-        ...(filterParams?.service.id ? { "service_id": filterParams.service.id } : {}),
+        ...(filterParams?.service
+          ? {
+              service_id:
+                filterParams.service == "all" ? null : filterParams.service.id,
+            }
+          : {}),
         ...(yearFrom
           ? {
               "customFilter[date][from]": convertJalaliToGregorian(
@@ -68,13 +79,14 @@ function MainContent({ slug, tag }: { slug: string; tag: string }) {
       return getAllProgram(params, pageParam);
     },
     getNextPageParam: (lastPage) => {
-       return lastPage?.data?.programs?.meta?.current_page < lastPage?.data?.programs?.meta?.last_page
+      return lastPage?.data?.programs?.meta?.current_page <
+        lastPage?.data?.programs?.meta?.last_page
         ? lastPage?.data?.programs?.meta?.current_page + 1
         : null;
     },
     initialPageParam: 1,
   });
- 
+
   useEffect(() => {
     if (inView && hasNextPage) {
       fetchNextPage();
@@ -82,13 +94,7 @@ function MainContent({ slug, tag }: { slug: string; tag: string }) {
   }, [inView, fetchNextPage, hasNextPage]);
 
   const handleFilter = (data: FilterState) => {
-    console.log(data)
-    setFilterParams((prev) => {
-       if (JSON.stringify(prev) !== JSON.stringify(data)) {
-        return data;
-      }
-      return prev;
-    });
+    setFilterParams(data);
   };
 
   if (isLoading) {
@@ -135,7 +141,7 @@ function MainContent({ slug, tag }: { slug: string; tag: string }) {
             ))}
           </div>
         </>
-      )}  
+      )}
     </div>
   );
 }
