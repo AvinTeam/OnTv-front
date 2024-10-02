@@ -31,6 +31,7 @@ import FreeIcon from "./Free";
 import LockIcon from "./Lock";
 import BadgeFillIcon from "./BadgeFill";
 import DiscountIcon from "./Discount";
+import TickIcon from "./Tick";
 export {
   AparatIcon,
   ArrowTopIcon,
@@ -64,5 +65,6 @@ export {
   FreeIcon,
   LockIcon,
   BadgeFillIcon,
-  DiscountIcon
+  DiscountIcon,
+  TickIcon
 };

@@ -51,9 +51,12 @@ function MainContent({ slug, tag }: { slug: string; tag: string }) {
           : {
               "service[slug][]": filterParams?.service == "all" ? null : slug,
             }),
-        ...(filterParams?.tag && {
-          "customFilter[tag_name_like][]": filterParams?.tag,
-        }),
+            ...(filterParams?.tag && {
+              ...filterParams?.tag?.reduce((acc: any, tagItem: any, index: number) => {
+                acc[`customFilter[tag_id][${index}]`] = tagItem.id;
+                return acc;
+              }, {}),
+            }),
         ...(filterParams?.title ? { "title[like]": filterParams.title } : {}),
         ...(filterParams?.service
           ? {
@@ -95,6 +98,7 @@ function MainContent({ slug, tag }: { slug: string; tag: string }) {
 
   const handleFilter = (data: FilterState) => {
     setFilterParams(data);
+    console.log()
   };
 
   if (isLoading) {

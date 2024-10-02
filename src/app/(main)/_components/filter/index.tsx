@@ -1,16 +1,19 @@
 "use client";
 import { Button } from "@/app/_components/button";
-import { ArrowTopIcon } from "@/app/_components/icons";
+import { ArrowTopIcon, TickIcon } from "@/app/_components/icons";
 import React, { useState, useEffect, useRef, useReducer } from "react";
 import MultiRangeSlider from "@/app/_components/multi-range-slider/MultiRangeSlider";
 import axios from "@/core/axios";
 import Dropdown from "@/app/_components/dropdown/dropdown";
 import { FilterState } from "@/types/types/filter.interface";
 import useComponentVisible from "@/hocks/useComponentVisible";
+import TagSelector from "./components/TagSelector";
+
+
 
 const initialState: FilterState = {
   title: "",
-  tag: "",
+  tag: [],
   service: null,
   date: "",
 };
@@ -22,9 +25,19 @@ function Filter({
   service: string | null;
   onFilter: (data: any) => void;
 }) {
-  const { ref, isComponentVisible, setIsComponentVisible } =
-    useComponentVisible(false);
+  const {
+    ref: refTag,
+    isComponentVisible: isTagVisible,
+    setIsComponentVisible: setIsTagVisible,
+  } = useComponentVisible(false);
+  const {
+    ref: refDate,
+    isComponentVisible: isDateVisible,
+    setIsComponentVisible: setIsDateVisible,
+  } = useComponentVisible(false);
+
   const [serviceList, setServiceList] = useState<any[]>([]);
+  const [selectedTags, setSelectedTags] = useState<any[]>([]);
   const [fieldItems, fieldItemsDispatch] = useReducer(
     (prev: Partial<FilterState>, next: Partial<FilterState>) => ({
       ...prev,
@@ -34,23 +47,27 @@ function Filter({
   );
 
   const serviceRef = useRef<HTMLDivElement>(null);
-  const dateRef = useRef<HTMLDivElement>(null);
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
-      serviceRef.current &&
-      !serviceRef.current.contains(event.target as Node)
+      (serviceRef.current &&
+        serviceRef.current.contains(event.target as Node)) ||
+      (refTag.current && refTag.current.contains(event.target as Node)) ||
+      (refDate.current && refDate.current.contains(event.target as Node))
     ) {
+      return;
     }
-    if (dateRef.current && !dateRef.current.contains(event.target as Node)) {
-      setIsComponentVisible(false);
-    }
+
+    setIsTagVisible(false);
+    setIsDateVisible(false);
   };
+
   const getAllService = () => {
     axios.get(`service/publicIndex`).then(({ data }) => {
       setServiceList(data?.services);
     });
   };
+
   useEffect(() => {
     getAllService();
     document.addEventListener("mousedown", handleClickOutside);
@@ -58,6 +75,7 @@ function Filter({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
   useEffect(() => {
     const result: any = serviceList.filter((item) => item.slug == service);
     fieldItemsDispatch({ service: result?.[0] || null });
@@ -82,16 +100,12 @@ function Filter({
             className="text-ellipsis cursor-pointer w-full whitespace-nowrap rounded-[0.8rem] p-[0.5rem] outline-none transition-all relative bg-[rgba(0,0,0,0)] text-sm text-[#e8e8e8]"
           />
         </div>
-        <div className="w-full lg:w-[135px] relative">
-          <input
-            type="text"
-            value={fieldItems.tag}
-            onChange={(e) => fieldItemsDispatch({ tag: e.target.value })}
-            placeholder="هشتگ"
-            style={{ border: "1px solid rgba(255,255,255,.12)" }}
-            className="text-ellipsis cursor-pointer w-full whitespace-nowrap rounded-[0.8rem] p-[0.5rem] outline-none transition-all relative bg-[rgba(0,0,0,0)] text-sm text-[#e8e8e8]"
-          />
-        </div>
+
+        <TagSelector
+          selectedTags={selectedTags}
+          setSelectedTags={setSelectedTags}
+          fieldItemsDispatch={fieldItemsDispatch}
+        />
         <div className="w-full lg:w-[135px] relative" ref={serviceRef}>
           <Dropdown
             items={serviceList}
@@ -99,22 +113,25 @@ function Filter({
             showAllOption
             label="گروه اصلی :"
             value={
-              fieldItems.service || serviceList.filter((item) => item.slug == service)?.[0]
-             }
+              fieldItems.service ||
+              serviceList.filter((item) => item.slug == service)?.[0]
+            }
             onSelect={(item) => {
               fieldItemsDispatch({ service: item || "all" });
             }}
           />
         </div>
-        <div className="w-full lg:w-[135px] relative" ref={dateRef}>
+
+        <div className="w-full lg:w-[135px] relative" ref={refDate}>
           <input
             type="text"
             value={fieldItems.date}
             onClick={(e) => {
               e.stopPropagation();
-              setIsComponentVisible(!isComponentVisible);
+              setIsDateVisible(!isDateVisible);
+              setIsTagVisible(false);
             }}
-            placeholder="سال تولید :"
+            placeholder="سال تولید:"
             readOnly
             style={{ border: "1px solid rgba(255,255,255,.12)" }}
             className="text-ellipsis cursor-pointer w-full whitespace-nowrap rounded-[0.8rem] p-[0.5rem] outline-none transition-all relative bg-[rgba(0,0,0,0)] text-sm text-[#e8e8e8]"
@@ -123,17 +140,18 @@ function Filter({
             width={19}
             height={19}
             className={`${
-              !isComponentVisible && "rotate-180"
+              !isDateVisible && "rotate-180"
             } absolute top-2.5 left-2`}
           />
 
           <div
-            ref={ref}
+            ref={refDate}
             style={{
-              display: isComponentVisible ? "block" : "none",
-              pointerEvents: isComponentVisible ? "auto" : "none",
+              display: isDateVisible ? "block" : "none",
+              pointerEvents: isDateVisible ? "auto" : "none",
             }}
-            className={`absolute top-12 left-0 inset-1 bg-[#1e1e1e] rounded-lg border p-2 border-[#272727] w-full md:w-[500px] lg:w-[370px] h-36 z-[100]`}
+            className="absolute top-12 left-0 inset-1 bg-[#1e1e1e] rounded-lg border p-2 border-[#272727] w-full md:w-[500px] lg:w-[370px] h-36 z-[100]"
+            onClick={(e) => e.stopPropagation()}
           >
             <MultiRangeSlider
               onchange={(date) => {
@@ -151,6 +169,7 @@ function Filter({
           </div>
         </div>
       </div>
+
       <Button
         className="w-full mt-2 lg:mt-0 lg:w-[150px] rounded-lg p-2 text-sm font-bold"
         onClick={() => onFilter(fieldItems)}
