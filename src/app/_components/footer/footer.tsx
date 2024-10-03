@@ -7,6 +7,7 @@ import {
   TelegramIcon,
   TwitterIcon,
 } from "../icons";
+import Image from "next/image";
 
 export const Footer = ({ footerMenueItems }: { footerMenueItems: any[] }) => {
   return (
@@ -77,42 +78,54 @@ export const Footer = ({ footerMenueItems }: { footerMenueItems: any[] }) => {
               <p className="text-nowrap text-[10px] ">شبکه های اجتماعی</p>
               <ArrowTopIcon />
             </div>
-            <div className="w-[170px] right-[800px] group-hover:opacity-100 group-hover:-right-16 p-2 z-[1000] left-3 translate-y-[-187px] rounded-md absolute bg-[#242424] border border-[#282828]">
+            <div className="w-[170px] hidden bottom-6 group-hover:block  p-2 z-[1000] left-3  rounded-md absolute bg-[#242424] border border-[#282828]">
               <div>
                 <div className="mb-2 hover:bg-[#101010] pr-2 py-[8px] text-[11px] md:text-[12px] flex justify-start transition-all rounded-md">
                   <Link
-                    href={"#"}
-                    className="flex justify-center items-center gap-1"
+                    href={"https://web.bale.ai/onnewsmedia1"}
+                    className="flex w-full h-full justify-start items-center gap-1"
                   >
-                    <AparatIcon />
+                    <Image src={"https://web.bale.ai/logo82.png"} width={17} height={17} className="filter grayscale opacity-70 " alt="پیام رسان بله" />
 
-                    <p>آپارات</p>
+                    <p className="mr-2">بله</p>
+                  </Link>
+                </div>
+                <div className="mb-2 hover:bg-[#101010] pr-2 py-[8px] text-[11px] md:text-[12px] flex justify-start transition-all rounded-md">
+                  <Link
+                    href={"https://rubika.ir/onnewsmedia"}
+                    className="flex w-full h-full justify-start items-center gap-1"
+                  >
+                    <Image src={"https://web.rubika.ir/assets/icons/icon-192x192.png"} width={17} height={17} className="filter grayscale opacity-70 " alt="پیام رسان بله" />
+
+                    <p className="mr-2">روبیکا</p>
+                  </Link>
+                </div>
+                <div className="mb-2 hover:bg-[#101010] pr-2 py-[8px] text-[11px] md:text-[12px] flex justify-start transition-all rounded-md">
+                  <Link
+                    href={"https://eitaa.com/onnewsmedia"}
+                    className="flex w-full h-full justify-start items-center gap-1"
+                  >
+                    <Image className="filter grayscale opacity-70 " src={"https://www.aparat.com/static/img/eitaa.svg"} width={17} height={17} alt="پیام رسان بله" />
+
+                    <p className="mr-2">ایتا</p>
                   </Link>
                 </div>
                 <div className="mb-2 hover:bg-[#101010] pr-2 py-[8px] text-[11px] md:text-[12px]  flex justify-starttransition-all rounded-md">
                   <Link
-                    href={"#"}
-                    className="flex justify-center items-center gap-1"
+                    href="https://t.me/onnewsmedia"
+                    className="flex w-full h-full justify-start items-center gap-1"
                   >
-                    <TelegramIcon />
+                    <TelegramIcon  width={24} />
                     <p>تلگرام</p>
                   </Link>
                 </div>
-                <div className="mb-2 flex justify-start pr-2 hover:bg-[#101010] py-[8px] text-[11px] md:text-[12px] transition-all rounded-md">
-                  <Link
-                    href={"#"}
-                    className="flex justify-center items-center gap-1"
-                  >
-                    <TwitterIcon />
-                    <p>توییتر</p>
-                  </Link>
-                </div>
+               
                 <div className="mb-2 hover:bg-[#101010] pr-2 flex justify-start text-[11px] md:text-[12px] py-[8px] transition-all rounded-md">
                   <Link
-                    href={"#"}
-                    className="flex justify-center items-center gap-1"
+                    href="https://www.instagram.com/onnewsmedia"
+                    className="flex w-full h-full justify-start items-center gap-1"
                   >
-                    <InstagramIcon />
+                    <InstagramIcon width={24}  />
                     <p>اینستاگرام</p>
                   </Link>
                 </div>
