@@ -51,12 +51,15 @@ function MainContent({ slug, tag }: { slug: string; tag: string }) {
           : {
               "service[slug][]": filterParams?.service == "all" ? null : slug,
             }),
-            ...(filterParams?.tag && {
-              ...filterParams?.tag?.reduce((acc: any, tagItem: any, index: number) => {
-                acc[`customFilter[tag_id][${index}]`] = tagItem.id;
-                return acc;
-              }, {}),
-            }),
+        ...(filterParams?.tag && {
+          ...filterParams?.tag?.reduce(
+            (acc: any, tagItem: any, index: number) => {
+              acc[`customFilter[tag_id][${index}]`] = tagItem.id;
+              return acc;
+            },
+            {}
+          ),
+        }),
         ...(filterParams?.title ? { "title[like]": filterParams.title } : {}),
         ...(filterParams?.service
           ? {
@@ -98,7 +101,7 @@ function MainContent({ slug, tag }: { slug: string; tag: string }) {
 
   const handleFilter = (data: FilterState) => {
     setFilterParams(data);
-    console.log()
+    console.log();
   };
 
   if (isLoading) {
@@ -121,11 +124,8 @@ function MainContent({ slug, tag }: { slug: string; tag: string }) {
         )}
       </div>
       {(isFetchingNextPage || hasNextPage) && (
-        <>
-          <div
-            ref={ref}
-            className="md:hidden grid mb-12 grid-cols-3 gap-4 h-32 lg:h-40 mt-16"
-          >
+        <div ref={ref}>
+          <div className="md:hidden grid mb-12 grid-cols-3 gap-4 h-32 lg:h-40 mt-16">
             {[...Array(3)].map((_, index) => (
               <div
                 key={index}
@@ -133,10 +133,7 @@ function MainContent({ slug, tag }: { slug: string; tag: string }) {
               ></div>
             ))}
           </div>
-          <div
-            ref={ref}
-            className="hidden md:grid mb-12 grid-cols-6 gap-4 h-32 lg:h-40 mt-16"
-          >
+          <div className="hidden md:grid mb-12 grid-cols-6 gap-4 h-32 lg:h-40 mt-16">
             {[...Array(6)].map((_, index) => (
               <div
                 key={index}
@@ -144,7 +141,7 @@ function MainContent({ slug, tag }: { slug: string; tag: string }) {
               ></div>
             ))}
           </div>
-        </>
+        </div>
       )}
     </div>
   );

@@ -120,9 +120,8 @@ function MainContent() {
       ))}
 
       {(isFetchingNextPage || hasNextPage) && (
-        <>
+        <div ref={ref}>
           <div
-            ref={ref}
             className="md:hidden grid mb-12 grid-cols-3 gap-4 h-32 lg:h-40 mt-16"
           >
             {[...Array(3)].map((_, index) => (
@@ -133,7 +132,6 @@ function MainContent() {
             ))}
           </div>
           <div
-            ref={ref}
             className="hidden md:grid mb-12 grid-cols-6 gap-4 h-32 lg:h-40 mt-16"
           >
             {[...Array(6)].map((_, index) => (
@@ -143,7 +141,7 @@ function MainContent() {
               ></div>
             ))}
           </div>
-        </>
+        </div>
       )}
     </>
   );

@@ -1,12 +1,6 @@
 import Link from "next/link";
 import TvIcon from "../icons/Tv";
-import {
-  AparatIcon,
-  ArrowTopIcon,
-  InstagramIcon,
-  TelegramIcon,
-  TwitterIcon,
-} from "../icons";
+import { ArrowTopIcon, InstagramIcon, TelegramIcon } from "../icons";
 import Image from "next/image";
 
 export const Footer = ({ footerMenueItems }: { footerMenueItems: any[] }) => {
@@ -85,7 +79,13 @@ export const Footer = ({ footerMenueItems }: { footerMenueItems: any[] }) => {
                     href={"https://web.bale.ai/onnewsmedia1"}
                     className="flex w-full h-full justify-start items-center gap-1"
                   >
-                    <Image src={"https://web.bale.ai/logo82.png"} width={17} height={17} className="filter grayscale opacity-70 " alt="پیام رسان بله" />
+                    <Image
+                      src={"https://web.bale.ai/logo82.png"}
+                      width={17}
+                      height={17}
+                      className="filter grayscale opacity-70 "
+                      alt="پیام رسان بله"
+                    />
 
                     <p className="mr-2">بله</p>
                   </Link>
@@ -95,7 +95,15 @@ export const Footer = ({ footerMenueItems }: { footerMenueItems: any[] }) => {
                     href={"https://rubika.ir/onnewsmedia"}
                     className="flex w-full h-full justify-start items-center gap-1"
                   >
-                    <Image src={"https://web.rubika.ir/assets/icons/icon-192x192.png"} width={17} height={17} className="filter grayscale opacity-70 " alt="پیام رسان بله" />
+                    <Image
+                      src={
+                        "https://web.rubika.ir/assets/icons/icon-192x192.png"
+                      }
+                      width={17}
+                      height={17}
+                      className="filter grayscale opacity-70 "
+                      alt="پیام رسان بله"
+                    />
 
                     <p className="mr-2">روبیکا</p>
                   </Link>
@@ -105,7 +113,13 @@ export const Footer = ({ footerMenueItems }: { footerMenueItems: any[] }) => {
                     href={"https://eitaa.com/onnewsmedia"}
                     className="flex w-full h-full justify-start items-center gap-1"
                   >
-                    <Image className="filter grayscale opacity-70 " src={"https://www.aparat.com/static/img/eitaa.svg"} width={17} height={17} alt="پیام رسان بله" />
+                    <Image
+                      className="filter grayscale opacity-70 "
+                      src={"https://www.aparat.com/static/img/eitaa.svg"}
+                      width={17}
+                      height={17}
+                      alt="پیام رسان بله"
+                    />
 
                     <p className="mr-2">ایتا</p>
                   </Link>
@@ -115,17 +129,17 @@ export const Footer = ({ footerMenueItems }: { footerMenueItems: any[] }) => {
                     href="https://t.me/onnewsmedia"
                     className="flex w-full h-full justify-start items-center gap-1"
                   >
-                    <TelegramIcon  width={24} />
+                    <TelegramIcon width={24} />
                     <p>تلگرام</p>
                   </Link>
                 </div>
-               
+
                 <div className="mb-2 hover:bg-[#101010] pr-2 flex justify-start text-[11px] md:text-[12px] py-[8px] transition-all rounded-md">
                   <Link
                     href="https://www.instagram.com/onnewsmedia"
                     className="flex w-full h-full justify-start items-center gap-1"
                   >
-                    <InstagramIcon width={24}  />
+                    <InstagramIcon width={24} />
                     <p>اینستاگرام</p>
                   </Link>
                 </div>
