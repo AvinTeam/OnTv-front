@@ -106,7 +106,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                                   publicShow?.Episode?.video?.mp4_videos ?? []
                                 }
                               />
-                              <Share />
+                              <Share title={publicShow?.Episode?.title} />
                             </div>
                             <div className="hidden md:block md:bg-box-slider-bg-text text-nowrap h-7 text-box-slider-text-l md:py-1.5 md:px-6 text-[10px] md:text-[11px] md:mr-auto md:rounded-[20px]">
                               <span>
