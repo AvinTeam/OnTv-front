@@ -68,7 +68,7 @@ function Favorite({ programId }: { programId: string }) {
             <BadgeIcon width={29} height={29} fill="#fff" />
           )}
           <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2">
-            <div className="px-2 py-1 text-center flex justify-center items-center bg-gray-800 w-52 h-8 bg-primary text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="px-2 py-1 text-center flex justify-center items-center font-bold w-52 h-8 bg-primary text-base-70 text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-500">
               {isLoading ? (
                 <div className="loader border-t-transparent border-solid border-white border-4 rounded-full w-4 h-4 animate-spin"></div>
               ) : isAdded ? (

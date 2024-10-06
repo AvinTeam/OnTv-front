@@ -82,14 +82,15 @@ function Rate({ programId }: { programId: string }) {
               handleStarClick(allData?.Program?.userScore == 1 ? 0 : 1)
             }
           >
-            <div className="w-auto absolute bottom-7 -right-7 opacity-0 transition-all duration-5  group-hover:opacity-[100] flex justify-center items-center h-8 p-3 bg-primary rounded-xl text-base-70">
+            <div className="w-auto absolute bottom-7 -right-7 opacity-0 transition-all duration-500  group-hover:opacity-[100] flex justify-center items-center h-8 p-3 bg-primary rounded-xl text-base-70">
               <p>میپسندم</p>
+            <div className="w-0 absolute top-8 h-0 border-l-4 border-l-transparent border-primary border-r-4 border-r-transparent border-t-4 mx-auto"></div>
             </div>
             <LikeIcon
               width={20}
               height={20}
               fill={allData?.Program?.userScore == 1 ? "#144c14" : "#fff"}
-              className="transform group cursor-pointer hover:scale-125 transition-transform duration-200"
+              className="transform group cursor-pointer hover:scale-125 transition-transform duration-500"
             />
           </span>
         </div>
@@ -102,6 +103,7 @@ function Rate({ programId }: { programId: string }) {
           >
             <div className="w-auto absolute top-7 rotate-180 scale-x-[1] transition-all duration-700 -right-7 opacity-0  group-hover:opacity-[100] flex justify-center items-center h-8 p-3 bg-primary rounded-xl text-base-70">
               <p>نمیپسندم</p>
+              <div className="w-0 absolute top-8 h-0 border-l-4 border-l-transparent border-primary border-r-4 border-r-transparent border-t-4 mx-auto"></div>
             </div>
             <LikeIcon
               width={20}
