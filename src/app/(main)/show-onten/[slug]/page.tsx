@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import { gatAllProgram, getAllEpisode } from "./_api/get-all-episode";
 import { notFound } from "next/navigation";
 import Head from "next/head";
+import LikeIcon from "@/app/_components/icons/Like";
 const Episode = dynamic(() => import("./components/episode"));
 const CommentBox = dynamic(
   () => import("../../_components/commet-box/CommentBox")
