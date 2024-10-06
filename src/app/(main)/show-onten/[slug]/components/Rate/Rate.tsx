@@ -55,14 +55,24 @@ function Rate({ programId }: { programId: string }) {
           </Button>
         </>
       </Modal>
-      <div className="flex mt-2 gap-2 justify-center items-center">
-        <LikeIcon width={20} height={20} fill="#B088FF" />
+      { allData?.Program?.averageOfScore > 0  ? <div className="flex mt-2 gap-2 justify-center items-center">
+        <LikeIcon width={24} height={24} fill="#FC5622" />
         <div className="text-[#B088FF] text-sm mt-1">
-          {allData?.Program?.averageOfScore
-            ? `${allData.Program.averageOfScore} %`
-            : "0"}
+          {`${allData?.Program?.averageOfScore} درصد کاربران این برنامه را دوست داشتن`}
         </div>
-      </div>
+      </div> : null}
+      <div className="flex gap-2">
+                {allData?.Program?.tags?.[0] && (
+                  <div className="text-sm mt-2 font-light border text-[#B088FF] hover:border-[#3b3ece] border-[#4E16BE] px-3 py-1 rounded-[30px] flex justify-center items-center cursor-pointer">
+                    {allData?.Program?.tags?.[0]?.name}
+                  </div>
+                )}
+                {allData?.Program?.tags?.[1] && (
+                  <div className="text-sm mt-2 font-light border text-[#B088FF] hover:border-[#3b3ece] border-[#4E16BE] px-3 py-1 rounded-[30px] flex justify-center items-center cursor-pointer">
+                    {allData?.Program?.tags?.[1]?.name}
+                  </div>
+                )}
+              </div>
       <div className="flex mt-4  gap-5 justify-center items-center ">
         <div className="group">
           <span
@@ -75,8 +85,8 @@ function Rate({ programId }: { programId: string }) {
               <p>میپسندم</p>
             </div>
             <LikeIcon
-              width={18}
-              height={18}
+              width={20}
+              height={20}
               fill={allData?.Program?.userScore == 1 ? "#144c14" : "#fff"}
               className="transform group cursor-pointer hover:scale-125 transition-transform duration-200"
             />
@@ -93,10 +103,10 @@ function Rate({ programId }: { programId: string }) {
               <p>نمیپسندم</p>
             </div>
             <LikeIcon
-              width={18}
-              height={18}
+              width={20}
+              height={20}
               fill={allData?.Program?.userScore == -1 ? "#d42b4d" : "#fff"}
-              className="transform cursor-pointer group hover:scale-125 transition-all duration-700 "
+              className="transform cursor-pointer group hover:scale-125 transition-all duration-500 "
             />
           </span>
         </div>

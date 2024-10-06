@@ -70,18 +70,7 @@ export default async function ShowOnten({
               <p className="text-sm text-center lg:text-right w-[300px] text-[#B3BAC4] mt-3 font-light">
                 {allData?.Program?.description}
               </p>
-              <div className="flex gap-2">
-                {allData?.Program?.tags?.[0] && (
-                  <div className="text-sm mt-2 font-light border text-[#B088FF] hover:border-[#3b3ece] border-[#4E16BE] px-3 py-1 rounded-[30px] flex justify-center items-center cursor-pointer">
-                    {allData?.Program?.tags?.[0]?.name}
-                  </div>
-                )}
-                {allData?.Program?.tags?.[1] && (
-                  <div className="text-sm mt-2 font-light border text-[#B088FF] hover:border-[#3b3ece] border-[#4E16BE] px-3 py-1 rounded-[30px] flex justify-center items-center cursor-pointer">
-                    {allData?.Program?.tags?.[1]?.name}
-                  </div>
-                )}
-              </div>
+             
               <Rate programId={allData?.Program?.id} />
             </div>
           </div>
