@@ -5,6 +5,7 @@ import Modal from "@/app/_components/modal/modal";
 import { API_URL } from "@/configs/global";
 import axios from "@/core/axios";
 import { useUserStore } from "@/stores/user.store";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
@@ -56,7 +57,7 @@ function Rate({ programId }: { programId: string }) {
         </>
       </Modal>
       { allData?.Program?.averageOfScore > 0  ? <div className="flex mt-2 gap-2 justify-center items-center">
-        <LikeIcon width={24} height={24} fill="#FC5622" />
+         <Image src={"/images/like@1x.webp"} alt="like" width={24} height={24} className=" scale-x-[-1]" />
         <div className="text-[#B088FF] text-sm mt-1">
           {`${allData?.Program?.averageOfScore} درصد کاربران این برنامه را دوست داشتن`}
         </div>
@@ -76,7 +77,7 @@ function Rate({ programId }: { programId: string }) {
       <div className="flex mt-4  gap-5 justify-center items-center ">
         <div className="group">
           <span
-            className={`flex relative text-[#8b8a8a] gap-2  scale-x-[1]`}
+            className={`flex relative text-[#8b8a8a] gap-2 scale-x-[1]`}
             onClick={() =>
               handleStarClick(allData?.Program?.userScore == 1 ? 0 : 1)
             }
