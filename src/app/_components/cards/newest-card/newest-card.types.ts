@@ -10,11 +10,11 @@ export type NewestCardProps = {
     id: number;
     path: string;
     poster: any[];
+    free_access: boolean;
     program: {
       id: number;
       slug: string;
       is_paid: boolean;
-      free_episodes: number;
     };
     video:{
       duration: number;
