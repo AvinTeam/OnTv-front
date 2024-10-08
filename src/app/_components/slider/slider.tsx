@@ -46,32 +46,33 @@ export const Slider: React.FC<SliderProps> = ({
         }}
         touchEventsTarget="container"
         pagination={{ clickable: true }}
-        breakpoints={{
-          0: {
-            slidesPerView: smCount ? smCount : displayCount === 8 ? 2.5 : 1.5,
-            spaceBetween: 8,
-          },
-          320: {
-            slidesPerView: smCount ? smCount : displayCount === 8 ? 3 : 1.5,
-            spaceBetween: 8,
-          },
-          437: {
-            slidesPerView: mdCount ? smCount : displayCount === 8 ? 4 : 1.5,
-            spaceBetween: 8,
-          },
-          768: {
-            slidesPerView: mdCount ? mdCount : 4,
-            spaceBetween: 8,
-          },
-          984: {
-            slidesPerView: lgCount ? lgCount : displayCount === 8 ? 6 : 4,
-            spaceBetween: 8,
-          },
-          1200: {
-            slidesPerView: lgCount ? lgCount : displayCount,
-            spaceBetween: 5,
-          },
-        }}
+        slidesPerView="auto"
+        // breakpoints={{
+        //   0: {
+        //     slidesPerView: smCount ? smCount : displayCount === 8 ? 2.5 : 1.5,
+        //     spaceBetween: 8,
+        //   },
+        //   320: {
+        //     slidesPerView: smCount ? smCount : displayCount === 8 ? 3 : 1.5,
+        //     spaceBetween: 8,
+        //   },
+        //   437: {
+        //     slidesPerView: mdCount ? smCount : displayCount === 8 ? 4 : 1.5,
+        //     spaceBetween: 8,
+        //   },
+        //   768: {
+        //     slidesPerView: mdCount ? mdCount : 4,
+        //     spaceBetween: 8,
+        //   },
+        //   984: {
+        //     slidesPerView: lgCount ? lgCount : displayCount === 8 ? 6 : 4,
+        //     spaceBetween: 8,
+        //   },
+        //   1200: {
+        //     slidesPerView: lgCount ? lgCount : displayCount,
+        //     spaceBetween: 5,
+        //   },
+        // }}
         onSlideChange={(e) => {
           setIsDisablePrev(e.isBeginning);
           setIsDisableNext(e.isEnd);

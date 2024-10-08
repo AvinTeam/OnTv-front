@@ -119,7 +119,7 @@ const SearchModal = ({
                             <Link
                               href={`/search-result-list/${data?.slug}/tag/all`}
                               onClick={handleClose}
-                              className="border cursor-pointer text-sm font-light rounded-md text-[#b3b3b3] py-1.5 flex justify-center items-center hover:border-[gray] border-base-25"
+                              className="border px-1 ml-1 cursor-pointer text-sm font-light rounded-md text-[#b3b3b3] py-1.5 flex justify-center items-center hover:border-[gray] border-base-25"
                             >
                               {data?.name}
                             </Link>

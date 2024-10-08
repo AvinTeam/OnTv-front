@@ -132,7 +132,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                         title="بخش های منتخب"
                         link={`/cut/all-cut/${publicShow?.Episode?.slug}`}
                       />
-                      <div className="h-[170px] md:h-[130px] lg:h-[160px] 2xl:h-[200px] w-full">
+                      <div className="h-[230px]">
                         <Slider
                           Component={SpecialCard}
                           data={cuts.Cuts?.data}
@@ -149,7 +149,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                     title="سایر قسمت ها"
                     link={`/show-onten/${publicShow?.Episode?.program?.slug}`}
                   />
-                  <div className="h-[270px] md:h-[270px] lg:h-[160px] 2xl:h-[200px] w-full">
+                  <div className="h-[230px]">
                     <Slider
                       Component={NewestCard}
                       data={episodes?.Episodes?.data}
@@ -177,7 +177,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                         key={item.id}
                         className="rounded-md mb-2 overflow-auto"
                       >
-                        <div className="rounded-md overflow-auto h-[140px] 2xl:h-[200px]">
+                        <div className="rounded-md overflow-auto">
                           <Image
                             src={item.poster?.[0]?.url}
                             width={0}

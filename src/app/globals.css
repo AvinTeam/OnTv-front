@@ -62,3 +62,7 @@ html {
 .Toastify__toast--success {
   /* width: 250px; */
 }
+
+.swiper-slide {
+  width: auto !important;
+}

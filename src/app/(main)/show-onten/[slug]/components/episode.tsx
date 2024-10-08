@@ -50,7 +50,7 @@ function Episode({ data, itemId}: { data: any; itemId: string }) {
         </div>
       ) : (
         <div
-          className={`container flex px-4 md:px-0 flex-col md:grid w-full md:grid-cols-3  lg:grid-cols-4 xl:grid-cols-5 justify-center items-center gap-2 mx-auto overflow-auto ${
+          className={`container flex px-4 md:px-0 flex-col md:grid w-full md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-center items-center gap-2 mx-auto overflow-auto ${
             isLoading ? "opacity-50" : ""
           }`}
         >

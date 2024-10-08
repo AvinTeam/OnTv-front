@@ -64,7 +64,7 @@ export const NewestCard: React.FC<NewestCardProps> = ({ data, path }) => {
         key={data?.alt}
         className="w-full h-full rounded-lg shadow-lg overflow-hidden cursor-pointer"
       >
-        <div className="h-[160px] w-full overflow-hidden">
+        <div className="h-[190px] w-full overflow-hidden">
           <div className="relative rounded-md w-full h-full overflow-hidden">
             <Image
               src={data?.poster?.[0]?.url}
@@ -73,7 +73,7 @@ export const NewestCard: React.FC<NewestCardProps> = ({ data, path }) => {
               alt={data?.alt}
               className="w-full h-full object-cover"
             />
-            {data?.free_access && !user?.subscribe ? (
+            {!data?.free_access && !user?.subscribe ? (
               <div className="flex gap-1 justify-center items-center absolute top-2 rounded-[25px] overflow-hidden right-1 bg-[#1d2b1f] px-2 py-[4px] font-light z-50 text-[#4dab56] text-xs">
                 <FreeIcon width={18} height={18} />
                 <p className="text-[11px]">رایگان</p>
@@ -85,7 +85,7 @@ export const NewestCard: React.FC<NewestCardProps> = ({ data, path }) => {
               </div>
             ) : null}
             {data?.program?.is_paid &&
-              data?.free_access && !user?.subscribe && (
+              !data?.free_access && !user?.subscribe && (
                 <div
                   className="absolute top-0 left-0 w-full h-full flex justify-center items-center"
                   style={{

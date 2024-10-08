@@ -7,7 +7,7 @@ function Program({ data }: any) {
   return (
     <div className="container px-3 md:px-0  overflow-auto py-2 mb-4">
       <SliderTitle title={data?.title} link={`/show-onten/${data?.program?.[0]?.program?.slug}`} />
-      <div className="h-[170px] md:h-[130px] lg:h-[160px] 2xl:h-[200px]">
+      <div className="h-[230px]">
         <Slider
           Component={SpecialCard}
           data={data?.program?.[0]?.episodes}

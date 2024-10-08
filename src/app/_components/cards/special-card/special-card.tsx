@@ -37,7 +37,7 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({ data, path }) => {
     <>
       <div
         onClick={handleCardClick}
-        className="w-full cursor-pointer h-full flex flex-col gap-2"
+        className="w-[340px] mx-1 cursor-pointer h-full flex flex-col gap-2"
       >
         <div className="group w-full h-[85%]  relative">
           <div className="relative w-full h-full group">
