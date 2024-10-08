@@ -22,7 +22,7 @@ export async function getAllCut(episode_id: number) {
   }
 }
 export async function getAllEpisode(id: number) {
-  const res = await fetch(`${API_URL}episode/publicIndex?program[slug]=${id}`, {
+  const res = await fetch(`${API_URL}episode/publicIndex?program[slug]=${id}&f_params[orderBy][field]=order&f_params[orderBy][type]=asc`, {
     cache: "no-cache",
   });
   if (res.ok) {
