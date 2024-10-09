@@ -58,8 +58,10 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                         <h1 className="text-link-footer-title text-[11px] md:text-sm lg:text-xl">
                           {publicShow?.Episode?.title}
                         </h1>
-                        <p className="text-[#606770] text-xs md:text-sm mt-3">
-                          {publicShow?.Episode?.description}
+                        <p className="text-[#606770] text-xs md:text-sm mt-3"
+                          dangerouslySetInnerHTML={{ __html: publicShow?.Episode?.description ?? "" }}
+                        >
+                          { }
                         </p>
                       </div>
                       <div className="mt-6">
@@ -83,8 +85,9 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                                   {publicShow?.Episode?.program?.title}{" "}
                                 </span>
                               </h5>
-                              <p className="text-[#B3BAC4] text-[10px] mt-1 lg:text-xs font-light">
-                                {publicShow?.Episode?.program?.description}
+                              <p className="text-[#B3BAC4] text-[10px] mt-1 lg:text-xs font-light"
+                                dangerouslySetInnerHTML={{ __html: publicShow?.Episode?.program?.description ?? "" }}
+                              >
                               </p>
                             </div>
                           </div>
@@ -186,7 +189,7 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                             className="w-full h-full object-cover"
                           />
                         </div>
-                        <div className="pb-[9px] md:pb-0 flex justify-center items-center flex-col w-full h-[40%] md:h-[30%]">
+                        <div className="mb-9 pb-[9px] md:pb-0 flex justify-center items-center flex-col w-full h-[40%] md:h-[30%]">
                           <div className=" flex flex-col md:mt-4 md:flex md:flex-row justify-start md:justify-between md:items-center gap-1 w-full mt-4">
                             <div className="mb-1 md:bg-box-slider-bg-text text-nowrap text-base-content-slider md:py-1 md:px-1 md:flex md:justify-center text-[10px] md:rounded-[20px]">
                               {truncate(item?.title, 30)}
@@ -197,11 +200,11 @@ export default async function ShowOn({ params }: { params: { slug: string } }) {
                               <span> {`${item?.seen} نمایش`}</span>
                             </div>
                           </div>
-                          <div className="break-words mt-1 md:mt-2 text-justify text-[12px] md:text-[14px] max-w-[100%] md:min-w-[100%]">
-                            <h3 className="mb-1 font-light text-ellipsis dark:text-description-text md:text-clip overflow-hidden whitespace-nowrap md:text-wrap md:ml-auto ">
-                              {item?.description}
+                          {/* <div className="break-words mt-1 md:mt-2 text-justify text-[12px] md:text-[14px] max-w-[100%] md:min-w-[100%]">
+                            <h3 className="mb-1 font-light  text-ellipsis dark:text-description-text md:text-clip overflow-hidden whitespace-nowrap md:text-wrap md:ml-auto ">
+                              {(item?.title ?? "")}
                             </h3>
-                          </div>
+                          </div> */}
                         </div>
                       </Link>
                     ))}
