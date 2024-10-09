@@ -123,11 +123,10 @@ export const NewestCard: React.FC<NewestCardProps> = ({ data, path }) => {
               <span className="font-light text-[10px]">{` ${data?.seen} نمایش`}</span>
             </div>
           </div>
-          <div className="break-words w-full mt-1 mb-auto md:mt-0 text-justify text-[12px] md:text-[14px] max-w-[100%] md:min-w-[100%]">
-            <h3 className="mb-1 text-justify font-light text-ellipsis dark:text-description-text md:text-clip overflow-hidden whitespace-nowrap md:text-wrap md:ml-auto ">
-              {truncate(data?.description, 60)}
-            </h3>
-          </div>
+          <p
+            className="w-full text-sm font-thin text-ellipsis whitespace-nowrap overflow-hidden"
+            dangerouslySetInnerHTML={{ __html: data?.description }}
+          ></p>
         </div>
       </div>
     </>

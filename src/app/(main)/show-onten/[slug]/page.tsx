@@ -70,7 +70,7 @@ export default async function ShowOnten({
               <p className="text-sm text-center lg:text-right w-[300px] text-[#B3BAC4] mt-3 font-light">
                 {allData?.Program?.description}
               </p>
-             
+
               <Rate programId={allData?.Program?.id} />
             </div>
           </div>

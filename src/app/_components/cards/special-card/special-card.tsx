@@ -29,9 +29,9 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({ data, path }) => {
       router.push(`/show-onten/${program?.slug}`);
     }
   };
-  useEffect(()=>{
-    console.log(data)
-  },[])
+  useEffect(() => {
+    console.log(data);
+  }, []);
 
   return (
     <>
@@ -69,7 +69,10 @@ export const SpecialCard: React.FC<SpecialCardProps> = ({ data, path }) => {
                 <p className="font-light">{seen}</p>
               </div>
               <div>{program?.tags.map((tag: any) => tag.name).join(" - ")}</div>
-              <p>{truncate(description ?? "")}</p>
+              <p
+                className="w-full text-ellipsis whitespace-nowrap overflow-hidden"
+                dangerouslySetInnerHTML={{ __html: description ?? "" }}
+              ></p>
             </div>
           </div>
           <div
