@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { NewestCardProps } from "./newest-card.types";
 import Image from "next/image";
-import { convertSecondToMinute, truncate } from "@/utils/functions";
+import { formatTime, truncate } from "@/utils/functions";
 import { useUserStore } from "@/stores/user.store";
 import { useRouter } from "next/navigation";
 import Modal from "../../modal/modal";
@@ -15,7 +15,7 @@ export const NewestCard: React.FC<NewestCardProps> = ({ data, path }) => {
   const [open, setOpen] = useState<boolean>(false);
   const [modalMessage, setModalMessage] = useState<string>("");
   const handleCardClick = () => {
-    if(path == "cut"){
+    if (path == "cut") {
       router.push(`/cut/${data?.slug}`);
       return;
     }
@@ -85,7 +85,8 @@ export const NewestCard: React.FC<NewestCardProps> = ({ data, path }) => {
               </div>
             ) : null}
             {data?.program?.is_paid &&
-              !data?.free_access && !user?.subscribe && (
+              !data?.free_access &&
+              !user?.subscribe && (
                 <div
                   className="absolute top-0 left-0 w-full h-full flex justify-center items-center"
                   style={{
@@ -112,7 +113,10 @@ export const NewestCard: React.FC<NewestCardProps> = ({ data, path }) => {
               {truncate(data?.title, 30)}
             </div>
             <div className="col-span-9 bg-box-slider-bg-text text-nowrap text-box-slider-text-l py-1 px-2 text-[9px] mr-auto rounded-[20px]">
-              <span className="text-white font-light text-[10px]"> {convertSecondToMinute(data?.video?.duration)} </span>
+              <span className="text-white font-light text-[10px]">
+                {" "}
+                {formatTime(data?.video?.duration)}{" "}
+              </span>
               <span>
                 <div className="inline"></div> |
               </span>
@@ -121,7 +125,7 @@ export const NewestCard: React.FC<NewestCardProps> = ({ data, path }) => {
           </div>
           <div className="break-words w-full mt-1 mb-auto md:mt-0 text-justify text-[12px] md:text-[14px] max-w-[100%] md:min-w-[100%]">
             <h3 className="mb-1 text-justify font-light text-ellipsis dark:text-description-text md:text-clip overflow-hidden whitespace-nowrap md:text-wrap md:ml-auto ">
-              {truncate(data?.description , 60)}
+              {truncate(data?.description, 60)}
             </h3>
           </div>
         </div>

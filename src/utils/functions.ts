@@ -49,7 +49,7 @@ export function isPersianNumber(numString: string) {
   return persianDigits.test(numString);
 }
 export function convertGregorianToJalaliFullTim(gregorianDate: string) {
-   return moment(gregorianDate, "YYYY-MM-DD HH:mm:ss")
+  return moment(gregorianDate, "YYYY-MM-DD HH:mm:ss")
     .locale("fa")
     .format("YYYY/MM/DD");
 }
@@ -108,18 +108,22 @@ export function truncate(text: string, maxLength: number) {
 export function toLocaleNumber(number: string | number) {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-export function convertSecondToMinute(seconds: number) {
-  if (seconds == null) {
-    return "0:0";
-  }
-  const minutes = Math.floor(seconds / 60);
-  const remainingSeconds = seconds % 60;
-  return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
+export function formatTime(seconds: number) {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const secs = Math.floor(seconds % 60);
+
+  return [
+    hours.toString().padStart(2, "0"),
+    minutes.toString().padStart(2, "0"),
+    secs.toString().padStart(2, "0"),
+  ].join(":");
 }
-export function openInNewTab(url: string){
+
+export function openInNewTab(url: string) {
   const a = document.createElement("a");
   a.href = url;
   a.target = "_blank";
   a.rel = "noopener noreferrer";
   a.click();
-};
+}

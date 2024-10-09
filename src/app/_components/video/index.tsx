@@ -4,7 +4,7 @@ import React from "react";
 import videojs from "video.js";
 import "video.js/dist/video-js.css";
 import lang_fa from "../../../../public/lang/videojs/fa.json";
-import qualitySelector from 'videojs-hls-quality-selector';
+import qualitySelector from "videojs-hls-quality-selector";
 // import contribQualityLevels from 'videojs-contrib-quality-levels'
 // import 'videojs-quality-selector-hls'
 
@@ -20,17 +20,12 @@ type IProp = {
   options: IOptionsType;
   onReady: (player: any) => void;
   fallbackOptions: IOptionsType;
-}
-export const VideoJS = ({
-  options,
-  onReady,
-  fallbackOptions,
-}: IProp) => {
-
+};
+export const VideoJS = ({ options, onReady, fallbackOptions }: IProp) => {
   const videoRef = React.useRef<any>(null);
   const playerRef = React.useRef<any>(null);
 
-  videojs.registerPlugin('hlsQualitySelector', qualitySelector)
+  videojs.registerPlugin("hlsQualitySelector", qualitySelector);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handlePlayerError = (player: any) => {
@@ -59,10 +54,10 @@ export const VideoJS = ({
       player.on("error", () => handlePlayerError(player));
       // let qualityLevels = player.qualityLevels()
 
-      if (player) (player as any).hlsQualitySelector({ displayCurrentQuality: true });
+      if (player)
+        (player as any).hlsQualitySelector({ displayCurrentQuality: true });
       // player.qualitySelectorHls({
       // });
-
     } else {
       const player = playerRef.current;
 
@@ -73,8 +68,6 @@ export const VideoJS = ({
       // player.qualitySelectorHls({
 
       // });
-
-
     }
   }, [options, fallbackOptions, videoRef, onReady, handlePlayerError]);
 
